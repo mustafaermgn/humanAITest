@@ -1,0 +1,7 @@
+{
+    "code": "import collections\nimport heapq\n\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    \"\"\"\n    Verilen listedeki en sık geçen k elemanı bulur.\n    Heap (öncelik kuyruğu) kullanarak bu işlemi gerçekleştirir.\n\n    Args:\n        nums: Elemanların listesi.\n        k: İstenen en sık geçen eleman sayısı.\n\n    Returns:\n        En sık geçen k elemanın listesi.\n    \"\"\"\n    if k == 0:\n        return []\n\n    # 1. Elemanların frekanslarını say\n    freq_map = collections.Counter(nums)\n\n    # 2. Minimum heap oluştur (frekans, eleman) çiftlerini saklamak için\n    # Python'ın heapq modülü varsayılan olarak min-heap'tir.\n    # (frekans, eleman) olarak tutarsak, heap frekanslara göre sıralanır.\n    min_heap = []\n\n    for element, freq in freq_map.items():\n        # Heap'e (frekans, eleman) çiftini ekle\n        heapq.heappush(min_heap, (freq, element))\n\n        # Eğer heap boyutu k'yı aşarsa, en küçük frekanslı elemanı çıkar\n        if len(min_heap) > k:\n            heapq.heappop(min_heap)\n\n    # 3. Heap'te kalan elemanları sonuç listesine ekle\n    # Heap'te kalanlar en yüksek frekanslı k elemandır.\n    result = [element for freq, element in min_heap]\n\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Top k frequent elements using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

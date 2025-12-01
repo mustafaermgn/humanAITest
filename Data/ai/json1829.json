@@ -1,0 +1,7 @@
+{
+    "code": "import unicodedata\n\ndef normalize_unicode(text: str, form: str = 'NFC') -> str:\n    return unicodedata.normalize(form, text)",
+    "source": "test-data-ai",
+    "prompt": "Unicode normalization yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

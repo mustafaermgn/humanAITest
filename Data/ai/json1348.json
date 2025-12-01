@@ -1,0 +1,7 @@
+{
+    "code": "class Tarjan:\n    def __init__(self, n):\n        self.n = n\n        self.graph = [[] for _ in range(n)]\n        \n        self.ids = [-1] * n\n        self.low_links = [-1] * n\n        self.on_stack = [False] * n\n        self.stack = []\n        self.time = 0\n        self.sccs = []\n\n    def add_edge(self, u, v):\n        self.graph[u].append(v)\n\n    def find_sccs(self):\n        for i in range(self.n):\n            if self.ids[i] == -1:\n                self._dfs(i)\n        return self.sccs\n\n    def _dfs(self, u):\n        self.ids[u] = self.time\n        self.low_links[u] = self.time\n        self.time += 1\n        \n        self.stack.append(u)\n        self.on_stack[u] = True\n\n        for v in self.graph[u]:\n            if self.ids[v] == -1:\n                self._dfs(v)\n                self.low_links[u] = min(self.low_links[u], self.low_links[v])\n            elif self.on_stack[v]:\n                self.low_links[u] = min(self.low_links[u], self.ids[v])\n\n        if self.ids[u] == self.low_links[u]:\n            current_scc = []\n            while True:\n                node = self.stack.pop()\n                self.on_stack[node] = False\n                current_scc.append(node)\n                if node == u:\n                    break\n            self.sccs.append(current_scc)",
+    "source": "test-data-ai",
+    "prompt": "Tarjan algoritmasını SCC bulmak için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

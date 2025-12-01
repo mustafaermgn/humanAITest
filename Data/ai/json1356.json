@@ -1,0 +1,7 @@
+{
+    "code": "def policemen_catch_thieves(arr, k):\n    n = len(arr)\n    police_indices = []\n    thief_indices = []\n\n    for i in range(n):\n        if arr[i] == 'P':\n            police_indices.append(i)\n        elif arr[i] == 'T':\n            thief_indices.append(i)\n\n    caught_thieves = 0\n    p_ptr = 0  # Pointer for police_indices\n    t_ptr = 0  # Pointer for thief_indices\n\n    while p_ptr < len(police_indices) and t_ptr < len(thief_indices):\n        p_idx = police_indices[p_ptr]\n        t_idx = thief_indices[t_ptr]\n\n        if abs(p_idx - t_idx) <= k:\n            caught_thieves += 1\n            p_ptr += 1\n            t_ptr += 1\n        elif p_idx < t_idx:\n            # Current policeman is to the left of the current thief.\n            # If they can't catch each other, this policeman cannot\n            # catch this thief or any subsequent thief (further right).\n            # Move to the next policeman.\n            p_ptr += 1\n        else:  # p_idx > t_idx\n            # Current thief is to the left of the current policeman.\n            # If they can't catch each other, this thief cannot\n            # be caught by this policeman or any subsequent policeman (further right).\n            # Move to the next thief.\n            t_ptr += 1\n\n    return caught_thieves",
+    "source": "test-data-ai",
+    "prompt": "Policemen catch thieves problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef bfs(graph, start_node):\n    visited = set()\n    queue = collections.deque([start_node])\n    visited.add(start_node)\n    traversal_order = []\n\n    while queue:\n        current_node = queue.popleft()\n        traversal_order.append(current_node)\n\n        for neighbor in graph.get(current_node, []):\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append(neighbor)\n    return traversal_order",
+    "source": "test-data-ai",
+    "prompt": "Breadth-First Search (BFS) algoritmasını graf için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

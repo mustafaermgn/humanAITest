@@ -1,0 +1,7 @@
+{
+    "code": "class ChainedProcessor:\n    def __init__(self, initial_value=\"\"):\n        self.value = str(initial_value)\n\n    def append(self, text):\n        self.value += str(text)\n        return self\n\n    def prepend(self, text):\n        self.value = str(text) + self.value\n        return self\n\n    def to_upper(self):\n        self.value = self.value.upper()\n        return self\n\n    def to_lower(self):\n        self.value = self.value.lower()\n        return self\n\n    def replace(self, old, new):\n        self.value = self.value.replace(old, new)\n        return self\n\n    def strip(self):\n        self.value = self.value.strip()\n        return self\n\n    def get_result(self):\n        return self.value\n\nif __name__ == '__main__':\n    result = ChainedProcessor(\"  Hello World  \") \\\n        .strip() \\\n        .replace(\"World\", \"Python\") \\\n        .append(\"!\") \\\n        .to_upper() \\\n        .prepend(\">>> \") \\\n        .get_result()\n\n    print(result)\n\n    another_result = ChainedProcessor(123) \\\n        .append(456) \\\n        .prepend(\"Number: \") \\\n        .get_result()\n\n    print(another_result)",
+    "source": "test-data-ai",
+    "prompt": "Method chaining implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

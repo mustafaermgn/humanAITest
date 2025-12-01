@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:\n        if not matrix or not matrix[0]:\n            return False\n\n        rows = len(matrix)\n        cols = len(matrix[0])\n\n        # Start from the top-right corner of the matrix\n        row = 0\n        col = cols - 1\n\n        while row < rows and col >= 0:\n            current_val = matrix[row][col]\n            if current_val == target:\n                return True\n            elif current_val < target:\n                # If current value is less than target, target must be below\n                # (since current row is sorted left to right, so elements to the left are smaller;\n                # current column is sorted top to bottom, so elements above are smaller).\n                row += 1\n            else: # current_val > target\n                # If current value is greater than target, target must be to the left\n                # (since current row is sorted left to right, so elements to the right are larger;\n                # current column is sorted top to bottom, so elements below are larger).\n                col -= 1\n        \n        return False",
+    "source": "test-data-ai",
+    "prompt": "Search in row-wise and column-wise sorted matrix.",
+    "license": "MIT",
+    "language": "python"
+}

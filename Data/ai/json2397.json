@@ -1,0 +1,7 @@
+{
+    "code": "def subarray_sum_equals_k(nums, k):\n    \"\"\"\n    Belirli bir k toplamına eşit bir alt dizi (subarray) olup olmadığını kontrol eder.\n    Hash map (dictionary) kullanarak O(N) zaman karmaşıklığı ile çalışır.\n    \"\"\"\n    current_sum = 0\n    prefix_sums = {0: True}  # Başlangıçta 0 toplamını ekliyoruz. Bu, ilk elemanın kendisi k ise veya\n                             # alt dizi dizinin başından itibaren k'ya eşitse kontrol etmemizi sağlar.\n\n    for num in nums:\n        current_sum += num\n        # Eğer current_sum - k hash map'te varsa, bu, o noktadan current_sum'a kadar olan\n        # alt dizinin toplamının k olduğu anlamına gelir.\n        if (current_sum - k) in prefix_sums:\n            return True\n        \n        # Mevcut toplamı hash map'e ekle\n        prefix_sums[current_sum] = True\n            \n    return False",
+    "source": "test-data-ai",
+    "prompt": "Subarray sum equals k using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

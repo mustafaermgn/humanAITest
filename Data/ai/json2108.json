@@ -1,0 +1,7 @@
+{
+    "code": "def find_common_chars(*strings):\n    if not strings:\n        return []\n\n    # İlk dizenin karakterlerini bir küme (hash map tabanlı bir yapı) olarak başlat\n    # Bu küme, şimdiye kadar ortak olan karakterleri tutacak.\n    common_chars_set = set(strings[0])\n\n    # Geri kalan dizeler üzerinde döngü yap\n    for s in strings[1:]:\n        # Mevcut ortak karakterler kümesi ile geçerli dizenin karakter kümesinin kesişimini bul\n        # Bu, ortak karakterler kümesini günceller.\n        common_chars_set = common_chars_set.intersection(set(s))\n\n        # Eğer ortak karakter kümesi boşalırsa, daha fazla ortak karakter olamaz\n        if not common_chars_set:\n            break\n\n    # Ortak karakterler kümesini bir listeye dönüştür ve döndür\n    return list(common_chars_set)",
+    "source": "test-data-ai",
+    "prompt": "Find common characters using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def xor_swap(a, b):\n    a = a ^ b\n    b = a ^ b\n    a = a ^ b\n    return a, b\n\nif __name__ == '__main__':\n    # Örnek kullanım\n    x = 10\n    y = 20\n\n    print(f\"Swap öncesi: x = {x}, y = {y}\")\n\n    x, y = xor_swap(x, y)\n\n    print(f\"Swap sonrası: x = {x}, y = {y}\")\n\n    # Farklı bir örnek\n    str1 = \"Hello\"\n    str2 = \"World\"\n\n    # Not: XOR işlemi doğrudan string'ler üzerinde çalışmaz,\n    # ancak tam sayılar veya boolean değerler gibi diğer tipler için uygundur.\n    # Bu örnek sadece tam sayılar için geçerlidir.\n    # Stringler için XOR tabanlı byte manipülasyonu gereklidir ki bu daha karmaşıktır.\n\n    x_bool = True\n    y_bool = False\n\n    print(f\"\\nSwap öncesi: x_bool = {x_bool}, y_bool = {y_bool}\")\n    x_bool, y_bool = xor_swap(x_bool, y_bool)\n    print(f\"Swap sonrası: x_bool = {x_bool}, y_bool = {y_bool}\")",
+    "source": "test-data-ai",
+    "prompt": "XOR kullanarak swap işlemi yap.",
+    "license": "MIT",
+    "language": "python"
+}

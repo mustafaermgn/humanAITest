@@ -1,0 +1,7 @@
+{
+    "code": "import numpy as np\n\ndef find_local_minimum(f, grad_f, initial_x, learning_rate=0.01, max_iterations=1000, tolerance=1e-6):\n    \"\"\"\n    Belirtilen fonksiyonun yerel minimumunu gradyan inişi algoritması ile bulur.\n\n    Parametreler:\n    f (callable): Minimize edilecek fonksiyon. f(x) tek bir sayı döndürmelidir.\n    grad_f (callable): f fonksiyonunun gradyanını hesaplayan fonksiyon. grad_f(x)\n                        x ile aynı boyutta bir numpy dizisi döndürmelidir.\n    initial_x (array_like): Başlangıç noktası/tahmini.\n    learning_rate (float): Her adımda ne kadar ilerleneceğini belirleyen öğrenme oranı.\n    max_iterations (int): Maksimum iterasyon sayısı.\n    tolerance (float): Yakınsama için tolerans eşiği. Yeni ve önceki x arasındaki\n                       fark bu değerden küçükse durulur.\n\n    Dönüş:\n    numpy.ndarray: Bulunan yerel minimum noktasındaki x değeri.\n    \"\"\"\n    x = np.array(initial_x, dtype=float)\n\n    for _ in range(max_iterations):\n        gradient = grad_f(x)\n        new_x = x - learning_rate * gradient\n\n        if np.linalg.norm(new_x - x) < tolerance:\n            break\n        x = new_x\n    return x",
+    "source": "test-data-ai",
+    "prompt": "Local minimum bulan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

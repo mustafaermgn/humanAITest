@@ -1,0 +1,7 @@
+{
+    "code": "def longest_palindromic_subsequence(s):\n    n = len(s)\n    dp = [[0] * n for _ in range(n)]\n\n    for i in range(n):\n        dp[i][i] = 1\n\n    for cl in range(2, n + 1):\n        for i in range(n - cl + 1):\n            j = i + cl - 1\n            if s[i] == s[j]:\n                dp[i][j] = dp[i+1][j-1] + 2\n            else:\n                dp[i][j] = max(dp[i][j-1], dp[i+1][j])\n\n    return dp[0][n-1]\n\nif __name__ == '__main__':\n    string = \"BBABCBCAB\"\n    print(f\"'{string}' için en uzun palindromik alt dizisi uzunluğu: {longest_palindromic_subsequence(string)}\")\n\n    string = \"AGBCBA\"\n    print(f\"'{string}' için en uzun palindromik alt dizisi uzunluğu: {longest_palindromic_subsequence(string)}\")\n\n    string = \"GEEKSFORGEEKS\"\n    print(f\"'{string}' için en uzun palindromik alt dizisi uzunluğu: {longest_palindromic_subsequence(string)}\")\n    \n    string = \"ABCD\"\n    print(f\"'{string}' için en uzun palindromik alt dizisi uzunluğu: {longest_palindromic_subsequence(string)}\")\n\n    string = \"A\"\n    print(f\"'{string}' için en uzun palindromik alt dizisi uzunluğu: {longest_palindromic_subsequence(string)}\")\n\n    string = \"character\"\n    print(f\"'{string}' için en uzun palindromik alt dizisi uzunluğu: {longest_palindromic_subsequence(string)}\")",
+    "source": "test-data-ai",
+    "prompt": "Longest Palindromic Subsequence bulan DP çözümü yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_error_rate(actual, predicted):\n    if not isinstance(actual, list) or not isinstance(predicted, list):\n        raise TypeError(\"Inputs 'actual' and 'predicted' must be lists.\")\n\n    if len(actual) != len(predicted):\n        raise ValueError(\"Inputs 'actual' and 'predicted' must have the same length.\")\n\n    if not actual:\n        return 0.0\n\n    errors = 0\n    for i in range(len(actual)):\n        if actual[i] != predicted[i]:\n            errors += 1\n\n    return errors / len(actual)",
+    "source": "test-data-ai",
+    "prompt": "Error rate calculator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

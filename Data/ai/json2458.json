@@ -1,0 +1,7 @@
+{
+    "code": "import time\n\nclass LoggerRateLimiter:\n    def __init__(self):\n        self._last_logged_time = {}\n\n    def log(self, message: str, cooldown_seconds: float, key: str = None) -> bool:\n        current_time = time.time()\n        log_key = key if key is not None else message\n\n        if log_key not in self._last_logged_time or \\\n           (current_time - self._last_logged_time[log_key]) >= cooldown_seconds:\n            print(f\"Logged: {message}\")  # Replace with actual logging mechanism (e.g., logging.info(message))\n            self._last_logged_time[log_key] = current_time\n            return True\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Logger rate limiter using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

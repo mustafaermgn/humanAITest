@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\ndef connect_ropes_min_cost(rope_lengths):\n    \"\"\"\n    Connects n ropes with minimum cost.\n\n    Args:\n        rope_lengths: A list of integers representing the lengths of the ropes.\n\n    Returns:\n        An integer representing the minimum cost to connect all ropes.\n    \"\"\"\n    if not rope_lengths:\n        return 0\n\n    # Create a min-heap from the rope lengths\n    heapq.heapify(rope_lengths)\n\n    total_cost = 0\n\n    # Continue until only one rope remains in the heap\n    while len(rope_lengths) > 1:\n        # Extract the two smallest ropes\n        first = heapq.heappop(rope_lengths)\n        second = heapq.heappop(rope_lengths)\n\n        # Cost to connect them is their sum\n        current_cost = first + second\n        total_cost += current_cost\n\n        # Add the new combined rope back to the heap\n        heapq.heappush(rope_lengths, current_cost)\n\n    return total_cost",
+    "source": "test-data-ai",
+    "prompt": "Connect n ropes with minimum cost yaz.",
+    "license": "MIT",
+    "language": "python"
+}

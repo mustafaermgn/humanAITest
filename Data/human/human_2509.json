@@ -1,0 +1,7 @@
+{
+    "code": "def on_click(self) -> None:\n        # The post_message method sends an event to be handled in the DOM\n        self.post_message(self.Selected(self.color))",
+    "source": "github_repo:Textualize/textual",
+    "file": "docs/examples/events/custom01.py",
+    "license": "MIT",
+    "language": "python"
+}

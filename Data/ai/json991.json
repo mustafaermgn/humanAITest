@@ -1,0 +1,7 @@
+{
+    "code": "def gcd(a, b):\n    \"\"\"\n    Euclidean algoritması kullanarak iki sayının En Büyük Ortak Bölenini (EBOB) hesaplar.\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a",
+    "source": "test-data-ai",
+    "prompt": "GCD (Greatest Common Divisor) hesaplayan Euclidean algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

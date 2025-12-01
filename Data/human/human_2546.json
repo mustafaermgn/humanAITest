@@ -1,0 +1,7 @@
+{
+    "code": "def evaluate(self, model, eval_dataloader=None, output_file=\"merged\"):\n        if eval_dataloader is None:\n            eval_dataloader = self.eval_dataloader\n        outputs = self.predictor.predict_loop(\n            model, eval_dataloader, output_file)\n        results = self.metric.compute_metrics(**outputs)\n        return results",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/evaluators/evaluator.py",
+    "license": "MIT",
+    "language": "python"
+}

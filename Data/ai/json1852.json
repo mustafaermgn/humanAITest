@@ -1,0 +1,7 @@
+{
+    "code": "class Graph:\n    def __init__(self, num_vertices):\n        self._num_vertices = num_vertices\n        self._adj_matrix = [[0] * num_vertices for _ in range(num_vertices)]\n\n    def add_edge(self, u, v):\n        if 0 <= u < self._num_vertices and 0 <= v < self._num_vertices:\n            self._adj_matrix[u][v] = 1\n            self._adj_matrix[v][u] = 1\n\n    def remove_edge(self, u, v):\n        if 0 <= u < self._num_vertices and 0 <= v < self._num_vertices:\n            self._adj_matrix[u][v] = 0\n            self._adj_matrix[v][u] = 0\n\n    def has_edge(self, u, v):\n        if 0 <= u < self._num_vertices and 0 <= v < self._num_vertices:\n            return self._adj_matrix[u][v] == 1\n        return False\n\n    def print_matrix(self):\n        for row in self._adj_matrix:\n            print(\" \".join(map(str, row)))",
+    "source": "test-data-ai",
+    "prompt": "Graph representation using adjacency matrix yaz.",
+    "license": "MIT",
+    "language": "python"
+}

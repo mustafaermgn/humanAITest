@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef manage_cookies_request(url: str, method: str = 'GET', cookies: dict = None, **kwargs) -> requests.Response:\n    \"\"\"\n    Yönetilen çerezlerle bir HTTP isteği yapar.\n    \"\"\"\n    if cookies is None:\n        cookies = {}\n\n    response = requests.request(\n        method=method.upper(),\n        url=url,\n        cookies=cookies,\n        **kwargs\n    )\n    return response",
+    "source": "test-data-ai",
+    "prompt": "Cookies yöneten request fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

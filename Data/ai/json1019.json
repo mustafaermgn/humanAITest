@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\nfrom collections import Counter\n\ndef reorganize_string_heap(s: str) -> str:\n    if not s:\n        return \"\"\n\n    # Count character frequencies\n    char_counts = Counter(s)\n\n    # Build a max-heap (Python's heapq is a min-heap, so store negative frequencies)\n    # The heap will store tuples: (-frequency, character)\n    max_heap = []\n    for char, count in char_counts.items():\n        heapq.heappush(max_heap, (-count, char))\n\n    # Extract from heap and build result string\n    result = []\n    while max_heap:\n        # Pop the character with the highest frequency\n        neg_count, char = heapq.heappop(max_heap)\n        count = -neg_count\n\n        result.extend([char] * count)\n\n    return \"\".join(result)",
+    "source": "test-data-ai",
+    "prompt": "Reorganize string using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def find_smallest_missing_positive_integer(nums: list[int]) -> int:\n    \"\"\"\n    Finds the smallest missing positive integer in an unsorted array.\n\n    Args:\n        nums: A list of integers (can contain positive, negative, and zero).\n\n    Returns:\n        The smallest missing positive integer.\n    \"\"\"\n    # Create a set to store all unique positive numbers present in the array.\n    # Using a set allows for O(1) average time complexity for lookups.\n    present_positives = set()\n    for num in nums:\n        if num > 0:\n            present_positives.add(num)\n\n    # Iterate starting from 1 upwards, checking for the first missing positive integer.\n    i = 1\n    while True:\n        if i not in present_positives:\n            return i\n        i += 1",
+    "source": "test-data-ai",
+    "prompt": "Find the smallest missing positive integer in unsorted array.",
+    "license": "MIT",
+    "language": "python"
+}

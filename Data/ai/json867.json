@@ -1,0 +1,7 @@
+{
+    "code": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_end_of_word = False\n\ndef insert_word_into_trie(root, word):\n    current_node = root\n    for char in word:\n        if char not in current_node.children:\n            current_node.children[char] = TrieNode()\n        current_node = current_node.children[char]\n    current_node.is_end_of_word = True",
+    "source": "test-data-ai",
+    "prompt": "Insert word into trie yaz.",
+    "license": "MIT",
+    "language": "python"
+}

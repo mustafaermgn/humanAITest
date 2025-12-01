@@ -1,0 +1,7 @@
+{
+    "code": "def chocolate_distribution(arr, M):\n    N = len(arr)\n\n    if M == 0 or N == 0:\n        return 0\n\n    if M > N:\n        return -1  # Not enough packets for M students\n\n    arr.sort()\n\n    min_diff = float('inf')\n\n    for i in range(N - M + 1):\n        current_diff = arr[i + M - 1] - arr[i]\n        min_diff = min(min_diff, current_diff)\n\n    return min_diff",
+    "source": "test-data-ai",
+    "prompt": "Chocolate distribution problem yaz.",
+    "license": "MIT",
+    "language": "python"
+}

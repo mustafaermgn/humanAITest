@@ -1,0 +1,7 @@
+{
+    "code": "import contextlib\n\nclass YazTransaction:\n    \"\"\"\n    Context manager for managing database transactions with yaz (or any DBAPI 2.0 compatible library).\n    \"\"\"\n    def __init__(self, connection):\n        self.connection = connection\n        self.cursor = None\n\n    def __enter__(self):\n        self.cursor = self.connection.cursor()\n        return self.cursor\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        if self.cursor:\n            self.cursor.close()\n\n        if exc_type is None:\n            self.connection.commit()\n        else:\n            self.connection.rollback()\n            # Optionally, re-raise the exception if not suppressed\n            # return False # This would propagate the exception\n            # return True # This would suppress the exception",
+    "source": "test-data-ai",
+    "prompt": "Context manager for database transaction yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import random\n\ndef miller_rabin(n, k=5):\n    \"\"\"\n    Miller-Rabin primality test.\n\n    Args:\n        n: The number to test for primality.\n        k: The number of rounds of testing to perform (higher is more accurate).\n\n    Returns:\n        True if n is likely prime, False if n is composite.\n    \"\"\"\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0:\n        return False\n\n    # Find (s, r) pair such that n-1 = 2**s * r such that r is odd\n    s = 0\n    r = n - 1\n    while r % 2 == 0:\n        s += 1\n        r //= 2\n\n    # Do k tests\n    for _ in range(k):\n        a = random.randrange(2, n - 1)\n        x = pow(a, r, n)\n\n        if x == 1 or x == n - 1:\n            continue\n\n        for _ in range(s - 1):\n            x = pow(x, 2, n)\n            if x == n - 1:\n                break\n        else:\n            return False  # composite\n\n    return True  # probably prime\n\nif __name__ == '__main__':\n    # Example usage\n    number_to_test = 29\n    if miller_rabin(number_to_test):\n        print(f\"{number_to_test} is likely prime.\")\n    else:\n        print(f\"{number_to_test} is composite.\")\n\n    number_to_test = 561  # Carmichael number\n    if miller_rabin(number_to_test):\n        print(f\"{number_to_test} is likely prime.\")\n    else:\n        print(f\"{number_to_test} is composite.\")",
+    "source": "test-data-ai",
+    "prompt": "Miller-Rabin primality test yaz.",
+    "license": "MIT",
+    "language": "python"
+}

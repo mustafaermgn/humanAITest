@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def canJump(self, nums: list[int]) -> bool:\n        n = len(nums)\n\n        if n <= 1:\n            return True\n\n        last_good_pos = n - 1\n        for i in range(n - 1, -1, -1):\n            if i + nums[i] >= last_good_pos:\n                last_good_pos = i\n        \n        return last_good_pos == 0",
+    "source": "test-data-ai",
+    "prompt": "Jump game to reach the end yaz.",
+    "license": "MIT",
+    "language": "python"
+}

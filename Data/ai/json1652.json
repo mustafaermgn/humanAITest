@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef morris_inorder_traversal(root: TreeNode) -> list:\n    result = []\n    current = root\n\n    while current is not None:\n        if current.left is None:\n            result.append(current.val)\n            current = current.right\n        else:\n            # Find the inorder predecessor of current\n            predecessor = current.left\n            while predecessor.right is not None and predecessor.right is not current:\n                predecessor = predecessor.right\n\n            # If predecessor.right is None, it means we haven't visited\n            # the left subtree yet. Make a link.\n            if predecessor.right is None:\n                predecessor.right = current\n                current = current.left\n            # If predecessor.right is current, it means we have visited\n            # the left subtree and are returning. Break the link.\n            else:\n                predecessor.right = None  # Restore the tree\n                result.append(current.val)\n                current = current.right\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Morris traversal implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def recoverTree(self, root: TreeNode) -> None:\n        \"\"\"\n        Do not return anything, modify root in-place instead.\n        \"\"\"\n        self.first = None\n        self.second = None\n        self.prev = None \n\n        self._inorder_traverse(root)\n\n        # Swap the values of the two identified nodes\n        if self.first and self.second:\n            self.first.val, self.second.val = self.second.val, self.first.val\n\n    def _inorder_traverse(self, node: TreeNode):\n        if not node:\n            return\n\n        # Traverse left subtree\n        self._inorder_traverse(node.left)\n\n        # Process current node\n        if self.prev and node.val < self.prev.val:\n            # First violation\n            if not self.first:\n                self.first = self.prev \n                self.second = node    \n            # Second violation (if the two swapped nodes are not adjacent in in-order)\n            else:\n                self.second = node    \n\n        # Update prev for the next comparison\n        self.prev = node\n\n        # Traverse right subtree\n        self._inorder_traverse(node.right)",
+    "source": "test-data-ai",
+    "prompt": "Recover BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

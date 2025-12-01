@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):\n        self.val = val\n        self.left = left\n        self.right = right\n        self.next = next\n\nclass Solution:\n    def connect(self, root: 'Node') -> 'Node':\n        if not root:\n            return None\n\n        level_start = root\n\n        while level_start:\n            dummy_head = Node(0)\n            current_child = dummy_head\n\n            current_node = level_start\n            while current_node:\n                if current_node.left:\n                    current_child.next = current_node.left\n                    current_child = current_node.left\n\n                if current_node.right:\n                    current_child.next = current_node.right\n                    current_child = current_node.right\n\n                current_node = current_node.next\n\n            level_start = dummy_head.next\n            \n        return root",
+    "source": "test-data-ai",
+    "prompt": "Populate next right pointers yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class Graph:\n    def __init__(self):\n        self.adj_list = {}\n\n    def add_vertex(self, vertex):\n        if vertex not in self.adj_list:\n            self.adj_list[vertex] = []\n\n    def add_edge(self, u, v, directed=False):\n        self.add_vertex(u)\n        self.add_vertex(v)\n        \n        self.adj_list[u].append(v)\n        \n        if not directed:\n            self.adj_list[v].append(u)\n\n    def get_neighbors(self, vertex):\n        return self.adj_list.get(vertex, [])\n\n    def display(self):\n        for vertex, neighbors in self.adj_list.items():\n            print(f\"{vertex}: {neighbors}\")\n\nif __name__ == \"__main__\":\n    g = Graph()\n\n    g.add_vertex(\"A\")\n    g.add_vertex(\"B\")\n    g.add_vertex(\"C\")\n    g.add_vertex(\"D\")\n\n    g.add_edge(\"A\", \"B\")\n    g.add_edge(\"A\", \"C\", directed=True) \n    g.add_edge(\"B\", \"D\")\n    g.add_edge(\"C\", \"D\")\n    g.add_edge(\"D\", \"A\", directed=True)\n\n    g.display()\n    print(\"\\nNeighbors of A:\", g.get_neighbors(\"A\"))\n    print(\"Neighbors of C:\", g.get_neighbors(\"C\"))\n    print(\"Neighbors of E:\", g.get_neighbors(\"E\"))",
+    "source": "test-data-ai",
+    "prompt": "Graph representation using adjacency list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

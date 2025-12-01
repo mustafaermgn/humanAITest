@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def isValidSudoku(self, board: list[list[str]]) -> bool:\n        rows = [set() for _ in range(9)]\n        cols = [set() for _ in range(9)]\n        boxes = [set() for _ in range(9)]\n\n        for r in range(9):\n            for c in range(9):\n                char = board[r][c]\n                if char != '.':\n                    # Check row\n                    if char in rows[r]:\n                        return False\n                    rows[r].add(char)\n\n                    # Check column\n                    if char in cols[c]:\n                        return False\n                    cols[c].add(char)\n\n                    # Check 3x3 box\n                    box_idx = (r // 3) * 3 + (c // 3)\n                    if char in boxes[box_idx]:\n                        return False\n                    boxes[box_idx].add(char)\n        \n        return True",
+    "source": "test-data-ai",
+    "prompt": "Valid Sudoku using hash sets yaz.",
+    "license": "MIT",
+    "language": "python"
+}

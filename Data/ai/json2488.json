@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef solve_yaz_puzzle():\n    solutions = []\n    digits = range(10)\n\n    # Generate all permutations of 3 distinct digits (Y, A, Z)\n    for perm in itertools.permutations(digits, 3):\n        Y, A, Z = perm\n\n        # In cryptarithmetic, leading digits cannot be zero.\n        # 'Y' is the first letter, so it cannot be 0.\n        if Y == 0:\n            continue\n\n        # For a cryptarithmetic puzzle given as a single word like \"YAZ\"\n        # without an explicit equation, a common interpretation is a simple\n        # arithmetic relationship between the digits.\n        # Let's assume the puzzle implies Y + A = Z.\n\n        if Y + A == Z:\n            solutions.append({'Y': Y, 'A': A, 'Z': Z})\n\n    return solutions\n\nif __name__ == '__main__':\n    results = solve_yaz_puzzle()\n    for sol in results:\n        print(sol)",
+    "source": "test-data-ai",
+    "prompt": "Solve cryptarithmetic puzzles yaz.",
+    "license": "MIT",
+    "language": "python"
+}

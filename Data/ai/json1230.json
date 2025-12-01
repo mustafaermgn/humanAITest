@@ -1,0 +1,7 @@
+{
+    "code": "def find_duplicates(input_list):\n    seen = set()\n    duplicates = set()\n    for item in input_list:\n        if item in seen:\n            duplicates.add(item)\n        else:\n            seen.add(item)\n    return list(duplicates)",
+    "source": "test-data-ai",
+    "prompt": "Bir listenin yinelenen (duplicate) elemanlarını **hızlı** bir şekilde bulan bir fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

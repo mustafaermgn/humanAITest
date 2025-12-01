@@ -1,0 +1,7 @@
+{
+    "code": "def compress_string(s: str) -> str:\n    \"\"\"\n    Implements a string compression algorithm using run-length encoding.\n    For example, \"AAABBC\" becomes \"A3B2C1\".\n    If the compressed string is not shorter than the original string,\n    the original string is returned.\n    \"\"\"\n    if not s:\n        return s\n\n    compressed_parts = []\n    i = 0\n    while i < len(s):\n        current_char = s[i]\n        count = 0\n        j = i\n        while j < len(s) and s[j] == current_char:\n            count += 1\n            j += 1\n        compressed_parts.append(current_char)\n        compressed_parts.append(str(count))\n        i = j\n\n    compressed_string = \"\".join(compressed_parts)\n\n    # Return the original string if the compressed one is not shorter\n    if len(compressed_string) < len(s):\n        return compressed_string\n    else:\n        return s",
+    "source": "test-data-ai",
+    "prompt": "String compression algorithm yaz.",
+    "license": "MIT",
+    "language": "python"
+}

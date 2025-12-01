@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef get_power_set(input_set):\n    s = list(input_set)\n    power_set = []\n    for r in range(len(s) + 1):\n        for combo in itertools.combinations(s, r):\n            power_set.append(list(combo))\n    return power_set",
+    "source": "test-data-ai",
+    "prompt": "Generate all subsets (power set) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

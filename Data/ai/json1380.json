@@ -1,0 +1,7 @@
+{
+    "code": "def yaz(s: str) -> str:\n    last_occurrence = {}\n    for i, char in enumerate(s):\n        last_occurrence[char] = i\n\n    stack = []\n    seen = set()\n\n    for i, char in enumerate(s):\n        if char in seen:\n            continue\n\n        while stack and char < stack[-1] and last_occurrence[stack[-1]] > i:\n            popped_char = stack.pop()\n            seen.remove(popped_char)\n        \n        stack.append(char)\n        seen.add(char)\n    \n    return \"\".join(stack)",
+    "source": "test-data-ai",
+    "prompt": "Remove duplicate letters using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

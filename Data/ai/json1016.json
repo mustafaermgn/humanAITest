@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass SeatReservationManager:\n    def __init__(self, n: int):\n        self.available_seats = [i for i in range(1, n + 1)]\n        heapq.heapify(self.available_seats)\n        self.reserved = set()\n\n    def reserve_seat(self) -> int:\n        if not self.available_seats:\n            return -1 # No seats available\n\n        seat_number = heapq.heappop(self.available_seats)\n        self.reserved.add(seat_number)\n        return seat_number\n\n    def release_seat(self, seat_number: int) -> None:\n        if seat_number in self.reserved:\n            self.reserved.remove(seat_number)\n            heapq.heappush(self.available_seats, seat_number)",
+    "source": "test-data-ai",
+    "prompt": "Seat reservation manager using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

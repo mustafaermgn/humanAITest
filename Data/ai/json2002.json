@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef getDecimalValue(head: ListNode) -> int:\n    result = 0\n    current = head\n    while current:\n        result = result * 2 + current.val\n        current = current.next\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Convert binary number in linked list to integer yaz.",
+    "license": "MIT",
+    "language": "python"
+}

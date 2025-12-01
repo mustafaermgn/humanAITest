@@ -1,0 +1,7 @@
+{
+    "code": "import json\n\ndef write_dict_to_json(data_dict, file_path):\n    with open(file_path, 'w', encoding='utf-8') as json_file:\n        json.dump(data_dict, json_file, ensure_ascii=False, indent=4)",
+    "source": "test-data-ai",
+    "prompt": "Python dictionary'yi JSON dosyasına yazan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

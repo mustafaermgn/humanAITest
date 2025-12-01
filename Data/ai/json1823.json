@@ -1,0 +1,7 @@
+{
+    "code": "def legendre_symbol(a, p):\n    res = 1\n    a %= p\n\n    while a != 0:\n        if a == 1:\n            return res\n\n        while a % 2 == 0:\n            a //= 2\n            if p % 8 == 3 or p % 8 == 5:\n                res = -res\n\n        if a % 4 == 3 and p % 4 == 3:\n            res = -res\n\n        a, p = p % a, a\n\n    return 0",
+    "source": "test-data-ai",
+    "prompt": "Legendre symbol calculation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

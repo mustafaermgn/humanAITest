@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def generateTrees(self, n: int) -> list[TreeNode]:\n        if n == 0:\n            return []\n\n        memo = {}\n\n        def _generate(start, end):\n            if start > end:\n                return [None]\n            if start == end:\n                return [TreeNode(start)]\n\n            if (start, end) in memo:\n                return memo[(start, end)]\n\n            all_trees = []\n            for i in range(start, end + 1):  # i is the root\n                left_subtrees = _generate(start, i - 1)\n                right_subtrees = _generate(i + 1, end)\n\n                for left in left_subtrees:\n                    for right in right_subtrees:\n                        root = TreeNode(i)\n                        root.left = left\n                        root.right = right\n                        all_trees.append(root)\n\n            memo[(start, end)] = all_trees\n            return all_trees\n\n        return _generate(1, n)",
+    "source": "test-data-ai",
+    "prompt": "Unique BST generation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

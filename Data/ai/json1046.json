@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, key):\n        self.key = key\n        self.left = None\n        self.right = None\n\ndef search_bst(root, key):\n    # Base Cases: root is None or key is present at root\n    if root is None or root.key == key:\n        return root\n\n    # Key is greater than root's key\n    if key > root.key:\n        return search_bst(root.right, key)\n\n    # Key is smaller than root's key\n    return search_bst(root.left, key)",
+    "source": "test-data-ai",
+    "prompt": "Search in BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef parse_environment_variables():\n    return dict(os.environ)",
+    "source": "test-data-ai",
+    "prompt": "Environment variables'ı parse eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

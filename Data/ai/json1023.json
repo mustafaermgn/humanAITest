@@ -1,0 +1,7 @@
+{
+    "code": "def min_cost_tickets(days, costs):\n    if not days:\n        return 0\n\n    travel_days = set(days)\n    max_day = max(travel_days)\n\n    dp = [0] * (max_day + 1)\n\n    cost_1_day, cost_7_day, cost_30_day = costs\n\n    for i in range(1, max_day + 1):\n        if i not in travel_days:\n            dp[i] = dp[i-1]\n        else:\n            option1 = dp[i-1] + cost_1_day\n            option2 = dp[max(0, i-7)] + cost_7_day\n            option3 = dp[max(0, i-30)] + cost_30_day\n            dp[i] = min(option1, option2, option3)\n\n    return dp[max_day]",
+    "source": "test-data-ai",
+    "prompt": "Minimum cost for tickets (travel planning) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

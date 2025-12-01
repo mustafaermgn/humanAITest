@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def sumOfLeftLeaves(self, root: TreeNode) -> int:\n        if not root:\n            return 0\n\n        total_sum = 0\n\n        if root.left:\n            # Check if the left child is a leaf node\n            if not root.left.left and not root.left.right:\n                total_sum += root.left.val\n            else:\n                # If it's not a leaf, recurse into its left subtree\n                total_sum += self.sumOfLeftLeaves(root.left)\n        \n        # Always recurse into the right subtree\n        # Left leaves can exist anywhere in the tree structure\n        total_sum += self.sumOfLeftLeaves(root.right)\n\n        return total_sum",
+    "source": "test-data-ai",
+    "prompt": "Sum of left leaves yaz.",
+    "license": "MIT",
+    "language": "python"
+}

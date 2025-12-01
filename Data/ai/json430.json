@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\ndef sorted_circular_linked_list_insert(head, data):\n    new_node = Node(data)\n\n    if head is None:\n        new_node.next = new_node\n        return new_node\n\n    current = head\n    if data <= head.data:\n        while current.next != head:\n            current = current.next\n        current.next = new_node\n        new_node.next = head\n        return new_node\n\n    else:\n        while current.next != head and current.next.data < data:\n            current = current.next\n\n        new_node.next = current.next\n        current.next = new_node\n        return head\n\nif __name__ == '__main__':\n    # Örnek Kullanım\n    head = None\n\n    head = sorted_circular_linked_list_insert(head, 12)\n    head = sorted_circular_linked_list_insert(head, 56)\n    head = sorted_circular_linked_list_insert(head, 2)\n    head = sorted_circular_linked_list_insert(head, 1)\n    head = sorted_circular_linked_list_insert(head, 90)\n\n    current = head\n    if head:\n      print(\"Dairesel Bağlı Liste:\")\n      while True:\n          print(current.data, end=\" \")\n          current = current.next\n          if current == head:\n              break\n      print()",
+    "source": "test-data-ai",
+    "prompt": "Insert in sorted circular linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

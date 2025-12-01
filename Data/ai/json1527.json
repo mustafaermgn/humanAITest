@@ -1,0 +1,7 @@
+{
+    "code": "def check_path_exists_dfs(graph, start, target):\n    if start == target:\n        return True\n\n    visited = set()\n\n    def dfs(current_node):\n        if current_node == target:\n            return True\n\n        visited.add(current_node)\n\n        for neighbor in graph.get(current_node, []):\n            if neighbor not in visited:\n                if dfs(neighbor):\n                    return True\n        return False\n\n    if start not in graph:\n        return False\n\n    return dfs(start)",
+    "source": "test-data-ai",
+    "prompt": "Check if path exists using DFS yaz.",
+    "license": "MIT",
+    "language": "python"
+}

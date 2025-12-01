@@ -1,0 +1,7 @@
+{
+    "code": "def word_search(board, word):\n    rows = len(board)\n    cols = len(board[0])\n\n    if not word:\n        return True\n\n    def dfs(r, c, k):\n        if k == len(word):\n            return True\n\n        if not (0 <= r < rows and 0 <= c < cols) or board[r][c] != word[k]:\n            return False\n\n        temp = board[r][c]\n        board[r][c] = '#' \n\n        if (dfs(r + 1, c, k + 1) or\n                dfs(r - 1, c, k + 1) or\n                dfs(r, c + 1, k + 1) or\n                dfs(r, c - 1, k + 1)):\n            return True\n\n        board[r][c] = temp \n        return False\n\n    for r_start in range(rows):\n        for c_start in range(cols):\n            if board[r_start][c_start] == word[0]:\n                if dfs(r_start, c_start, 0):\n                    return True\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Word search in 2D board yaz.",
+    "license": "MIT",
+    "language": "python"
+}

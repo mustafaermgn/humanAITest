@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef binaryTreePaths(root):\n    if not root:\n        return []\n\n    paths = []\n\n    def dfs(node, current_path):\n        if not node.left and not node.right:\n            paths.append(current_path + str(node.val))\n            return\n\n        if node.left:\n            dfs(node.left, current_path + str(node.val) + \"->\")\n        if node.right:\n            dfs(node.right, current_path + str(node.val) + \"->\")\n\n    dfs(root, \"\")\n    return paths",
+    "source": "test-data-ai",
+    "prompt": "Binary tree paths yaz.",
+    "license": "MIT",
+    "language": "python"
+}

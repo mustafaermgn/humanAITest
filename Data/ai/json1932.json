@@ -1,0 +1,7 @@
+{
+    "code": "def greedy_color(graph):\n    colors = {}\n    nodes = sorted(list(graph.keys()))\n\n    for node in nodes:\n        neighbor_colors = set()\n        for neighbor in graph.get(node, []):\n            if neighbor in colors:\n                neighbor_colors.add(colors[neighbor])\n        \n        current_color = 0\n        while current_color in neighbor_colors:\n            current_color += 1\n        \n        colors[node] = current_color\n            \n    return colors",
+    "source": "test-data-ai",
+    "prompt": "Graph coloring için greedy algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

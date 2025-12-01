@@ -1,0 +1,7 @@
+{
+    "code": "def load_page(self, page_no: int) -> DoclingParsePageBackend:\n        return DoclingParsePageBackend(\n            self.parser, self.document_hash, page_no, self._pdoc[page_no]\n        )",
+    "source": "github_repo:docling-project/docling",
+    "file": "docling/backend/docling_parse_backend.py",
+    "license": "MIT",
+    "language": "python"
+}

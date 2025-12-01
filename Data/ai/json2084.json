@@ -1,0 +1,7 @@
+{
+    "code": "import pickle\n\ndef deserialize_object_from_pickle(file_path):\n    \"\"\"\n    Belirtilen dosya yolundan bir Python nesnesini deserialize eder.\n\n    Args:\n        file_path (str): Nesnenin kaydedildiği pickle dosyasının yolu.\n\n    Returns:\n        Any: Dosyadan yüklenen Python nesnesi.\n    \"\"\"\n    with open(file_path, 'rb') as f:\n        deserialized_object = pickle.load(f)\n    return deserialized_object",
+    "source": "test-data-ai",
+    "prompt": "Pickle'dan object deserialize eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

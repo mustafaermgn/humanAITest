@@ -1,0 +1,7 @@
+{
+    "code": "import fnmatch\n\ndef filter_files_by_pattern(files, pattern):\n    matched_files = [file for file in files if fnmatch.fnmatch(file, pattern)]\n    return matched_files",
+    "source": "test-data-ai",
+    "prompt": "Dosyaları pattern'e göre filtreleyen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

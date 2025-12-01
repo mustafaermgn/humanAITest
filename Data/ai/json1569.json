@@ -1,0 +1,7 @@
+{
+    "code": "class CarConfigurator:\n    def __init__(self):\n        self._engine = \"Standard\"\n        self._color = \"White\"\n        self._features = []\n\n    def with_engine(self, engine_type: str):\n        self._engine = engine_type\n        return self\n\n    def with_color(self, color_name: str):\n        self._color = color_name\n        return self\n\n    def add_feature(self, feature_name: str):\n        self._features.append(feature_name)\n        return self\n\n    def configure(self) -> dict:\n        return {\n            \"engine\": self._engine,\n            \"color\": self._color,\n            \"features\": self._features\n        }\n\n# Fluent arayüz kullanımı\ncar_config = CarConfigurator() \\\n    .with_engine(\"V8 Turbo\") \\\n    .with_color(\"Midnight Blue\") \\\n    .add_feature(\"Panoramic Sunroof\") \\\n    .add_feature(\"Heated Seats\") \\\n    .add_feature(\"Advanced Infotainment System\") \\\n    .configure()\n\nprint(\"Car 1 Configuration:\")\nfor key, value in car_config.items():\n    print(f\"  {key.capitalize()}: {value}\")\n\nprint(\"\\n---\")\n\n# Başka bir örnek\ncar_config_2 = CarConfigurator() \\\n    .with_color(\"Racing Red\") \\\n    .add_feature(\"Sport Suspension\") \\\n    .configure()\n\nprint(\"Car 2 Configuration:\")\nfor key, value in car_config_2.items():\n    print(f\"  {key.capitalize()}: {value}\")",
+    "source": "test-data-ai",
+    "prompt": "Fluent interface example yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from datetime import datetime, timezone\n\ndef convert_to_utc_and_format(dt: datetime) -> str:\n    if dt.tzinfo is None:\n        local_tz = datetime.now().astimezone().tzinfo\n        dt = dt.replace(tzinfo=local_tz)\n    \n    utc_dt = dt.astimezone(timezone.utc)\n    return utc_dt.strftime(\"%Y-%m-%dT%H:%M:%SZ\")",
+    "source": "test-data-ai",
+    "prompt": "Bir tarih/saat bilgisini UTC'ye çeviren ve formatlayan bir fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

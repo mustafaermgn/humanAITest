@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.left = None\n        self.right = None\n\ndef hasPathSum(node, targetSum):\n    if node is None:\n        return False\n\n    if node.left is None and node.right is None:\n        return node.data == targetSum\n\n    return hasPathSum(node.left, targetSum - node.data) or hasPathSum(node.right, targetSum - node.data)\n\nif __name__ == '__main__':\n    root = Node(5)\n    root.left = Node(4)\n    root.right = Node(8)\n    root.left.left = Node(11)\n    root.right.left = Node(13)\n    root.right.right = Node(4)\n    root.left.left.left = Node(7)\n    root.left.left.right = Node(2)\n    root.right.right.right = Node(1)\n\n    targetSum = 22\n\n    if hasPathSum(root, targetSum):\n        print(\"Path with sum\", targetSum, \"exists\")\n    else:\n        print(\"Path with sum\", targetSum, \"does not exist\")\n\n    targetSum = 26\n    if hasPathSum(root, targetSum):\n        print(\"Path with sum\", targetSum, \"exists\")\n    else:\n        print(\"Path with sum\", targetSum, \"does not exist\")",
+    "source": "test-data-ai",
+    "prompt": "Path sum checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

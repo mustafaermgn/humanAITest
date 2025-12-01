@@ -1,0 +1,7 @@
+{
+    "code": "import msgpack\n\n# Örnek bir Python objesi\ndata = {\n    \"name\": \"Alice\",\n    \"age\": 30,\n    \"city\": \"New York\",\n    \"is_student\": False,\n    \"grades\": [90, 85, 92],\n    \"metadata\": None\n}\n\n# Serileştirme (Python objesinden MessagePack baytlarına)\npacked_data = msgpack.packb(data, use_bin_type=True)\n\nprint(\"Original Python object:\", data)\nprint(\"Packed MessagePack bytes:\", packed_data)\n\n# Deserileştirme (MessagePack baytlarından Python objesine)\nunpacked_data = msgpack.unpackb(packed_data, raw=False)\n\nprint(\"Unpacked Python object:\", unpacked_data)\n\n# Farklı bir örnek: sadece bir liste\nmy_list = [1, 2, \"hello\", {\"a\": 1}]\npacked_list = msgpack.packb(my_list)\nunpacked_list = msgpack.unpackb(packed_list)\nprint(\"\\nOriginal list:\", my_list)\nprint(\"Packed list bytes:\", packed_list)\nprint(\"Unpacked list:\", unpacked_list)",
+    "source": "test-data-ai",
+    "prompt": "MessagePack serialization/deserialization yaz.",
+    "license": "MIT",
+    "language": "python"
+}

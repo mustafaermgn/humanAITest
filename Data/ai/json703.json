@@ -1,0 +1,7 @@
+{
+    "code": "def score_of_parentheses(s):\n    \"\"\"\n    Verilen dengeli bir parantez dizesinin skorunu hesaplar.\n\n    Parametreler:\n    s (str): Dengeli bir parantez dizesi.\n\n    Döndürür:\n    int: Dizenin skoru.\n    \"\"\"\n    stack = [0]  # Skorları depolamak için yığın\n\n    for char in s:\n        if char == '(':\n            stack.append(0)  # Yeni bir alt ifade başlat\n        else:\n            # Yığılmış alt ifadenin skorunu hesaplayın\n            top = stack.pop()\n            if top == 0:\n                stack[-1] += 1  # \"()\" için skor 1'dir\n            else:\n                stack[-1] += 2 * top  # \"(A)\" için skor 2 * A'dır\n\n    return stack[0]",
+    "source": "test-data-ai",
+    "prompt": "Score of parentheses using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

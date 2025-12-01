@@ -1,0 +1,7 @@
+{
+    "code": "def word_pattern(pattern: str, words: list[str]) -> bool:\n    if len(pattern) != len(words):\n        return False\n\n    char_to_word = {}\n    word_to_char = {}\n\n    for char, word in zip(pattern, words):\n        if char in char_to_word:\n            if char_to_word[char] != word:\n                return False\n        else:\n            char_to_word[char] = word\n\n        if word in word_to_char:\n            if word_to_char[word] != char:\n                return False\n        else:\n            word_to_char[word] = char\n\n    return True",
+    "source": "test-data-ai",
+    "prompt": "Word pattern checker using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

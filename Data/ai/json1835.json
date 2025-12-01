@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef tsp_brute_force(graph):\n    num_cities = len(graph)\n\n    if num_cities <= 1:\n        return 0\n\n    start_city = 0\n    cities_to_visit = [i for i in range(num_cities) if i != start_city]\n\n    min_cost = float('inf')\n\n    for permutation in itertools.permutations(cities_to_visit):\n        current_path_cost = 0\n        current_city = start_city\n\n        for next_city in permutation:\n            current_path_cost += graph[current_city][next_city]\n            current_city = next_city\n        \n        current_path_cost += graph[current_city][start_city]\n        \n        if current_path_cost < min_cost:\n            min_cost = current_path_cost\n\n    return min_cost",
+    "source": "test-data-ai",
+    "prompt": "Travelling Salesman Problem için brute force çözüm yaz.",
+    "license": "MIT",
+    "language": "python"
+}

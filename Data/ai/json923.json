@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass FenwickTree:\n    def __init__(self, size):\n        self.tree = [0] * (size + 1)\n        self.size = size\n\n    def update(self, index, delta):\n        while index <= self.size:\n            self.tree[index] += delta\n            index += index & (-index)\n\n    def query(self, index):\n        s = 0\n        while index > 0:\n            s += self.tree[index]\n            index -= index & (-index)\n        return s\n\ndef countSmaller(nums):\n    if not nums:\n        return []\n\n    sorted_unique_nums = sorted(list(set(nums)))\n    val_to_rank = {val: i + 1 for i, val in enumerate(sorted_unique_nums)}\n    \n    ft_size = len(sorted_unique_nums)\n    ft = FenwickTree(ft_size)\n\n    result = [0] * len(nums)\n\n    for i in range(len(nums) - 1, -1, -1):\n        num = nums[i]\n        rank = val_to_rank[num]\n\n        smaller_count = ft.query(rank - 1)\n        result[i] = smaller_count\n\n        ft.update(rank, 1)\n            \n    return result",
+    "source": "test-data-ai",
+    "prompt": "Count of smaller numbers after self using Fenwick tree yaz.",
+    "license": "MIT",
+    "language": "python"
+}

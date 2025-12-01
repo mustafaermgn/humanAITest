@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef postorderTraversal(root: TreeNode) -> list[int]:\n    \"\"\"\n    Binary tree postorder traversal.\n\n    :param root: The root node of the binary tree.\n    :return: A list of integers representing the postorder traversal of the tree.\n    \"\"\"\n    result = []\n    if not root:\n        return result\n\n    result.extend(postorderTraversal(root.left))\n    result.extend(postorderTraversal(root.right))\n    result.append(root.val)\n    \n    return result",
+    "source": "test-data-ai",
+    "prompt": "Binary tree postorder traversal yaz.",
+    "license": "MIT",
+    "language": "python"
+}

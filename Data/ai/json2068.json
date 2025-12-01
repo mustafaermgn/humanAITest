@@ -1,0 +1,7 @@
+{
+    "code": "def find_missing_number_xor(nums: list[int]) -> int:\n    n = len(nums)\n    \n    xor_all_elements = 0\n    for num in nums:\n        xor_all_elements ^= num\n        \n    xor_expected_range = 0\n    # The expected range is from 1 to (n + 1) because one number is missing,\n    # meaning the original full set had n + 1 numbers.\n    for i in range(1, n + 2): \n        xor_expected_range ^= i\n        \n    return xor_all_elements ^ xor_expected_range",
+    "source": "test-data-ai",
+    "prompt": "Missing number problemi için XOR tekniğini kullanan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

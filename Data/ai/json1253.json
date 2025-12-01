@@ -1,0 +1,7 @@
+{
+    "code": "from collections import namedtuple\n\n# Basit bir veri yapısı oluşturmak için namedtuple kullanma\nPoint = namedtuple('Point', ['x', 'y'])\n\n# Bir Point nesnesi oluşturma\np1 = Point(10, 20)\n\n# Değerlere erişim\nprint(p1.x)\nprint(p1.y)\nprint(p1)\n\n# Farklı bir Point nesnesi\np2 = Point(x=30, y=40)\nprint(p2.x)\nprint(p2.y)\nprint(p2)",
+    "source": "test-data-ai",
+    "prompt": "Python'da `collections.namedtuple` kullanarak basit bir veri yapısı oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

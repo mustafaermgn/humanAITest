@@ -1,0 +1,7 @@
+{
+    "code": "from typing import Optional, List\n\n# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:\n        result = []\n\n        def dfs(node, depth):\n            if not node:\n                return\n\n            # If this depth has not been visited yet,\n            # this node is the first one encountered at this depth from the right side.\n            if depth == len(result):\n                result.append(node.val)\n\n            # Traverse the right child first\n            dfs(node.right, depth + 1)\n            # Then traverse the left child\n            dfs(node.left, depth + 1)\n\n        dfs(root, 0)\n        return result",
+    "source": "test-data-ai",
+    "prompt": "Binary tree right side view yaz.",
+    "license": "MIT",
+    "language": "python"
+}

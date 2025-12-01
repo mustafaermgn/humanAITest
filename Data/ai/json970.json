@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def letterCombinations(self, digits: str) -> list[str]:\n        if not digits:\n            return []\n\n        phone_map = {\n            '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',\n            '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'\n        }\n\n        output = []\n        current_combination = []\n\n        def backtrack(index):\n            if index == len(digits):\n                output.append(\"\".join(current_combination))\n                return\n\n            digit = digits[index]\n            letters = phone_map[digit]\n\n            for letter in letters:\n                current_combination.append(letter)\n                backtrack(index + 1)\n                current_combination.pop()\n\n        backtrack(0)\n        return output",
+    "source": "test-data-ai",
+    "prompt": "Letter combinations of phone number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

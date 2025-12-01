@@ -1,0 +1,7 @@
+{
+    "code": "def pattern_132(nums):\n    \"\"\"\n    Verilen bir tamsayı dizisinde 132 desenini arayın.\n\n    132 deseni, dizide i < j < k olacak şekilde nums[i] < nums[k] < nums[j] koşulunu sağlayan üç tamsayı nums[i], nums[j] ve nums[k]'dan oluşan bir alt dizidir.\n\n    Args:\n      nums: Tamsayılardan oluşan bir liste.\n\n    Returns:\n      Dizide 132 deseni varsa True, yoksa False.\n    \"\"\"\n\n    if len(nums) < 3:\n        return False\n\n    min_arr = [nums[0]]\n    for i in range(1, len(nums)):\n        min_arr.append(min(min_arr[-1], nums[i]))\n\n    stack = []\n    for j in range(len(nums) - 1, -1, -1):\n        if nums[j] > min_arr[j]:\n            while stack and stack[-1] <= min_arr[j]:\n                stack.pop()\n            if stack and stack[-1] < nums[j]:\n                return True\n            stack.append(nums[j])\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "132 pattern using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

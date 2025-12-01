@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass Task:\n    def __init__(self, name: str, processing_time: int):\n        self.name = name\n        self.processing_time = processing_time\n\ndef schedule_tasks(tasks: list[Task]) -> list[tuple[str, int, int]]:\n    task_heap = []\n\n    for task in tasks:\n        heapq.heappush(task_heap, (task.processing_time, task.name))\n\n    current_time = 0\n    scheduled_tasks_output = []\n\n    while task_heap:\n        processing_time, task_name = heapq.heappop(task_heap)\n\n        start_time = current_time\n        finish_time = current_time + processing_time\n\n        scheduled_tasks_output.append((task_name, start_time, finish_time))\n\n        current_time = finish_time\n\n    return scheduled_tasks_output",
+    "source": "test-data-ai",
+    "prompt": "Task scheduler using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

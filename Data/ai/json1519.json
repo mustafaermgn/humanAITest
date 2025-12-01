@@ -1,0 +1,7 @@
+{
+    "code": "def check_age(age):\n    \"\"\"\n    Belirtilen yaşın yasal yaş sınırını (18) karşılayıp karşılamadığını kontrol eder.\n    \"\"\"\n    legal_age_limit = 18\n    return age >= legal_age_limit",
+    "source": "test-data-ai",
+    "prompt": "Age verification fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

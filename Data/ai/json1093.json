@@ -1,0 +1,7 @@
+{
+    "code": "def euler_totient(n):\n    result = n\n    p = 2\n    while p * p <= n:\n        if n % p == 0:\n            while n % p == 0:\n                n //= p\n            result -= result // p\n        p += 1\n    if n > 1:\n        result -= result // n\n    return result\n\nif __name__ == '__main__':\n    # Örnek kullanım\n    print(euler_totient(1))    # Çıktı: 1\n    print(euler_totient(2))    # Çıktı: 1\n    print(euler_totient(3))    # Çıktı: 2\n    print(euler_totient(4))    # Çıktı: 2\n    print(euler_totient(5))    # Çıktı: 4\n    print(euler_totient(6))    # Çıktı: 2\n    print(euler_totient(7))    # Çıktı: 6\n    print(euler_totient(8))    # Çıktı: 4\n    print(euler_totient(9))    # Çıktı: 6\n    print(euler_totient(10))   # Çıktı: 4\n    print(euler_totient(12))   # Çıktı: 4\n    print(euler_totient(20))   # Çıktı: 8\n    print(euler_totient(100))  # Çıktı: 40",
+    "source": "test-data-ai",
+    "prompt": "Euler's totient function hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef reverseKGroup(head: ListNode, k: int) -> ListNode:\n    def reverseList(head, tail):\n        prev = tail.next\n        curr = head\n        while prev != tail:\n            nxt = curr.next\n            curr.next = prev\n            prev = curr\n            curr = nxt\n        return tail, head\n\n    dummy = ListNode(0)\n    dummy.next = head\n    pre = dummy\n\n    while True:\n        tail = pre\n        for _ in range(k):\n            tail = tail.next\n            if not tail:\n                return dummy.next\n        \n        head = pre.next\n        nxt = tail.next\n        head, tail = reverseList(head, tail)\n        pre.next = head\n        tail.next = nxt\n        pre = tail",
+    "source": "test-data-ai",
+    "prompt": "Reverse nodes in k-group yaz.",
+    "license": "MIT",
+    "language": "python"
+}

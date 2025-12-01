@@ -1,0 +1,7 @@
+{
+    "code": "class UndergroundSystem:\n\n    def __init__(self):\n        self.check_ins = {}  # id: (startStation, checkInTime)\n        self.travel_data = {}  # (startStation, endStation): {'total_time': int, 'count': int}\n\n    def checkIn(self, id: int, stationName: str, t: int) -> None:\n        self.check_ins[id] = (stationName, t)\n\n    def checkOut(self, id: int, stationName: str, t: int) -> None:\n        start_station, check_in_time = self.check_ins.pop(id)\n        end_station = stationName\n        travel_time = t - check_in_time\n\n        route = (start_station, end_station)\n        \n        if route not in self.travel_data:\n            self.travel_data[route] = {'total_time': 0, 'count': 0}\n        \n        self.travel_data[route]['total_time'] += travel_time\n        self.travel_data[route]['count'] += 1\n\n    def getAverageTime(self, startStation: str, endStation: str) -> float:\n        route = (startStation, endStation)\n        data = self.travel_data[route]\n        return data['total_time'] / data['count']",
+    "source": "test-data-ai",
+    "prompt": "Design underground system using hash maps yaz.",
+    "license": "MIT",
+    "language": "python"
+}

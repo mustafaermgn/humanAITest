@@ -1,0 +1,7 @@
+{
+    "code": "def extract_key_from_nested_json(data, key_to_extract):\n    \"\"\"\n    Belirli bir anahtarın (key) tüm değerlerini iç içe geçmiş JSON benzeri bir yapıdan çıkarır.\n    \"\"\"\n    extracted_values = []\n\n    if isinstance(data, dict):\n        for key, value in data.items():\n            if key == key_to_extract:\n                extracted_values.append(value)\n            # İç içe geçmiş sözlükler veya listeler içinde özyinelemeli olarak arama yap\n            if isinstance(value, (dict, list)):\n                extracted_values.extend(extract_key_from_nested_json(value, key_to_extract))\n    elif isinstance(data, list):\n        for item in data:\n            # Listenin öğeleri içinde özyinelemeli olarak arama yap\n            if isinstance(item, (dict, list)):\n                extracted_values.extend(extract_key_from_nested_json(item, key_to_extract))\n    \n    return extracted_values",
+    "source": "test-data-ai",
+    "prompt": "Nested JSON'dan belirli key'i extract eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

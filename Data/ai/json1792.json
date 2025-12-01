@@ -1,0 +1,7 @@
+{
+    "code": "def solve_maze(maze):\n    N = len(maze)\n\n    sol = [[0 for _ in range(N)] for _ in range(N)]\n\n    if maze[0][0] == 0:\n        return [[0 for _ in range(N)] for _ in range(N)]\n\n    def is_safe(r, c):\n        return 0 <= r < N and \\\n               0 <= c < N and \\\n               maze[r][c] == 1 and \\\n               sol[r][c] == 0\n\n    def solve_maze_util(r, c):\n        if r == N - 1 and c == N - 1:\n            sol[r][c] = 1\n            return True\n\n        sol[r][c] = 1\n\n        dr = [-1, 1, 0, 0]\n        dc = [0, 0, -1, 1]\n\n        for i in range(4):\n            next_r, next_c = r + dr[i], c + dc[i]\n\n            if is_safe(next_r, next_c):\n                if solve_maze_util(next_r, next_c):\n                    return True\n\n        sol[r][c] = 0\n        return False\n\n    if solve_maze_util(0, 0):\n        return sol\n    else:\n        return [[0 for _ in range(N)] for _ in range(N)]",
+    "source": "test-data-ai",
+    "prompt": "Rat in a maze problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from functools import wraps\nfrom flask import session, redirect, url_for, flash\n\ndef login_required(f):\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'logged_in' not in session or not session['logged_in']:\n            flash('Bu sayfaya erişmek için giriş yapmalısınız.', 'warning')\n            return redirect(url_for('login'))  # 'login' adında bir giriş rotanız olduğunu varsayar\n        return f(*args, **kwargs)\n    return decorated_function",
+    "source": "test-data-ai",
+    "prompt": "Flask ile authentication decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

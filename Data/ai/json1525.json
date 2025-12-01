@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef get_file_times(file_path):\n    try:\n        stat_info = os.stat(file_path)\n        creation_time = stat_info.st_ctime\n        modification_time = stat_info.st_mtime\n        return creation_time, modification_time\n    except FileNotFoundError:\n        return None, None\n    except Exception:\n        return None, None",
+    "source": "test-data-ai",
+    "prompt": "Dosya creation/modification time'ı alan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

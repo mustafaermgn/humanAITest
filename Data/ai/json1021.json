@@ -1,0 +1,7 @@
+{
+    "code": "def check_username_availability(username):\n    \"\"\"\n    Belirtilen kullanıcı adının kullanılabilirliğini kontrol eder.\n    Kullanıcı adlarını küçük harfe duyarlı olmayan bir şekilde kontrol eder.\n    \"\"\"\n    taken_usernames = [\n        \"admin\", \"root\", \"mehmet\", \"ayse\", \"can\", \"irem\", \"deneme\", \"testuser\"\n    ]\n    \n    return username.lower() not in taken_usernames\n\nif __name__ == \"__main__\":\n    while True:\n        user_input = input(\"Kontrol etmek istediğiniz kullanıcı adını girin (çıkmak için 'q' veya 'quit' yazın): \").strip()\n        \n        if user_input.lower() in (\"q\", \"quit\"):\n            print(\"Çıkılıyor...\")\n            break\n        \n        if not user_input:\n            print(\"Kullanıcı adı boş olamaz. Lütfen geçerli bir kullanıcı adı girin.\")\n            continue\n\n        if check_username_availability(user_input):\n            print(f\"'{user_input}' kullanıcı adı MÜSAİT.\")\n        else:\n            print(f\"'{user_input}' kullanıcı adı MAALESEF ALINMIŞ.\")",
+    "source": "test-data-ai",
+    "prompt": "Username availability checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

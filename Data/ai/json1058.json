@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport collections\n\nclass RateLimiter:\n    def __init__(self, rate_limit, time_period):\n        self.rate_limit = rate_limit\n        self.time_period = time_period\n        self._request_timestamps = collections.deque()\n\n    def _wait_for_slot(self):\n        while True:\n            now = time.time()\n            while self._request_timestamps and self._request_timestamps[0] <= now - self.time_period:\n                self._request_timestamps.popleft()\n\n            if len(self._request_timestamps) < self.rate_limit:\n                self._request_timestamps.append(now)\n                break\n            else:\n                oldest_request_time = self._request_timestamps[0]\n                next_available_time = oldest_request_time + self.time_period\n                time_to_wait = next_available_time - now\n                if time_to_wait > 0:\n                    time.sleep(time_to_wait)\n\n    def make_api_request(self, url, data=None, method=\"GET\"):\n        self._wait_for_slot()\n        \n        print(f\"[{time.time():.2f}] Making {method} request to {url} with data {data}\")\n        \n        return {\"status\": \"success\", \"url\": url, \"timestamp\": time.time()}",
+    "source": "test-data-ai",
+    "prompt": "Rate limiting ile API request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

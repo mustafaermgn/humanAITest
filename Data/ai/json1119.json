@@ -1,0 +1,7 @@
+{
+    "code": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_end_of_word = False\n\nclass WordDictionary:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def addWord(self, word: str) -> None:\n        node = self.root\n        for char in word:\n            if char not in node.children:\n                node.children[char] = TrieNode()\n            node = node.children[char]\n        node.is_end_of_word = True\n\n    def search(self, word: str) -> bool:\n        return self._search_recursive(self.root, word, 0)\n\n    def _search_recursive(self, node: TrieNode, word: str, index: int) -> bool:\n        if index == len(word):\n            return node.is_end_of_word\n\n        char = word[index]\n\n        if char == '.':\n            for child_char in node.children:\n                if self._search_recursive(node.children[child_char], word, index + 1):\n                    return True\n            return False\n        else:\n            if char in node.children:\n                return self._search_recursive(node.children[char], word, index + 1)\n            else:\n                return False",
+    "source": "test-data-ai",
+    "prompt": "Design add and search words data structure yaz.",
+    "license": "MIT",
+    "language": "python"
+}

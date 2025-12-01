@@ -1,0 +1,7 @@
+{
+    "code": "def prime_factors(n):\n    factors = []\n\n    # Handle factor 2\n    while n % 2 == 0:\n        factors.append(2)\n        n //= 2\n\n    # Handle odd factors starting from 3\n    i = 3\n    while i * i <= n:\n        while n % i == 0:\n            factors.append(i)\n            n //= i\n        i += 2\n\n    # If n is still greater than 1, it must be a prime factor itself\n    if n > 1:\n        factors.append(n)\n\n    return factors\n\nif __name__ == \"__main__\":\n    number = int(input())\n    result = prime_factors(number)\n    print(result)",
+    "source": "test-data-ai",
+    "prompt": "Girilen bir sayının asal çarpanlarını (Prime Factors) bulan bir kod bloğu oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

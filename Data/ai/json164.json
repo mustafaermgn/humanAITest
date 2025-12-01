@@ -1,0 +1,7 @@
+{
+    "code": "def ford_fulkerson(graph, source, sink):\n    n = len(graph)\n    residual_graph = [row[:] for row in graph]\n    max_flow = 0\n\n    while True:\n        parent = [-1] * n\n        queue = []\n        \n        queue.append(source)\n        parent[source] = source  # Mark source as visited\n        \n        path_found = False\n        head = 0\n        while head < len(queue):\n            u = queue[head]\n            head += 1\n\n            for v in range(n):\n                if parent[v] == -1 and residual_graph[u][v] > 0:\n                    parent[v] = u\n                    queue.append(v)\n                    if v == sink:\n                        path_found = True\n                        break\n            if path_found:\n                break\n\n        if not path_found:\n            break\n\n        path_flow = float('inf')\n        s = sink\n        while s != source:\n            p = parent[s]\n            path_flow = min(path_flow, residual_graph[p][s])\n            s = p\n\n        max_flow += path_flow\n        s = sink\n        while s != source:\n            p = parent[s]\n            residual_graph[p][s] -= path_flow\n            residual_graph[s][p] += path_flow\n            s = p\n            \n    return max_flow",
+    "source": "test-data-ai",
+    "prompt": "Ford-Fulkerson algoritmasını network flow için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

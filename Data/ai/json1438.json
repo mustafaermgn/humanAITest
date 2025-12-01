@@ -1,0 +1,7 @@
+{
+    "code": "def max_subarray_sum(arr):\n    \"\"\"\n    Belirtilen dizide maksimum toplam alt diziyi bulan fonksiyon.\n    Bu fonksiyon, Kayar Pencere (Sliding Window) tekniğinin bir uygulaması olan\n    Kadane Algoritmasını kullanır.\n    \"\"\"\n    if not arr:\n        return 0  # Boş dizi için toplam 0 kabul edilebilir.\n\n    max_so_far = arr[0]\n    current_max = arr[0]\n\n    for i in range(1, len(arr)):\n        # Mevcut elemanı mı eklemeli yoksa yeni bir alt diziye mi başlamalı?\n        current_max = max(arr[i], current_max + arr[i])\n        \n        # Şimdiye kadar görülen en büyük toplamı güncelle\n        max_so_far = max(max_so_far, current_max)\n\n    return max_so_far",
+    "source": "test-data-ai",
+    "prompt": "Sliding Window tekniğiyle maksimum toplam alt dizi bulan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

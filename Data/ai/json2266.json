@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\ndef subarraySum(nums: list[int], k: int) -> int:\n    \"\"\"\n    Verilen bir dizide, toplamı k'ye eşit olan tüm alt dizilerin sayısını bulur.\n    \n    Args:\n        nums: Tam sayı dizisi.\n        k: Hedef toplam.\n\n    Returns:\n        Toplamı k'ye eşit olan alt dizilerin sayısı.\n    \"\"\"\n    \n    count = 0\n    current_sum = 0\n    # prefix_sums, anahtarı önek toplamı ve değeri bu önek toplamının frekansı olan bir sözlüktür.\n    # Başlangıçta 0 toplamının bir kez görüldüğünü ekliyoruz\n    # bu, bir alt dizinin doğrudan k'ye eşit olduğu durumları ele almamıza yardımcı olur.\n    prefix_sums = defaultdict(int)\n    prefix_sums[0] = 1 \n\n    for num in nums:\n        current_sum += num\n        \n        # Eğer (current_sum - k) daha önce görülen bir önek toplamıysa,\n        # o zaman mevcut sayıya kadar olan kısım ile o önek toplamı arasındaki alt dizinin toplamı k'dir.\n        if (current_sum - k) in prefix_sums:\n            count += prefix_sums[current_sum - k]\n        \n        # Mevcut önek toplamını sözlüğe ekleyin veya frekansını artırın.\n        prefix_sums[current_sum] += 1\n            \n    return count",
+    "source": "test-data-ai",
+    "prompt": "Subarray sum equals k using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def boyer_moore_majority_element(nums):\n    \"\"\"\n    Boyer-Moore Majority Vote algoritmasını kullanarak bir listedeki çoğunluk elemanını bulur.\n    Çoğunluk elemanı, dizide n/2'den fazla kez görünen elemandır.\n    Bu algoritma, bir çoğunluk elemanı var olduğu varsayıldığında doğru çalışır.\n    \"\"\"\n    candidate = None\n    count = 0\n\n    for num in nums:\n        if count == 0:\n            candidate = num\n            count = 1\n        elif num == candidate:\n            count += 1\n        else:\n            count -= 1\n            \n    return candidate",
+    "source": "test-data-ai",
+    "prompt": "Majority element (çoğunluk elemanı) bulan Boyer-Moore algoritmasını yaz.",
+    "license": "MIT",
+    "language": "python"
+}

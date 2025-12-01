@@ -1,0 +1,7 @@
+{
+    "code": "import cmath\n\ndef dft(x):\n    N = len(x)\n    X = [0] * N\n    for k in range(N):\n        sum_val = 0\n        for n in range(N):\n            angle = -2 * cmath.pi * k * n / N\n            sum_val += x[n] * cmath.exp(angle * 1j)\n        X[k] = sum_val\n    return X\n\ndef fft(x):\n    N = len(x)\n\n    if N <= 1:\n        return x\n\n    if N % 2 != 0:\n        raise ValueError(\"FFT algorithm requires input size to be a power of 2 for this basic implementation.\")\n\n    even = fft(x[0::2])\n    odd = fft(x[1::2])\n\n    X = [0] * N\n    for k in range(N // 2):\n        twiddle = cmath.exp(-2 * cmath.pi * k / N * 1j)\n        X[k] = even[k] + twiddle * odd[k]\n        X[k + N // 2] = even[k] - twiddle * odd[k]\n    return X",
+    "source": "test-data-ai",
+    "prompt": "Fast Fourier Transform basics yaz.",
+    "license": "MIT",
+    "language": "python"
+}

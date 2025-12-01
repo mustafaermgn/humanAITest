@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef make_proxied_request(url: str, proxy: str, method: str = 'GET', **kwargs):\n    proxies = {\n        \"http\": proxy,\n        \"https\": proxy,\n    }\n    try:\n        response = requests.request(method, url, proxies=proxies, **kwargs)\n        response.raise_for_status()\n        return response\n    except requests.exceptions.RequestException:\n        return None",
+    "source": "test-data-ai",
+    "prompt": "Proxy kullanarak request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

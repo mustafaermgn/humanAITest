@@ -1,0 +1,7 @@
+{
+    "code": "def word_search(board, word):\n    if not board or not board[0]:\n        return False\n    if not word:\n        return True\n\n    rows = len(board)\n    cols = len(board[0])\n    word_len = len(word)\n\n    # 8 directions: (row_delta, col_delta)\n    directions = [\n        (0, 1),   # Right\n        (0, -1),  # Left\n        (1, 0),   # Down\n        (-1, 0),  # Up\n        (1, 1),   # Down-Right\n        (1, -1),  # Down-Left\n        (-1, 1),  # Up-Right\n        (-1, -1)  # Up-Left\n    ]\n\n    def check_straight_line(r, c, dr, dc):\n        for k in range(word_len):\n            curr_r = r + k * dr\n            curr_c = c + k * dc\n\n            # Check bounds\n            if not (0 <= curr_r < rows and 0 <= curr_c < cols):\n                return False\n            \n            # Check character match\n            if board[curr_r][curr_c] != word[k]:\n                return False\n        return True\n\n    for r in range(rows):\n        for c in range(cols):\n            # Optimization: Only start search if the first character matches\n            if board[r][c] == word[0]:\n                for dr, dc in directions:\n                    if check_straight_line(r, c, dr, dc):\n                        return True\n    \n    return False",
+    "source": "test-data-ai",
+    "prompt": "Word search in 2D board yaz.",
+    "license": "MIT",
+    "language": "python"
+}

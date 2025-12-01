@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef find_anagrams(s: str) -> list[str]:\n    if not s:\n        return [\"\"]\n    \n    anagram_set = set(\"\".join(p) for p in itertools.permutations(s))\n    return sorted(list(anagram_set))",
+    "source": "test-data-ai",
+    "prompt": "Find all anagrams in a string yaz.",
+    "license": "MIT",
+    "language": "python"
+}

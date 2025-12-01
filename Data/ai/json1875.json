@@ -1,0 +1,7 @@
+{
+    "code": "s = \"merhaba\"\nters_s = s[::-1]\nprint(ters_s)",
+    "source": "test-data-ai",
+    "prompt": "Bir dizeyi tersten yazdıran en kısa kodu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

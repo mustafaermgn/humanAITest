@@ -1,0 +1,7 @@
+{
+    "code": "class TarjanBridges:\n    def __init__(self, n, adj):\n        self.n = n\n        self.adj = adj\n        self.time = 0\n        self.disc = [-1] * n\n        self.low = [-1] * n\n        self.visited = [False] * n\n        self.bridges = []\n\n    def find_bridges(self):\n        for i in range(self.n):\n            if not self.visited[i]:\n                self.dfs(i, -1)\n        return self.bridges\n\n    def dfs(self, u, parent):\n        self.visited[u] = True\n        self.disc[u] = self.low[u] = self.time\n        self.time += 1\n\n        for v in self.adj[u]:\n            if v == parent:\n                continue\n\n            if self.visited[v]:\n                self.low[u] = min(self.low[u], self.disc[v])\n            else:\n                self.dfs(v, u)\n                self.low[u] = min(self.low[u], self.low[v])\n\n                if self.low[v] > self.disc[u]:\n                    self.bridges.append(tuple(sorted((u, v))))",
+    "source": "test-data-ai",
+    "prompt": "Bridge (köprü) bulan Tarjan algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

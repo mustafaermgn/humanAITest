@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\ndef delete_middle_node(head):\n    if head is None or head.next is None:\n        return None\n\n    slow_ptr = head\n    fast_ptr = head\n    prev = None\n\n    while fast_ptr is not None and fast_ptr.next is not None:\n        fast_ptr = fast_ptr.next.next\n        prev = slow_ptr\n        slow_ptr = slow_ptr.next\n\n    prev.next = slow_ptr.next\n    return head\n\nif __name__ == '__main__':\n    head = Node(1)\n    head.next = Node(2)\n    head.next.next = Node(3)\n    head.next.next.next = Node(4)\n    head.next.next.next.next = Node(5)\n\n    head = delete_middle_node(head)\n\n    current = head\n    while current:\n        print(current.data, end=\" \")\n        current = current.next\n    print()",
+    "source": "test-data-ai",
+    "prompt": "Delete middle node of linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

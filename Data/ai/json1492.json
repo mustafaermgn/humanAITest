@@ -1,0 +1,7 @@
+{
+    "code": "def coin_change_ways(amount: int, coins: list[int]) -> int:\n    \"\"\"\n    Belirli bir miktarı, verilen madeni paraları kullanarak kaç farklı yolla\n    yapılabileceğini hesaplar.\n\n    Args:\n        amount: Hedef miktar.\n        coins: Kullanılabilecek madeni paraların değerlerini içeren bir liste.\n\n    Returns:\n        Hedef miktarı yapmanın farklı yollarının sayısı.\n    \"\"\"\n    dp = [0] * (amount + 1)\n    dp[0] = 1\n\n    for coin in coins:\n        for i in range(coin, amount + 1):\n            dp[i] += dp[i - coin]\n\n    return dp[amount]",
+    "source": "test-data-ai",
+    "prompt": "Coin change problemini kaç farklı yolla yapılabileceğini bul.",
+    "license": "MIT",
+    "language": "python"
+}

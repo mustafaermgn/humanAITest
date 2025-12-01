@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_area(length, width):\n  \"\"\"\n  Dikdörtgenin alanını hesaplar.\n\n  Args:\n    length: Dikdörtgenin uzunluğu.\n    width: Dikdörtgenin genişliği.\n\n  Returns:\n    Dikdörtgenin alanı.\n  \"\"\"\n  area = length * width\n  return area\n\ndef main():\n  length = 10\n  width = 5\n  area = calculate_area(length, width)\n  print(\"Dikdörtgenin alanı:\", area)\n\nif __name__ == \"__main__\":\n  main()",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodda kullanılmayan değişkeni kaldırarak kodu temizle.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def __init__(\n        self,\n        meta_processor,\n        video_processor,\n        text_processor,\n        align_processor,\n    ):\n        self.split = meta_processor.split\n        self.meta_processor = meta_processor\n        self.video_processor = video_processor\n        self.text_processor = text_processor\n        self.align_processor = align_processor",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/datasets/mmdataset.py",
+    "license": "MIT",
+    "language": "python"
+}

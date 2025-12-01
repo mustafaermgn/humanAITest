@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.on_event(\"startup\")\nasync def startup_event():\n    print(\"Startup event: Uygulama başlatılıyor...\")\n    # Burada veritabanı bağlantısı, önbellek yükleme vb. işlemler yapılabilir.\n\n@app.on_event(\"shutdown\")\nasync def shutdown_event():\n    print(\"Shutdown event: Uygulama kapatılıyor...\")\n    # Burada veritabanı bağlantısını kapatma, kaynakları serbest bırakma vb. işlemler yapılabilir.\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"FastAPI uygulaması çalışıyor!\"}\n\n# Bu uygulamayı çalıştırmak için terminalde şu komutu kullanın:\n# uvicorn your_file_name:app --reload\n\n# your_file_name yerine bu kodu kaydettiğiniz dosyanın adını yazın (örneğin, main.py ise main:app)\n# Uygulamayı başlatırken \"Startup event\" mesajını, kapatırken (Ctrl+C ile) \"Shutdown event\" mesajını göreceksiniz.",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile startup/shutdown events yaz.",
+    "license": "MIT",
+    "language": "python"
+}

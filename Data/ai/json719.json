@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\nimport math\n\ndef k_closest_points(points, k):\n    \"\"\"\n    Finds the k closest points to the origin (0, 0) using a heap.\n\n    Args:\n        points: A list of tuples representing points in the form (x, y).\n        k: The number of closest points to return.\n\n    Returns:\n        A list of the k closest points to the origin.\n    \"\"\"\n\n    heap = []\n    for point in points:\n        dist = math.sqrt(point[0]**2 + point[1]**2)\n        heapq.heappush(heap, (-dist, point))  # Use negative distance for max-heap\n        if len(heap) > k:\n            heapq.heappop(heap)\n\n    result = [point for _, point in heap]\n    return result",
+    "source": "test-data-ai",
+    "prompt": "K closest points to origin using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

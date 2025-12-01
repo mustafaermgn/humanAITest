@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport requests\n\nclass RateLimitedAPICaller:\n    def __init__(self, requests_per_second: float):\n        if requests_per_second <= 0:\n            raise ValueError(\"requests_per_second must be a positive number.\")\n        self.interval_between_requests = 1.0 / requests_per_second\n        self.last_request_time = 0.0\n\n    def make_request(self, url: str, method: str = 'GET', **kwargs) -> requests.Response | None:\n        current_time = time.monotonic()\n        elapsed_since_last_request = current_time - self.last_request_time\n\n        if elapsed_since_last_request < self.interval_between_requests:\n            time_to_wait = self.interval_between_requests - elapsed_since_last_request\n            time.sleep(time_to_wait)\n\n        try:\n            response = requests.request(method, url, **kwargs)\n            response.raise_for_status()\n            return response\n        except requests.exceptions.RequestException:\n            return None\n        finally:\n            self.last_request_time = time.monotonic()",
+    "source": "test-data-ai",
+    "prompt": "Rate limiting ile API request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "sum(x for x in my_list if x > 0)",
+    "source": "test-data-ai",
+    "prompt": "Bir listedeki sadece pozitif sayıların toplamını bulan tek satırlık bir kod yaz.",
+    "license": "MIT",
+    "language": "python"
+}

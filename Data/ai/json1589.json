@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def findRedundantConnection(self, edges: list[list[int]]) -> list[int]:\n        max_node = 0\n        for u, v in edges:\n            max_node = max(max_node, u, v)\n\n        parent = list(range(max_node + 1))\n\n        def find(i):\n            if parent[i] == i:\n                return i\n            parent[i] = find(parent[i])\n            return parent[i]\n\n        def union(i, j):\n            root_i = find(i)\n            root_j = find(j)\n\n            if root_i != root_j:\n                parent[root_j] = root_i\n                return True\n            else:\n                return False\n\n        for u, v in edges:\n            if not union(u, v):\n                return [u, v]\n        \n        return []",
+    "source": "test-data-ai",
+    "prompt": "Redundant connection using union find yaz.",
+    "license": "MIT",
+    "language": "python"
+}

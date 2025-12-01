@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def kthSmallest(self, root: TreeNode, k: int) -> int:\n        stack = []\n        count = 0\n\n        while root is not None or stack:\n            # En sola kadar git ve yol üzerindeki düğümleri stack'e ekle\n            while root is not None:\n                stack.append(root)\n                root = root.left\n\n            # Stack'ten bir düğüm çıkar (bu, sıradaki en küçük düğümdür)\n            root = stack.pop()\n            count += 1\n\n            # Eğer bu k-ıncı düğümse, değerini döndür\n            if count == k:\n                return root.val\n\n            # Sağ alt ağaca geç\n            root = root.right\n        \n        # Eğer k geçersiz bir değerse veya ağaçta yeterli eleman yoksa buraya gelinir.\n        # Problem tanımına göre k'nın geçerli olduğu varsayılır.\n        return -1",
+    "source": "test-data-ai",
+    "prompt": "Kth smallest element in BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

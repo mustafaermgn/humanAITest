@@ -1,0 +1,7 @@
+{
+    "code": "class DSU:\n    def __init__(self, n):\n        self.parent = list(range(n))\n        self.rank = [0] * n\n\n    def find(self, i):\n        if self.parent[i] == i:\n            return i\n        self.parent[i] = self.find(self.parent[i])\n        return self.parent[i]\n\n    def union(self, i, j):\n        root_i = self.find(i)\n        root_j = self.find(j)\n\n        if root_i != root_j:\n            if self.rank[root_i] < self.rank[root_j]:\n                self.parent[root_i] = root_j\n            elif self.rank[root_i] > self.rank[root_j]:\n                self.parent[root_j] = root_i\n            else:\n                self.parent[root_j] = root_i\n                self.rank[root_i] += 1\n            return True\n        return False\n\ndef minCostConnectCities(n, connections):\n    if n <= 1:\n        return 0\n\n    connections.sort(key=lambda x: x[2])\n\n    dsu = DSU(n)\n    min_cost = 0\n    num_edges_connected = 0\n\n    for city1, city2, cost in connections:\n        if dsu.union(city1, city2):\n            min_cost += cost\n            num_edges_connected += 1\n\n    if num_edges_connected == n - 1:\n        return min_cost\n    else:\n        return -1",
+    "source": "test-data-ai",
+    "prompt": "Minimum cost to connect all cities yaz.",
+    "license": "MIT",
+    "language": "python"
+}

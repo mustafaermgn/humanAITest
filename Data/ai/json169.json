@@ -1,0 +1,7 @@
+{
+    "code": "def is_perfect_number(num):\n    if num <= 1:\n        return False\n\n    sum_divisors = 1  # 1 is always a divisor for numbers greater than 1\n    for i in range(2, int(num**0.5) + 1):\n        if num % i == 0:\n            sum_divisors += i\n            if i * i != num:  # Add the other divisor if it's not the same as i\n                sum_divisors += num // i\n\n    return sum_divisors == num\n\nif __name__ == \"__main__\":\n    # Örnek kullanım\n    print(is_perfect_number(6))    # True (1 + 2 + 3 = 6)\n    print(is_perfect_number(28))   # True (1 + 2 + 4 + 7 + 14 = 28)\n    print(is_perfect_number(496))  # True\n    print(is_perfect_number(8128)) # True\n    print(is_perfect_number(12))   # False (1 + 2 + 3 + 4 + 6 = 16 != 12)\n    print(is_perfect_number(1))    # False\n    print(is_perfect_number(0))    # False\n    print(is_perfect_number(-5))   # False\n\n    # Kullanıcıdan giriş alma örneği\n    try:\n        user_input = int(input(\"Bir sayı girin: \"))\n        if is_perfect_number(user_input):\n            print(f\"{user_input} mükemmel bir sayıdır.\")\n        else:\n            print(f\"{user_input} mükemmel bir sayı değildir.\")\n    except ValueError:\n        print(\"Geçersiz giriş. Lütfen bir tam sayı girin.\")",
+    "source": "test-data-ai",
+    "prompt": "Check if a number is perfect number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

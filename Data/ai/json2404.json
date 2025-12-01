@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef egyptian_fraction(numerator, denominator):\n    if denominator == 0:\n        raise ValueError(\"Denominator cannot be zero.\")\n    if numerator == 0:\n        return []\n\n    result = []\n    current_num = numerator\n    current_den = denominator\n\n    while current_num > 0:\n        x = math.ceil(current_den / current_num)\n        result.append(int(x))\n\n        current_num = current_num * int(x) - current_den\n        current_den = current_den * int(x)\n\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Egyptian fraction representation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

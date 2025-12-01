@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI, Request\nfrom fastapi.responses import JSONResponse\n\napp = FastAPI()\n\nclass CustomError(Exception):\n    def __init__(self, name: str, message: str):\n        self.name = name\n        self.message = message\n\n@app.exception_handler(CustomError)\nasync def custom_error_handler(request: Request, exc: CustomError):\n    return JSONResponse(\n        status_code=400,\n        content={\n            \"error_type\": exc.name,\n            \"message\": exc.message,\n            \"path\": request.url.path\n        },\n    )\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"Welcome! Try /raise-error to see custom exception handler.\"}\n\n@app.get(\"/raise-error\")\nasync def raise_custom_error():\n    raise CustomError(name=\"InvalidInput\", message=\"The provided input was not valid.\")\n\n@app.get(\"/raise-another-error/{item_id}\")\nasync def raise_another_custom_error(item_id: int):\n    if item_id % 2 != 0:\n        raise CustomError(name=\"OddItemIdError\", message=f\"Item ID {item_id} is odd, which is not allowed.\")\n    return {\"message\": f\"Item ID {item_id} is even and valid.\"}",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile custom exception handler yaz.",
+    "license": "MIT",
+    "language": "python"
+}

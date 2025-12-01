@@ -1,0 +1,7 @@
+{
+    "code": "import logging\nimport sys\n\nclass LevelFilteringStreamHandler(logging.StreamHandler):\n    def __init__(self, level=logging.NOTSET, stream=sys.stderr):\n        super().__init__(stream)\n        self.setLevel(level)\n        self.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))\n\n\nif __name__ == '__main__':\n    logger = logging.getLogger(\"my_app\")\n    logger.setLevel(logging.DEBUG) # Logger'ın işleyeceği en düşük seviye\n\n    # DEBUG seviyesindeki veya üzerindeki logları sys.stdout'a yazan handler\n    debug_handler = LevelFilteringStreamHandler(level=logging.DEBUG, stream=sys.stdout)\n    logger.addHandler(debug_handler)\n\n    # INFO seviyesindeki veya üzerindeki logları sys.stderr'e yazan handler\n    info_handler = LevelFilteringStreamHandler(level=logging.INFO, stream=sys.stderr)\n    logger.addHandler(info_handler)\n\n    # Farklı seviyelerde mesajlar gönderelim\n    logger.debug(\"Bu bir DEBUG mesajı.\")\n    logger.info(\"Bu bir INFO mesajı.\")\n    logger.warning(\"Bu bir WARNING mesajı.\")\n    logger.error(\"Bu bir ERROR mesajı.\")\n    logger.critical(\"Bu bir CRITICAL mesajı.\")",
+    "source": "test-data-ai",
+    "prompt": "Log level filtering yapan handler yaz.",
+    "license": "MIT",
+    "language": "python"
+}

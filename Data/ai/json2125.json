@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef baby_step_giant_step(g, h, p):\n    g %= p\n    h %= p\n\n    if g == 0:\n        return None  # g must be coprime to p for this algorithm\n    \n    # Calculate m = ceil(sqrt(p-1))\n    m = int(math.ceil(math.sqrt(p - 1)))\n\n    # Baby steps\n    baby_steps = {}\n    current_g_j = 1\n    for j in range(m):\n        if current_g_j not in baby_steps:\n            baby_steps[current_g_j] = j\n        current_g_j = (current_g_j * g) % p\n\n    # Giant steps\n    inv_g_m = pow(g, -m, p)\n\n    current_giant = h\n    for i in range(m):\n        if current_giant in baby_steps:\n            j = baby_steps[current_giant]\n            x = i * m + j\n            return x\n        \n        current_giant = (current_giant * inv_g_m) % p\n\n    return None",
+    "source": "test-data-ai",
+    "prompt": "Baby-step giant-step algorithm for discrete log yaz.",
+    "license": "MIT",
+    "language": "python"
+}

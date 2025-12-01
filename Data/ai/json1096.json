@@ -1,0 +1,7 @@
+{
+    "code": "def generate_strobogrammatic(n: int) -> list[str]:\n    if n == 0:\n        return []\n\n    pairs = [(\"0\", \"0\"), (\"1\", \"1\"), (\"6\", \"9\"), (\"8\", \"8\"), (\"9\", \"6\")]\n    mid_digits = [\"0\", \"1\", \"8\"]\n\n    def helper(k):\n        if k == 0:\n            return [\"\"]\n        if k == 1:\n            return mid_digits\n        \n        prev_results = helper(k - 2)\n        current_results = []\n        \n        for s in prev_results:\n            for left, right in pairs:\n                if k == n and left == \"0\" and n > 1:\n                    continue\n                current_results.append(left + s + right)\n        return current_results\n\n    return helper(n)",
+    "source": "test-data-ai",
+    "prompt": "Strobogrammatic number generation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

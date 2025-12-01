@@ -1,0 +1,7 @@
+{
+    "code": "class MinimalSlotClass:\n    __slots__ = ('name', 'value')\n\n    def __init__(self, name, value):\n        self.name = name\n        self.value = value",
+    "source": "test-data-ai",
+    "prompt": "Bir Python sınıfının **`__slots__`** kullanımını gösteren minimalist bir sınıf tanımla.",
+    "license": "MIT",
+    "language": "python"
+}

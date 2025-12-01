@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\nclass Solution:\n    def groupStrings(self, strings: list[str]) -> list[list[str]]:\n        groups = defaultdict(list)\n\n        for s in strings:\n            if not s:\n                groups[\"\"].append(s)\n                continue\n\n            # Calculate the shift needed to make the first character 'a'\n            # For example, if s[0] is 'b', shift = 1\n            # If s[0] is 'a', shift = 0\n            shift = ord(s[0]) - ord('a')\n            \n            normalized_chars = []\n            for char_code in s:\n                # Apply the shift to each character\n                # (ord(char_code) - ord('a')) gives the 0-25 index of the character\n                # Subtract 'shift' to move it towards 'a'\n                # Add 26 and take modulo 26 to handle negative results (e.g., 'a' shifted by 1 becomes 'z')\n                # Then add ord('a') back to get the ASCII code of the new character\n                normalized_char_code = (ord(char_code) - ord('a') - shift + 26) % 26 + ord('a')\n                normalized_chars.append(chr(normalized_char_code))\n            \n            normalized_s = \"\".join(normalized_chars)\n            groups[normalized_s].append(s)\n        \n        return list(groups.values())",
+    "source": "test-data-ai",
+    "prompt": "Group shifted strings yaz.",
+    "license": "MIT",
+    "language": "python"
+}

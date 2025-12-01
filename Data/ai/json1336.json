@@ -1,0 +1,7 @@
+{
+    "code": "def binary_search_iterative(arr, target):\n    \"\"\"\n    Performs binary search iteratively on a sorted array.\n    \"\"\"\n    low = 0\n    high = len(arr) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n\ndef binary_search_recursive(arr, target):\n    \"\"\"\n    Performs binary search recursively on a sorted array.\n    \"\"\"\n    def _binary_search_recursive_helper(arr, target, low, high):\n        if low > high:\n            return -1\n\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            return _binary_search_recursive_helper(arr, target, mid + 1, high)\n        else:\n            return _binary_search_recursive_helper(arr, target, low, mid - 1)\n\n    return _binary_search_recursive_helper(arr, target, 0, len(arr) - 1)",
+    "source": "test-data-ai",
+    "prompt": "Binary Search algoritmasını iterative ve recursive versiyonlarıyla yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def __init__(self, yaml_file):\n        self.yaml_file = yaml_file\n        job_key = \"local\"\n\n        if yaml_file.endswith(\".yaml\"):\n            config = recursive_config(yaml_file)\n            if config.task_type is not None:\n                job_key = config.task_type.split(\"_\")[0]\n        else:\n            raise ValueError(\"unknown extension of job file:\", yaml_file)\n        self.job_key = job_key",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/locallaunch.py",
+    "license": "MIT",
+    "language": "python"
+}

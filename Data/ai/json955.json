@@ -1,0 +1,7 @@
+{
+    "code": "def count_trailing_zeros(n):\n    if n == 0:\n        return 1\n\n    num = abs(n)\n    binary_string = bin(num)[2:]\n    \n    rightmost_one_index = binary_string.rfind('1')\n    \n    return len(binary_string) - (rightmost_one_index + 1)",
+    "source": "test-data-ai",
+    "prompt": "Count trailing zeros in binary representation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

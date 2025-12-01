@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, data):\n        new_node = Node(data)\n        if not self.head:\n            self.head = new_node\n            return\n        last = self.head\n        while last.next:\n            last = last.next\n        last.next = new_node\n\n    def is_sorted(self):\n        if self.head is None or self.head.next is None:\n            return True\n\n        current = self.head\n        while current.next is not None:\n            if current.data > current.next.data:\n                return False\n            current = current.next\n        return True",
+    "source": "test-data-ai",
+    "prompt": "Check if linked list is sorted yaz.",
+    "license": "MIT",
+    "language": "python"
+}

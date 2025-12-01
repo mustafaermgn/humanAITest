@@ -1,0 +1,7 @@
+{
+    "code": "def find_pairs_with_sum(arr, target_sum):\n    arr.sort()\n    \n    left = 0\n    right = len(arr) - 1\n    pairs = []\n    \n    while left < right:\n        current_sum = arr[left] + arr[right]\n        \n        if current_sum == target_sum:\n            pairs.append((arr[left], arr[right]))\n            left += 1\n            right -= 1\n        elif current_sum < target_sum:\n            left += 1\n        else:\n            right -= 1\n            \n    return pairs",
+    "source": "test-data-ai",
+    "prompt": "Two Pointer tekniğiyle bir dizide çift toplam bulan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

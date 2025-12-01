@@ -1,0 +1,7 @@
+{
+    "code": "def reverse_enumerate(liste):\n    n = len(liste)\n    for i in range(n - 1, -1, -1):\n        yield (n - 1 - i, liste[i])",
+    "source": "test-data-ai",
+    "prompt": "Bir listeyi ters sırada numaralandıran (enumerate) bir generator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

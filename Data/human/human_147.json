@@ -1,0 +1,7 @@
+{
+    "code": "def test_real_migration():\n    \"\"\"Test migration with actual SQLite database.\"\"\"\n    # Create temporary database\n    with tempfile.NamedTemporaryFile(suffix=\".db\") as tmp:\n        db_path = tmp.name\n\n        # Create test table\n        conn = sqlite3.connect(db_path)\n        conn.execute(\"\"\"\n            CREATE TABLE users (\n                id INTEGER PRIMARY KEY,\n                name TEXT,\n                old_email TEXT\n            )\n        \"\"\")\n        conn.commit()\n\n        # Create alembic.ini\n        alembic_cfg = Config()\n        alembic_cfg.set_main_option(\"script_location\", \"src/backend/base/langflow/alembic\")\n        alembic_cfg.set_main_option(\"sqlalchemy.url\", f\"sqlite:///{db_path}\")\n\n        # Run migration\n        try:\n            command.upgrade(alembic_cfg, \"head\")\n            print(\"✅ Migration executed successfully\")\n        except RuntimeError as e:\n            print(f\"❌ Migration failed: {e}\")\n\n        # Verify schema\n        cursor = conn.execute(\"PRAGMA table_info(users)\")\n        columns = [row[1] for row in cursor.fetchall()]\n        print(f\"Columns after migration: {columns}\")\n\n        conn.close()",
+    "source": "github_repo:langflow-ai/langflow",
+    "file": "scripts/test_with_database.py",
+    "license": "MIT",
+    "language": "python"
+}

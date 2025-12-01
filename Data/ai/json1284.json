@@ -1,0 +1,7 @@
+{
+    "code": "from collections import namedtuple\n\n# Basit bir veri yapısı oluştur\n# 'Student' adında ve 'name', 'age', 'grade' alanlarına sahip bir namedtuple tanımla\nStudent = namedtuple('Student', ['name', 'age', 'grade'])\n\n# Bu veri yapısından bir örnek oluştur\nstudent1 = Student(name='Alice', age=20, grade='A')\n\n# Verilere erişimi göster (isteğe bağlı, ancak kullanımı göstermek için faydalı)\n# print(student1.name)\n# print(student1.age)\n# print(student1.grade)\n# print(student1)",
+    "source": "test-data-ai",
+    "prompt": "Python'da `collections.namedtuple` kullanarak basit bir veri yapısı oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

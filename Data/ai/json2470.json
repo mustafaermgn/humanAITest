@@ -1,0 +1,7 @@
+{
+    "code": "class MagicDictionary:\n    def __init__(self):\n        self.trie = {}\n\n    def buildDict(self, dictionary: list[str]) -> None:\n        for word in dictionary:\n            node = self.trie\n            for char in word:\n                if char not in node:\n                    node[char] = {}\n                node = node[char]\n            node['_end_'] = True\n\n    def search(self, searchWord: str) -> bool:\n        def dfs(node: dict, k: int, mismatches: int) -> bool:\n            if mismatches > 1:\n                return False\n\n            if k == len(searchWord):\n                return '_end_' in node and mismatches == 1\n\n            for char_code in range(ord('a'), ord('z') + 1):\n                char = chr(char_code)\n                \n                if char in node:\n                    new_mismatches = mismatches + (1 if char != searchWord[k] else 0)\n                    if dfs(node[char], k + 1, new_mismatches):\n                        return True\n            \n            return False\n\n        return dfs(self.trie, 0, 0)",
+    "source": "test-data-ai",
+    "prompt": "Implement magic dictionary using trie yaz.",
+    "license": "MIT",
+    "language": "python"
+}

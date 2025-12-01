@@ -1,0 +1,7 @@
+{
+    "code": "def can_partition(nums):\n    total_sum = sum(nums)\n\n    # If the total sum is odd, it's impossible to partition into two equal sum subsets.\n    if total_sum % 2 != 0:\n        return False\n\n    target = total_sum // 2\n\n    # dp[i] will be True if a sum of 'i' can be formed\n    # using elements from 'nums'.\n    dp = [False] * (target + 1)\n    dp[0] = True  # A sum of 0 can always be formed (by choosing no elements)\n\n    for num in nums:\n        # Iterate backwards to avoid using the same number multiple times\n        # in the current iteration for 'num'.\n        for j in range(target, num - 1, -1):\n            dp[j] = dp[j] or dp[j - num]\n            \n            # Optimization: If dp[target] becomes True, we've found a subset\n            # that sums to the target, so we can return early.\n            if dp[target]:\n                return True\n\n    return dp[target]",
+    "source": "test-data-ai",
+    "prompt": "Partition problem (equal sum subsets) çözümü yaz.",
+    "license": "MIT",
+    "language": "python"
+}

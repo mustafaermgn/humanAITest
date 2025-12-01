@@ -1,0 +1,7 @@
+{
+    "code": "from collections import deque\n\ndef is_connected(graph):\n    \"\"\"\n    Bir grafın bağlı olup olmadığını kontrol eder.\n\n    Graf, komşuluk listesi olarak bir sözlük ile temsil edilir.\n    Anahtarlar düğümlerdir ve değerler komşu düğümlerin listesidir.\n\n    Örnek:\n    {\n        0: [1, 2],\n        1: [0, 2],\n        2: [0, 1],\n        3: []\n    }\n\n    Args:\n        graph (dict): Grafın komşuluk listesi temsili.\n\n    Returns:\n        bool: Graf bağlı ise True, aksi takdirde False.\n    \"\"\"\n    nodes = list(graph.keys())\n\n    if not nodes:\n        return True  # Boş bir graf bağlı kabul edilir.\n\n    start_node = nodes[0]\n    visited = set()\n    queue = deque([start_node])\n    visited.add(start_node)\n\n    while queue:\n        current_node = queue.popleft()\n\n        for neighbor in graph[current_node]:\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append(neighbor)\n\n    return len(visited) == len(nodes)",
+    "source": "test-data-ai",
+    "prompt": "Graph'ın connected olup olmadığını kontrol eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

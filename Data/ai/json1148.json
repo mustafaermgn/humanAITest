@@ -1,0 +1,7 @@
+{
+    "code": "def count_bits_to_flip(A, B):\n    xor_result = A ^ B\n    return bin(xor_result).count('1')",
+    "source": "test-data-ai",
+    "prompt": "Count number of bits to flip to convert A to B yaz.",
+    "license": "MIT",
+    "language": "python"
+}

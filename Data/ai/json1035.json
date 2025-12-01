@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef validate_file_size(file_path, size_limit, unit=\"MB\"):\n    if not os.path.exists(file_path):\n        return False\n\n    actual_size_bytes = os.path.getsize(file_path)\n\n    unit_factor = {\n        \"B\": 1,\n        \"KB\": 1024,\n        \"MB\": 1024 * 1024,\n        \"GB\": 1024 * 1024 * 1024,\n    }\n\n    try:\n        limit_bytes = size_limit * unit_factor[unit.upper()]\n    except KeyError:\n        return False\n    except TypeError:\n        return False\n\n    return actual_size_bytes <= limit_bytes",
+    "source": "test-data-ai",
+    "prompt": "File size limit validator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

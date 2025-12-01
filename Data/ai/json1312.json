@@ -1,0 +1,7 @@
+{
+    "code": "import html\n\ndef prevent_xss(text: str) -> str:\n    \"\"\"\n    Kullanıcının girdiği metindeki potansiyel XSS saldırılarını önlemek için\n    HTML özel karakterlerini uygun HTML varlıklarına dönüştürür.\n    \"\"\"\n    return html.escape(text, quote=True)",
+    "source": "test-data-ai",
+    "prompt": "XSS prevention fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

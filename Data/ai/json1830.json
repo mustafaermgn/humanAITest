@@ -1,0 +1,7 @@
+{
+    "code": "def search_matrix(matrix: list[list[int]], target: int) -> bool:\n    if not matrix or not matrix[0]:\n        return False\n\n    rows = len(matrix)\n    cols = len(matrix[0])\n\n    row = 0\n    col = cols - 1\n\n    while row < rows and col >= 0:\n        current_val = matrix[row][col]\n        if current_val == target:\n            return True\n        elif current_val < target:\n            row += 1\n        else:\n            col -= 1\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "2D matrix'te satır ve sütunlar sıralıyken eleman arayan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

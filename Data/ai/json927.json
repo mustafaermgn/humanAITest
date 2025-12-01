@@ -1,0 +1,7 @@
+{
+    "code": "def find_common_characters(s1, s2):\n    s1_char_presence = {}\n    for char in s1:\n        s1_char_presence[char] = True\n\n    common_chars_set = set()\n\n    for char in s2:\n        if char in s1_char_presence:\n            common_chars_set.add(char)\n            \n    return sorted(list(common_chars_set))\n\nif __name__ == '__main__':\n    # Örnek Kullanım:\n    string1 = \"hello\"\n    string2 = \"world\"\n    result = find_common_characters(string1, string2)\n    print(f\"'{string1}' ve '{string2}' arasındaki ortak karakterler: {result}\")\n\n    string3 = \"programming\"\n    string4 = \"python\"\n    result = find_common_characters(string3, string4)\n    print(f\"'{string3}' ve '{string4}' arasındaki ortak karakterler: {result}\")\n\n    string5 = \"apple\"\n    string6 = \"banana\"\n    result = find_common_characters(string5, string6)\n    print(f\"'{string5}' ve '{string6}' arasındaki ortak karakterler: {result}\")\n    \n    string7 = \"test\"\n    string8 = \"abc\"\n    result = find_common_characters(string7, string8)\n    print(f\"'{string7}' ve '{string8}' arasındaki ortak karakterler: {result}\")\n    \n    string9 = \"\"\n    string10 = \"empty\"\n    result = find_common_characters(string9, string10)\n    print(f\"'{string9}' ve '{string10}' arasındaki ortak karakterler: {result}\")",
+    "source": "test-data-ai",
+    "prompt": "Find common characters using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

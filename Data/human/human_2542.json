@@ -1,0 +1,7 @@
+{
+    "code": "# Copyright (c) Facebook, Inc. and its affiliates.\n#\n# This source code is licensed under the MIT license found in the\n# LICENSE file in the root directory of this source tree.\nfrom .metric import *\nfrom .evaluator import *\n\n\n# experimental.\ntry:\n    from .expmetric import *\nexcept ImportError:\n    pass",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/evaluators/__init__.py",
+    "license": "MIT",
+    "language": "python"
+}

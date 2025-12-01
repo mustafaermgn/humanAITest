@@ -1,0 +1,7 @@
+{
+    "code": "def job_sequencing(jobs):\n    jobs.sort(key=lambda x: x[2], reverse=True)\n\n    max_deadline = 0\n    if jobs:\n        max_deadline = max(job[1] for job in jobs)\n    \n    scheduled_slots = [None] * (max_deadline + 1)\n    \n    total_profit = 0\n\n    for job_id, deadline, profit in jobs:\n        for i in range(deadline, 0, -1):\n            if scheduled_slots[i] is None:\n                scheduled_slots[i] = job_id\n                total_profit += profit\n                break\n    \n    final_sequence_by_time = [job_id for job_id in scheduled_slots if job_id is not None]\n\n    return final_sequence_by_time, total_profit",
+    "source": "test-data-ai",
+    "prompt": "Job sequencing with deadlines problemini çöz.",
+    "license": "MIT",
+    "language": "python"
+}

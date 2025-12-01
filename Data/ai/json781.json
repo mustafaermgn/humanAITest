@@ -1,0 +1,7 @@
+{
+    "code": "import base64\n\ndef base64_encode(text):\n  \"\"\"Metni Base64 ile kodlar.\"\"\"\n  text_bytes = text.encode('utf-8')\n  base64_bytes = base64.b64encode(text_bytes)\n  base64_text = base64_bytes.decode('utf-8')\n  return base64_text\n\ndef base64_decode(base64_text):\n  \"\"\"Base64 ile kodlanmış metni çözer.\"\"\"\n  base64_bytes = base64_text.encode('utf-8')\n  text_bytes = base64.b64decode(base64_bytes)\n  text = text_bytes.decode('utf-8')\n  return text\n\nif __name__ == '__main__':\n  metin = \"Bu bir test metnidir.\"\n  kodlanmis_metin = base64_encode(metin)\n  print(f\"Kodlanmış metin: {kodlanmis_metin}\")\n  \n  cozulmus_metin = base64_decode(kodlanmis_metin)\n  print(f\"Çözülmüş metin: {cozulmus_metin}\")",
+    "source": "test-data-ai",
+    "prompt": "Base64 encoding/decoding fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

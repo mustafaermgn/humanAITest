@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass MovingAverage:\n    def __init__(self, window_size: int):\n        self.window_size = window_size\n        self.data_queue = collections.deque()\n        self.current_sum = 0.0\n\n    def next_val(self, value: float) -> float:\n        self.data_queue.append(value)\n        self.current_sum += value\n\n        if len(self.data_queue) > self.window_size:\n            oldest_value = self.data_queue.popleft()\n            self.current_sum -= oldest_value\n\n        return self.current_sum / len(self.data_queue)\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    ma = MovingAverage(window_size=3)\n\n    print(ma.next_val(1))    # (1) / 1 = 1.0\n    print(ma.next_val(10))   # (1 + 10) / 2 = 5.5\n    print(ma.next_val(3))    # (1 + 10 + 3) / 3 = 4.666...\n    print(ma.next_val(5))    # (10 + 3 + 5) / 3 = 6.0  (1 çıkarıldı)\n    print(ma.next_val(2))    # (3 + 5 + 2) / 3 = 3.333... (10 çıkarıldı)\n    print(ma.next_val(8))    # (5 + 2 + 8) / 3 = 5.0   (3 çıkarıldı)",
+    "source": "test-data-ai",
+    "prompt": "Moving average from data stream using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef are_isomorphic(graph1, graph2):\n    n1 = len(graph1)\n    n2 = len(graph2)\n\n    if n1 != n2:\n        return False\n\n    num_edges1 = sum(len(adj) for adj in graph1.values())\n    num_edges2 = sum(len(adj) for adj in graph2.values())\n    if num_edges1 != num_edges2:\n        return False\n\n    keys1 = sorted(list(graph1.keys()))\n    keys2 = sorted(list(graph2.keys()))\n\n    for perm_keys2 in itertools.permutations(keys2):\n        mapping = {}\n        for i in range(n1):\n            mapping[keys1[i]] = perm_keys2[i]\n\n        is_current_permutation_isomorphism = True\n        \n        for u in keys1:\n            mapped_u = mapping[u]\n            \n            neighbors_u_graph1 = graph1[u]\n            expected_neighbors_mapped_u_graph2 = {mapping[v] for v in neighbors_u_graph1}\n            \n            actual_neighbors_mapped_u_graph2 = set(graph2.get(mapped_u, []))\n\n            if expected_neighbors_mapped_u_graph2 != actual_neighbors_mapped_u_graph2:\n                is_current_permutation_isomorphism = False\n                break\n        \n        if is_current_permutation_isomorphism:\n            return True\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Graph isomorphism kontrol eden basit algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

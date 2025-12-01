@@ -1,0 +1,7 @@
+{
+    "code": "from collections import deque\n\ndef predictPartyVictory(senate: str) -> str:\n    n = len(senate)\n    radiant_q = deque()\n    dire_q = deque()\n\n    for i, char in enumerate(senate):\n        if char == 'R':\n            radiant_q.append(i)\n        else: # char == 'D'\n            dire_q.append(i)\n\n    while radiant_q and dire_q:\n        r_idx = radiant_q.popleft()\n        d_idx = dire_q.popleft()\n\n        if r_idx < d_idx:\n            # Radiant senator acts first, bans a Dire senator\n            # Radiant senator goes to the end of their queue, with an increased turn index\n            radiant_q.append(r_idx + n)\n        else:\n            # Dire senator acts first, bans a Radiant senator\n            # Dire senator goes to the end of their queue, with an increased turn index\n            dire_q.append(d_idx + n)\n\n    return \"Radiant\" if radiant_q else \"Dire\"",
+    "source": "test-data-ai",
+    "prompt": "Dota2 Senate problem using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

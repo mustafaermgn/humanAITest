@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef send_authenticated_request(url, token, method='GET', **kwargs):\n    \"\"\"\n    API'ye authentication header ile istek gönderen fonksiyon.\n\n    Args:\n        url (str): API endpoint'inin URL'si.\n        token (str): Kimlik doğrulama token'ı (örneğin, \"Bearer <TOKEN_DEĞERİ>\").\n        method (str, optional): HTTP metodu (örn. 'GET', 'POST', 'PUT', 'DELETE'). Varsayılan 'GET'.\n        **kwargs: requests.request fonksiyonuna iletilecek ek anahtar kelime argümanları\n                  (örn. json, data, params, timeout, verify).\n\n    Returns:\n        requests.Response: API çağrısından dönen yanıt nesnesi.\n\n    Raises:\n        requests.exceptions.RequestException: İstek sırasında bir hata oluşursa.\n    \"\"\"\n    headers = {'Authorization': token}\n    \n    # Kullanıcı tarafından sağlanan ek başlıkları mevcut başlıklarla birleştir\n    if 'headers' in kwargs:\n        headers.update(kwargs['headers'])\n        del kwargs['headers'] # Çift geçişi önlemek için kaldır\n\n    response = requests.request(method, url, headers=headers, **kwargs)\n    response.raise_for_status()  # Hatalı yanıtlar (4xx veya 5xx) için HTTPError fırlatır\n    return response",
+    "source": "test-data-ai",
+    "prompt": "API'ye authentication header ile istek gönderen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

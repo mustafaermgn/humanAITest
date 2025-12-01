@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, request\n\napp = Flask(__name__)\n\n@app.route('/greet')\ndef greet_user():\n    name = request.args.get('name', 'Guest')\n    message = request.args.get('message', 'Hello')\n    return f\"{message}, {name}!\"\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile query parameters alan endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

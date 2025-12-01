@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def canCompleteCircuit(self, gas: list[int], cost: list[int]) -> int:\n        total_gas_difference = 0\n        current_tank = 0\n        start_node = 0\n        n = len(gas)\n\n        for i in range(n):\n            diff = gas[i] - cost[i]\n            total_gas_difference += diff\n            current_tank += diff\n\n            if current_tank < 0:\n                current_tank = 0\n                start_node = i + 1\n\n        if total_gas_difference >= 0:\n            return start_node\n        else:\n            return -1",
+    "source": "test-data-ai",
+    "prompt": "Gas station circular tour problemini çöz.",
+    "license": "MIT",
+    "language": "python"
+}

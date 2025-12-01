@@ -1,0 +1,7 @@
+{
+    "code": "def prime_trial_division(n):\n    \"\"\"\n    Üç deneme bölme kullanarak n'ye kadar asal sayıları üretir.\n    \"\"\"\n    primes = []\n    for num in range(2, n + 1):\n        is_prime = True\n        for i in range(2, int(num**0.5) + 1):\n            if num % i == 0:\n                is_prime = False\n                break\n        if is_prime:\n            primes.append(num)\n    return primes\n\nif __name__ == '__main__':\n    limit = 50  # Örnek sınır\n    prime_numbers = prime_trial_division(limit)\n    print(f\"{limit}ye kadar asal sayılar: {prime_numbers}\")",
+    "source": "test-data-ai",
+    "prompt": "Generate prime numbers using trial division yaz.",
+    "license": "MIT",
+    "language": "python"
+}

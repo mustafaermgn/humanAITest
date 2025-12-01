@@ -1,0 +1,7 @@
+{
+    "code": "from typing import Optional\n\n# Definition for singly-linked list.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        dummy = ListNode(0)\n        dummy.next = head\n\n        prev = dummy\n        curr = head\n\n        while curr and curr.next:\n            # Nodes to be swapped\n            first_node = curr\n            second_node = curr.next\n\n            # Store the head of the next pair\n            next_pair_start = second_node.next\n\n            # Perform the swap\n            prev.next = second_node\n            second_node.next = first_node\n            first_node.next = next_pair_start\n\n            # Move pointers forward for the next iteration\n            prev = first_node\n            curr = next_pair_start\n\n        return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Swap nodes in pairs yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def egcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, x, y = egcd(b % a, a)\n        return (g, y - (b // a) * x, x)\n\ndef mod_inverse(a, m):\n    if m <= 1:\n        raise ValueError(\"Modulo must be greater than 1\")\n    g, x, _ = egcd(a, m)\n    if g != 1:\n        raise ValueError(f\"Modular inverse of {a} (mod {m}) does not exist. GCD({a}, {m}) = {g}\")\n    return x % m\n\ndef chinese_remainder_theorem(n, a):\n    if len(n) != len(a):\n        raise ValueError(\"Lists of moduli and remainders must have the same length\")\n    \n    N = 1\n    for ni in n:\n        if ni <= 1:\n            raise ValueError(\"All moduli must be greater than 1\")\n        N *= ni\n        \n    x_sum = 0\n    for i in range(len(n)):\n        ni = n[i]\n        ai = a[i]\n        \n        Ni = N // ni\n        \n        yi = mod_inverse(Ni, ni)\n        \n        x_sum += ai * Ni * yi\n        \n    return x_sum % N",
+    "source": "test-data-ai",
+    "prompt": "Chinese remainder theorem uygula.",
+    "license": "MIT",
+    "language": "python"
+}

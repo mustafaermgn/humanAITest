@@ -1,0 +1,7 @@
+{
+    "code": "import collections\nimport heapq\n\nclass Solution:\n    def rearrangeCharacters(self, s: str) -> str:\n        freq_map = collections.Counter(s)\n        \n        pq = []\n        for char, freq in freq_map.items():\n            heapq.heappush(pq, (-freq, char))\n            \n        result = []\n        prev_char = None\n        prev_freq = 0\n        \n        while pq:\n            curr_freq, curr_char = heapq.heappop(pq)\n            \n            result.append(curr_char)\n            \n            if prev_char is not None and prev_freq < 0:\n                heapq.heappush(pq, (prev_freq, prev_char))\n                \n            curr_freq += 1\n            \n            prev_char = curr_char\n            prev_freq = curr_freq\n            \n        if prev_freq < 0:\n            return \"\"\n        else:\n            return \"\".join(result)",
+    "source": "test-data-ai",
+    "prompt": "Rearrange characters so no two adjacent are same yaz.",
+    "license": "MIT",
+    "language": "python"
+}

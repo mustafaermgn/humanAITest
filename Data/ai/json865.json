@@ -1,0 +1,7 @@
+{
+    "code": "def solve_m_coloring(graph, m):\n    V = len(graph)\n    colors = [0] * V\n\n    def is_safe(v_idx, color):\n        for i in range(V):\n            if graph[v_idx][i] == 1 and colors[i] == color:\n                return False\n        return True\n\n    def graph_color_util(v_idx):\n        if v_idx == V:\n            return True\n\n        for c in range(1, m + 1):\n            if is_safe(v_idx, c):\n                colors[v_idx] = c\n                if graph_color_util(v_idx + 1):\n                    return True\n                colors[v_idx] = 0\n        return False\n\n    if not graph_color_util(0):\n        return []\n    return colors",
+    "source": "test-data-ai",
+    "prompt": "M coloring problem yaz.",
+    "license": "MIT",
+    "language": "python"
+}

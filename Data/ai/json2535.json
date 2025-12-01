@@ -1,0 +1,7 @@
+{
+    "code": "from collections import namedtuple\n\n# 'Coordinates' adında bir namedtuple tipi oluştur, 'x' ve 'y' alanlarına sahip\nCoordinates = namedtuple('Coordinates', ['x', 'y'])\n\n# Bu namedtuple tipinden bir örnek oluştur\npoint = Coordinates(x=10, y=20)\n\n# (İsteğe bağlı: Oluşturulan nesneyi ve elemanlarına erişimi göstermek için)\n# print(point.x)\n# print(point.y)\n# print(point)",
+    "source": "test-data-ai",
+    "prompt": "Python'da `collections.namedtuple` kullanarak basit bir veri yapısı oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

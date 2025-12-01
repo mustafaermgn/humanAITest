@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef create_symlink(source_path: str, link_path: str) -> bool:\n    \"\"\"\n    Belirtilen kaynak için bir sembolik bağlantı oluşturur.\n\n    Args:\n        source_path: Orijinal dosyanın veya dizinin yolu.\n        link_path: Sembolik bağlantının oluşturulacağı yol.\n\n    Returns:\n        Sembolik bağlantı başarıyla oluşturulduysa True, aksi takdirde False.\n    \"\"\"\n    try:\n        os.symlink(source_path, link_path)\n        return True\n    except FileExistsError:\n        return False  # Bağlantı zaten mevcut\n    except OSError:\n        return False  # Diğer işletim sistemi hataları (örn. izin hatası)\n\ndef check_symlink(path: str) -> bool:\n    \"\"\"\n    Belirtilen yolun bir sembolik bağlantı olup olmadığını kontrol eder.\n\n    Args:\n        path: Kontrol edilecek yol.\n\n    Returns:\n        Yol bir sembolik bağlantı ise True, aksi takdirde False.\n    \"\"\"\n    return os.path.islink(path)",
+    "source": "test-data-ai",
+    "prompt": "Symlink oluşturan ve kontrol eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

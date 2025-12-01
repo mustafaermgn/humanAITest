@@ -1,0 +1,7 @@
+{
+    "code": "def minimize_maximum_lateness(jobs):\n    \"\"\"\n    Minimizes the maximum lateness for a set of jobs on a single machine.\n\n    Args:\n        jobs: A list of dictionaries, where each dictionary represents a job\n              and must contain 'processing_time' (int) and 'deadline' (int) keys.\n              Example: [{'processing_time': 3, 'deadline': 6}, ...]\n\n    Returns:\n        An integer representing the minimum possible maximum lateness.\n    \"\"\"\n    # Sort jobs by their deadlines in non-decreasing order (Earliest Deadline First)\n    sorted_jobs = sorted(jobs, key=lambda job: job['deadline'])\n\n    current_time = 0  # Represents the time when the current job starts\n    max_lateness = 0  # Stores the maximum lateness found so far\n\n    for job in sorted_jobs:\n        # Calculate the completion time for the current job\n        finish_time = current_time + job['processing_time']\n\n        # Calculate the lateness for the current job\n        lateness = max(0, finish_time - job['deadline'])\n\n        # Update the overall maximum lateness if the current job's lateness is greater\n        max_lateness = max(max_lateness, lateness)\n\n        # Update current_time for the next job\n        current_time = finish_time\n\n    return max_lateness",
+    "source": "test-data-ai",
+    "prompt": "Minimize maximum lateness scheduling yaz.",
+    "license": "MIT",
+    "language": "python"
+}

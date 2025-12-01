@@ -1,0 +1,7 @@
+{
+    "code": "def add_edge(graph, u, v):\n    if u not in graph:\n        graph[u] = []\n    if v not in graph:\n        graph[v] = []\n\n    if v not in graph[u]:\n        graph[u].append(v)\n    if u not in graph[v]:\n        graph[v].append(u)",
+    "source": "test-data-ai",
+    "prompt": "Add edge to graph yaz.",
+    "license": "MIT",
+    "language": "python"
+}

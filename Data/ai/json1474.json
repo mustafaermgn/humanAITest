@@ -1,0 +1,7 @@
+{
+    "code": "import fcntl\nimport os\n\nclass FileLock:\n    def __init__(self, file_path):\n        self.file_path = file_path\n        self.file_object = None\n\n    def __enter__(self):\n        self.file_object = open(self.file_path, 'a')\n        fcntl.lockf(self.file_object.fileno(), fcntl.LOCK_EX)\n        return self\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        fcntl.lockf(self.file_object.fileno(), fcntl.LOCK_UN)\n        self.file_object.close()",
+    "source": "test-data-ai",
+    "prompt": "Context manager for file locking yaz.",
+    "license": "MIT",
+    "language": "python"
+}

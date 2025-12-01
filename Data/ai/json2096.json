@@ -1,0 +1,7 @@
+{
+    "code": "def next_power_of_2(n):\n    if n <= 0:\n        return 1\n    \n    power = 1\n    while power < n:\n        power *= 2\n    \n    return power",
+    "source": "test-data-ai",
+    "prompt": "Next power of 2 bul.",
+    "license": "MIT",
+    "language": "python"
+}

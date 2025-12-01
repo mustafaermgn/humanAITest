@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def recoverTree(self, root: TreeNode) -> None:\n        self.first_swapped = None\n        self.second_swapped = None\n        self.prev_node = None\n\n        def inorder_traverse(node):\n            if not node:\n                return\n\n            inorder_traverse(node.left)\n\n            if self.prev_node and node.val < self.prev_node.val:\n                if not self.first_swapped:\n                    self.first_swapped = self.prev_node\n                self.second_swapped = node\n            \n            self.prev_node = node\n\n            inorder_traverse(node.right)\n\n        inorder_traverse(root)\n\n        if self.first_swapped and self.second_swapped:\n            self.first_swapped.val, self.second_swapped.val = self.second_swapped.val, self.first_swapped.val",
+    "source": "test-data-ai",
+    "prompt": "Recover BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

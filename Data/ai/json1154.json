@@ -1,0 +1,7 @@
+{
+    "code": "from collections import deque\n\nclass Node:\n    def __init__(self, val):\n        self.val = val\n        self.left = None\n        self.right = None\n\ndef levelOrder(root):\n    if not root:\n        return\n\n    q = deque()\n    q.append(root)\n\n    while q:\n        node = q.popleft()\n        print(node.val, end=\" \")\n\n        if node.left:\n            q.append(node.left)\n        if node.right:\n            q.append(node.right)\n\nif __name__ == '__main__':\n    # Örnek Kullanım:\n    #      1\n    #     / \\\n    #    2   3\n    #   / \\   \\\n    #  4   5   6\n    \n    root = Node(1)\n    root.left = Node(2)\n    root.right = Node(3)\n    root.left.left = Node(4)\n    root.left.right = Node(5)\n    root.right.right = Node(6)\n\n    print(\"Level Order Traversal:\")\n    levelOrder(root) # Çıktı: 1 2 3 4 5 6",
+    "source": "test-data-ai",
+    "prompt": "Level order traversal using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

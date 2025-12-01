@@ -1,0 +1,7 @@
+{
+    "code": "class UnionFind:\n    def __init__(self, n):\n        self.parent = list(range(n))\n        self.num_components = n\n\n    def find(self, i):\n        if self.parent[i] == i:\n            return i\n        self.parent[i] = self.find(self.parent[i])\n        return self.parent[i]\n\n    def union(self, i, j):\n        root_i = self.find(i)\n        root_j = self.find(j)\n\n        if root_i != root_j:\n            self.parent[root_i] = root_j\n            self.num_components -= 1\n            return True\n        return False\n\n    def get_num_components(self):\n        return self.num_components",
+    "source": "test-data-ai",
+    "prompt": "Number of connected components using union find yaz.",
+    "license": "MIT",
+    "language": "python"
+}

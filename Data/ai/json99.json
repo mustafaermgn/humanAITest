@@ -1,0 +1,7 @@
+{
+    "code": "def word_break(s, word_dict):\n    def word_break_helper(s, word_dict, memo):\n        if s in memo:\n            return memo[s]\n        \n        if not s:\n            return [\"\"]\n        \n        result = []\n        for word in word_dict:\n            if s.startswith(word):\n                suffix = s[len(word):]\n                suffix_sentences = word_break_helper(suffix, word_dict, memo)\n                for sentence in suffix_sentences:\n                    if sentence:\n                        result.append(word + \" \" + sentence)\n                    else:\n                        result.append(word)\n        \n        memo[s] = result\n        return result\n\n    return word_break_helper(s, set(word_dict), {})",
+    "source": "test-data-ai",
+    "prompt": "Word break II (all possible sentences) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

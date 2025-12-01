@@ -1,0 +1,7 @@
+{
+    "code": "class UnionFind:\n    def __init__(self):\n        self.parent = {}\n\n    def find(self, i):\n        if self.parent[i] == i:\n            return i\n        self.parent[i] = self.find(self.parent[i])\n        return self.parent[i]\n\n    def union(self, i, j):\n        root_i = self.find(i)\n        root_j = self.find(j)\n\n        if root_i != root_j:\n            self.parent[root_j] = root_i\n            return True\n        return False\n\ndef accountsMerge(accounts):\n    uf = UnionFind()\n    email_to_name = {}\n    \n    for account in accounts:\n        name = account[0]\n        for i in range(1, len(account)):\n            email = account[i]\n            if email not in uf.parent:\n                uf.parent[email] = email\n            email_to_name[email] = name\n    \n    for account in accounts:\n        first_email = account[1]\n        for i in range(2, len(account)):\n            email = account[i]\n            uf.union(first_email, email)\n\n    merged_emails = {}\n    for email in uf.parent:\n        root = uf.find(email)\n        if root not in merged_emails:\n            merged_emails[root] = []\n        merged_emails[root].append(email)\n\n    result = []\n    for root, emails_list in merged_emails.items():\n        name = email_to_name[root]\n        emails_list.sort()\n        result.append([name] + emails_list)\n\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Accounts merge using union find yaz.",
+    "license": "MIT",
+    "language": "python"
+}

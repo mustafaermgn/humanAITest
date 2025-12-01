@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef minimize_max_difference(heights, k):\n    \"\"\"\n    Given a list of heights, finds the minimum possible difference between the\n    maximum and minimum height among 'k' selected heights.\n\n    Args:\n        heights (list): A list of integers representing heights.\n        k (int): The number of heights to select.\n\n    Returns:\n        int: The minimum possible difference.\n\n    Raises:\n        ValueError: If 'heights' is empty, 'k' is non-positive, or 'k' is\n                    greater than the number of available heights.\n    \"\"\"\n    if not heights:\n        if k == 0:\n            return 0\n        raise ValueError(\"Input 'heights' cannot be empty.\")\n    \n    if k <= 0:\n        raise ValueError(\"'k' must be a positive integer.\")\n\n    if k == 1:\n        return 0  # If we select only one height, the difference is 0.\n\n    if k > len(heights):\n        raise ValueError(f\"Cannot select {k} heights if only {len(heights)} are available.\")\n\n    heights.sort()\n\n    min_diff = math.inf\n\n    # Iterate through all possible windows of size k\n    # A window [heights[i], ..., heights[i + k - 1]] represents k selected heights.\n    for i in range(len(heights) - k + 1):\n        current_diff = heights[i + k - 1] - heights[i]\n        min_diff = min(min_diff, current_diff)\n\n    return min_diff",
+    "source": "test-data-ai",
+    "prompt": "Minimize maximum difference in heights yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def burrows_wheeler_transform(s):\n    \"\"\"Burrows-Wheeler dönüşümünü uygular.\"\"\"\n    s += '$'  # Dönüşümü benzersiz hale getirmek için son karakter eklenir.\n    rotations = [s[i:] + s[:i] for i in range(len(s))]\n    rotations.sort()\n    bwt = \"\".join(r[-1] for r in rotations)\n    return bwt\n\ndef inverse_burrows_wheeler_transform(bwt):\n    \"\"\"Burrows-Wheeler dönüşümünü tersine çevirir.\"\"\"\n    table = [\"\"] * len(bwt)\n    for _ in range(len(bwt)):\n        table = sorted(bwt[i] + table[i] for i in range(len(bwt)))\n    return table[0].rstrip('$')\n\nif __name__ == '__main__':\n    text = \"banana\"\n    transformed_text = burrows_wheeler_transform(text)\n    print(f\"Orijinal Metin: {text}\")\n    print(f\"BWT: {transformed_text}\")\n\n    original_text = inverse_burrows_wheeler_transform(transformed_text)\n    print(f\"Ters Çevrilmiş Metin: {original_text}\")",
+    "source": "test-data-ai",
+    "prompt": "Burrows-Wheeler transform yaz.",
+    "license": "MIT",
+    "language": "python"
+}

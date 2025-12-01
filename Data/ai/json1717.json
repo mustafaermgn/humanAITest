@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, jsonify\nfrom werkzeug.exceptions import HTTPException, NotFound, InternalServerError\n\napp = Flask(__name__)\n\n@app.route('/')\ndef index():\n    return \"Ana sayfa. Hata tetiklemek için /trigger-error adresini deneyin veya bulunmayan bir URL'e gidin.\"\n\n@app.route('/trigger-error')\ndef trigger_error():\n    return 1 / 0\n\n@app.errorhandler(NotFound)\ndef handle_not_found(e):\n    response = jsonify({\n        \"status\": 404,\n        \"error\": \"Not Found\",\n        \"message\": \"İstenen kaynak bulunamadı.\"\n    })\n    response.status_code = 404\n    return response\n\n@app.errorhandler(HTTPException)\ndef handle_http_exception(e):\n    response = jsonify({\n        \"status\": e.code,\n        \"error\": e.name,\n        \"message\": e.description\n    })\n    response.status_code = e.code\n    return response\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile error handler tanımla.",
+    "license": "MIT",
+    "language": "python"
+}

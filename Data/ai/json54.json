@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef symlink_oluştur_ve_kontrol_et(kaynak_dosya, hedef_dosya):\n    \"\"\"\n    Sembolik bir bağlantı oluşturur ve başarıyla oluşturulup oluşturulmadığını kontrol eder.\n\n    Args:\n        kaynak_dosya (str): Sembolik bağlantının işaret edeceği dosyanın veya dizinin yolu.\n        hedef_dosya (str): Oluşturulacak sembolik bağlantının yolu.\n\n    Returns:\n        bool: Sembolik bağlantı başarıyla oluşturulduysa True, aksi takdirde False.\n    \"\"\"\n    try:\n        os.symlink(kaynak_dosya, hedef_dosya)\n        return os.path.islink(hedef_dosya) and os.readlink(hedef_dosya) == kaynak_dosya\n    except OSError as e:\n        print(f\"Hata oluştu: {e}\")\n        return False\n\nif __name__ == '__main__':\n    # Test\n    kaynak = \"kaynak_dosya.txt\"\n    hedef = \"hedef_symlink\"\n\n    # Test dosyası oluştur\n    with open(kaynak, \"w\") as f:\n        f.write(\"Bu bir test dosyasıdır.\")\n\n    başarılı = symlink_oluştur_ve_kontrol_et(kaynak, hedef)\n\n    if başarılı:\n        print(f\"Sembolik bağlantı '{hedef}' başarıyla '{kaynak}' kaynağına oluşturuldu.\")\n    else:\n        print(f\"Sembolik bağlantı '{hedef}' oluşturulurken bir sorun oluştu.\")\n\n    # Temizlik (isteğe bağlı)\n    os.remove(kaynak)\n    if os.path.exists(hedef):\n        os.remove(hedef)",
+    "source": "test-data-ai",
+    "prompt": "Symlink oluşturan ve kontrol eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class ChainableObject:\n    def __init__(self, value=0):\n        self._value = value\n\n    def add(self, amount):\n        self._value += amount\n        return self  # Method chaining için self döndürülmeli\n\n    def subtract(self, amount):\n        self._value -= amount\n        return self\n\n    def multiply(self, factor):\n        self._value *= factor\n        return self\n\n    def divide(self, divisor):\n        if divisor == 0:\n            raise ValueError(\"Cannot divide by zero\")\n        self._value /= divisor\n        return self\n\n    def get_value(self):\n        return self._value\n\n    def reset(self):\n        self._value = 0\n        return self\n\n\nif __name__ == \"__main__\":\n    # Örnek kullanım\n    result = ChainableObject(10) \\\n        .add(5) \\\n        .subtract(2) \\\n        .multiply(3) \\\n        .divide(2) \\\n        .get_value()\n\n    print(f\"Sonuç: {result}\") # Beklenen: (10 + 5 - 2) * 3 / 2 = 13 * 3 / 2 = 39 / 2 = 19.5\n\n    result2 = ChainableObject() \\\n        .add(100) \\\n        .subtract(50) \\\n        .reset() \\\n        .add(20) \\\n        .get_value()\n\n    print(f\"Sonuç 2: {result2}\") # Beklenen: 20",
+    "source": "test-data-ai",
+    "prompt": "Method chaining implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

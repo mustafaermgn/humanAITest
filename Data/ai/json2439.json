@@ -1,0 +1,7 @@
+{
+    "code": "def lucas_lehmer_test(p: int) -> bool:\n    if p == 2:\n        return True\n\n    M_p = (1 << p) - 1\n\n    s = 4\n    for _ in range(p - 2):\n        s = (s * s - 2) % M_p\n\n    return s == 0",
+    "source": "test-data-ai",
+    "prompt": "Lucas-Lehmer primality test for Mersenne primes yaz.",
+    "license": "MIT",
+    "language": "python"
+}

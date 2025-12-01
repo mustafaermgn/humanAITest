@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:\n        result = []\n        \n        candidates = sorted(list(set(candidates)))\n\n        def backtrack(current_combination, remaining_target, start_index):\n            if remaining_target == 0:\n                result.append(list(current_combination))\n                return\n            if remaining_target < 0:\n                return\n\n            for i in range(start_index, len(candidates)):\n                candidate = candidates[i]\n                \n                if candidate > remaining_target:\n                    break\n\n                current_combination.append(candidate)\n                backtrack(current_combination, remaining_target - candidate, i)\n                current_combination.pop()\n\n        backtrack([], target, 0)\n        return result",
+    "source": "test-data-ai",
+    "prompt": "Combination sum problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

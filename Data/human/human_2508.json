@@ -1,0 +1,7 @@
+{
+    "code": "def on_mount(self) -> None:\n        self.styles.margin = (1, 2)\n        self.styles.content_align = (\"center\", \"middle\")\n        self.styles.background = Color.parse(\"#ffffff33\")\n        self.styles.border = (\"tall\", self.color)",
+    "source": "github_repo:Textualize/textual",
+    "file": "docs/examples/events/custom01.py",
+    "license": "MIT",
+    "language": "python"
+}

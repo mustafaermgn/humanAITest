@@ -1,0 +1,7 @@
+{
+    "code": "import uuid\n\ndef is_valid_uuid(uuid_string: str) -> bool:\n    try:\n        uuid.UUID(uuid_string)\n        return True\n    except ValueError:\n        return False",
+    "source": "test-data-ai",
+    "prompt": "UUID validation fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

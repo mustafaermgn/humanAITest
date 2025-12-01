@@ -1,0 +1,7 @@
+{
+    "code": "def is_isomorphic(s: str, t: str) -> bool:\n    if len(s) != len(t):\n        return False\n\n    s_to_t = {}\n    t_to_s = {}\n\n    for char_s, char_t in zip(s, t):\n        if char_s in s_to_t:\n            if s_to_t[char_s] != char_t:\n                return False\n        else:\n            if char_t in t_to_s:\n                return False\n            s_to_t[char_s] = char_t\n            t_to_s[char_t] = char_s\n\n    return True",
+    "source": "test-data-ai",
+    "prompt": "Isomorphic strings checker using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

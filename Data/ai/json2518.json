@@ -1,0 +1,7 @@
+{
+    "code": "import pandas as pd\n\ndef csv_to_dataframe(file_path):\n    \"\"\"\n    Belirtilen CSV dosya yolunu okur ve bir pandas DataFrame'e dönüştürür.\n\n    Args:\n        file_path (str): CSV dosyasının yolu.\n\n    Returns:\n        pandas.DataFrame: CSV dosyasından oluşturulmuş DataFrame.\n    \"\"\"\n    df = pd.read_csv(file_path)\n    return df",
+    "source": "test-data-ai",
+    "prompt": "CSV'yi pandas DataFrame'e çeviren fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

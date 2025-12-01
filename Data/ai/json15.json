@@ -1,0 +1,7 @@
+{
+    "code": "def count_set_bits(n: int) -> int:\n    \"\"\"\n    Bir sayının binary gösterimindeki 1'lerin sayısını bulur.\n\n    Args:\n        n: Sayı (int).\n\n    Returns:\n        Binary gösterimindeki 1'lerin sayısı (int).\n    \"\"\"\n    if n < 0:\n        # Negatif sayılar için davranış tanımlanmalıdır.\n        # Genellikle 2'lik tümleyici gösterimi baz alınır veya hata verilir.\n        # Bu örnekte, mutlak değerinin pozitif binary gösterimini kullanıyoruz.\n        # Gerçek bir 2'lik tümleyici senaryosu için daha karmaşık mantık gerekir.\n        n = abs(n)\n\n    binary_representation = bin(n)\n    # '0b' ön ekini kaldırıp '1'leri sayarız\n    return binary_representation.count('1')",
+    "source": "test-data-ai",
+    "prompt": "Bir sayının binary gösterimindeki 1'lerin sayısını bul.",
+    "license": "MIT",
+    "language": "python"
+}

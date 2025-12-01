@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI, Depends, Request\n\napp = FastAPI()\n\n# Bir bağımlılık (dependency) fonksiyonu\ndef get_custom_header(request: Request):\n    \"\"\"\n    HTTP isteğinden 'X-Custom-Header' başlığını alır.\n    Yoksa varsayılan bir değer döner.\n    \"\"\"\n    return request.headers.get(\"X-Custom-Header\", \"Default Custom Header Value\")\n\n# Path operation fonksiyonu, bağımlılığı kullanarak\n@app.get(\"/items/\")\nasync def read_items(\n    custom_header_value: str = Depends(get_custom_header)\n):\n    \"\"\"\n    'X-Custom-Header' değerini döndüren bir örnek.\n    \"\"\"\n    return {\"message\": f\"Value of X-Custom-Header: {custom_header_value}\"}\n\n# Çalıştırmak için:\n# 1. Bu kodu bir Python dosyasına kaydet (örn: main.py).\n# 2. Terminalde: uvicorn main:app --reload\n# 3. Tarayıcıda: http://127.0.0.1:8000/items/\n#    veya curl ile özel başlık ekleyerek test edin:\n#    curl -H \"X-Custom-Header: MyUniqueValue\" http://127.0.0.1:8000/items/",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile dependency injection örneği yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef find_middle_of_linked_list(head: ListNode) -> ListNode:\n    if not head:\n        return None\n\n    slow = head\n    fast = head\n\n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n\n    return slow",
+    "source": "test-data-ai",
+    "prompt": "Linked list'in ortasını bulan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

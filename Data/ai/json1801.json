@@ -1,0 +1,7 @@
+{
+    "code": "import functools\n\nclass LazyProperty:\n    \"\"\"\n    Decorator to make a property lazy. The decorated method will be called\n    only on the first access, and its result will be cached and returned\n    for subsequent accesses.\n    \"\"\"\n    def __init__(self, func):\n        self.func = func\n        functools.update_wrapper(self, func)\n\n    def __get__(self, obj, objtype=None):\n        if obj is None:\n            return self  # Accessed via class, return the descriptor itself\n        \n        # Calculate the value\n        value = self.func(obj)\n        \n        # Store the value on the instance, replacing the descriptor\n        setattr(obj, self.func.__name__, value)\n        \n        return value",
+    "source": "test-data-ai",
+    "prompt": "Lazy property decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

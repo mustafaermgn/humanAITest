@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"Hello FastAPI from GET endpoint!\"}\n\n# Uvicorn ile çalıştırmak için terminalde şu komutu kullanın:\n# uvicorn your_file_name:app --reload\n# (your_file_name yerine bu kodu kaydettiğiniz dosyanın adını yazın, örn: main.py)",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile GET endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

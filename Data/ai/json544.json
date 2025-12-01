@@ -1,0 +1,7 @@
+{
+    "code": "def maximize_sum_after_k_negations(nums, k):\n    nums.sort()\n    for i in range(len(nums)):\n        if nums[i] < 0 and k > 0:\n            nums[i] = -nums[i]\n            k -= 1\n        else:\n            break\n    \n    if k % 2 != 0:\n        nums.sort()\n        nums[0] = -nums[0]\n        \n    return sum(nums)",
+    "source": "test-data-ai",
+    "prompt": "Maximize sum after k negations yaz.",
+    "license": "MIT",
+    "language": "python"
+}

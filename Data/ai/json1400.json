@@ -1,0 +1,7 @@
+{
+    "code": "def find_missing_number_xor(nums):\n    n = len(nums)\n    \n    xor_sum = 0\n    \n    # Beklenen aralıktaki tüm sayıların XOR toplamını hesapla (0'dan n'ye kadar)\n    for i in range(n + 1):\n        xor_sum ^= i\n        \n    # Verilen listedeki tüm sayıların XOR toplamını hesapla\n    for num in nums:\n        xor_sum ^= num\n        \n    # Geriye kalan değer eksik sayıdır\n    return xor_sum",
+    "source": "test-data-ai",
+    "prompt": "Missing number problemi için XOR tekniğini kullanan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def __getitem__(self, idx):\n        with data_utils.numpy_seed(43211, self.epoch, idx):\n            return self.mmdataset[idx]",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/datasets/fairseqmmdataset.py",
+    "license": "MIT",
+    "language": "python"
+}

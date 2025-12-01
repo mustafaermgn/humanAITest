@@ -1,0 +1,7 @@
+{
+    "code": "def min_palindrome_cuts(s):\n    \"\"\"\n    Girdi dizesinin palindrome bölümlemesi için minimum kesme sayısını bulur.\n\n    Örneğin:\n    min_palindrome_cuts(\"aabaa\") == 0\n    min_palindrome_cuts(\"ababbbabbababa\") == 3\n    min_palindrome_cuts(\"abc\") == 2\n    \"\"\"\n    n = len(s)\n\n    # is_palindrome[i][j], s[i:j+1]'in bir palindrome olup olmadığını tutar\n    is_palindrome = [[False] * n for _ in range(n)]\n    for i in range(n):\n        is_palindrome[i][i] = True\n    for i in range(n - 1):\n        if s[i] == s[i+1]:\n            is_palindrome[i][i+1] = True\n    for length in range(3, n + 1):\n        for i in range(n - length + 1):\n            j = i + length - 1\n            if s[i] == s[j] and is_palindrome[i+1][j-1]:\n                is_palindrome[i][j] = True\n\n    # cuts[i], s[:i+1]'in palindrome bölümlemesi için minimum kesme sayısını tutar\n    cuts = [0] * n\n    for i in range(n):\n        if is_palindrome[0][i]:\n            cuts[i] = 0\n        else:\n            cuts[i] = i\n            for j in range(i):\n                if is_palindrome[j+1][i]:\n                    cuts[i] = min(cuts[i], cuts[j] + 1)\n\n    return cuts[n-1]",
+    "source": "test-data-ai",
+    "prompt": "Palindrome partitioning için minimum cut sayısını bul.",
+    "license": "MIT",
+    "language": "python"
+}

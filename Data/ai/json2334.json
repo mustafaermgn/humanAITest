@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport sys\nfrom watchdog.observers import Observer\nfrom watchdog.events import FileSystemEventHandler\n\nclass MyHandler(FileSystemEventHandler):\n    def on_created(self, event):\n        print(f\"Oluşturuldu: {event.src_path}\")\n\n    def on_deleted(self, event):\n        print(f\"Silindi: {event.src_path}\")\n\n    def on_modified(self, event):\n        print(f\"Değiştirildi: {event.src_path}\")\n\n    def on_moved(self, event):\n        print(f\"Taşındı/Yeniden Adlandırıldı: {event.src_path} -> {event.dest_path}\")\n\nif __name__ == \"__main__\":\n    # İzlenecek dizin. Komut satırı argümanı olarak verilmezse mevcut dizini kullanır.\n    path = sys.argv[1] if len(sys.argv) > 1 else '.'\n\n    event_handler = MyHandler()\n    observer = Observer()\n    # Dizin ve alt dizinlerdeki değişiklikleri izle\n    observer.schedule(event_handler, path, recursive=True)\n    observer.start()\n    try:\n        while True:\n            time.sleep(1)\n    except KeyboardInterrupt:\n        observer.stop()\n    observer.join()",
+    "source": "test-data-ai",
+    "prompt": "File watcher (changes monitor) implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

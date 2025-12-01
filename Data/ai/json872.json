@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_rectangle_area(width, height):\n    assert isinstance(width, (int, float)), \"Width must be a number.\"\n    assert isinstance(height, (int, float)), \"Height must be a number.\"\n    assert width > 0, \"Width must be positive.\"\n    assert height > 0, \"Height must be positive.\"\n\n    return width * height\n\nif __name__ == \"__main__\":\n    # Geçerli girdiler\n    print(f\"Area (5, 10): {calculate_rectangle_area(5, 10)}\")\n    print(f\"Area (2.5, 4.0): {calculate_rectangle_area(2.5, 4.0)}\")\n\n    # Geçersiz girdiler - AssertError beklenen durumlar\n    try:\n        calculate_rectangle_area(\"5\", 10)\n    except AssertionError as e:\n        print(f\"Hata yakalandı: {e}\")\n\n    try:\n        calculate_rectangle_area(5, -10)\n    except AssertionError as e:\n        print(f\"Hata yakalandı: {e}\")\n\n    try:\n        calculate_rectangle_area(0, 10)\n    except AssertionError as e:\n        print(f\"Hata yakalandı: {e}\")\n\n    try:\n        calculate_rectangle_area(None, 10)\n    except AssertionError as e:\n        print(f\"Hata yakalandı: {e}\")",
+    "source": "test-data-ai",
+    "prompt": "Bir fonksiyonun **assertion** kullanarak girdi doğrulamasını nasıl yapacağını gösteren bir örnek yaz.",
+    "license": "MIT",
+    "language": "python"
+}

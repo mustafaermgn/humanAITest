@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef reverseList(head: ListNode) -> ListNode:\n    prev = None\n    current = head\n\n    while current is not None:\n        next_node = current.next\n        current.next = prev\n        prev = current\n        current = next_node\n    \n    return prev",
+    "source": "test-data-ai",
+    "prompt": "Linked list'i reverse eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

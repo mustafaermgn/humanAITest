@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def invertTree(self, root: TreeNode) -> TreeNode:\n        if not root:\n            return None\n\n        # Swap the left and right children of the current node\n        root.left, root.right = root.right, root.left\n\n        # Recursively invert the new left and right subtrees\n        self.invertTree(root.left)\n        self.invertTree(root.right)\n\n        return root",
+    "source": "test-data-ai",
+    "prompt": "Invert binary tree yaz.",
+    "license": "MIT",
+    "language": "python"
+}

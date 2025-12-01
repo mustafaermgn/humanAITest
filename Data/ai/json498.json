@@ -1,0 +1,7 @@
+{
+    "code": "def ilk_eksik_pozitif(nums):\n    \"\"\"\n    Sıralanmamış bir dizideki en küçük eksik pozitif tamsayıyı bulur.\n\n    Args:\n      nums: Tamsayı dizisi.\n\n    Returns:\n      Dizideki en küçük eksik pozitif tamsayı.\n    \"\"\"\n    n = len(nums)\n\n    # Temel durum.\n    if 1 not in nums:\n        return 1\n\n    # Negatif sayıları, sıfırları ve n'den büyük sayıları 1 ile değiştirin\n    # Sonraki adımlar için.\n    for i in range(n):\n        if nums[i] <= 0 or nums[i] > n:\n            nums[i] = 1\n\n    # Diziyi bir karma tablo olarak kullanın.\n    # Örneğin, nums[1] değerini işaretlediğimizde, \n    # değerin var olduğunu gösterir.\n    # İndisleri negatif değerlere dönüştürerek.\n    # Dikkatli olun, yinelenenlere izin verin: işaretli olmaya devam eden ikinci bir yinelenme nedeniyle bir yinelenmeyi iki kez negatif yapmaktan kaçının.\n    # Yinelenmeleri önlemek için mutlak değeri kullanın.\n    for i in range(n):\n        a = abs(nums[i])\n        # İndis n kullanılıyorsa, diziyi değiştirin\n        if a == n:\n            nums[0] = - abs(nums[0])\n        else:\n            nums[a] = - abs(nums[a])\n\n    # Şimdi ilk pozitif indisi arayın,\n    # bu da eksik pozitifin dizin numarasıdır.\n    for i in range(1, n):\n        if nums[i] > 0:\n            return i\n\n    if nums[0] > 0:\n        return n\n\n    return n + 1",
+    "source": "test-data-ai",
+    "prompt": "Find the smallest missing positive integer in unsorted array.",
+    "license": "MIT",
+    "language": "python"
+}

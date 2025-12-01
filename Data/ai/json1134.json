@@ -1,0 +1,7 @@
+{
+    "code": "def simplify_unix_path(path):\n    is_absolute = path.startswith('/')\n    components = path.split('/')\n    stack = []\n\n    for component in components:\n        if component == '' or component == '.':\n            continue\n        elif component == '..':\n            if stack and stack[-1] != '..':\n                stack.pop()\n            elif not is_absolute:\n                stack.append('..')\n        else:\n            stack.append(component)\n\n    if not stack:\n        return '/' if is_absolute else '.'\n    \n    result = '/'.join(stack)\n\n    if is_absolute:\n        result = '/' + result\n    \n    return result",
+    "source": "test-data-ai",
+    "prompt": "Simplify Unix path yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def is_bleak_yaz(n: int) -> bool:\n    \"\"\"\n    Checks if a number is a \"bleak yaz\" number.\n\n    The concept of a \"bleak yaz\" number is not a recognized mathematical or computational term.\n    Therefore, this function is unable to determine the property without a clear definition.\n    \"\"\"\n    raise NotImplementedError(\"The definition of a 'bleak yaz' number is not known.\")",
+    "source": "test-data-ai",
+    "prompt": "Check if a number is bleak yaz.",
+    "license": "MIT",
+    "language": "python"
+}

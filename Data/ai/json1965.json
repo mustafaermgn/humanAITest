@@ -1,0 +1,7 @@
+{
+    "code": "def mod_inverse_fermat(a, m):\n    if m <= 1:\n        raise ValueError(\"Modulus 'm' must be a prime number greater than 1 for Fermat's Little Theorem.\")\n    if a % m == 0:\n        raise ValueError(\"Cannot find inverse: 'a' is a multiple of 'm'.\")\n\n    a = a % m\n    \n    inverse = pow(a, m - 2, m)\n    return inverse",
+    "source": "test-data-ai",
+    "prompt": "Fermat's little theorem kullanarak modular inverse bul.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, x):\n        self.val = x\n        self.next = None\n\nclass Solution:\n    def detectCycle(self, head: ListNode) -> ListNode:\n        if not head or not head.next:\n            return None\n\n        slow = head\n        fast = head\n\n        # Phase 1: Detect if a cycle exists and find the meeting point\n        while fast and fast.next:\n            slow = slow.next\n            fast = fast.next.next\n            if slow == fast:\n                break\n        else:\n            # If the loop finished without breaking, it means fast reached the end, so no cycle\n            return None\n\n        # Phase 2: If a cycle exists, find the start of the cycle\n        # Reset slow pointer to the head of the list\n        # Move both slow and fast one step at a time\n        # The point where they meet again is the start of the cycle\n        slow = head\n        while slow != fast:\n            slow = slow.next\n            fast = fast.next\n        \n        return slow",
+    "source": "test-data-ai",
+    "prompt": "Linked list cycle II (find start of cycle) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

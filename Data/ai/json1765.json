@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, request, jsonify\n\napp = Flask(__name__)\n\n@app.route('/submit_data', methods=['POST'])\ndef submit_data():\n    if request.is_json:\n        data = request.json\n        return jsonify({\"message\": \"JSON veri başarıyla alındı!\", \"data_received\": data}), 200\n    else:\n        # Form-urlencoded veya multipart/form-data için\n        data = request.form.to_dict()\n        return jsonify({\"message\": \"Form verisi başarıyla alındı!\", \"data_received\": data}), 200\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile POST data alan endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

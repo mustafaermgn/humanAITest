@@ -1,0 +1,7 @@
+{
+    "code": "def find_all_paths(graph, source, target):\n    \"\"\"\n    Finds all simple paths from a source node to a target node in a graph.\n\n    Args:\n        graph (dict): The graph represented as an adjacency list.\n                      Keys are nodes, values are lists of neighboring nodes.\n        source: The starting node.\n        target: The target node.\n\n    Returns:\n        list: A list of lists, where each inner list represents a simple path\n              from source to target. A simple path does not repeat nodes.\n    \"\"\"\n    all_paths = []\n\n    def dfs(current_node, current_path):\n        current_path.append(current_node)\n\n        if current_node == target:\n            all_paths.append(list(current_path))\n        else:\n            for neighbor in graph.get(current_node, []):\n                if neighbor not in current_path:  # Avoid cycles for simple paths\n                    dfs(neighbor, current_path)\n        \n        current_path.pop()  # Backtrack\n\n    dfs(source, [])\n    return all_paths",
+    "source": "test-data-ai",
+    "prompt": "All paths from source to target yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def heapify(arr, n, i):\n    largest = i\n    left = 2 * i + 1\n    right = 2 * i + 2\n\n    if left < n and arr[left] > arr[largest]:\n        largest = left\n\n    if right < n and arr[right] > arr[largest]:\n        largest = right\n\n    if largest != i:\n        arr[i], arr[largest] = arr[largest], arr[i]\n        heapify(arr, n, largest)\n\ndef build_heap(arr):\n    n = len(arr)\n    for i in range(n // 2 - 1, -1, -1):\n        heapify(arr, n, i)\n\nif __name__ == '__main__':\n    arr = [12, 11, 13, 5, 6, 7]\n    build_heap(arr)\n    print(\"Heapified array:\", arr)",
+    "source": "test-data-ai",
+    "prompt": "Heapify process yaz.",
+    "license": "MIT",
+    "language": "python"
+}

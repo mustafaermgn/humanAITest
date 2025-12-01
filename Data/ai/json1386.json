@@ -1,0 +1,7 @@
+{
+    "code": "def count_and_say(n: int) -> str:\n    if n == 1:\n        return \"1\"\n\n    prev_term = count_and_say(n - 1)\n    \n    result = []\n    i = 0\n    while i < len(prev_term):\n        char = prev_term[i]\n        count = 0\n        j = i\n        while j < len(prev_term) and prev_term[j] == char:\n            count += 1\n            j += 1\n        result.append(str(count))\n        result.append(char)\n        i = j\n            \n    return \"\".join(result)",
+    "source": "test-data-ai",
+    "prompt": "Count and say sequence generator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

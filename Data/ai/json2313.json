@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data=0, next_node=None):\n        self.data = data\n        self.next = next_node\n\ndef reverseLinkedList(head):\n    prev = None\n    curr = head\n    while curr:\n        next_temp = curr.next\n        curr.next = prev\n        prev = curr\n        curr = next_temp\n    return prev",
+    "source": "test-data-ai",
+    "prompt": "Linked list'i reverse eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

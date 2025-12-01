@@ -1,0 +1,7 @@
+{
+    "code": "import numpy as np\n\ndef k_center_greedy(points, k):\n    \"\"\"\n    K-center problemi için açgözlü yaklaşım algoritması.\n\n    Args:\n        points: Bir veri noktaları listesi, her nokta bir numpy dizisi olarak temsil edilir.\n        k: Seçilecek merkez sayısı.\n\n    Returns:\n        Seçilen k merkezin bir listesi.\n    \"\"\"\n\n    centers = []\n    if not points:\n        return centers\n\n    # İlk noktayı ilk merkez olarak rastgele seçin.\n    centers.append(points[0])\n\n    while len(centers) < k:\n        # Her nokta için en yakın merkeze olan mesafeyi bulun.\n        distances = np.array([min([np.linalg.norm(p - c) for c in centers]) for p in points])\n\n        # En uzak noktayı bir sonraki merkez olarak seçin.\n        next_center_index = np.argmax(distances)\n        centers.append(points[next_center_index])\n\n    return centers\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    points = [\n        np.array([1, 2]),\n        np.array([1, 4]),\n        np.array([1, 0]),\n        np.array([4, 2]),\n        np.array([4, 4]),\n        np.array([4, 0])\n    ]\n    k = 2\n\n    centers = k_center_greedy(points, k)\n\n    print(\"Seçilen Merkezler:\")\n    for center in centers:\n        print(center)",
+    "source": "test-data-ai",
+    "prompt": "K centers problem için greedy approximation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "[item for sublist in my_list for item in (sublist if isinstance(sublist, list) else [sublist])]",
+    "source": "test-data-ai",
+    "prompt": "Bir listeyi **flatten** (düzleştirme) yapan tek satırlık bir list comprehension yaz.",
+    "license": "MIT",
+    "language": "python"
+}

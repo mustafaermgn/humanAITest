@@ -1,0 +1,7 @@
+{
+    "code": "def mod_inverse(a, m):\n    return pow(a, -1, m)",
+    "source": "test-data-ai",
+    "prompt": "Modular multiplicative inverse bul.",
+    "license": "MIT",
+    "language": "python"
+}

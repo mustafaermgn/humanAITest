@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, data):\n        new_node = Node(data)\n        if not self.head:\n            self.head = new_node\n            return\n        last = self.head\n        while last.next:\n            last = last.next\n        last.next = new_node\n\n    def print_list(self):\n        current = self.head\n        while current:\n            print(current.data, end=\" -> \")\n            current = current.next\n        print(\"None\")\n\n    def delete_element(self, key):\n        current = self.head\n\n        if current is not None and current.data == key:\n            self.head = current.next\n            current = None\n            return\n\n        prev = None\n        while current is not None and current.data != key:\n            prev = current\n            current = current.next\n\n        if current is None:\n            return\n\n        prev.next = current.next\n        current = None",
+    "source": "test-data-ai",
+    "prompt": "Linked list'ten eleman silme fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

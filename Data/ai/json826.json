@@ -1,0 +1,7 @@
+{
+    "code": "def dosya_oku(dosya_adi):\n    try:\n        with open(dosya_adi, 'r') as dosya:\n            icerik = dosya.read()\n            print(icerik)\n    except FileNotFoundError:\n        print(f\"Hata: '{dosya_adi}' adlı dosya bulunamadı.\")\n    except Exception as e:\n        print(f\"Beklenmeyen bir hata oluştu: {e}\")\n\nif __name__ == \"__main__\":\n    dosya_adi = input(\"Lütfen okunacak dosyanın adını girin: \")\n    dosya_oku(dosya_adi)",
+    "source": "test-data-ai",
+    "prompt": "Bir metin dosyasını okurken oluşabilecek FileNotFoundError istisnasını yakala ve kullanıcı dostu bir mesaj yazdır.",
+    "license": "MIT",
+    "language": "python"
+}

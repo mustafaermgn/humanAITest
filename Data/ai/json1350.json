@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport sys\n\ndef human_readable_size(size, decimal_places=2):\n    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:\n        if size < 1024.0:\n            break\n        size /= 1024.0\n    return f\"{size:.{decimal_places}f}{unit}\"\n\ndef download_file_with_progress(filename, total_size, chunk_size=1024 * 10, delay=0.05):\n    downloaded_size = 0\n    bar_length = 50 \n\n    print(f\"Downloading: {filename} ({human_readable_size(total_size)})\")\n\n    while downloaded_size < total_size:\n        current_chunk_size = min(chunk_size, total_size - downloaded_size)\n        downloaded_size += current_chunk_size\n\n        progress_percent = (downloaded_size / total_size) * 100\n\n        filled_length = int(bar_length * downloaded_size / total_size)\n        bar = '█' * filled_length + '-' * (bar_length - filled_length)\n\n        status_str = f\"\\r[{bar}] {progress_percent:6.2f}% {human_readable_size(downloaded_size)}/{human_readable_size(total_size)}\"\n        \n        sys.stdout.write(status_str)\n        sys.stdout.flush()\n\n        time.sleep(delay)\n\n    sys.stdout.write('\\n')\n    print(f\"Download of '{filename}' complete!\")",
+    "source": "test-data-ai",
+    "prompt": "File download progress bar ile fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

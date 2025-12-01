@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef refresh_oauth2_token(token_url: str, refresh_token: str, client_id: str, client_secret: str = None) -> dict | None:\n    headers = {\n        'Content-Type': 'application/x-www-form-urlencoded'\n    }\n\n    data = {\n        'grant_type': 'refresh_token',\n        'refresh_token': refresh_token,\n        'client_id': client_id,\n    }\n\n    if client_secret:\n        data['client_secret'] = client_secret\n\n    try:\n        response = requests.post(token_url, data=data, headers=headers)\n        response.raise_for_status()\n        return response.json()\n    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as e:\n        return None\n    except requests.exceptions.JSONDecodeError:\n        return None",
+    "source": "test-data-ai",
+    "prompt": "OAuth2 token refresh yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

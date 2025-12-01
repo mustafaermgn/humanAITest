@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:\n        num_map = {}  # Stores num -> last_seen_index\n\n        for i, num in enumerate(nums):\n            if num in num_map:\n                if abs(i - num_map[num]) <= k:\n                    return True\n            num_map[num] = i  # Update with the current index\n\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Contains duplicate II using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

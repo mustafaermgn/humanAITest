@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\ndef group_anagrams(words):\n    anagram_map = defaultdict(list)\n    for word in words:\n        sorted_word = \"\".join(sorted(word))\n        anagram_map[sorted_word].append(word)\n    return list(anagram_map.values())",
+    "source": "test-data-ai",
+    "prompt": "Group anagrams using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

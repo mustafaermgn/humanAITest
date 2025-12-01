@@ -1,0 +1,7 @@
+{
+    "code": "def find_peak_element(nums):\n    n = len(nums)\n\n    if n == 0:\n        return None\n    if n == 1:\n        return nums[0]\n\n    low = 0\n    high = n - 1\n\n    while low <= high:\n        mid = low + (high - low) // 2\n\n        is_left_greater_or_equal = (mid == 0 or nums[mid] >= nums[mid - 1])\n        is_right_greater_or_equal = (mid == n - 1 or nums[mid] >= nums[mid + 1])\n\n        if is_left_greater_or_equal and is_right_greater_or_equal:\n            return nums[mid]\n        elif mid > 0 and nums[mid] < nums[mid - 1]:\n            high = mid - 1\n        else:\n            low = mid + 1\n    \n    return None",
+    "source": "test-data-ai",
+    "prompt": "Peak element (tepe eleman) bulan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

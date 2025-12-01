@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:\n        dummy = ListNode(0, head)\n        fast = dummy\n        slow = dummy\n\n        # Move fast pointer n steps ahead\n        for _ in range(n):\n            fast = fast.next\n\n        # Move both pointers until fast reaches the end\n        while fast.next:\n            slow = slow.next\n            fast = fast.next\n\n        # slow is now at the node just before the one to be removed\n        slow.next = slow.next.next\n\n        return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Remove nth node from end yaz.",
+    "license": "MIT",
+    "language": "python"
+}

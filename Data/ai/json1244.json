@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def isHappy(self, n: int) -> bool:\n        seen = set()\n\n        while n != 1 and n not in seen:\n            seen.add(n)\n            n = self._get_next(n)\n\n        return n == 1\n\n    def _get_next(self, num: int) -> int:\n        total_sum = 0\n        while num > 0:\n            digit = num % 10\n            total_sum += digit * digit\n            num //= 10\n        return total_sum",
+    "source": "test-data-ai",
+    "prompt": "Happy number using hash set yaz.",
+    "license": "MIT",
+    "language": "python"
+}

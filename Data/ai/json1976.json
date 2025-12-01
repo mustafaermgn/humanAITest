@@ -1,0 +1,7 @@
+{
+    "code": "def mod_inverse_fermat(a, m):\n    \"\"\"\n    Fermat's Little Theorem kullanarak 'a' sayısının 'm' modülüne göre modüler tersini bulur.\n    Bu fonksiyonun doğru çalışması için 'm' bir asal sayı olmalı ve 'a', 'm'nin bir katı olmamalıdır.\n    \"\"\"\n    a_normalized = a % m\n    if a_normalized == 0:\n        raise ValueError(\"Modüler tersi mevcut değildir, 'a' sayısı 'm'nin bir katıdır.\")\n    \n    # Fermat's Little Theorem: a^(m-1) ≡ 1 (mod m)\n    # Her iki tarafı a^(-1) ile çarparsak: a^(m-2) ≡ a^(-1) (mod m)\n    # Böylece, a'nın m modülüne göre tersi a^(m-2) mod m'dir.\n    return pow(a_normalized, m - 2, m)",
+    "source": "test-data-ai",
+    "prompt": "Fermat's little theorem kullanarak modular inverse bul.",
+    "license": "MIT",
+    "language": "python"
+}

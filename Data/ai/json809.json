@@ -1,0 +1,7 @@
+{
+    "code": "def all_paths_source_target(graph):\n    \"\"\"\n    Finds all paths from source (node 0) to target (node n-1) in a directed acyclic graph.\n\n    Args:\n        graph: A list of lists representing the graph. graph[i] is a list of all nodes that node i can lead to.\n\n    Returns:\n        A list of lists, where each inner list is a path from source to target.\n    \"\"\"\n    def dfs(node, path):\n        if node == target:\n            paths.append(path[:])  # Append a copy of the path\n            return\n\n        for neighbor in graph[node]:\n            path.append(neighbor)\n            dfs(neighbor, path)\n            path.pop()  # Backtrack\n\n    n = len(graph)\n    target = n - 1\n    paths = []\n    dfs(0, [0])  # Start DFS from source node 0 with an initial path containing just 0\n    return paths\n\n\nif __name__ == '__main__':\n    # Example usage:\n    graph1 = [[1, 2], [3], [3], []]\n    print(all_paths_source_target(graph1))  # Expected output: [[0, 1, 3], [0, 2, 3]]\n\n    graph2 = [[4,3,1],[3,2,4],[3],[4],[]]\n    print(all_paths_source_target(graph2)) # Expected Output: [[0, 4], [0, 3, 4], [0, 1, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 4]]",
+    "source": "test-data-ai",
+    "prompt": "All paths from source to target yaz.",
+    "license": "MIT",
+    "language": "python"
+}

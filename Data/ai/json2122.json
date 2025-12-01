@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass Solution:\n    def leastInterval(self, tasks: list[str], n: int) -> int:\n        task_counts = collections.Counter(tasks)\n        \n        max_freq = 0\n        if task_counts:\n            max_freq = max(task_counts.values())\n        \n        num_max_freq = 0\n        for count in task_counts.values():\n            if count == max_freq:\n                num_max_freq += 1\n                \n        time_based_on_max_freq = (max_freq - 1) * (n + 1) + num_max_freq\n        \n        return max(len(tasks), time_based_on_max_freq)",
+    "source": "test-data-ai",
+    "prompt": "Task scheduler with cooling interval yaz.",
+    "license": "MIT",
+    "language": "python"
+}

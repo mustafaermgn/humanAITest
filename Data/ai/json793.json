@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, request, jsonify\n\napp = Flask(__name__)\n\n# Basit bir middleware örneği\n@app.before_request\ndef before_request_func():\n    print(\"İstekten önce çalıştı.\")\n    # İsteği durdurmak için aşağıdaki gibi bir yanıt döndürülebilir:\n    # return jsonify({'message': 'İstek engellendi.'}), 403\n\n@app.after_request\ndef after_request_func(response):\n    print(\"İstekten sonra çalıştı.\")\n    response.headers['X-Custom-Header'] = 'Değer'\n    return response\n\n# Hata yönetimi için middleware\n@app.errorhandler(404)\ndef not_found_error(error):\n    return jsonify({'error': 'Bulunamadı'}), 404\n\n@app.errorhandler(500)\ndef internal_server_error(error):\n    return jsonify({'error': 'Sunucu Hatası'}), 500\n\n@app.route('/')\ndef hello_world():\n    return 'Merhaba, Dünya!'\n\n@app.route('/hata')\ndef hata_tetikle():\n    raise Exception(\"Bir hata oluştu!\")\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask middleware örneği yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def sieve_of_eratosthenes(limit):\n    \"\"\"\n    Sieve of Eratosthenes algoritması kullanarak belirli bir sayıya kadar olan asal sayıları bulur.\n    \"\"\"\n    is_prime = [True] * (limit + 1)\n    if limit >= 0:\n        is_prime[0] = False\n    if limit >= 1:\n        is_prime[1] = False\n\n    for p in range(2, int(limit**0.5) + 1):\n        if is_prime[p]:\n            for multiple in range(p * p, limit + 1, p):\n                is_prime[multiple] = False\n\n    primes = [i for i, prime_status in enumerate(is_prime) if prime_status]\n    return primes\n\nif __name__ == \"__main__\":\n    limit_number = 100  # Örnek olarak 100'e kadar olan asal sayıları bulalım\n    prime_numbers = sieve_of_eratosthenes(limit_number)\n    print(prime_numbers)\n\n    limit_number_2 = 30\n    prime_numbers_2 = sieve_of_eratosthenes(limit_number_2)\n    print(prime_numbers_2)",
+    "source": "test-data-ai",
+    "prompt": "Sieve of Eratosthenes ile belirli bir sayıya kadar asal sayıları bul.",
+    "license": "MIT",
+    "language": "python"
+}

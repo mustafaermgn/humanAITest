@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef plusOne(head: ListNode) -> ListNode:\n    def add_one_recursive(node: ListNode) -> int:\n        if not node:\n            return 1\n\n        carry_from_right = add_one_recursive(node.next)\n\n        if carry_from_right == 0:\n            return 0\n\n        total_sum = node.val + carry_from_right\n        node.val = total_sum % 10\n        \n        return total_sum // 10\n\n    final_carry = add_one_recursive(head)\n\n    if final_carry == 1:\n        new_head = ListNode(1)\n        new_head.next = head\n        return new_head\n    else:\n        return head",
+    "source": "test-data-ai",
+    "prompt": "Plus one to number in linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

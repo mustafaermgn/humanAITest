@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\n# Simulate a deck of cards (example numbers)\ninitial_cards = [5, 2, 8, 1, 9, 3, 7]\n\n# Sort the cards to prepare for revealing in increasing order\n# (This step simulates having the cards ordered in the deck initially,\n# or sorting them before putting into the queue if they were unordered).\ninitial_cards.sort()\n\n# Initialize the queue named 'yaz' with the sorted cards\nyaz = collections.deque(initial_cards)\n\nprint(\"Revealing cards in increasing order:\")\n\n# Reveal cards one by one from the queue\nwhile yaz:\n    card = yaz.popleft()\n    print(card)",
+    "source": "test-data-ai",
+    "prompt": "Reveal cards in increasing order using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

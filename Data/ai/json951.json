@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef normalize_and_validate_path(path: str) -> str:\n    if not isinstance(path, str):\n        raise TypeError(\"Path must be a string.\")\n\n    normalized_path = os.path.normpath(path)\n\n    if '\\0' in normalized_path:\n        raise ValueError(\"Path contains a null byte, which is invalid.\")\n\n    return normalized_path",
+    "source": "test-data-ai",
+    "prompt": "Path normalization ve validation yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

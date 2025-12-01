@@ -1,0 +1,7 @@
+{
+    "code": "def binary_search(arr, low, high, x):\n    \"\"\"\n    Belirtilen aralıkta ikili arama yapar.\n    \"\"\"\n    while low <= high:\n        mid = low + (high - low) // 2\n        if arr[mid] == x:\n            return mid\n        elif arr[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n\ndef exponential_search(arr, x):\n    \"\"\"\n    Üstel Arama algoritması ile bir elemanı dizide arar.\n    Önce arama yapılacak olası aralığı bulur, ardından bu aralıkta ikili arama yapar.\n    \"\"\"\n    n = len(arr)\n\n    if n == 0:\n        return -1 # Boş dizi\n\n    # Eleman dizinin ilk konumundaysa\n    if arr[0] == x:\n        return 0\n\n    # İkili arama için aralığı bulmak için 'i'yi sürekli ikiye katla\n    i = 1\n    while i < n and arr[i] <= x:\n        i = i * 2\n\n    # Bulunan aralıkta ikili arama çağrısı yap (i/2'den min(i, n-1)'e kadar)\n    return binary_search(arr, i // 2, min(i, n - 1), x)",
+    "source": "test-data-ai",
+    "prompt": "Exponential Search algoritmasını büyük diziler için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

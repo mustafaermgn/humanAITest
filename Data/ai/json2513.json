@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef update_data_put(url: str, data: dict, headers: dict = None) -> dict:\n    if headers is None:\n        headers = {}\n    \n    try:\n        response = requests.put(url, json=data, headers=headers)\n        response.raise_for_status()\n        return response.json()\n    except requests.exceptions.HTTPError as http_err:\n        return {\"error\": str(http_err), \"details\": response.text if 'response' in locals() else \"No response body available\"}\n    except requests.exceptions.ConnectionError as conn_err:\n        return {\"error\": str(conn_err)}\n    except requests.exceptions.Timeout as timeout_err:\n        return {\"error\": str(timeout_err)}\n    except requests.exceptions.RequestException as req_err:\n        return {\"error\": str(req_err)}\n    except ValueError as json_decode_err:\n        return {\"error\": str(json_decode_err), \"details\": response.text if 'response' in locals() else \"No response body available\"}",
+    "source": "test-data-ai",
+    "prompt": "REST API PUT request ile veri güncelleyen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

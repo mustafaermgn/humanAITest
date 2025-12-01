@@ -1,0 +1,7 @@
+{
+    "code": "def multiply_strings(num1, num2):\n    if num1 == \"0\" or num2 == \"0\":\n        return \"0\"\n\n    len1, len2 = len(num1), len(num2)\n    result = [0] * (len1 + len2)\n\n    for i in range(len1 - 1, -1, -1):\n        for j in range(len2 - 1, -1, -1):\n            digit1 = int(num1[i])\n            digit2 = int(num2[j])\n\n            product = digit1 * digit2\n\n            p1 = i + j\n            p2 = i + j + 1\n\n            sum_val = product + result[p2]\n\n            result[p2] = sum_val % 10\n            result[p1] += sum_val // 10\n\n    result_str = \"\".join(map(str, result))\n\n    index = 0\n    while index < len(result_str) - 1 and result_str[index] == '0':\n        index += 1\n\n    return result_str[index:]",
+    "source": "test-data-ai",
+    "prompt": "Multiply strings as numbers yaz.",
+    "license": "MIT",
+    "language": "python"
+}

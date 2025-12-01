@@ -1,0 +1,7 @@
+{
+    "code": "def dfs_recursive(graph, start_node):\n    visited = set()\n    path = []\n\n    def _dfs(node):\n        if node not in visited:\n            visited.add(node)\n            path.append(node)\n            for neighbor in graph.get(node, []):\n                _dfs(neighbor)\n\n    _dfs(start_node)\n    return path\n\n\ndef dfs_iterative(graph, start_node):\n    visited = set()\n    stack = [start_node]\n    path = []\n\n    while stack:\n        node = stack.pop()\n        if node not in visited:\n            visited.add(node)\n            path.append(node)\n            for neighbor in reversed(graph.get(node, [])):\n                stack.append(neighbor)\n    return path",
+    "source": "test-data-ai",
+    "prompt": "Depth-First Search (DFS) algoritmasını recursive ve iterative yaz.",
+    "license": "MIT",
+    "language": "python"
+}

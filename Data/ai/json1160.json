@@ -1,0 +1,7 @@
+{
+    "code": "import websocket\n\ndef open_websocket_connection(url: str):\n    try:\n        ws = websocket.create_connection(url)\n        return ws\n    except Exception:\n        return None",
+    "source": "test-data-ai",
+    "prompt": "WebSocket connection açan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

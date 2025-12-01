@@ -1,0 +1,7 @@
+{
+    "code": "def _is_qdrant_config(config: Any) -> TypeIs[QdrantConfig]:\n    \"\"\"Check if config is a QdrantConfig using safe duck typing.\n\n    Args:\n        config: RAG configuration to check.\n\n    Returns:\n        True if config is a QdrantConfig instance.\n    \"\"\"\n    if not is_pydantic_dataclass(config):\n        return False\n\n    try:\n        return cast(bool, config.provider == \"qdrant\")  # type: ignore[attr-defined]\n    except (AttributeError, ImportError):\n        return False",
+    "source": "github_repo:crewAIInc/crewAI",
+    "file": "lib/crewai-tools/src/crewai_tools/adapters/crewai_rag_adapter.py",
+    "license": "MIT",
+    "language": "python"
+}

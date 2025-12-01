@@ -1,0 +1,7 @@
+{
+    "code": "def modular_inverse(a, p):\n  \"\"\"Fermat's Little Theorem kullanarak a'nın p modülündeki modüler tersini bulur.\n\n  Args:\n    a: Tersini bulmak için tam sayı.\n    p: Asal sayı.\n\n  Returns:\n    a'nın p modülündeki modüler tersi.\n  \"\"\"\n  return pow(a, p - 2, p)\n\nif __name__ == '__main__':\n  a = 3\n  p = 7\n  inverse = modular_inverse(a, p)\n  print(f\"{a}'nın {p} modülündeki tersi {inverse}'dir.\")\n\n  a = 17\n  p = 31\n  inverse = modular_inverse(a, p)\n  print(f\"{a}'nın {p} modülündeki tersi {inverse}'dir.\")",
+    "source": "test-data-ai",
+    "prompt": "Fermat's little theorem kullanarak modular inverse bul.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import os\nimport math\nimport requests\nimport uuid\n\ndef upload_file_in_chunks(file_path, upload_url, chunk_size=1024 * 1024):\n    if not os.path.exists(file_path):\n        return False\n\n    file_size = os.path.getsize(file_path)\n    filename = os.path.basename(file_path)\n    total_chunks = math.ceil(file_size / chunk_size)\n    \n    upload_id = str(uuid.uuid4())\n\n    try:\n        with open(file_path, 'rb') as f:\n            for i in range(total_chunks):\n                f.seek(i * chunk_size)\n                chunk_data = f.read(chunk_size)\n\n                payload = {\n                    'chunk_index': i,\n                    'total_chunks': total_chunks,\n                    'filename': filename,\n                    'file_size': file_size,\n                    'upload_id': upload_id\n                }\n\n                files = {\n                    'file_chunk': (filename, chunk_data, 'application/octet-stream')\n                }\n\n                response = requests.post(upload_url, data=payload, files=files)\n                response.raise_for_status()\n\n            return True\n\n    except requests.exceptions.RequestException:\n        return False\n    except Exception:\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Chunked file upload yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

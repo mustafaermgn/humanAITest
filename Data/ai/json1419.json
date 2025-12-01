@@ -1,0 +1,7 @@
+{
+    "code": "def subarray_sum_equals_k(nums, k):\n    \"\"\"\n    Belirli bir k sayısına eşit bir alt dizi toplamının mevcut olup olmadığını kontrol eder.\n    Karma tablo (hash map) kullanarak bu işlemi O(n) zaman karmaşıklığı ile gerçekleştirir.\n    \"\"\"\n    current_sum = 0\n    # Daha önce karşılaşılan ön ek toplamlarını depolayan bir küme (set) kullanıyoruz.\n    # Başlangıçta 0'ı ekliyoruz, çünkü k değeri dizinin başından itibaren bir alt dizinin toplamı olabilir.\n    # Örneğin, nums = [3, 1, 2] ve k = 3 ise, current_sum 3 olduğunda current_sum - k = 0 olacak ve kümede bulunacaktır.\n    seen_sums = {0} \n\n    for num in nums:\n        current_sum += num\n        # Eğer current_sum - k daha önce karşılaşılan ön ek toplamları arasında varsa,\n        # bu, mevcut elemana kadar olan toplamdan (current_sum) o ön ek toplamını çıkardığımızda\n        # k'ya eşit bir alt dizi olduğu anlamına gelir.\n        if (current_sum - k) in seen_sums:\n            return True\n        # Mevcut ön ek toplamını kümemize ekle.\n        seen_sums.add(current_sum)\n    \n    # Tüm dizi tarandıktan sonra bile k'ya eşit bir alt dizi bulunamazsa False döndür.\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Subarray sum equals k using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

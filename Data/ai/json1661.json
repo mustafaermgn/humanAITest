@@ -1,0 +1,7 @@
+{
+    "code": "def process_data_lbyl(config_data, key):\n    if not isinstance(config_data, dict):\n        return \"Geçersiz yapılandırma verisi tipi.\"\n    \n    if key in config_data:\n        value = config_data[key]\n        return f\"'{key}' anahtarı için değer: {value}\"\n    else:\n        return f\"'{key}' anahtarı yapılandırmada bulunamadı.\"",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodu, **'EAFP'** (izin istemektense af dile) prensibi yerine **'LBYL'** (atlamadan önce bak) prensibini kullanarak yeniden yaz.",
+    "license": "MIT",
+    "language": "python"
+}

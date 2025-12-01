@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef parse_environment_variables():\n    \"\"\"\n    Sistem ortam değişkenlerini ayrıştırır ve bir sözlük olarak döndürür.\n    \"\"\"\n    return os.environ\n\nif __name__ == '__main__':\n    env_vars = parse_environment_variables()\n    print(\"Ortam Değişkenleri:\")\n    for key, value in env_vars.items():\n        print(f\"{key}={value}\")",
+    "source": "test-data-ai",
+    "prompt": "Environment variables'ı parse eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

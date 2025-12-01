@@ -1,0 +1,7 @@
+{
+    "code": "import networkx as nx\nimport copy\n\ndef girvan_newman(graph):\n    original_graph = copy.deepcopy(graph)\n    current_graph = copy.deepcopy(graph)\n\n    best_modularity = -1.0\n    best_partition = None\n\n    if current_graph.number_of_edges() == 0:\n        return [{node} for node in current_graph.nodes()] if current_graph.nodes() else []\n\n    while current_graph.number_of_edges() > 0:\n        betweenness = nx.edge_betweenness_centrality(current_graph)\n        max_edge = max(betweenness, key=betweenness.get)\n        current_graph.remove_edge(*max_edge)\n\n        current_partition = [frozenset(c) for c in nx.connected_components(current_graph)]\n        \n        mod = nx.community.modularity(original_graph, current_partition)\n            \n        if mod > best_modularity:\n            best_modularity = mod\n            best_partition = current_partition\n\n    return best_partition",
+    "source": "test-data-ai",
+    "prompt": "Community detection için Girvan-Newman algoritmasını yaz.",
+    "license": "MIT",
+    "language": "python"
+}

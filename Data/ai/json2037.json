@@ -1,0 +1,7 @@
+{
+    "code": "def compress_string(s: str) -> str:\n    if not s:\n        return \"\"\n\n    compressed_parts = []\n    \n    current_char = s[0]\n    current_count = 0\n\n    for char in s:\n        if char == current_char:\n            current_count += 1\n        else:\n            compressed_parts.append(current_char)\n            compressed_parts.append(str(current_count))\n            current_char = char\n            current_count = 1\n            \n    # Append the last character group\n    compressed_parts.append(current_char)\n    compressed_parts.append(str(current_count))\n    \n    compressed_s = \"\".join(compressed_parts)\n    \n    if len(compressed_s) < len(s):\n        return compressed_s\n    else:\n        return s",
+    "source": "test-data-ai",
+    "prompt": "String compression algorithm yaz.",
+    "license": "MIT",
+    "language": "python"
+}

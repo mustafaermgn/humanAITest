@@ -1,0 +1,7 @@
+{
+    "code": "from datetime import datetime\n\ndef tarih_ayristir(tarih_stringi):\n    \"\"\"\n    Verilen bir tarih stringini (YYYY-MM-DD formatında) yıl, ay ve gün tuple'ı olarak ayrıştırır.\n    \"\"\"\n    dt_object = datetime.strptime(tarih_stringi, \"%Y-%m-%d\")\n    return (dt_object.year, dt_object.month, dt_object.day)",
+    "source": "test-data-ai",
+    "prompt": "Verilen bir tarihin (string formatında) bir yıl, ay ve gün tuple'ı olarak döndüren bir tarih ayrıştırma fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

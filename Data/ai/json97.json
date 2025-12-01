@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\nfrom collections import Counter\n\ndef topKFrequent(nums, k):\n    \"\"\"\n    Finds the top k frequent elements in a list of numbers.\n\n    Args:\n        nums: A list of integers.\n        k: An integer representing the number of top frequent elements to return.\n\n    Returns:\n        A list of the top k frequent elements in nums.\n    \"\"\"\n    count = Counter(nums)\n    return heapq.nlargest(k, count.keys(), key=count.get)\n\nif __name__ == '__main__':\n    nums = [1,1,1,2,2,3]\n    k = 2\n    print(topKFrequent(nums, k))\n\n    nums = [1]\n    k = 1\n    print(topKFrequent(nums, k))\n\n    nums = [1,2]\n    k = 2\n    print(topKFrequent(nums, k))",
+    "source": "test-data-ai",
+    "prompt": "Top k frequent elements using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

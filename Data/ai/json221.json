@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef count_complete_tree_nodes(root: TreeNode) -> int:\n    if not root:\n        return 0\n\n    def get_leftmost_height(node):\n        height = 0\n        while node:\n            node = node.left\n            height += 1\n        return height\n\n    h = get_leftmost_height(root)\n\n    if get_leftmost_height(root.right) == h - 1:\n        return (1 << (h - 1)) + count_complete_tree_nodes(root.right)\n    else:\n        return count_complete_tree_nodes(root.left) + (1 << (h - 2))",
+    "source": "test-data-ai",
+    "prompt": "Count complete tree nodes yaz.",
+    "license": "MIT",
+    "language": "python"
+}

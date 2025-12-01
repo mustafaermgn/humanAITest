@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass Solution:\n    def groupStrings(self, strings: list[str]) -> list[list[str]]:\n        groups = collections.defaultdict(list)\n\n        for s in strings:\n            if not s:\n                groups[\"\"].append(s)\n                continue\n\n            shift = ord(s[0]) - ord('a')\n            key_chars = []\n            for char in s:\n                # Calculate the character's new position after shifting the first char to 'a'\n                # (ord(char) - shift - ord('a')) gives the 0-25 index relative to 'a'\n                # Adding 26 and taking modulo 26 handles negative results (wrap-around from 'a' to 'z')\n                normalized_idx = (ord(char) - shift - ord('a') + 26) % 26\n                key_chars.append(chr(ord('a') + normalized_idx))\n            \n            key_string = \"\".join(key_chars)\n            groups[key_string].append(s)\n        \n        return list(groups.values())",
+    "source": "test-data-ai",
+    "prompt": "Group shifted strings using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def xor_of_all_subsets(arr):\n    n = len(arr)\n    if n == 0:\n        return 0\n    elif n == 1:\n        return arr[0]\n    else:\n        return 0",
+    "source": "test-data-ai",
+    "prompt": "Find XOR of all subsets yaz.",
+    "license": "MIT",
+    "language": "python"
+}

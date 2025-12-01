@@ -1,0 +1,7 @@
+{
+    "code": "class FenwickTree:\n    def __init__(self, size):\n        self.tree = [0] * (size + 1)\n        self.size = size\n\n    def update(self, index, val):\n        while index <= self.size:\n            self.tree[index] += val\n            index += index & (-index)\n\n    def query(self, index):\n        s = 0\n        while index > 0:\n            s += self.tree[index]\n            index -= index & (-index)\n        return s\n\ndef count_inversions(arr):\n    if not arr:\n        return 0\n\n    unique_elements = sorted(list(set(arr)))\n    rank_map = {val: i + 1 for i, val in enumerate(unique_elements)}\n    \n    compressed_arr = [rank_map[x] for x in arr]\n    \n    max_rank = len(unique_elements)\n    \n    ft = FenwickTree(max_rank)\n    \n    total_inversions = 0\n    \n    for i in range(len(compressed_arr) - 1, -1, -1):\n        current_rank = compressed_arr[i]\n        \n        total_inversions += ft.query(current_rank - 1)\n        \n        ft.update(current_rank, 1)\n        \n    return total_inversions",
+    "source": "test-data-ai",
+    "prompt": "Count inversions using Fenwick tree yaz.",
+    "license": "MIT",
+    "language": "python"
+}

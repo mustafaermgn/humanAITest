@@ -1,0 +1,7 @@
+{
+    "code": "def __init__(self, config, eval_dataloader=None):\n        if config.metric is None:\n            raise ValueError(\"config.metric is\", config.metric)\n        metric_cls = getattr(metric_path, config.metric)\n        self.metric = metric_cls(config)\n        if config.predictor is None:\n            raise ValueError(\"config.predictor is\", config.predictor)\n        predictor_cls = getattr(predictor_path, config.predictor)\n        self.predictor = predictor_cls(config)\n        self.eval_dataloader = eval_dataloader",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/evaluators/evaluator.py",
+    "license": "MIT",
+    "language": "python"
+}

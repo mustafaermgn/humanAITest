@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass Solution:\n    def leastInterval(self, tasks: list[str], n: int) -> int:\n        # 1. Görev frekanslarını say\n        counts = collections.Counter(tasks)\n\n        # 2. En yüksek frekansı bul\n        # Eğer görev listesi boşsa max_freq 0 olur, bu da doğru sonuç verir.\n        max_freq = 0\n        if counts:\n            max_freq = max(counts.values())\n\n        # 3. Bu en yüksek frekansa sahip kaç görev olduğunu say\n        num_max_freq_tasks = 0\n        for count in counts.values():\n            if count == max_freq:\n                num_max_freq_tasks += 1\n\n        # 4. Formülü kullanarak gerekli minimum zamanı hesapla\n        # Bu formül, en sık tekrar eden görevlerin ve soğuma süresinin dikte ettiği zamanı verir.\n        # (max_freq - 1) kadar 'blok' oluşur. Her blok (n + 1) zaman birimi uzunluğundadır.\n        # Son blok ise sadece max_freq frekansına sahip görevleri içerir (num_max_freq_tasks kadar).\n        time_from_formula = (max_freq - 1) * (n + 1) + num_max_freq_tasks\n\n        # Sonuç, tüm görevlerin toplam sayısından az olamaz.\n        # Örneğin, n=0 (soğuma yok) ve tasks=[\"A\",\"B\",\"C\"] ise, formül 1 verirken\n        # gerçekte 3 birim zamana ihtiyaç duyarız.\n        return max(len(tasks), time_from_formula)",
+    "source": "test-data-ai",
+    "prompt": "Task scheduler with cooling interval yaz.",
+    "license": "MIT",
+    "language": "python"
+}

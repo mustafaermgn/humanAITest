@@ -1,0 +1,7 @@
+{
+    "code": "def catalan_numbers(count):\n    if count <= 0:\n        return\n\n    # C_0\n    current_catalan = 1\n    yield current_catalan\n\n    # Calculate C_n using the recurrence relation C_n = C_{n-1} * (2 * (2n - 1)) / (n + 1)\n    for n in range(1, count):\n        current_catalan = current_catalan * (2 * (2 * n - 1)) // (n + 1)\n        yield current_catalan",
+    "source": "test-data-ai",
+    "prompt": "Generate Catalan numbers yaz.",
+    "license": "MIT",
+    "language": "python"
+}

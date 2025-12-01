@@ -1,0 +1,7 @@
+{
+    "code": "class DatabaseTransaction:\n    def __init__(self, connection):\n        self.connection = connection\n        self._original_isolation_level = None\n\n    def __enter__(self):\n        if hasattr(self.connection, 'isolation_level'):\n            self._original_isolation_level = self.connection.isolation_level\n            self.connection.isolation_level = None\n\n        self.connection.execute(\"BEGIN\")\n        return self.connection.cursor()\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        try:\n            if exc_type is None:\n                self.connection.commit()\n            else:\n                self.connection.rollback()\n        finally:\n            if hasattr(self.connection, 'isolation_level') and \\\n               self._original_isolation_level is not None:\n                self.connection.isolation_level = self._original_isolation_level\n            return False",
+    "source": "test-data-ai",
+    "prompt": "Context manager for database transaction yaz.",
+    "license": "MIT",
+    "language": "python"
+}

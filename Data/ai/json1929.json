@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef simplify_unix_path(path):\n    return os.path.normpath(path)",
+    "source": "test-data-ai",
+    "prompt": "Simplify Unix path yaz.",
+    "license": "MIT",
+    "language": "python"
+}

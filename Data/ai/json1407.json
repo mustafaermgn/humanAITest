@@ -1,0 +1,7 @@
+{
+    "code": "class Person:\n    def __init__(self, name: str, age: int, city: str):\n        if not isinstance(name, str) or not name:\n            raise ValueError(\"Name must be a non-empty string.\")\n        if not isinstance(age, int) or age <= 0:\n            raise ValueError(\"Age must be a positive integer.\")\n        if not isinstance(city, str) or not city:\n            raise ValueError(\"City must be a non-empty string.\")\n\n        self.name = name\n        self.age = age\n        self.city = city\n\n    def __repr__(self):\n        return f\"Person(name='{self.name}', age={self.age}, city='{self.city}')\"\n\n    def introduce(self):\n        return f\"Hello, my name is {self.name}. I am {self.age} years old and I live in {self.city}.\"",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki sınıfın **kapsamlı** bir `__repr__` metodu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

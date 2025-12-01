@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass Solution:\n    def findOrder(self, numCourses: int, prerequisites: list[list[int]]) -> list[int]:\n        adj = collections.defaultdict(list)\n        in_degree = [0] * numCourses\n\n        for course, prereq in prerequisites:\n            adj[prereq].append(course)\n            in_degree[course] += 1\n\n        queue = collections.deque()\n        for i in range(numCourses):\n            if in_degree[i] == 0:\n                queue.append(i)\n\n        schedule = []\n        \n        while queue:\n            course = queue.popleft()\n            schedule.append(course)\n\n            for neighbor in adj[course]:\n                in_degree[neighbor] -= 1\n                if in_degree[neighbor] == 0:\n                    queue.append(neighbor)\n        \n        if len(schedule) == numCourses:\n            return schedule\n        else:\n            return []",
+    "source": "test-data-ai",
+    "prompt": "Course schedule using topological sort yaz.",
+    "license": "MIT",
+    "language": "python"
+}

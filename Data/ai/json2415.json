@@ -1,0 +1,7 @@
+{
+    "code": "def min_cost_to_cut_board(horizontal_costs, vertical_costs):\n    horizontal_costs.sort(reverse=True)\n    vertical_costs.sort(reverse=True)\n\n    total_cost = 0\n    \n    horizontal_segments = 1\n    vertical_segments = 1\n\n    h_ptr = 0\n    v_ptr = 0\n\n    while h_ptr < len(horizontal_costs) or v_ptr < len(vertical_costs):\n        if h_ptr < len(horizontal_costs) and \\\n           (v_ptr >= len(vertical_costs) or horizontal_costs[h_ptr] >= vertical_costs[v_ptr]):\n            total_cost += horizontal_costs[h_ptr] * vertical_segments\n            horizontal_segments += 1\n            h_ptr += 1\n        else:\n            total_cost += vertical_costs[v_ptr] * horizontal_segments\n            vertical_segments += 1\n            v_ptr += 1\n\n    return total_cost",
+    "source": "test-data-ai",
+    "prompt": "Minimum cost to cut a board into squares yaz.",
+    "license": "MIT",
+    "language": "python"
+}

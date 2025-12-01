@@ -1,0 +1,7 @@
+{
+    "code": "def test_contract_phase():\n    \"\"\"Test CONTRACT phase validations.\"\"\"\n    print(\"\\n🧪 Testing CONTRACT Phase Validations...\")\n\n    good_contract = '''\"\"\"\nDescription: Remove old column\nPhase: CONTRACT\n\nRevision ID: test_contract_good\n\"\"\"\nfrom alembic import op\nimport sqlalchemy as sa\n\ndef upgrade():\n    bind = op.get_bind()\n\n    # Check data migration is complete\n    result = bind.execute(sa.text(\"\"\"\n        SELECT COUNT(*) as cnt FROM users\n        WHERE old_email IS NOT NULL AND new_email IS NULL\n    \"\"\")).first()\n\n    if result.cnt > 0:\n        raise Exception(f\"Cannot contract: {result.cnt} rows not migrated\")\n\n    op.drop_column('users', 'old_email')\n\ndef downgrade():\n    raise NotImplementedError(\"Cannot rollback CONTRACT phase\")\n'''\n\n    validator = MigrationValidator()\n\n    good_file = create_test_migration(good_contract, \"good_contract.py\")\n    result = validator.validate_migration_file(good_file)\n    print(f\"  ✅ Good CONTRACT: Valid={result['valid']} (expected: True)\")\n    os.unlink(good_file)  # noqa: PTH108",
+    "source": "github_repo:langflow-ai/langflow",
+    "file": "scripts/test_validator.py",
+    "license": "MIT",
+    "language": "python"
+}

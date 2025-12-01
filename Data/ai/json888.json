@@ -1,0 +1,7 @@
+{
+    "code": "import websockets\n\nasync def open_websocket_connection(uri: str):\n    return websockets.connect(uri)",
+    "source": "test-data-ai",
+    "prompt": "WebSocket connection açan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

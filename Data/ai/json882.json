@@ -1,0 +1,7 @@
+{
+    "code": "import fnmatch\n\ndef filter_files_by_pattern(filenames: list[str], pattern: str) -> list[str]:\n    \"\"\"\n    Belirtilen desenle eşleşen dosyaları filtreler.\n\n    Args:\n        filenames: Dosya adlarının bir listesi.\n        pattern: glob tarzı bir desen (örn. '*.txt', 'foto_?.jpg', '[abc]file').\n\n    Returns:\n        Desene uyan dosya adlarının listesi.\n    \"\"\"\n    matched_files = []\n    for filename in filenames:\n        if fnmatch.fnmatch(filename, pattern):\n            matched_files.append(filename)\n    return matched_files",
+    "source": "test-data-ai",
+    "prompt": "Dosyaları pattern'e göre filtreleyen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

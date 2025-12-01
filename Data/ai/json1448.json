@@ -1,0 +1,7 @@
+{
+    "code": "def search(nums: list[int], target: int) -> int:\n    left, right = 0, len(nums) - 1\n\n    while left <= right:\n        mid = (left + right) // 2\n        \n        if nums[mid] == target:\n            return mid\n        \n        # Sol taraf sıralı mı? (nums[left] <= nums[mid] ise)\n        if nums[left] <= nums[mid]:\n            # Hedef sol tarafta mı? (nums[left] <= target < nums[mid] ise)\n            if nums[left] <= target < nums[mid]:\n                right = mid - 1\n            else:\n                # Hedef sağ tarafta (unsorted)\n                left = mid + 1\n        # Sağ taraf sıralı (nums[left] > nums[mid] ise)\n        else:\n            # Hedef sağ tarafta mı? (nums[mid] < target <= nums[right] ise)\n            if nums[mid] < target <= nums[right]:\n                left = mid + 1\n            else:\n                # Hedef sol tarafta (unsorted)\n                right = mid - 1\n                \n    return -1",
+    "source": "test-data-ai",
+    "prompt": "Rotated sorted array'de eleman arayan binary search varyasyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

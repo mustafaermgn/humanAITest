@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass Solution:\n    def nthUglyNumber(self, n: int) -> int:\n        if n == 1:\n            return 1\n\n        heap = [1]\n        seen = {1}\n        \n        primes = [2, 3, 5]\n        \n        ugly_number = 0\n        for _ in range(n):\n            ugly_number = heapq.heappop(heap)\n            \n            for p in primes:\n                next_ugly = ugly_number * p\n                if next_ugly not in seen:\n                    seen.add(next_ugly)\n                    heapq.heappush(heap, next_ugly)\n                    \n        return ugly_number",
+    "source": "test-data-ai",
+    "prompt": "Ugly number II using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

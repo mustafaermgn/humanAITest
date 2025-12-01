@@ -1,0 +1,7 @@
+{
+    "code": "def __init__(self, color: Color) -> None:\n            self.color = color\n            super().__init__()",
+    "source": "github_repo:Textualize/textual",
+    "file": "docs/examples/events/custom01.py",
+    "license": "MIT",
+    "language": "python"
+}

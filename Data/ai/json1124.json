@@ -1,0 +1,7 @@
+{
+    "code": "from collections import deque\n\ndef check_path_with_edge_length_limit(graph, start_node, end_node, max_edge_length):\n    \"\"\"\n    Belirli bir başlangıç düğümünden bitiş düğümüne, yoldaki her kenarın\n    belirlenen maksimum kenar uzunluğunu aşmadığı bir yolun varlığını kontrol eder.\n\n    Args:\n        graph (dict): Grafın komşuluk listesi gösterimi.\n                      Her anahtar bir düğümdür ve değeri (komşu, uzunluk)\n                      şeklinde demetlerin bir listesidir.\n                      Örnek: {0: [(1, 10), (2, 5)], 1: [(3, 8)]}\n        start_node: Başlangıç düğümü.\n        end_node: Hedef düğüm.\n        max_edge_length (int/float): Tek bir kenar için izin verilen maksimum uzunluk.\n\n    Returns:\n        bool: Böyle bir yol varsa True, aksi takdirde False.\n    \"\"\"\n    if start_node == end_node:\n        return True\n\n    visited = set()\n    queue = deque([start_node])\n    visited.add(start_node)\n\n    while queue:\n        current_node = queue.popleft()\n\n        if current_node == end_node:\n            return True\n\n        if current_node in graph:\n            for neighbor, length in graph[current_node]:\n                if length <= max_edge_length and neighbor not in visited:\n                    visited.add(neighbor)\n                    queue.append(neighbor)\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Checking existence of edge length limited paths yaz.",
+    "license": "MIT",
+    "language": "python"
+}

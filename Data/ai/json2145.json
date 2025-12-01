@@ -1,0 +1,7 @@
+{
+    "code": "def majority_element_ii(nums: list[int]) -> list[int]:\n    if not nums:\n        return []\n\n    candidate1, candidate2 = 0, 0\n    count1, count2 = 0, 0\n\n    for num in nums:\n        if num == candidate1:\n            count1 += 1\n        elif num == candidate2:\n            count2 += 1\n        elif count1 == 0:\n            candidate1 = num\n            count1 = 1\n        elif count2 == 0:\n            candidate2 = num\n            count2 = 1\n        else:\n            count1 -= 1\n            count2 -= 1\n\n    count1_actual, count2_actual = 0, 0\n    for num in nums:\n        if num == candidate1:\n            count1_actual += 1\n        elif num == candidate2:\n            count2_actual += 1\n    \n    result = set()\n    n = len(nums)\n\n    if count1_actual > n / 3:\n        result.add(candidate1)\n    \n    if count2_actual > n / 3:\n        result.add(candidate2)\n\n    return list(result)",
+    "source": "test-data-ai",
+    "prompt": "Majority element II (elements appearing > n/3 times) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def fractional_knapsack(capacity, items):\n    for i, item in enumerate(items):\n        item['ratio'] = item['value'] / item['weight']\n        item['original_index'] = i\n\n    items.sort(key=lambda x: x['ratio'], reverse=True)\n\n    total_value = 0.0\n    taken_items = []\n    current_capacity = float(capacity)\n\n    for item in items:\n        if current_capacity == 0:\n            break\n\n        if item['weight'] <= current_capacity:\n            total_value += item['value']\n            current_capacity -= item['weight']\n            taken_items.append({\n                'original_index': item['original_index'],\n                'value': item['value'],\n                'weight': item['weight'],\n                'fraction_taken': 1.0\n            })\n        else:\n            fraction = current_capacity / item['weight']\n            total_value += fraction * item['value']\n            current_capacity = 0\n            taken_items.append({\n                'original_index': item['original_index'],\n                'value': item['value'],\n                'weight': item['weight'],\n                'fraction_taken': fraction\n            })\n            \n    return total_value, taken_items",
+    "source": "test-data-ai",
+    "prompt": "Fractional knapsack with multiple items yaz.",
+    "license": "MIT",
+    "language": "python"
+}

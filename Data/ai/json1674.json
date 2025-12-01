@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ntry:\n    # SSL sertifika doğrulaması varsayılan olarak etkindir (verify=True).\n    # Ancak burada açıkça belirtiyoruz.\n    response = requests.get('https://www.google.com', verify=True)\n    response.raise_for_status()\n    print(response.status_code)\nexcept requests.exceptions.SSLError as e:\n    print(f\"SSLError: {e}\")\nexcept requests.exceptions.RequestException as e:\n    print(f\"RequestException: {e}\")",
+    "source": "test-data-ai",
+    "prompt": "SSL certificate verification yapılandırmalı request yaz.",
+    "license": "MIT",
+    "language": "python"
+}

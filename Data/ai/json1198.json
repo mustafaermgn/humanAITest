@@ -1,0 +1,7 @@
+{
+    "code": "def extended_gcd(a, b):\n    if b == 0:\n        return a, 1, 0\n    else:\n        gcd, x, y = extended_gcd(b, a % b)\n        return gcd, y, x - (a // b) * y",
+    "source": "test-data-ai",
+    "prompt": "Extended Euclidean algorithm yaz.",
+    "license": "MIT",
+    "language": "python"
+}

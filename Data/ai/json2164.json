@@ -1,0 +1,7 @@
+{
+    "code": "class Product:\n    def __init__(self, name: str, product_id: int, price: float, available: bool, tags: list = None):\n        self.name = name\n        self.product_id = product_id\n        self.price = price\n        self.available = available\n        self.tags = tags if tags is not None else []\n\n    def __repr__(self):\n        return (f\"{self.__class__.__name__}(\"\n                f\"name={self.name!r}, \"\n                f\"product_id={self.product_id!r}, \"\n                f\"price={self.price!r}, \"\n                f\"available={self.available!r}, \"\n                f\"tags={self.tags!r})\")",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki sınıfın **kapsamlı** bir `__repr__` metodu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import functools\n\ndef cache_api_response(func):\n    _cache = {}\n\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        # Create a hashable key from the function arguments\n        # args are already a tuple\n        # kwargs need to be sorted and converted to a frozenset for consistent hashing\n        cache_key = (args, frozenset(kwargs.items()))\n\n        if cache_key in _cache:\n            return _cache[cache_key]\n        else:\n            result = func(*args, **kwargs)\n            _cache[cache_key] = result\n            return result\n    return wrapper",
+    "source": "test-data-ai",
+    "prompt": "API response'u cache'leyen decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

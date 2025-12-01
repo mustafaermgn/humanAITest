@@ -1,0 +1,7 @@
+{
+    "code": "def min_squares_to_cut(length, width):\n    \"\"\"\n    Kabul edilen uzunluk ve genişlik değerlerinden, kağıdı kesilebilecek \n    minimum kare sayısını hesaplar.\n    \"\"\"\n    # Genişliğin uzunluktan büyük olmamasını sağla (işlemleri basitleştirmek için)\n    if width > length:\n        length, width = width, length\n\n    # Temel durum 1: Eğer genişlik 0 ise, kesilecek kağıt yoktur.\n    if width == 0:\n        return 0\n    \n    # Temel durum 2: Eğer zaten bir kareyse, 1 kareye ihtiyaç vardır.\n    if length == width:\n        return 1\n\n    # Özyinelemeli adım:\n    # Mevcut genişlik boyutunda kaç tane tam kare kesilebileceğini bul.\n    num_squares = length // width\n    \n    # Kalan dikdörtgenin uzunluğunu bul.\n    remaining_length = length % width\n    \n    # Kesilen kareleri ve kalan parça için özyinelemeli çağrının sonucunu topla.\n    return num_squares + min_squares_to_cut(width, remaining_length)",
+    "source": "test-data-ai",
+    "prompt": "Paper cut into minimum number of squares yaz.",
+    "license": "MIT",
+    "language": "python"
+}

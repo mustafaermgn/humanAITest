@@ -1,0 +1,7 @@
+{
+    "code": "class DisjointSet:\n    def __init__(self):\n        self.parent = {}\n\n    def make_set(self, x):\n        if x not in self.parent:\n            self.parent[x] = x\n\n    def find(self, x):\n        if x not in self.parent:\n            raise ValueError(f\"Element {x} not found. Call make_set({x}) first.\")\n\n        if self.parent[x] == x:\n            return x\n        \n        # Path compression\n        self.parent[x] = self.find(self.parent[x])\n        return self.parent[x]\n\n    def union(self, x, y):\n        root_x = self.find(x)\n        root_y = self.find(y)\n\n        if root_x != root_y:\n            self.parent[root_y] = root_x\n            return True\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Path compression optimization yaz.",
+    "license": "MIT",
+    "language": "python"
+}

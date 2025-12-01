@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef edmonds_karp(graph, capacity, source, sink):\n    max_flow = 0\n\n    while True:\n        parent = {}\n        flow_on_path = {}\n\n        queue = collections.deque()\n        queue.append(source)\n        parent[source] = None\n        flow_on_path[source] = float('inf')\n\n        path_found = False\n        while queue:\n            u = queue.popleft()\n\n            for v in graph[u]:\n                if v not in parent and capacity[u][v] > 0:\n                    parent[v] = u\n                    flow_on_path[v] = min(flow_on_path[u], capacity[u][v])\n                    \n                    if v == sink:\n                        path_found = True\n                        break\n                    \n                    queue.append(v)\n            \n            if path_found:\n                break\n\n        if not path_found:\n            break\n\n        current_path_flow = flow_on_path[sink]\n        max_flow += current_path_flow\n\n        current_node = sink\n        while current_node != source:\n            prev_node = parent[current_node]\n            capacity[prev_node][current_node] -= current_path_flow\n            capacity[current_node][prev_node] += current_path_flow\n            current_node = prev_node\n            \n    return max_flow",
+    "source": "test-data-ai",
+    "prompt": "Edmonds-Karp algoritmasını max flow için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

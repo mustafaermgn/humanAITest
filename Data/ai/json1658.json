@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass FirstNonRepeatingCharacterStream:\n    def __init__(self):\n        self.char_counts = collections.defaultdict(int)\n        self.queue = collections.deque()\n\n    def process_char(self, char: str) -> str:\n        self.char_counts[char] += 1\n\n        if self.char_counts[char] == 1:\n            self.queue.append(char)\n        \n        while self.queue and self.char_counts[self.queue[0]] > 1:\n            self.queue.popleft()\n\n        if self.queue:\n            return self.queue[0]\n        else:\n            return '_'",
+    "source": "test-data-ai",
+    "prompt": "First non-repeating character in stream using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\ndef minimize_cash_flow(transactions):\n    net_balances = defaultdict(float)\n\n    for payer, receiver, amount in transactions:\n        net_balances[payer] -= amount\n        net_balances[receiver] += amount\n\n    debtors = []\n    creditors = []\n\n    for person, balance in sorted(net_balances.items()):\n        if balance < 0:\n            debtors.append((person, -balance))\n        elif balance > 0:\n            creditors.append((person, balance))\n\n    minimal_transactions = []\n    \n    while debtors and creditors:\n        debtor_person, debt_amount = debtors[0]\n        creditor_person, credit_amount = creditors[0]\n\n        settle_amount = min(debt_amount, credit_amount)\n\n        minimal_transactions.append((debtor_person, creditor_person, settle_amount))\n\n        debtors[0] = (debtor_person, debt_amount - settle_amount)\n        creditors[0] = (creditor_person, credit_amount - settle_amount)\n\n        if debtors[0][1] == 0:\n            debtors.pop(0)\n        if creditors[0][1] == 0:\n            creditors.pop(0)\n\n    return minimal_transactions",
+    "source": "test-data-ai",
+    "prompt": "Minimize cash flow among friends problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

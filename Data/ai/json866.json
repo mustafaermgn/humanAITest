@@ -1,0 +1,7 @@
+{
+    "code": "def predict_stone_game_winner(piles: list[int]) -> str:\n    # According to the standard \"Stone Game\" problem (e.g., LeetCode 877):\n    # 1. The number of piles is always even.\n    # 2. The total sum of stones is always odd, which guarantees there will be no tie.\n    #\n    # Under these specific conditions, the first player (Alice) always has a winning strategy.\n    # She can guarantee herself a score strictly greater than Bob's.\n    return \"Alice\"",
+    "source": "test-data-ai",
+    "prompt": "Stone game winner prediction yaz.",
+    "license": "MIT",
+    "language": "python"
+}

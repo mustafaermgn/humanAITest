@@ -1,0 +1,7 @@
+{
+    "code": "[x * 2 if x > 5 else x for x in [1, 2, 6, 3, 8, 4]]",
+    "source": "test-data-ai",
+    "prompt": "Bir liste elemanına koşullu olarak işlem uygulayan tek satırlık list comprehension yaz.",
+    "license": "MIT",
+    "language": "python"
+}

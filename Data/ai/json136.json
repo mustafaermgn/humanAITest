@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef find_nth_from_end(head: ListNode, n: int) -> ListNode:\n    if not head:\n        return None\n\n    slow = head\n    fast = head\n\n    # Hızlı işaretçiyi n adım ileri taşı\n    for _ in range(n):\n        if not fast:\n            # Eğer fast, n adım tamamlanmadan None olursa,\n            # bu n'in bağlı listenin uzunluğundan büyük olduğu anlamına gelir.\n            return None\n        fast = fast.next\n\n    # Şimdi, fast sona ulaşana kadar her iki işaretçiyi de hareket ettir\n    # fast None olduğunda, slow sondan n'inci düğümde olacaktır.\n    while fast:\n        slow = slow.next\n        fast = fast.next\n\n    return slow",
+    "source": "test-data-ai",
+    "prompt": "Nth node from end of linked list bul.",
+    "license": "MIT",
+    "language": "python"
+}

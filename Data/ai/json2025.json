@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef hasPathSum(root: TreeNode, targetSum: int) -> bool:\n    if not root:\n        return False\n\n    if not root.left and not root.right:  # Leaf node\n        return targetSum == root.val\n\n    # Recursively check left and right subtrees\n    # Subtract current node's value from targetSum for the next level\n    left_has_path = hasPathSum(root.left, targetSum - root.val)\n    right_has_path = hasPathSum(root.right, targetSum - root.val)\n\n    return left_has_path or right_has_path",
+    "source": "test-data-ai",
+    "prompt": "Path sum checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import functools\n\ndef memoize(func):\n    cache = {}\n\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        # Create a hashable key from args and kwargs\n        # args is a tuple, which is hashable.\n        # kwargs (dictionary) is not directly hashable, so convert to frozenset of items.\n        key = (args, frozenset(kwargs.items()))\n\n        if key in cache:\n            return cache[key]\n        else:\n            result = func(*args, **kwargs)\n            cache[key] = result\n            return result\n    return wrapper",
+    "source": "test-data-ai",
+    "prompt": "Memoization decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

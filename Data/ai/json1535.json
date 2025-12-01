@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef min_xor_value_pair(arr: list[int]) -> int:\n    \"\"\"\n    Verilen bir tamsayı listesindeki herhangi iki eleman arasındaki\n    minimum XOR değerini bulan fonksiyon.\n    \"\"\"\n    if not arr or len(arr) < 2:\n        # Minimum iki eleman olması gerekir\n        # Geçersiz durumlar için uygun bir değer döndürülebilir\n        # veya hata fırlatılabilir. Burada en büyük olası değeri döndürüyorum\n        # bu da çağrı yapanın bu durumu kontrol etmesini gerektirebilir.\n        return -1 # Veya math.inf\n        \n    arr.sort()  # Minimum XOR çiftinin genellikle sıralı listede yan yana olacağı varsayılır\n\n    min_xor = math.inf\n\n    for i in range(len(arr) - 1):\n        current_xor = arr[i] ^ arr[i+1]\n        if current_xor < min_xor:\n            min_xor = current_xor\n\n    return min_xor",
+    "source": "test-data-ai",
+    "prompt": "Minimum XOR value pair yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def sqrt_binary_search(number, epsilon=1e-7):\n    if number < 0:\n        raise ValueError(\"Cannot compute the square root of a negative number.\")\n    if number == 0:\n        return 0.0\n\n    low = 0.0\n    high = max(1.0, number)\n\n    while (high - low) > epsilon:\n        mid = (low + high) / 2\n        mid_squared = mid * mid\n\n        if abs(mid_squared - number) < epsilon:\n            return mid\n        elif mid_squared < number:\n            low = mid\n        else:\n            high = mid\n            \n    return (low + high) / 2",
+    "source": "test-data-ai",
+    "prompt": "Square root hesaplayan binary search algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

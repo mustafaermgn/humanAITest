@@ -1,0 +1,7 @@
+{
+    "code": "def find_fixed_points(arr):\n    \"\"\"\n    Belirtilen listede sabit noktaları (index == değer) bulan bir algoritma.\n    \n    Args:\n        arr (list): Tamsayılardan oluşan bir liste.\n        \n    Returns:\n        list: Sabit nokta olan indekslerin listesi.\n              Eğer sabit nokta yoksa boş bir liste döner.\n    \"\"\"\n    fixed_points = []\n    for i in range(len(arr)):\n        if arr[i] == i:\n            fixed_points.append(i)\n    return fixed_points\n\nif __name__ == '__main__':\n    # Örnek kullanımlar:\n    print(find_fixed_points([0, 1, 2, 3]))          # Beklenen: [0, 1, 2, 3]\n    print(find_fixed_points([1, 0, 2, 4]))          # Beklenen: [2]\n    print(find_fixed_points([-1, 0, 2, 3, 5]))      # Beklenen: [2, 3]\n    print(find_fixed_points([1, 2, 3, 4]))          # Beklenen: []\n    print(find_fixed_points([]))                    # Beklenen: []\n    print(find_fixed_points([0]))                   # Beklenen: [0]\n    print(find_fixed_points([5, 1, 3, 3, 4]))       # Beklenen: [1, 3, 4]",
+    "source": "test-data-ai",
+    "prompt": "Fixed point (index == value) bulan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

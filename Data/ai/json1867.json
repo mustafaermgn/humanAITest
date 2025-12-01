@@ -1,0 +1,7 @@
+{
+    "code": "def find_celebrity(n, knows):\n    \"\"\"\n    Ünlü problemini çözen fonksiyon.\n    \n    Args:\n        n (int): Şirketteki kişi sayısı (0'dan n-1'e kadar).\n        knows (callable): `knows(a, b)` şeklinde, a'nın b'yi tanıyıp tanımadığını \n                          döndüren bir fonksiyon (True/False).\n                          \n    Returns:\n        int: Ünlü kişinin indeksi (0-indexed) veya ünlü yoksa -1.\n    \"\"\"\n    \n    stack = []\n    for i in range(n):\n        stack.append(i)\n\n    while len(stack) > 1:\n        a = stack.pop()\n        b = stack.pop()\n\n        if knows(a, b):\n            # Eğer A, B'yi tanıyorsa, A ünlü olamaz (ünlü kimseyi tanımaz).\n            # B hala ünlü olabilir, bu yüzden B'yi geri ekle.\n            stack.append(b)\n        else:\n            # Eğer A, B'yi tanımıyorsa, B ünlü olamaz (ünlüyü herkes tanımalı).\n            # A hala ünlü olabilir, bu yüzden A'yı geri ekle.\n            stack.append(a)\n\n    if not stack:\n        return -1  # Yığın boşsa, ünlü yoktur\n\n    candidate = stack.pop()\n\n    # Adayın gerçekten ünlü olup olmadığını doğrula\n    for i in range(n):\n        if i == candidate:\n            continue\n        \n        # Aday kimseyi tanımamalıdır\n        if knows(candidate, i):\n            return -1\n        \n        # Herkes adayı tanımalıdır\n        if not knows(i, candidate):\n            return -1\n\n    return candidate",
+    "source": "test-data-ai",
+    "prompt": "Celebrity problem using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

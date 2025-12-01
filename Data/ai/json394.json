@@ -1,0 +1,7 @@
+{
+    "code": "def kmp_table(w):\n    T = [0] * len(w)\n    pos = 1\n    cnd = 0\n    while pos < len(w):\n        if w[pos] == w[cnd]:\n            T[pos] = cnd + 1\n            pos += 1\n            cnd += 1\n        elif cnd > 0:\n            cnd = T[cnd-1]\n        else:\n            pos += 1\n    return T\n\ndef kmp_search(s, w):\n    T = kmp_table(w)\n    pos = 0\n    i = 0\n    result = []\n    while i < len(s):\n        if w[pos] == s[i]:\n            i += 1\n            pos += 1\n            if pos == len(w):\n                result.append(i - pos)\n                pos = T[pos-1]\n        elif pos > 0:\n            pos = T[pos-1]\n        else:\n            i += 1\n    return result",
+    "source": "test-data-ai",
+    "prompt": "KMP (Knuth-Morris-Pratt) pattern matching yaz.",
+    "license": "MIT",
+    "language": "python"
+}

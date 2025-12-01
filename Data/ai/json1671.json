@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef list_files_in_directory(directory_path):\n    \"\"\"\n    Belirtilen dizin içindeki tüm dosyaları listeler.\n    Alt dizinlere bakmaz.\n    \"\"\"\n    files_list = []\n    if not os.path.isdir(directory_path):\n        return files_list\n\n    for entry_name in os.listdir(directory_path):\n        full_path = os.path.join(directory_path, entry_name)\n        if os.path.isfile(full_path):\n            files_list.append(entry_name)\n            \n    return files_list",
+    "source": "test-data-ai",
+    "prompt": "Directory içindeki tüm dosyaları listeleyen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

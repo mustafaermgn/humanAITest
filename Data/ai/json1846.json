@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef safe_reader(file_path):\n    return os.path.exists(file_path)",
+    "source": "test-data-ai",
+    "prompt": "Dosya var mı kontrol eden safe reader yaz.",
+    "license": "MIT",
+    "language": "python"
+}

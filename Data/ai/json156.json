@@ -1,0 +1,7 @@
+{
+    "code": "import re\n\ndef validate_mac_address(mac_address):\n    \"\"\"\n    Belirtilen MAC adresinin geçerli bir format olup olmadığını kontrol eder.\n    Aşağıdaki formatları destekler:\n    - XX:XX:XX:XX:XX:XX (kolonla ayrılmış)\n    - XX-XX-XX-XX-XX-XX (tireyle ayrılmış)\n    - XXXXXXXXXXXX (ayırıcı olmadan)\n    - XXXX.XXXX.XXXX (noktayla ayrılmış, Cisco stili)\n    Burada X bir onaltılık basamaktır (0-9, A-F veya a-f).\n    \"\"\"\n    \n    # XX:XX:XX:XX:XX:XX formatı\n    pattern_colon = re.compile(r'^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$')\n    \n    # XX-XX-XX-XX-XX-XX formatı\n    pattern_hyphen = re.compile(r'^([0-9A-Fa-f]{2}[-]){5}([0-9A-Fa-f]{2})$')\n    \n    # XXXXXXXXXXXX formatı (ayırıcı olmadan 12 hex karakter)\n    pattern_no_separator = re.compile(r'^[0-9A-Fa-f]{12}$')\n    \n    # XXXX.XXXX.XXXX formatı (Cisco stili)\n    pattern_dot = re.compile(r'^([0-9A-Fa-f]{4}[.]){2}([0-9A-Fa-f]{4})$')\n\n    if (pattern_colon.fullmatch(mac_address) or\n        pattern_hyphen.fullmatch(mac_address) or\n        pattern_no_separator.fullmatch(mac_address) or\n        pattern_dot.fullmatch(mac_address)):\n        return True\n    else:\n        return False",
+    "source": "test-data-ai",
+    "prompt": "MAC address validation fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

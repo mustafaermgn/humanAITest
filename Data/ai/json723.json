@@ -1,0 +1,7 @@
+{
+    "code": "def calculateMinimumHP(dungeon: list[list[int]]) -> int:\n    R = len(dungeon)\n    C = len(dungeon[0])\n\n    dp = [[0] * C for _ in range(R)]\n\n    dp[R-1][C-1] = max(1, 1 - dungeon[R-1][C-1])\n\n    for c in range(C - 2, -1, -1):\n        dp[R-1][c] = max(1, dp[R-1][c+1] - dungeon[R-1][c])\n\n    for r in range(R - 2, -1, -1):\n        dp[r][C-1] = max(1, dp[r+1][C-1] - dungeon[r][C-1])\n\n    for r in range(R - 2, -1, -1):\n        for c in range(C - 2, -1, -1):\n            min_health_needed_at_next_cell = min(dp[r+1][c], dp[r][c+1])\n            dp[r][c] = max(1, min_health_needed_at_next_cell - dungeon[r][c])\n\n    return dp[0][0]",
+    "source": "test-data-ai",
+    "prompt": "Dungeon game minimum initial health hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from Crypto.Cipher import AES\nfrom Crypto.Util.Padding import pad\nimport os\n\ndef aes_encrypt(key: bytes, message: str) -> tuple[bytes, bytes]:\n    message_bytes = message.encode('utf-8')\n    iv = os.urandom(AES.block_size)\n    cipher = AES.new(key, AES.MODE_CBC, iv)\n    padded_message = pad(message_bytes, AES.block_size)\n    ciphertext = cipher.encrypt(padded_message)\n    return iv, ciphertext",
+    "source": "test-data-ai",
+    "prompt": "Bir şifreleme anahtarı (`key`) ve mesajı alarak **AES şifrelemesi** yapan temel bir kod yaz.",
+    "license": "MIT",
+    "language": "python"
+}

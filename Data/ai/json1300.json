@@ -1,0 +1,7 @@
+{
+    "code": "def decodeString(s: str) -> str:\n    count_stack = []\n    string_stack = []\n    current_string = \"\"\n    current_count = 0\n\n    for char in s:\n        if char.isdigit():\n            current_count = current_count * 10 + int(char)\n        elif char == '[':\n            string_stack.append(current_string)\n            count_stack.append(current_count)\n            current_string = \"\"\n            current_count = 0\n        elif char == ']':\n            count = count_stack.pop()\n            prev_string = string_stack.pop()\n            current_string = prev_string + current_string * count\n        else: # char is a letter\n            current_string += char\n            \n    return current_string",
+    "source": "test-data-ai",
+    "prompt": "Decode string using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

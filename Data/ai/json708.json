@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef buildTree(inorder, postorder):\n    if not inorder or not postorder:\n        return None\n\n    root_val = postorder[-1]\n    root = TreeNode(root_val)\n\n    root_index = inorder.index(root_val)\n\n    root.left = buildTree(inorder[:root_index], postorder[:root_index])\n    root.right = buildTree(inorder[root_index+1:], postorder[root_index:-1])\n\n    return root\n\nif __name__ == '__main__':\n    # Example usage\n    inorder = [9, 3, 15, 20, 7]\n    postorder = [9, 15, 20, 7, 3]\n\n    root = buildTree(inorder, postorder)\n\n    # Helper function to print the tree (inorder traversal for verification)\n    def inorder_traversal(node):\n        if node:\n            inorder_traversal(node.left)\n            print(node.val, end=\" \")\n            inorder_traversal(node.right)\n\n    print(\"Inorder traversal of the constructed tree:\")\n    inorder_traversal(root)\n    print()",
+    "source": "test-data-ai",
+    "prompt": "Construct binary tree from inorder and postorder yaz.",
+    "license": "MIT",
+    "language": "python"
+}

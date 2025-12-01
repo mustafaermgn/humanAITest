@@ -1,0 +1,7 @@
+{
+    "code": "import json\n\ndef pretty_print_json(json_string):\n    \"\"\"\n    Verilen JSON string'ini parse eder ve okunaklı bir formatta (pretty print) döndürür.\n    Geçersiz JSON string'i durumunda hata mesajı döndürür.\n    \"\"\"\n    try:\n        parsed_data = json.loads(json_string)\n        return json.dumps(parsed_data, indent=4, ensure_ascii=False)\n    except json.JSONDecodeError as e:\n        return f\"Hata: Geçersiz JSON stringi. {e}\"",
+    "source": "test-data-ai",
+    "prompt": "JSON string'i parse edip pretty print yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

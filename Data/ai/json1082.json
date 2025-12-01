@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef generate_binary_numbers(n: int) -> list[str]:\n    \"\"\"\n    Generates binary numbers from 1 to n using a queue.\n\n    Args:\n        n: The upper limit (inclusive) for the numbers to generate.\n\n    Returns:\n        A list of strings, where each string is the binary representation\n        of numbers from 1 to n.\n    \"\"\"\n    if n <= 0:\n        return []\n\n    queue = collections.deque()\n    queue.append(\"1\")\n    \n    result = []\n\n    for _ in range(n):\n        s = queue.popleft()\n        result.append(s)\n\n        queue.append(s + \"0\")\n        queue.append(s + \"1\")\n\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Generate binary numbers from 1 to n using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

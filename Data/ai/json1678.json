@@ -1,0 +1,7 @@
+{
+    "code": "# The isBadVersion API is defined for you.\n# @param version, an integer\n# @return a boolean\n# def isBadVersion(version: int) -> bool:\n#     pass\n\nclass Solution:\n    def firstBadVersion(self, n: int) -> int:\n        left, right = 1, n\n        first_bad = n\n\n        while left <= right:\n            mid = left + (right - left) // 2\n            if isBadVersion(mid):\n                first_bad = mid\n                right = mid - 1\n            else:\n                left = mid + 1\n        \n        return first_bad",
+    "source": "test-data-ai",
+    "prompt": "First bad version bulan binary search varyasyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

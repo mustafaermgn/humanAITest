@@ -1,0 +1,7 @@
+{
+    "code": "def are_anagrams(s1, s2):\n    if len(s1) != len(s2):\n        return False\n    return sorted(s1) == sorted(s2)",
+    "source": "test-data-ai",
+    "prompt": "İki string'in birbirinin anagramı olup olmadığını kontrol eden kısa bir fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

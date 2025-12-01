@@ -1,0 +1,7 @@
+{
+    "code": "def file_chunk_generator(file_path, chunk_size=4096):\n    \"\"\"\n    Büyük bir dosyayı chunk'lar halinde okuyan bir generator.\n\n    Args:\n        file_path (str): Dosyanın yolu.\n        chunk_size (int): Her chunk'ın boyutu (bayt olarak).\n\n    Yields:\n        bytes: Bir sonraki dosya chunk'ı.\n    \"\"\"\n    with open(file_path, 'rb') as f:\n        while True:\n            chunk = f.read(chunk_size)\n            if not chunk:\n                break\n            yield chunk\n\nif __name__ == '__main__':\n    # Test için örnek bir dosya oluşturalım.\n    file_path = 'large_file.txt'\n    file_size = 1024 * 1024 * 5  # 5MB\n    with open(file_path, 'wb') as f:\n        f.write(b'0' * file_size)\n\n    # Generator'ı kullanarak dosyayı chunk'lar halinde okuyalım.\n    for chunk in file_chunk_generator(file_path, chunk_size=1024 * 64): # 64KB chunk boyutunda\n        # Her chunk'ı işleyebiliriz. Örneğin, chunk boyutunu yazdırabiliriz.\n        print(f\"Chunk boyutu: {len(chunk)}\")\n\n    # Test dosyasını silelim\n    import os\n    os.remove(file_path)",
+    "source": "test-data-ai",
+    "prompt": "Large file'ı chunk'lar halinde okuyan generator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

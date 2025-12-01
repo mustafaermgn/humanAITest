@@ -1,0 +1,7 @@
+{
+    "code": "import toml\nimport os\n\ndef parse_toml_file(file_path: str) -> dict:\n    with open(file_path, 'r', encoding='utf-8') as f:\n        data = toml.load(f)\n    return data\n\nif __name__ == '__main__':\n    # Örnek bir TOML dosyası oluşturalım\n    toml_content = \"\"\"\n    [database]\n    type = \"PostgreSQL\"\n    host = \"localhost\"\n    port = 5432\n    user = \"admin\"\n    password = \"secret_password\"\n\n    [server]\n    ip = \"127.0.0.1\"\n    port = 8080\n    enabled = true\n\n    [clients]\n    data = [ [\"gamma\", \"delta\"], [1, 2] ]\n    hosts = [\n        \"alpha\",\n        \"omega\"\n    ]\n    \"\"\"\n    file_name = \"config.toml\"\n    with open(file_name, 'w', encoding='utf-8') as f:\n        f.write(toml_content)\n\n    # Fonksiyonu kullanarak dosyayı parse edelim\n    parsed_data = parse_toml_file(file_name)\n\n    # Sonucu yazdıralım\n    print(\"Parsed TOML Data:\")\n    print(parsed_data)\n\n    print(\"\\nErişim örnekleri:\")\n    print(f\"Database Type: {parsed_data['database']['type']}\")\n    print(f\"Server Port: {parsed_data['server']['port']}\")\n    print(f\"First Client Host: {parsed_data['clients']['hosts'][0]}\")\n\n    # Oluşturduğumuz örnek dosyayı silelim\n    os.remove(file_name)",
+    "source": "test-data-ai",
+    "prompt": "TOML dosyası parse eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

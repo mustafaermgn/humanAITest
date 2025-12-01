@@ -1,0 +1,7 @@
+{
+    "code": "def search_sorted_matrix(matrix, target):\n    \"\"\"\n    2D matriste satır ve sütunlar sıralıyken eleman arayan algoritma.\n\n    Args:\n        matrix: 2D sıralı matris (satır ve sütunlar sıralı).\n        target: Aranacak hedef eleman.\n\n    Returns:\n        Hedef elemanın koordinatlarını (satır, sütun) içeren bir tuple.\n        Hedef eleman bulunamazsa None döndürür.\n    \"\"\"\n    if not matrix or not matrix[0]:\n        return None\n\n    row = 0\n    col = len(matrix[0]) - 1\n\n    while row < len(matrix) and col >= 0:\n        if matrix[row][col] == target:\n            return (row, col)\n        elif matrix[row][col] < target:\n            row += 1\n        else:\n            col -= 1\n\n    return None\n\nif __name__ == '__main__':\n    # Örnek kullanım\n    matrix = [\n        [1, 4, 7, 11, 15],\n        [2, 5, 8, 12, 19],\n        [3, 6, 9, 16, 22],\n        [10, 13, 14, 17, 24],\n        [18, 21, 23, 26, 30]\n    ]\n\n    target = 5\n    result = search_sorted_matrix(matrix, target)\n\n    if result:\n        print(f\"Hedef {target} bulundu, Konum: {result}\")\n    else:\n        print(f\"Hedef {target} bulunamadı.\")\n\n    target = 20\n    result = search_sorted_matrix(matrix, target)\n\n    if result:\n        print(f\"Hedef {target} bulundu, Konum: {result}\")\n    else:\n        print(f\"Hedef {target} bulunamadı.\")",
+    "source": "test-data-ai",
+    "prompt": "2D matrix'te satır ve sütunlar sıralıyken eleman arayan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

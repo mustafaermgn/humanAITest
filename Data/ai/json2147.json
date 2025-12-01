@@ -1,0 +1,7 @@
+{
+    "code": "from typing import List\n\ndef canCompleteCircuit(gas: List[int], cost: List[int]) -> int:\n    total_gas = 0\n    current_gas = 0\n    start_station = 0\n    n = len(gas)\n\n    for i in range(n):\n        diff = gas[i] - cost[i]\n        total_gas += diff\n        current_gas += diff\n\n        if current_gas < 0:\n            start_station = i + 1\n            current_gas = 0\n    \n    if total_gas < 0:\n        return -1\n    else:\n        return start_station",
+    "source": "test-data-ai",
+    "prompt": "Gas station circular tour problemini çöz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import os\nimport re\n\ndef _parse_size_string(size_string):\n    if isinstance(size_string, (int, float)):\n        return int(size_string)\n\n    size_string = size_string.strip()\n    match = re.match(r'^(\\d+(\\.\\d+)?)\\s*([KMGT]?B)?$', size_string, re.IGNORECASE)\n    if not match:\n        raise ValueError(f\"Invalid size string format: {size_string}\")\n\n    value = float(match.group(1))\n    unit = (match.group(3) or 'B').upper()\n\n    units = {\n        'B': 1,\n        'KB': 1024,\n        'MB': 1024**2,\n        'GB': 1024**3,\n        'TB': 1024**4,\n    }\n\n    if unit not in units:\n        raise ValueError(f\"Unknown unit: {unit}\")\n\n    return int(value * units[unit])\n\ndef validate_file_size(file_path, size_limit):\n    try:\n        actual_size = os.path.getsize(file_path)\n    except FileNotFoundError:\n        return False\n    except Exception:\n        return False\n\n    try:\n        if isinstance(size_limit, str):\n            limit_bytes = _parse_size_string(size_limit)\n        elif isinstance(size_limit, (int, float)):\n            limit_bytes = int(size_limit)\n        else:\n            return False\n    except ValueError:\n        return False\n\n    return actual_size <= limit_bytes",
+    "source": "test-data-ai",
+    "prompt": "File size limit validator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

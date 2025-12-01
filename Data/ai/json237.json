@@ -1,0 +1,7 @@
+{
+    "code": "def modular_exponentiation(base, exponent, modulus):\n  \"\"\"\n  Modular exponentiation (fast power) algorithm.\n\n  Args:\n    base: The base number.\n    exponent: The exponent.\n    modulus: The modulus.\n\n  Returns:\n    The result of (base^exponent) % modulus.\n  \"\"\"\n  result = 1\n  base = base % modulus\n  while exponent > 0:\n    if exponent % 2 == 1:\n      result = (result * base) % modulus\n    exponent = exponent >> 1\n    base = (base * base) % modulus\n  return result\n\nif __name__ == '__main__':\n  # Example usage\n  base = 2\n  exponent = 10\n  modulus = 1000\n  result = modular_exponentiation(base, exponent, modulus)\n  print(f\"({base}^{exponent}) % {modulus} = {result}\")\n\n  base = 5\n  exponent = 3\n  modulus = 13\n  result = modular_exponentiation(base, exponent, modulus)\n  print(f\"({base}^{exponent}) % {modulus} = {result}\")\n\n  base = 1234\n  exponent = 5678\n  modulus = 9101\n  result = modular_exponentiation(base, exponent, modulus)\n  print(f\"({base}^{exponent}) % {modulus} = {result}\")",
+    "source": "test-data-ai",
+    "prompt": "Modular exponentiation (fast power) algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

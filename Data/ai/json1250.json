@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef jump_search(arr, target):\n    n = len(arr)\n\n    if n == 0:\n        return -1\n\n    # Determine block size (step)\n    step = int(math.sqrt(n))\n    prev = 0\n\n    # Find the block where the element might be present\n    while arr[min(step, n) - 1] < target:\n        prev = step\n        step += int(math.sqrt(n))\n        if prev >= n: # Target not in array\n            return -1\n\n    # Perform linear search within the found block (from prev to min(step, n))\n    while arr[prev] < target:\n        prev += 1\n        # If we reached the end of the current block or beyond the array length,\n        # and the element is still not found, it means it's not present.\n        if prev == min(step, n):\n            return -1\n\n    # Check if element is found\n    if arr[prev] == target:\n        return prev\n    else:\n        return -1 # Element not found",
+    "source": "test-data-ai",
+    "prompt": "Jump Search algoritmasını uygula.",
+    "license": "MIT",
+    "language": "python"
+}

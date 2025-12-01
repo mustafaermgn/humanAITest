@@ -1,0 +1,7 @@
+{
+    "code": "import pickle\n\ndef serialize_object(obj):\n    \"\"\"\n    Pickle modülünü kullanarak bir Python nesnesini serileştirir.\n    \"\"\"\n    return pickle.dumps(obj)",
+    "source": "test-data-ai",
+    "prompt": "Pickle ile object serialization yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

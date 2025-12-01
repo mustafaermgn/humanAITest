@@ -1,0 +1,7 @@
+{
+    "code": "def josephus(n, k):\n    survivor = 0\n    for i in range(1, n + 1):\n        survivor = (survivor + k) % i\n    return survivor + 1",
+    "source": "test-data-ai",
+    "prompt": "Josephus problem solution yaz.",
+    "license": "MIT",
+    "language": "python"
+}

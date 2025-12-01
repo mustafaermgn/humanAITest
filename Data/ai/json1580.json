@@ -1,0 +1,7 @@
+{
+    "code": "list1 + list2",
+    "source": "test-data-ai",
+    "prompt": "İki listeyi tek bir listeye birleştiren tek satırlık bir kod yaz.",
+    "license": "MIT",
+    "language": "python"
+}

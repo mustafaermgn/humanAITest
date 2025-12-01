@@ -1,0 +1,7 @@
+{
+    "code": "import tempfile\nimport os\n\nclass TemporaryFileContext:\n    def __enter__(self):\n        fd, path = tempfile.mkstemp()\n        os.close(fd)\n        self._temp_file_path = path\n        return self._temp_file_path\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        if hasattr(self, '_temp_file_path') and os.path.exists(self._temp_file_path):\n            os.remove(self._temp_file_path)",
+    "source": "test-data-ai",
+    "prompt": "Temporary file oluşturan context manager yaz.",
+    "license": "MIT",
+    "language": "python"
+}

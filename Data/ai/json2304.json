@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def carFleet(self, target: int, position: list[int], speed: list[int]) -> int:\n        cars = []\n        for i in range(len(position)):\n            cars.append((position[i], speed[i]))\n\n        cars.sort(key=lambda x: x[0], reverse=True)\n\n        fleet_arrival_times = []\n\n        for pos, spd in cars:\n            time_to_target = float(target - pos) / spd\n\n            if not fleet_arrival_times:\n                fleet_arrival_times.append(time_to_target)\n            else:\n                if time_to_target > fleet_arrival_times[-1]:\n                    fleet_arrival_times.append(time_to_target)\n\n        return len(fleet_arrival_times)",
+    "source": "test-data-ai",
+    "prompt": "Car fleet problem using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

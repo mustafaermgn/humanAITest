@@ -1,0 +1,7 @@
+{
+    "code": "def find_duplicates_with_hash_set(arr):\n    seen = set()\n    duplicates = set()\n\n    for item in arr:\n        if item in seen:\n            duplicates.add(item)\n        else:\n            seen.add(item)\n            \n    return list(duplicates)\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    my_array = [1, 2, 3, 4, 2, 5, 6, 1, 7, 8, 8, 9]\n    result = find_duplicates_with_hash_set(my_array)\n    print(result) # Çıktı: [1, 2, 8] (sıra garanti edilmez)\n\n    my_array_2 = [10, 20, 30, 40, 50]\n    result_2 = find_duplicates_with_hash_set(my_array_2)\n    print(result_2) # Çıktı: []\n\n    my_array_3 = ['apple', 'banana', 'apple', 'orange', 'banana', 'grape']\n    result_3 = find_duplicates_with_hash_set(my_array_3)\n    print(result_3) # Çıktı: ['apple', 'banana'] (sıra garanti edilmez)",
+    "source": "test-data-ai",
+    "prompt": "Find duplicate in array using hash set yaz.",
+    "license": "MIT",
+    "language": "python"
+}

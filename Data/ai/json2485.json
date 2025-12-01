@@ -1,0 +1,7 @@
+{
+    "code": "class DatabaseTransaction:\n    def __init__(self, db_connection):\n        self.db = db_connection\n\n    def __enter__(self):\n        self.db.begin()\n        return self.db\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        if exc_type is None:\n            self.db.commit()\n        else:\n            self.db.rollback()\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Context manager for database transaction yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class RecentCounter:\n    def __init__(self):\n        self.q = []\n\n    def ping(self, t: int) -> int:\n        self.q.append(t)\n        while self.q[0] < t - 3000:\n            self.q.pop(0)\n        return len(self.q)\n\n# Örnek kullanım:\n# recentCounter = RecentCounter()\n# print(recentCounter.ping(1))     # Output: 1\n# print(recentCounter.ping(100))   # Output: 2\n# print(recentCounter.ping(3001))  # Output: 3\n# print(recentCounter.ping(3002))  # Output: 3",
+    "source": "test-data-ai",
+    "prompt": "Number of recent calls using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

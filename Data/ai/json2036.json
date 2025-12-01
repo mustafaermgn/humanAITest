@@ -1,0 +1,7 @@
+{
+    "code": "from PIL import Image\n\ndef validate_image_dimensions(\n    image_path,\n    min_width=None,\n    max_width=None,\n    min_height=None,\n    max_height=None,\n    exact_width=None,\n    exact_height=None\n):\n    try:\n        with Image.open(image_path) as img:\n            width, height = img.size\n\n            if exact_width is not None and width != exact_width:\n                return False\n            if exact_height is not None and height != exact_height:\n                return False\n\n            if min_width is not None and width < min_width:\n                return False\n            if max_width is not None and width > max_width:\n                return False\n\n            if min_height is not None and height < min_height:\n                return False\n            if max_height is not None and height > max_height:\n                return False\n\n            return True\n\n    except FileNotFoundError:\n        return False\n    except Image.UnidentifiedImageError:\n        return False\n    except Exception:\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Image dimensions validator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

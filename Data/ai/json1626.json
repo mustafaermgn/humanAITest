@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def isAdditiveNumber(self, num: str) -> bool:\n        n = len(num)\n        if n < 3:\n            return False\n\n        def check(idx, num1_str, num2_str):\n            if idx == n:\n                return True\n\n            num1 = int(num1_str)\n            num2 = int(num2_str)\n            _sum = str(num1 + num2)\n\n            if num[idx:].startswith(_sum):\n                return check(idx + len(_sum), num2_str, _sum)\n            else:\n                return False\n\n        for i in range(1, n):\n            num1_str = num[0:i]\n            if len(num1_str) > 1 and num1_str[0] == '0':\n                continue\n\n            for j in range(i + 1, n):\n                num2_str = num[i:j]\n                if len(num2_str) > 1 and num2_str[0] == '0':\n                    continue\n\n                if check(j, num1_str, num2_str):\n                    return True\n\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Additive number verification yaz.",
+    "license": "MIT",
+    "language": "python"
+}

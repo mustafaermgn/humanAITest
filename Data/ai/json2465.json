@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_average(numbers):\n    if not numbers:\n        return 0\n    return sum(numbers) / len(numbers)",
+    "source": "test-data-ai",
+    "prompt": "def calculate_average(numbers):",
+    "license": "MIT",
+    "language": "python"
+}

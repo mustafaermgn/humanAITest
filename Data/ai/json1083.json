@@ -1,0 +1,7 @@
+{
+    "code": "import os\nfrom dotenv import dotenv_values\n\ndef read_env_file(env_path=\".env\"):\n    return dotenv_values(env_path)",
+    "source": "test-data-ai",
+    "prompt": ".env dosyası okuyan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

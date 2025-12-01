@@ -1,0 +1,7 @@
+{
+    "code": "import requests\nimport urllib.parse\n\ndef get_request_with_query_params(url, params):\n    \"\"\"\n    GET isteği yapar ve query parametrelerini ekler.\n\n    Args:\n        url (str): İsteğin yapılacağı URL.\n        params (dict): Query parametreleri (anahtar-değer çiftleri).\n\n    Returns:\n        requests.Response: Yanıt nesnesi.\n    \"\"\"\n    encoded_params = urllib.parse.urlencode(params)\n    full_url = f\"{url}?{encoded_params}\"\n    response = requests.get(full_url)\n    return response\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    base_url = \"https://httpbin.org/get\"  # Örnek bir API endpoint'i\n    query_parameters = {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\",\n        \"key3\": \"value3\"\n    }\n\n    response = get_request_with_query_params(base_url, query_parameters)\n\n    if response.status_code == 200:\n        print(\"İstek başarılı!\")\n        print(\"Yanıt içeriği:\", response.json())\n    else:\n        print(\"İstek başarısız!\")\n        print(\"Durum kodu:\", response.status_code)\n        print(\"Yanıt içeriği:\", response.text)",
+    "source": "test-data-ai",
+    "prompt": "Query parameters ile GET request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

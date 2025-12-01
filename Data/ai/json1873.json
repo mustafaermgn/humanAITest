@@ -1,0 +1,7 @@
+{
+    "code": "from typing import List\n\ndef wordBreak(s: str, wordDict: List[str]) -> List[str]:\n    if not s:\n        return []\n        \n    word_set = set(wordDict)\n    memo = {}\n\n    def backtrack(current_s: str) -> List[List[str]]:\n        if current_s in memo:\n            return memo[current_s]\n\n        if not current_s:\n            return [[]] \n\n        results_for_current_s = []\n\n        for i in range(1, len(current_s) + 1):\n            word = current_s[:i]\n            if word in word_set:\n                remaining_sentences_lists = backtrack(current_s[i:])\n                for sentence_list in remaining_sentences_lists:\n                    results_for_current_s.append([word] + sentence_list)\n\n        memo[current_s] = results_for_current_s\n        return results_for_current_s\n\n    all_word_lists = backtrack(s)\n    final_sentences = [\" \".join(word_list) for word_list in all_word_lists]\n\n    return final_sentences",
+    "source": "test-data-ai",
+    "prompt": "Word break II (all possible sentences) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

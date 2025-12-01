@@ -1,0 +1,7 @@
+{
+    "code": "from typing import Optional\n\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def isPalindrome(self, head: Optional[ListNode]) -> bool:\n        if not head or not head.next:\n            return True\n\n        slow = head\n        fast = head\n        while fast and fast.next:\n            slow = slow.next\n            fast = fast.next.next\n\n        second_half_head = self._reverseList(slow)\n\n        first_half_current = head\n        second_half_current = second_half_head\n        \n        while second_half_current:\n            if first_half_current.val != second_half_current.val:\n                return False\n            first_half_current = first_half_current.next\n            second_half_current = second_half_current.next\n        \n        return True\n\n    def _reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        prev = None\n        current = head\n        while current:\n            next_node = current.next\n            current.next = prev\n            prev = current\n            current = next_node\n        return prev",
+    "source": "test-data-ai",
+    "prompt": "Palindrome linked list checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

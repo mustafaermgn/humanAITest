@@ -1,0 +1,7 @@
+{
+    "code": "import json\n\ndef read_json_to_dict(file_path: str) -> dict:\n    with open(file_path, 'r', encoding='utf-8') as f:\n        data = json.load(f)\n    return data",
+    "source": "test-data-ai",
+    "prompt": "JSON dosyası okuyup Python dictionary'ye çeviren fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import subprocess\n\ndef run_subprocess_and_capture(command):\n    result = subprocess.run(command, capture_output=True, text=True, check=False)\n    return result.stdout, result.stderr",
+    "source": "test-data-ai",
+    "prompt": "Bir `subprocess` çalıştıran ve hem stdout hem de stderr çıktılarını yakalayan bir fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

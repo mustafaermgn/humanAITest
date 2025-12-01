@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\ndef find_kth_largest(nums: list[int], k: int) -> int:\n    min_heap = []\n\n    for num in nums:\n        if len(min_heap) < k:\n            heapq.heappush(min_heap, num)\n        elif num > min_heap[0]:\n            heapq.heapreplace(min_heap, num)\n            \n    return min_heap[0]",
+    "source": "test-data-ai",
+    "prompt": "Kth largest element using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

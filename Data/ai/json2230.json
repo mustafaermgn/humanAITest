@@ -1,0 +1,7 @@
+{
+    "code": "import aiohttp\nimport asyncio\n\nasync def fetch_url_content(url: str) -> str:\n    \"\"\"\n    Belirtilen URL'ye asenkron HTTP GET isteği yapar ve yanıtın metin içeriğini döndürür.\n    \"\"\"\n    async with aiohttp.ClientSession() as session:\n        async with session.get(url) as response:\n            response.raise_for_status()  # HTTP hataları için istisna fırlatır (örn. 404, 500)\n            return await response.text()\n\nif __name__ == '__main__':\n    async def main():\n        test_url = \"https://jsonplaceholder.typicode.com/todos/1\"\n        try:\n            content = await fetch_url_content(test_url)\n            print(f\"İçerik (ilk 200 karakter):\\n{content[:200]}...\")\n        except aiohttp.ClientError as e:\n            print(f\"HTTP isteği sırasında bir hata oluştu: {e}\")\n        except Exception as e:\n            print(f\"Beklenmeyen bir hata oluştu: {e}\")\n\n    asyncio.run(main())",
+    "source": "test-data-ai",
+    "prompt": "Async HTTP request yapan aiohttp kullanımlı fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

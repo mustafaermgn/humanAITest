@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI, Depends, HTTPException, status\nfrom fastapi.security import APIKeyHeader\n\n# Bu, gerçek bir uygulamada veritabanından veya çevre değişkenlerinden alınmalıdır.\n# Örnek olarak sabit bir liste kullanılmıştır.\nAPI_KEYS = [\n    \"mysecretapikey123\",\n    \"anothersecurekey456\"\n]\n\napi_key_header = APIKeyHeader(name=\"X-API-Key\", auto_error=False)\n\nasync def get_api_key(api_key: str = Depends(api_key_header)):\n    if api_key is None:\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"API Key missing\",\n            headers={\"WWW-Authenticate\": \"X-API-Key\"},\n        )\n    if api_key not in API_KEYS:\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Invalid API Key\",\n            headers={\"WWW-Authenticate\": \"X-API-Key\"},\n        )\n    return api_key\n\napp = FastAPI()\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"Welcome to the unauthenticated root!\"}\n\n@app.get(\"/protected-route\")\nasync def read_protected_route(api_key: str = Depends(get_api_key)):\n    return {\"message\": \"You have successfully accessed the protected route!\", \"authenticated_key\": api_key}\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile API key authentication yaz.",
+    "license": "MIT",
+    "language": "python"
+}

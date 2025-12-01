@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef find_min_diff(packets, m):\n    if m <= 0 or not packets or len(packets) < m:\n        return math.inf\n\n    packets.sort()\n\n    min_diff = math.inf\n\n    for i in range(len(packets) - m + 1):\n        current_diff = packets[i + m - 1] - packets[i]\n        min_diff = min(min_diff, current_diff)\n\n    return min_diff",
+    "source": "test-data-ai",
+    "prompt": "Chocolate distribution problem yaz.",
+    "license": "MIT",
+    "language": "python"
+}

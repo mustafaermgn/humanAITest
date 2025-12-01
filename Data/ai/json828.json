@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, request, jsonify\n\napp = Flask(__name__)\n\nclass SimpleMiddleware:\n    def __init__(self, app):\n        self.app = app\n\n    def __call__(self, environ, start_response):\n        print(\"Middleware öncesi istek:\", request.path)\n        response = self.app(environ, start_response)\n        print(\"Middleware sonrası yanıt:\", request.path)\n        return response\n\napp.wsgi_app = SimpleMiddleware(app.wsgi_app)\n\n@app.route('/')\ndef index():\n    return \"Merhaba, Dünya!\"\n\n@app.route('/api/data')\ndef api_data():\n    data = {'mesaj': 'Bu bir API yanıtı'}\n    return jsonify(data)\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask middleware örneği yaz.",
+    "license": "MIT",
+    "language": "python"
+}

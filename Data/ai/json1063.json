@@ -1,0 +1,7 @@
+{
+    "code": "def _compute_lps_array(pattern):\n    m = len(pattern)\n    lps = [0] * m\n    length = 0\n    i = 1\n    while i < m:\n        if pattern[i] == pattern[length]:\n            length += 1\n            lps[i] = length\n            i += 1\n        else:\n            if length != 0:\n                length = lps[length - 1]\n            else:\n                lps[i] = 0\n                i += 1\n    return lps\n\n\ndef kmp_search(text, pattern):\n    n = len(text)\n    m = len(pattern)\n\n    if m == 0:\n        return []\n    if n == 0:\n        return []\n\n    lps = _compute_lps_array(pattern)\n\n    occurrences = []\n    i = 0\n    j = 0\n\n    while i < n:\n        if pattern[j] == text[i]:\n            i += 1\n            j += 1\n\n        if j == m:\n            occurrences.append(i - j)\n            j = lps[j - 1]\n        elif i < n and pattern[j] != text[i]:\n            if j != 0:\n                j = lps[j - 1]\n            else:\n                i += 1\n    return occurrences",
+    "source": "test-data-ai",
+    "prompt": "KMP (Knuth-Morris-Pratt) pattern matching yaz.",
+    "license": "MIT",
+    "language": "python"
+}

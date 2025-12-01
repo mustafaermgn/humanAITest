@@ -1,0 +1,7 @@
+{
+    "code": "def __init__(self, mmdataset):\n        if not isinstance(mmdataset, Dataset):\n            raise TypeError(\"mmdataset must be of type `torch.utils.data.dataset`.\")\n        self.mmdataset = mmdataset",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/datasets/fairseqmmdataset.py",
+    "license": "MIT",
+    "language": "python"
+}

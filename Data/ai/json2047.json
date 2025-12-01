@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\n# Demo için geçici bir dosya oluştur\nfile_name = \"ornek_dosya.txt\"\nwith open(file_name, \"w\") as f:\n    f.write(\"Bu ilk satır.\\n\")\n    f.write(\"Bu ikinci satır.\\n\")\n    f.write(\"Bu son satır.\")\n\n# 'with' ifadesini kullanarak dosyayı aç ve oku\nwith open(file_name, \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)\n\n# Geçici dosyayı sil (isteğe bağlı temizlik)\nos.remove(file_name)",
+    "source": "test-data-ai",
+    "prompt": "Python'da bir dosyayı açıp okurken kaynak sızıntısını önlemek için with ifadesini kullanan bir örnek yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def minRemoveToMakeValid(self, s: str) -> str:\n        s_list = list(s)\n        stack = []\n        \n        # İlk geçiş: Eşleşmeyen ')' parantezleri belirle ve kaldır.\n        # Bunları boş karakter ile işaretliyoruz.\n        for i, char in enumerate(s_list):\n            if char == '(':\n                stack.append(i)\n            elif char == ')':\n                if stack:\n                    stack.pop()\n                else:\n                    # Eşleşmeyen ')' parantezi, kaldırılacak\n                    s_list[i] = '' \n        \n        # İkinci adım: Stack'te kalan tüm '(' parantezleri eşleşmemiştir.\n        # Bunları da kaldırılmak üzere işaretle.\n        while stack:\n            idx_to_remove = stack.pop()\n            s_list[idx_to_remove] = '' \n            \n        # İşaretlenmeyen karakterleri birleştirerek sonucu oluştur.\n        return \"\".join(c for c in s_list if c != '')",
+    "source": "test-data-ai",
+    "prompt": "Minimum remove to make valid parentheses yaz.",
+    "license": "MIT",
+    "language": "python"
+}

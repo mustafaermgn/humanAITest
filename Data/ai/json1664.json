@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def letterCombinations(self, digits: str) -> list[str]:\n        if not digits:\n            return []\n\n        keypad_map = {\n            '2': \"abc\",\n            '3': \"def\",\n            '4': \"ghi\",\n            '5': \"jkl\",\n            '6': \"mno\",\n            '7': \"pqrs\",\n            '8': \"tuv\",\n            '9': \"wxyz\"\n        }\n\n        result = []\n        \n        def backtrack(index, current_combination):\n            if index == len(digits):\n                result.append(\"\".join(current_combination))\n                return\n\n            digit = digits[index]\n            if digit in keypad_map:\n                letters = keypad_map[digit]\n                for letter in letters:\n                    current_combination.append(letter)\n                    backtrack(index + 1, current_combination)\n                    current_combination.pop()\n            else:\n                # Handle digits not in keypad_map (e.g., '0', '1') by skipping them\n                # and proceeding to the next digit without adding characters.\n                backtrack(index + 1, current_combination)\n\n        backtrack(0, [])\n        return result",
+    "source": "test-data-ai",
+    "prompt": "Letter combinations of phone number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

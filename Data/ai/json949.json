@@ -1,0 +1,7 @@
+{
+    "code": "# app.py\nfrom flask import Flask, render_template\n\napp = Flask(__name__)\n\n@app.route('/')\ndef home():\n    return render_template('index.html', title='Ana Sayfa', message='Flask ile Template Rendering')\n\nif __name__ == '__main__':\n    app.run(debug=True)\n<!-- templates/index.html -->\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>{{ title }}</title>\n</head>\n<body>\n    <h1>{{ message }}</h1>\n    <p>Bu sayfa Flask tarafından render edilmiştir.</p>\n    <p>Değişkenler: title = \"{{ title }}\", message = \"{{ message }}\"</p>\n</body>\n</html>",
+    "source": "test-data-ai",
+    "prompt": "Flask ile template rendering yapan endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

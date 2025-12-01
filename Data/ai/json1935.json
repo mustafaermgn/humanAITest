@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef euler_totient(n: int) -> int:\n    if n <= 0:\n        raise ValueError(\"Input must be a positive integer.\")\n    if n == 1:\n        return 1\n\n    result = n\n    temp_n = n\n\n    p = 2\n    while p * p <= temp_n:\n        if temp_n % p == 0:\n            result -= result // p\n            while temp_n % p == 0:\n                temp_n //= p\n        p += 1\n\n    if temp_n > 1:\n        result -= result // temp_n\n\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Euler's totient function hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

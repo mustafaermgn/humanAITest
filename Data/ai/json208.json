@@ -1,0 +1,7 @@
+{
+    "code": "class Kisi:\n    def __init__(self, ad):\n        self._ad = ad # Özel bir adlandırma kuralı ile iç değişken\n\n    @property\n    def ad(self):\n        \"\"\"'ad' özelliğinin getter'ı.\"\"\"\n        print(\"Ad alınıyor...\")\n        return self._ad\n\n    @ad.setter\n    def ad(self, yeni_ad):\n        \"\"\"'ad' özelliğinin setter'ı.\"\"\"\n        if not isinstance(yeni_ad, str):\n            raise TypeError(\"Ad bir string olmalıdır!\")\n        if len(yeni_ad.strip()) == 0:\n            raise ValueError(\"Ad boş olamaz!\")\n        print(f\"Ad '{yeni_ad}' olarak ayarlanıyor...\")\n        self._ad = yeni_ad\n\n    @ad.deleter\n    def ad(self):\n        \"\"\"'ad' özelliğinin deleter'ı.\"\"\"\n        print(\"Ad siliniyor...\")\n        del self._ad\n\n# Kullanım örneği:\ninsan = Kisi(\"Ali\")\n\nprint(f\"Başlangıç adı: {insan.ad}\")\n\ninsan.ad = \"Veli\"\nprint(f\"Yeni ad: {insan.ad}\")\n\ntry:\n    insan.ad = 123  # Hatalı tip\nexcept TypeError as e:\n    print(f\"Hata: {e}\")\n\ntry:\n    insan.ad = \"\"   # Hatalı değer\nexcept ValueError as e:\n    print(f\"Hata: {e}\")\n\ndel insan.ad\n\ntry:\n    print(insan.ad) # Silindikten sonra erişim hatası\nexcept AttributeError as e:\n    print(f\"Hata: {e}\")\n\ninsan.ad = \"Ayşe\" # Silinen adı tekrar ayarla\nprint(f\"Tekrar ayarlanan ad: {insan.ad}\")",
+    "source": "test-data-ai",
+    "prompt": "Bir sınıftaki **`@property`** decorator'ını kullanarak bir alanın nasıl kontrol edileceğini göster.",
+    "license": "MIT",
+    "language": "python"
+}

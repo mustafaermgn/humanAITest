@@ -1,0 +1,7 @@
+{
+    "code": "def diffWaysToCompute(expression: str) -> list[int]:\n    memo = {}\n\n    def _compute(s: str) -> list[int]:\n        if s in memo:\n            return memo[s]\n\n        results = []\n        \n        has_operator = False\n        for i, char in enumerate(s):\n            if char in \"+-*\":\n                has_operator = True\n                left_parts = _compute(s[:i])\n                right_parts = _compute(s[i+1:])\n\n                for left_val in left_parts:\n                    for right_val in right_parts:\n                        if char == '+':\n                            results.append(left_val + right_val)\n                        elif char == '-':\n                            results.append(left_val - right_val)\n                        elif char == '*':\n                            results.append(left_val * right_val)\n        \n        if not has_operator:\n            results.append(int(s))\n        \n        memo[s] = results\n        return results\n    \n    return _compute(expression)",
+    "source": "test-data-ai",
+    "prompt": "Different ways to add parentheses yaz.",
+    "license": "MIT",
+    "language": "python"
+}

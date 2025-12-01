@@ -1,0 +1,7 @@
+{
+    "code": "def check_parentheses_balance(expression):\n    stack = []\n    mapping = {\")\": \"(\", \"}\": \"{\", \"]\": \"[\"}\n    \n    for char in expression:\n        if char in \"([{\":\n            stack.append(char)\n        elif char in \")]}\":\n            if not stack:\n                return False  # Kapanış parantezi ama stack boş\n            top_element = stack.pop()\n            if mapping[char] != top_element:\n                return False  # Uyuşmayan parantez\n    \n    return not stack # Stack boşsa dengeli, değilse dengesiz",
+    "source": "test-data-ai",
+    "prompt": "Stack kullanarak parantez dengeleme kontrol et.",
+    "license": "MIT",
+    "language": "python"
+}

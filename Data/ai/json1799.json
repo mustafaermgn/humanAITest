@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef deleteNode(root: TreeNode, key: int) -> TreeNode:\n    if not root:\n        return root\n\n    # Traverse to find the node\n    if key < root.val:\n        root.left = deleteNode(root.left, key)\n    elif key > root.val:\n        root.right = deleteNode(root.right, key)\n    else:\n        # Node found (key == root.val)\n\n        # Case 1: Node has no child or one child\n        if not root.left:\n            return root.right\n        elif not root.right:\n            return root.left\n\n        # Case 2: Node has two children\n        # Find the in-order successor (smallest in the right subtree)\n        temp = root.right\n        while temp.left:\n            temp = temp.left\n        \n        # Copy the in-order successor's data to this node\n        root.val = temp.val\n        \n        # Delete the in-order successor from the right subtree\n        root.right = deleteNode(root.right, temp.val)\n    \n    return root",
+    "source": "test-data-ai",
+    "prompt": "Delete node in BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

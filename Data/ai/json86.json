@@ -1,0 +1,7 @@
+{
+    "code": "import yaml\n\ndef parse_yaml(file_path):\n    \"\"\"\n    YAML dosyasını parse eder ve içeriğini bir Python nesnesi olarak döndürür.\n\n    Args:\n        file_path (str): YAML dosyasının yolu.\n\n    Returns:\n        dict veya list: YAML dosyasının içeriği (sözlük veya liste olarak).\n                       Dosya bulunamazsa veya ayrıştırma başarısız olursa None döndürür.\n    \"\"\"\n    try:\n        with open(file_path, 'r') as f:\n            data = yaml.safe_load(f)\n            return data\n    except FileNotFoundError:\n        print(f\"Hata: Dosya bulunamadı: {file_path}\")\n        return None\n    except yaml.YAMLError as e:\n        print(f\"Hata: YAML ayrıştırma hatası: {e}\")\n        return None\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    file_path = 'example.yaml'  # 'example.yaml' dosyasını kendi dosyanızın yoluyla değiştirin.\n\n    # example.yaml dosyası oluşturmak için (isteğe bağlı):\n    with open(file_path, 'w') as f:\n        f.write(\"\"\"\nname: John Doe\nage: 30\ncity: New York\nhobbies:\n  - reading\n  - hiking\n  - coding\n        \"\"\")\n\n    parsed_data = parse_yaml(file_path)\n\n    if parsed_data:\n        print(\"YAML içeriği:\")\n        print(parsed_data)",
+    "source": "test-data-ai",
+    "prompt": "YAML dosyası parse eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass Solution:\n    def groupStrings(self, strings: list[str]) -> list[list[str]]:\n        groups = collections.defaultdict(list)\n\n        def get_canonical_form(s: str) -> str:\n            if not s:\n                return \"\"\n            \n            # Calculate the shift needed to make the first character 'a'\n            # Example: if s[0] is 'b', shift is 1. If s[0] is 'z', shift is 25.\n            shift = ord(s[0]) - ord('a')\n            \n            canonical_chars = []\n            for char_code in map(ord, s):\n                # Apply the calculated shift\n                shifted_char_code = char_code - shift\n                \n                # Handle wrap-around for characters that go below 'a'\n                # If 'a' (0) - 1 results in -1, adding 26 makes it 25 ('z').\n                if shifted_char_code < ord('a'):\n                    shifted_char_code += 26\n                \n                canonical_chars.append(chr(shifted_char_code))\n            \n            return \"\".join(canonical_chars)\n\n        for s in strings:\n            key = get_canonical_form(s)\n            groups[key].append(s)\n        \n        return list(groups.values())",
+    "source": "test-data-ai",
+    "prompt": "Group shifted strings using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

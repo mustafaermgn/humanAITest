@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def largestRectangleArea(self, heights: list[int]) -> int:\n        max_area = 0\n        stack = []  # Stores indices of bars in increasing height order\n\n        # Append a 0 to heights to ensure all bars in the stack are processed\n        # at the end of the iteration.\n        heights_extended = heights + [0]\n\n        for i, h in enumerate(heights_extended):\n            while stack and heights_extended[stack[-1]] > h:\n                # Pop the index of the bar that is taller than the current bar 'h'\n                popped_index = stack.pop()\n                popped_height = heights_extended[popped_index]\n\n                # Calculate the width for the rectangle formed by the popped_height.\n                # The left boundary of this rectangle is defined by the new top of the stack (if any),\n                # or index 0 if the stack is empty.\n                # The right boundary is just before the current index 'i'.\n                if not stack:\n                    width = i\n                else:\n                    width = i - stack[-1] - 1\n                \n                max_area = max(max_area, popped_height * width)\n            \n            # Push the current index onto the stack\n            stack.append(i)\n            \n        return max_area",
+    "source": "test-data-ai",
+    "prompt": "Largest rectangle in histogram using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

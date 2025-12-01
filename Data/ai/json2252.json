@@ -1,0 +1,7 @@
+{
+    "code": "def find_two_non_repeating(yaz):\n    counts = {}\n    for num in yaz:\n        counts[num] = counts.get(num, 0) + 1\n\n    result = []\n    for num in yaz:\n        if counts[num] == 1:\n            result.append(num)\n            if len(result) == 2:\n                break\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Find two non-repeating elements in array yaz.",
+    "license": "MIT",
+    "language": "python"
+}

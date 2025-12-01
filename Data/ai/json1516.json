@@ -1,0 +1,7 @@
+{
+    "code": "from typing import Optional\n\n# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:\n        if not root:\n            return False\n\n        # Eğer düğüm bir yaprak düğümse (child'ı yoksa)\n        # ve mevcut düğümün değeri kalan hedef toplama eşitse, bir yol bulundu demektir.\n        if not root.left and not root.right:\n            return targetSum == root.val\n\n        # Mevcut düğümün değerini hedef toplamdan çıkar.\n        remaining_sum = targetSum - root.val\n        \n        # Sol alt ağaçta veya sağ alt ağaçta kalan toplamı sağlayan bir yol olup olmadığını kontrol et.\n        # Herhangi birinde bulunursa True döndür.\n        return self.hasPathSum(root.left, remaining_sum) or \\\n               self.hasPathSum(root.right, remaining_sum)",
+    "source": "test-data-ai",
+    "prompt": "Path sum checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

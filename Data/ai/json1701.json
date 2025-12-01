@@ -1,0 +1,7 @@
+{
+    "code": "from typing import List, Optional\nimport heapq\n\n# Definition for singly-linked list.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        min_heap = []\n        dummy_head = ListNode(0)\n        current = dummy_head\n        \n        node_id_counter = 0\n\n        for head in lists:\n            if head:\n                heapq.heappush(min_heap, (head.val, node_id_counter, head))\n                node_id_counter += 1\n        \n        while min_heap:\n            val, _, node = heapq.heappop(min_heap)\n            \n            current.next = node\n            current = current.next\n            \n            if node.next:\n                heapq.heappush(min_heap, (node.next.val, node_id_counter, node.next))\n                node_id_counter += 1\n                \n        return dummy_head.next",
+    "source": "test-data-ai",
+    "prompt": "Merge k sorted linked lists yaz.",
+    "license": "MIT",
+    "language": "python"
+}

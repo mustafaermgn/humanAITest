@@ -1,0 +1,7 @@
+{
+    "code": "class Graph:\n    def __init__(self, num_vertices):\n        self.num_vertices = num_vertices\n        self.adj_list = [[] for _ in range(num_vertices)]\n\n    def add_edge(self, u, v):\n        \"\"\"\n        Adds an edge between vertex u and vertex v in the graph.\n        \"\"\"\n        self.adj_list[u].append(v)\n        self.adj_list[v].append(u)  # For undirected graph\n\n    def print_graph(self):\n        \"\"\"\n        Prints the adjacency list representation of the graph.\n        \"\"\"\n        for vertex in range(self.num_vertices):\n            print(f\"Vertex {vertex}: {self.adj_list[vertex]}\")\n\nif __name__ == '__main__':\n    # Example Usage\n    g = Graph(5)  # Create a graph with 5 vertices\n\n    g.add_edge(0, 1)\n    g.add_edge(0, 4)\n    g.add_edge(1, 2)\n    g.add_edge(1, 3)\n    g.add_edge(1, 4)\n    g.add_edge(2, 3)\n    g.add_edge(3, 4)\n\n    g.print_graph()",
+    "source": "test-data-ai",
+    "prompt": "Add edge to graph yaz.",
+    "license": "MIT",
+    "language": "python"
+}

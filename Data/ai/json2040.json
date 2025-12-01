@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def largestRectangleArea(self, heights: list[int]) -> int:\n        max_area = 0\n        stack = [] # stores (index, height)\n\n        for i, h in enumerate(heights):\n            start = i\n            while stack and stack[-1][1] > h:\n                idx, height = stack.pop()\n                max_area = max(max_area, height * (i - idx))\n                start = idx\n            stack.append((start, h))\n\n        for i, h in stack:\n            max_area = max(max_area, h * (len(heights) - i))\n\n        return max_area",
+    "source": "test-data-ai",
+    "prompt": "Maximum rectangle in histogram yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def run_length_encode(data):\n    if not data:\n        return \"\"\n\n    encoded_parts = []\n    count = 0\n    current_char = ''\n\n    for char in data:\n        if not current_char:\n            current_char = char\n            count = 1\n        elif char == current_char:\n            count += 1\n        else:\n            encoded_parts.append(str(count))\n            encoded_parts.append(current_char)\n            current_char = char\n            count = 1\n    \n    if current_char:\n        encoded_parts.append(str(count))\n        encoded_parts.append(current_char)\n\n    return \"\".join(encoded_parts)",
+    "source": "test-data-ai",
+    "prompt": "Run-length encoding implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass MedianFinder:\n    def __init__(self):\n        # max_heap stores the smaller half of numbers (negated for max-heap behavior)\n        self.max_heap = [] \n        # min_heap stores the larger half of numbers\n        self.min_heap = []\n\n    def addNum(self, num: int) -> None:\n        # Add the number to the appropriate heap\n        if not self.max_heap or num <= -self.max_heap[0]:\n            heapq.heappush(self.max_heap, -num)\n        else:\n            heapq.heappush(self.min_heap, num)\n\n        # Balance the heaps\n        # Ensure max_heap has size = min_heap or size = min_heap + 1\n        if len(self.max_heap) > len(self.min_heap) + 1:\n            val = -heapq.heappop(self.max_heap)\n            heapq.heappush(self.min_heap, val)\n        elif len(self.min_heap) > len(self.max_heap):\n            val = heapq.heappop(self.min_heap)\n            heapq.heappush(self.max_heap, -val)\n\n    def findMedian(self) -> float:\n        if len(self.max_heap) == len(self.min_heap):\n            if not self.max_heap: # Empty stream\n                return 0.0 \n            return (-self.max_heap[0] + self.min_heap[0]) / 2.0\n        else: # max_heap must be larger by one\n            return float(-self.max_heap[0])",
+    "source": "test-data-ai",
+    "prompt": "Median in a stream using heaps yaz.",
+    "license": "MIT",
+    "language": "python"
+}

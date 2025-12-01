@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def diameterOfBinaryTree(self, root: TreeNode) -> int:\n        max_diameter = 0\n\n        def calculate_height(node):\n            nonlocal max_diameter\n\n            if not node:\n                return 0\n\n            left_height = calculate_height(node.left)\n            right_height = calculate_height(node.right)\n\n            # Update the maximum diameter found so far\n            # The diameter passing through the current node would be left_height + right_height\n            max_diameter = max(max_diameter, left_height + right_height)\n\n            # Return the height of the current node (number of edges from current node to deepest leaf)\n            return 1 + max(left_height, right_height)\n\n        calculate_height(root)\n        return max_diameter",
+    "source": "test-data-ai",
+    "prompt": "Diameter of binary tree yaz.",
+    "license": "MIT",
+    "language": "python"
+}

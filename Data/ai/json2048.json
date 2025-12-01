@@ -1,0 +1,7 @@
+{
+    "code": "class MetricsCollector:\n    def __init__(self):\n        self._metrics = {}\n\n    def set_metric(self, name: str, value):\n        \"\"\"\n        Sets the value of a custom metric.\n        If a metric with the given name already exists, its value is updated.\n        \"\"\"\n        self._metrics[name] = value\n\n    def get_metric(self, name: str):\n        \"\"\"\n        Retrieves the value of a specific metric by its name.\n        Returns None if the metric does not exist.\n        \"\"\"\n        return self._metrics.get(name)\n\n    def get_all_metrics(self) -> dict:\n        \"\"\"\n        Retrieves all collected metrics as a dictionary.\n        Returns a copy of the internal metrics dictionary to prevent external modification.\n        \"\"\"\n        return self._metrics.copy()\n\n    def clear_metrics(self):\n        \"\"\"\n        Clears all collected metrics from the collector.\n        \"\"\"\n        self._metrics.clear()",
+    "source": "test-data-ai",
+    "prompt": "Custom metrics collector class yaz.",
+    "license": "MIT",
+    "language": "python"
+}

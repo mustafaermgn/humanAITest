@@ -1,0 +1,7 @@
+{
+    "code": "def is_luhn_valid(card_number_str: str) -> bool:\n    cleaned_card_number = ''.join(filter(str.isdigit, card_number_str))\n\n    if not cleaned_card_number:\n        return False\n    \n    digits = [int(d) for d in cleaned_card_number]\n\n    total_sum = 0\n    \n    for i, digit in enumerate(reversed(digits)):\n        if i % 2 == 1:\n            doubled_digit = digit * 2\n            if doubled_digit > 9:\n                total_sum += (doubled_digit - 9)\n            else:\n                total_sum += doubled_digit\n        else:\n            total_sum += digit\n\n    return total_sum % 10 == 0",
+    "source": "test-data-ai",
+    "prompt": "Credit card number Luhn algorithm ile validate eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

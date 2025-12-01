@@ -1,0 +1,7 @@
+{
+    "code": "def topla(a, b):\n    while b != 0:\n        sum_without_carry = a ^ b\n        carry = (a & b) << 1\n        a = sum_without_carry\n        b = carry\n    return a",
+    "source": "test-data-ai",
+    "prompt": "İki sayıyı aritmetik operatörler kullanmadan topla.",
+    "license": "MIT",
+    "language": "python"
+}

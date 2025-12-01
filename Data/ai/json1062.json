@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI, UploadFile, File\nimport shutil\nimport os\n\napp = FastAPI()\n\nUPLOAD_DIRECTORY = \"uploads\"\nos.makedirs(UPLOAD_DIRECTORY, exist_ok=True)\n\n@app.post(\"/uploadfile/\")\nasync def create_upload_file(file: UploadFile = File(...)):\n    file_location = os.path.join(UPLOAD_DIRECTORY, file.filename)\n    with open(file_location, \"wb\") as buffer:\n        shutil.copyfileobj(file.file, buffer)\n    return {\"filename\": file.filename, \"location\": file_location}\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile file upload endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

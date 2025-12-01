@@ -1,0 +1,7 @@
+{
+    "code": "def test_common_mistakes():\n    \"\"\"Test detection of common migration mistakes.\"\"\"\n    print(\"\\n🧪 Testing Common Mistake Detection...\")\n\n    mistakes = {\n        \"Direct rename\": \"\"\"\ndef upgrade():\n    op.rename_column('users', 'email', 'email_address')\n\"\"\",\n        \"Direct type change\": \"\"\"\ndef upgrade():\n    op.alter_column('users', 'age', type_=sa.Integer())\n\"\"\",\n        \"Non-nullable without default\": \"\"\"\ndef upgrade():\n    op.add_column('users', sa.Column('required_field', sa.String(), nullable=False))\n\"\"\",\n    }\n\n    validator = MigrationValidator()\n\n    for mistake_name, code in mistakes.items():\n        content = f'''\"\"\"\nTest: {mistake_name}\nPhase: EXPAND\n\"\"\"\nfrom alembic import op\nimport sqlalchemy as sa\n\n{code}\n\ndef downgrade(): pass\n'''\n        file = create_test_migration(content, f\"{mistake_name}.py\")\n        result = validator.validate_migration_file(file)\n        print(f\"  ✅ {mistake_name}: Detected={not result['valid']}\")\n        assert not result[\"valid\"], f\"Should detect {mistake_name}\"  # noqa: S101\n        os.unlink(file)  # noqa: PTH108",
+    "source": "github_repo:langflow-ai/langflow",
+    "file": "scripts/test_validator.py",
+    "license": "MIT",
+    "language": "python"
+}

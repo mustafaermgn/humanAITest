@@ -1,0 +1,7 @@
+{
+    "code": "def find_odd_occurrence(numbers):\n    \"\"\"\n    Finds the only number that occurs an odd number of times in a list.\n    Assumes there is exactly one such number.\n    \"\"\"\n    result = 0\n    for num in numbers:\n        result ^= num\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Find the only number occurring odd times yaz.",
+    "license": "MIT",
+    "language": "python"
+}

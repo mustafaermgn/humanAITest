@@ -1,0 +1,7 @@
+{
+    "code": "def max_train_stops(train_schedules):\n    \"\"\"\n    Belirli bir peronda durma sağlayabilen maksimum tren sayısını hesaplar.\n    Trenler, (varış_zamanı, kalkış_zamanı) şeklinde bir tuple listesi olarak verilir.\n\n    Args:\n        train_schedules (list): Her bir tren için (varış_zamanı, kalkış_zamanı) tuple'larını içeren bir liste.\n                                Zamanlar sıralı olmalıdır (varış < kalkış).\n\n    Returns:\n        int: Durma sağlanabilen maksimum tren sayısı.\n    \"\"\"\n    if not train_schedules:\n        return 0\n\n    # Trenleri kalkış zamanlarına göre sırala.\n    # Bu, çakışmayan maksimum aktiviteyi seçmek için açgözlü bir yaklaşımdır.\n    sorted_schedules = sorted(train_schedules, key=lambda x: x[1])\n\n    count = 0\n    last_departure_time = -1  # İlk trenin varış zamanından küçük bir değer\n\n    for arrival, departure in sorted_schedules:\n        # Eğer mevcut trenin varış zamanı, daha önce seçilen trenin\n        # kalkış zamanından büyük veya eşitse, bu treni seçebiliriz.\n        if arrival >= last_departure_time:\n            count += 1\n            last_departure_time = departure\n\n    return count",
+    "source": "test-data-ai",
+    "prompt": "Maximum trains for which stoppage can be provided yaz.",
+    "license": "MIT",
+    "language": "python"
+}

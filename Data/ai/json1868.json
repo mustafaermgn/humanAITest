@@ -1,0 +1,7 @@
+{
+    "code": "def palindrome_partitions(s: str) -> list[list[str]]:\n    \"\"\"\n    Generates all possible palindrome partitions of a given string.\n    \"\"\"\n    n = len(s)\n    result = []\n    current_partition = []\n\n    def is_palindrome(sub: str) -> bool:\n        return sub == sub[::-1]\n\n    def backtrack(start_index: int):\n        if start_index == n:\n            result.append(list(current_partition))\n            return\n\n        for i in range(start_index, n):\n            substring = s[start_index : i + 1]\n            if is_palindrome(substring):\n                current_partition.append(substring)\n                backtrack(i + 1)\n                current_partition.pop()\n\n    backtrack(0)\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Generate all palindrome partitions yaz.",
+    "license": "MIT",
+    "language": "python"
+}

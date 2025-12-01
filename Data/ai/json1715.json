@@ -1,0 +1,7 @@
+{
+    "code": "def make_alternate_pattern(s: str) -> str:\n    n = len(s)\n    if n == 0:\n        return \"\"\n\n    flips_to_01_pattern = 0\n    flips_to_10_pattern = 0\n\n    # Calculate flips needed to achieve '0101...' pattern\n    for i in range(n):\n        expected_char_01 = '0' if i % 2 == 0 else '1'\n        if s[i] != expected_char_01:\n            flips_to_01_pattern += 1\n\n    # Calculate flips needed to achieve '1010...' pattern\n    for i in range(n):\n        expected_char_10 = '1' if i % 2 == 0 else '0'\n        if s[i] != expected_char_10:\n            flips_to_10_pattern += 1\n\n    # Determine which pattern requires fewer flips or if tied, prefer '0101...'\n    if flips_to_01_pattern <= flips_to_10_pattern:\n        result_chars = []\n        for i in range(n):\n            result_chars.append('0' if i % 2 == 0 else '1')\n        return \"\".join(result_chars)\n    else:\n        result_chars = []\n        for i in range(n):\n            result_chars.append('1' if i % 2 == 0 else '0')\n        return \"\".join(result_chars)",
+    "source": "test-data-ai",
+    "prompt": "Flip bits to make alternate pattern yaz.",
+    "license": "MIT",
+    "language": "python"
+}

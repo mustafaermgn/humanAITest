@@ -1,0 +1,7 @@
+{
+    "code": "def __getitem__(self, idx):\n        yaml_files = self.run_yamls[idx]\n        if isinstance(yaml_files, list):\n            return [JobLauncher(yaml_file) for yaml_file in yaml_files]\n        return [JobLauncher(yaml_files)]",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/locallaunch.py",
+    "license": "MIT",
+    "language": "python"
+}

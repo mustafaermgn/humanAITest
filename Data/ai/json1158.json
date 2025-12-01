@@ -1,0 +1,7 @@
+{
+    "code": "import abc\n\nclass PaymentProcessor(abc.ABC):\n    @abc.abstractmethod\n    def process_payment(self, amount: float):\n        pass\n\nclass Logger(abc.ABC):\n    @abc.abstractmethod\n    def log_message(self, message: str):\n        pass\n\nclass MyService(PaymentProcessor, Logger):\n    def __init__(self, service_id: str):\n        self._service_id = service_id\n\n    def process_payment(self, amount: float):\n        print(f\"Service '{self._service_id}': Processing payment of ${amount:.2f}\")\n        self.log_message(f\"Payment of ${amount:.2f} processed successfully.\")\n\n    def log_message(self, message: str):\n        print(f\"Service '{self._service_id}' LOG: {message}\")\n\nif __name__ == \"__main__\":\n    service_instance = MyService(\"OrderService-001\")\n    service_instance.process_payment(250.75)\n    service_instance.log_message(\"Service initialized and ready.\")",
+    "source": "test-data-ai",
+    "prompt": "Python'da çoklu kalıtım (multiple inheritance) kullanarak iki farklı arayüzü (interface) miras alan bir sınıf yaz.",
+    "license": "MIT",
+    "language": "python"
+}

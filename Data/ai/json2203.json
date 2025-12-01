@@ -1,0 +1,7 @@
+{
+    "code": "def merge_configs(*configs):\n    \"\"\"\n    Birden fazla yapılandırma sözlüğünü derinlemesine birleştirir.\n    Çakışan anahtarlar için sonraki yapılandırmadaki değer önceliklidir.\n    Sözlükler derinlemesine birleştirilir, diğer türler üzerine yazılır.\n    \"\"\"\n    merged_config = {}\n    for config in configs:\n        for key, value in config.items():\n            if key in merged_config and isinstance(merged_config[key], dict) and isinstance(value, dict):\n                merged_config[key] = merge_configs(merged_config[key], value)\n            else:\n                merged_config[key] = value\n    return merged_config",
+    "source": "test-data-ai",
+    "prompt": "Configuration merger (multiple configs) fonksionu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

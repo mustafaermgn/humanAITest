@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef deleteMiddle(head: ListNode) -> ListNode:\n    # 0 veya 1 elemanlı liste durumu:\n    # Ortadaki elemanı silersek liste boş kalır.\n    if head is None or head.next is None:\n        return None\n\n    # Dummy (kukla) bir başlangıç düğümü kullanarak baş düğümün silinme durumunu basitleştiririz.\n    dummy_head = ListNode(0, head)\n    \n    prev_slow = dummy_head\n    slow = head\n    fast = head\n\n    # Hızlı işaretçi (fast) sona ulaştığında, yavaş işaretçi (slow) ortadaki düğümde olacaktır.\n    # prev_slow ise slow'un bir önceki düğümünde olacaktır.\n    while fast is not None and fast.next is not None:\n        prev_slow = slow\n        slow = slow.next\n        fast = fast.next.next\n    \n    # Ortadaki düğümü (slow) listeden çıkar.\n    # prev_slow'un next'ini slow'un next'ine bağla.\n    prev_slow.next = slow.next\n    \n    # Yeni listenin başını döndür (dummy_head'in next'i).\n    return dummy_head.next",
+    "source": "test-data-ai",
+    "prompt": "Delete middle node of linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def find_kth_smallest_in_union(arr1, arr2, k):\n    \"\"\"\n    Finds the kth smallest element in the union of two sorted arrays.\n\n    Args:\n        arr1: The first sorted array.\n        arr2: The second sorted array.\n        k: The desired rank of the element to find (1-indexed).\n\n    Returns:\n        The kth smallest element in the union of arr1 and arr2.\n    \"\"\"\n\n    if not arr1:\n        return arr2[k - 1]\n    if not arr2:\n        return arr1[k - 1]\n    if k == 1:\n        return min(arr1[0], arr2[0])\n\n    i = min(len(arr1), k // 2)\n    j = min(len(arr2), k // 2)\n\n    if arr1[i - 1] < arr2[j - 1]:\n        return find_kth_smallest_in_union(arr1[i:], arr2, k - i)\n    else:\n        return find_kth_smallest_in_union(arr1, arr2[j:], k - j)",
+    "source": "test-data-ai",
+    "prompt": "Find kth smallest in union of two sorted arrays yaz.",
+    "license": "MIT",
+    "language": "python"
+}

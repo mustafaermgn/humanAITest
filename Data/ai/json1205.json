@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport functools\n\ndef performance_monitor(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        start_time = time.perf_counter()\n        result = func(*args, **kwargs)\n        end_time = time.perf_counter()\n        elapsed_time = (end_time - start_time) * 1000\n        print(f\"'{func.__name__}' fonksiyonu {elapsed_time:.4f} ms sürdü.\")\n        return result\n    return wrapper",
+    "source": "test-data-ai",
+    "prompt": "Performance monitoring decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

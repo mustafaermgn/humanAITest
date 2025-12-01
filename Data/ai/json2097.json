@@ -1,0 +1,7 @@
+{
+    "code": "from Crypto.Cipher import AES\nfrom Crypto.Util.Padding import pad\nfrom Crypto.Random import get_random_bytes\nimport hashlib\n\ndef aes_encrypt(key, message):\n    key_bytes = key.encode('utf-8')\n    message_bytes = message.encode('utf-8')\n\n    derived_key = hashlib.sha256(key_bytes).digest()[:16]\n\n    iv = get_random_bytes(AES.block_size)\n\n    cipher = AES.new(derived_key, AES.MODE_CBC, iv)\n\n    padded_message = pad(message_bytes, AES.block_size)\n\n    ciphertext = cipher.encrypt(padded_message)\n\n    return iv, ciphertext",
+    "source": "test-data-ai",
+    "prompt": "Bir şifreleme anahtarı (`key`) ve mesajı alarak **AES şifrelemesi** yapan temel bir kod yaz.",
+    "license": "MIT",
+    "language": "python"
+}

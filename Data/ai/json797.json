@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef post_istegi_gonder_ve_durum_kodunu_dondur(url, veri=None):\n  \"\"\"\n  Belirli bir URL'ye POST isteği gönderir ve yanıtın durum kodunu döndürür.\n\n  Args:\n    url: POST isteği gönderilecek URL.\n    veri: İsteğe eklenecek veri (isteğe bağlı).\n\n  Returns:\n    Yanıtın durum kodu.\n  \"\"\"\n  try:\n    yanit = requests.post(url, data=veri)\n    return yanit.status_code\n  except requests.exceptions.RequestException as e:\n    print(f\"Bir hata oluştu: {e}\")\n    return None\n\nif __name__ == '__main__':\n  url = \"https://httpbin.org/post\"  # Örnek bir POST endpoint\n  veri = {\"anahtar1\": \"deger1\", \"anahtar2\": \"deger2\"}\n  durum_kodu = post_istegi_gonder_ve_durum_kodunu_dondur(url, veri)\n\n  if durum_kodu:\n    print(f\"POST isteği gönderildi. Durum kodu: {durum_kodu}\")\n  else:\n    print(\"POST isteği gönderilirken bir hata oluştu.\")",
+    "source": "test-data-ai",
+    "prompt": "requests kütüphanesini kullanarak belirli bir URL'ye POST isteği gönderen ve yanıtın durum kodunu döndüren bir fonksiyon oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

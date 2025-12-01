@@ -1,0 +1,7 @@
+{
+    "code": "lambda s: \"\".join(char for char in s if char.lower() not in \"aeiou\")",
+    "source": "test-data-ai",
+    "prompt": "Bir dizedeki tüm sesli harfleri kaldıran tek satırlık bir kod yaz.",
+    "license": "MIT",
+    "language": "python"
+}

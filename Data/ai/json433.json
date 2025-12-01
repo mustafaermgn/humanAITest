@@ -1,0 +1,7 @@
+{
+    "code": "from collections import deque\n\ndef maxResult(nums, k):\n    n = len(nums)\n    dp = [0] * n\n    dp[0] = nums[0]\n    deque_ = deque([0])\n\n    for i in range(1, n):\n        while deque_ and deque_[0] < i - k:\n            deque_.popleft()\n\n        dp[i] = dp[deque_[0]] + nums[i]\n\n        while deque_ and dp[deque_[-1]] <= dp[i]:\n            deque_.pop()\n\n        deque_.append(i)\n\n    return dp[n - 1]",
+    "source": "test-data-ai",
+    "prompt": "Jump game VI using deque yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def _heapify_down(arr, n, i):\n    \"\"\"\n    Bir alt ağacın kökü i olmak üzere, o alt ağacı bir max-heap haline getirir.\n    n: dizinin boyutu\n    i: heapify edilecek alt ağacın kök düğümünün indeksi\n    \"\"\"\n    largest = i  # Mevcut düğümü en büyük olarak kabul et\n    left_child = 2 * i + 1\n    right_child = 2 * i + 2\n\n    # Sol çocuk mevcutsa ve mevcut en büyükten daha büyükse\n    if left_child < n and arr[left_child] > arr[largest]:\n        largest = left_child\n\n    # Sağ çocuk mevcutsa ve mevcut en büyükten daha büyükse\n    if right_child < n and arr[right_child] > arr[largest]:\n        largest = right_child\n\n    # Eğer en büyük, kök düğüm değilse, yer değiştir ve etkilenen alt ağaçta heapify yap\n    if largest != i:\n        arr[i], arr[largest] = arr[largest], arr[i]  # Yer değiştir\n        _heapify_down(arr, n, largest)  # Etkilenen alt ağaçta recursive olarak devam et\n\ndef build_max_heap(arr):\n    \"\"\"\n    Verilen bir diziyi bir max-heap'e dönüştürür (heapify işlemi).\n    Dizi yerinde (in-place) değiştirilir.\n    \"\"\"\n    n = len(arr)\n    # Yaprak olmayan son düğümden başlayarak köke doğru tüm alt ağaçları heapify et\n    for i in range(n // 2 - 1, -1, -1):\n        _heapify_down(arr, n, i)",
+    "source": "test-data-ai",
+    "prompt": "Heapify process yaz.",
+    "license": "MIT",
+    "language": "python"
+}

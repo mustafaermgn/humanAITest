@@ -1,0 +1,7 @@
+{
+    "code": "def solve_job_sequencing(jobs):\n    jobs.sort(key=lambda x: x[2], reverse=True)\n\n    max_deadline = 0\n    for job_id, deadline, profit in jobs:\n        if deadline > max_deadline:\n            max_deadline = deadline\n\n    slots = [None] * (max_deadline + 1)\n    \n    total_profit = 0\n\n    for job_id, deadline, profit in jobs:\n        for i in range(min(deadline, max_deadline), 0, -1):\n            if slots[i] is None:\n                slots[i] = job_id\n                total_profit += profit\n                break\n\n    final_sequence_in_slot_order = []\n    for i in range(1, max_deadline + 1):\n        if slots[i] is not None:\n            final_sequence_in_slot_order.append(slots[i])\n\n    return final_sequence_in_slot_order, total_profit",
+    "source": "test-data-ai",
+    "prompt": "Job sequencing with deadlines problemini çöz.",
+    "license": "MIT",
+    "language": "python"
+}

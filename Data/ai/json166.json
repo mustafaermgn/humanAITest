@@ -1,0 +1,7 @@
+{
+    "code": "def asteroid_collision(asteroids):\n    stack = []\n    for asteroid in asteroids:\n        while stack and asteroid < 0 < stack[-1]:\n            if stack[-1] < -asteroid:\n                stack.pop()\n            elif stack[-1] == -asteroid:\n                stack.pop()\n                asteroid = 0\n            else:\n                asteroid = 0\n                break\n        if asteroid:\n            stack.append(asteroid)\n    return stack",
+    "source": "test-data-ai",
+    "prompt": "Asteroid collision using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

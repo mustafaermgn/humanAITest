@@ -1,0 +1,7 @@
+{
+    "code": "def find_fixed_points(arr):\n    fixed_points = []\n    for i in range(len(arr)):\n        if arr[i] == i:\n            fixed_points.append(i)\n    return fixed_points",
+    "source": "test-data-ai",
+    "prompt": "Fixed point (index == value) bulan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

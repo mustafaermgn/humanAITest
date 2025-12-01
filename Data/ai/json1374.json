@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef validate_file_type(file_path: str, allowed_extensions: list) -> bool:\n    \"\"\"\n    Belirtilen dosya yolunun, izin verilen dosya uzantılarından birine sahip olup olmadığını kontrol eder.\n\n    Args:\n        file_path (str): Doğrulanacak dosyanın yolu.\n        allowed_extensions (list): İzin verilen dosya uzantılarının bir listesi (örn: ['.txt', '.pdf', '.jpg']).\n                                   Uzantılar büyük/küçük harf duyarsız olarak karşılaştırılır.\n\n    Returns:\n        bool: Dosya uzantısı izin verilenler arasındaysa True, aksi takdirde False.\n    \"\"\"\n    _, file_extension = os.path.splitext(file_path)\n    return file_extension.lower() in [ext.lower() for ext in allowed_extensions]",
+    "source": "test-data-ai",
+    "prompt": "File type validation fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

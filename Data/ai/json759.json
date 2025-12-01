@@ -1,0 +1,7 @@
+{
+    "code": "from typing import Optional\nfrom fastapi import FastAPI, Query\n\napp = FastAPI()\n\n@app.get(\"/items/\")\nasync def read_items(\n    name: str = Query(..., min_length=2, max_length=10, description=\"Name of the item\"),\n    age: Optional[int] = Query(None, ge=0, le=120, description=\"Age of the item owner\"),\n    search: str = Query(\"default_search\", regex=\"^[a-zA-Z0-9_]+$\", description=\"Search term (alphanumeric and underscore only)\"),\n    limit: int = Query(10, gt=0, description=\"Number of items to return\"),\n    offset: int = Query(0, ge=0, description=\"Offset for pagination\")\n):\n    \"\"\"\n    Öğeleri sorgu parametreleriyle filtreler ve doğrular.\n    \"\"\"\n    return {\n        \"name\": name,\n        \"age\": age,\n        \"search\": search,\n        \"limit\": limit,\n        \"offset\": offset,\n        \"message\": \"Items filtered successfully!\"\n    }\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile query parameters validation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

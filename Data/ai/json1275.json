@@ -1,0 +1,7 @@
+{
+    "code": "def find_maximal_cliques(graph):\n    maximal_cliques = []\n    \n    all_vertices = set(graph.keys())\n    for neighbors in graph.values():\n        all_vertices.update(neighbors)\n\n    P = all_vertices\n\n    _bron_kerbosch_pivot(graph, [], P, set(), maximal_cliques)\n    \n    return maximal_cliques\n\ndef _bron_kerbosch_pivot(graph, R, P, X, maximal_cliques):\n    if not P and not X:\n        if R:\n            maximal_cliques.append(sorted(R))\n        return\n\n    pivot_set = P.union(X)\n    \n    if not pivot_set:\n        return\n\n    u = max(pivot_set, key=lambda vertex: len(P.intersection(graph.get(vertex, set()))))\n\n    P_minus_Nu = P.difference(graph.get(u, set()))\n\n    for v in list(P_minus_Nu):\n        _bron_kerbosch_pivot(graph,\n                             R + [v],\n                             P.intersection(graph.get(v, set())),\n                             X.intersection(graph.get(v, set())),\n                             maximal_cliques)\n\n        P.remove(v)\n        X.add(v)",
+    "source": "test-data-ai",
+    "prompt": "Clique detection algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

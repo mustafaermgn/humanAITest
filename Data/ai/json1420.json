@@ -1,0 +1,7 @@
+{
+    "code": "def count_trailing_zeros(n: int) -> int:\n    if n == 0:\n        return 1  # The binary representation of 0 is '0', which has one trailing zero.\n                  # Some definitions might return 0 or the bit-width of the integer type.\n                  # This is a common interpretation for its string representation.\n\n    count = 0\n    while (n & 1) == 0:\n        n >>= 1\n        count += 1\n    return count",
+    "source": "test-data-ai",
+    "prompt": "Count trailing zeros in binary representation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

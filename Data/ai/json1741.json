@@ -1,0 +1,7 @@
+{
+    "code": "import logging\nimport sys\n\nclass LogLevelFilteringHandler(logging.Handler):\n    def __init__(self, stream=None, level=logging.NOTSET):\n        super().__init__(level)\n        if stream is None:\n            self.stream = sys.stderr\n        else:\n            self.stream = stream\n        self.terminator = '\\n'\n        self.formatter = None\n\n    def emit(self, record):\n        try:\n            msg = self.format(record)\n            self.stream.write(msg + self.terminator)\n            self.flush()\n        except Exception:\n            self.handleError(record)\n\n    def flush(self):\n        if self.stream and hasattr(self.stream, 'flush'):\n            self.stream.flush()\n\n    def setFormatter(self, fmt):\n        self.formatter = fmt",
+    "source": "test-data-ai",
+    "prompt": "Log level filtering yapan handler yaz.",
+    "license": "MIT",
+    "language": "python"
+}

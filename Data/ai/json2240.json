@@ -1,0 +1,7 @@
+{
+    "code": "def build_suffix_array(s):\n    n = len(s)\n    if n == 0:\n        return []\n\n    sa = list(range(n))\n    rank = [ord(c) for c in s]\n\n    L = 1\n    while L < n:\n        sa.sort(key=lambda i: (rank[i], rank[i + L] if i + L < n else -1))\n\n        new_rank = [0] * n\n        new_rank[sa[0]] = 0\n\n        for j in range(1, n):\n            current_pair = (rank[sa[j]], rank[sa[j] + L] if sa[j] + L < n else -1)\n            prev_pair = (rank[sa[j-1]], rank[sa[j-1] + L] if sa[j-1] + L < n else -1)\n\n            if current_pair == prev_pair:\n                new_rank[sa[j]] = new_rank[sa[j-1]]\n            else:\n                new_rank[sa[j]] = new_rank[sa[j-1]] + 1\n        \n        rank = new_rank\n        L *= 2\n\n        if rank[sa[-1]] == n - 1:\n            break\n\n    return sa",
+    "source": "test-data-ai",
+    "prompt": "Suffix array construction yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef bellman_ford(edges, num_vertices, source):\n    distances = {i: math.inf for i in range(num_vertices)}\n    distances[source] = 0\n\n    for _ in range(num_vertices - 1):\n        for u, v, weight in edges:\n            if distances[u] != math.inf and distances[u] + weight < distances[v]:\n                distances[v] = distances[u] + weight\n\n    for u, v, weight in edges:\n        if distances[u] != math.inf and distances[u] + weight < distances[v]:\n            return None \n\n    return distances",
+    "source": "test-data-ai",
+    "prompt": "Bellman-Ford algoritmasını negatif ağırlıklı kenarlar için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

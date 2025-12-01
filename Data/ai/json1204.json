@@ -1,0 +1,7 @@
+{
+    "code": "class classproperty:\n    def __init__(self, fget):\n        self.fget = fget\n\n    def __get__(self, obj, cls):\n        return self.fget(cls)",
+    "source": "test-data-ai",
+    "prompt": "Class property decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

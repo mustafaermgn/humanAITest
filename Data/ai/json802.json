@@ -1,0 +1,7 @@
+{
+    "code": "def strobogrammatic(n):\n    \"\"\"\n    Strobogrammatic sayılar üretir.\n    \"\"\"\n    if n == 0:\n        return [\"\"]\n    if n == 1:\n        return [\"0\", \"1\", \"8\"]\n\n    smaller = strobogrammatic(n - 2)\n    result = []\n    for s in smaller:\n        result.append(\"1\" + s + \"1\")\n        result.append(\"8\" + s + \"8\")\n        result.append(\"6\" + s + \"9\")\n        result.append(\"9\" + s + \"6\")\n        result.append(\"0\" + s + \"0\")\n\n    return result\n\n\ndef find_strobogrammatic(n):\n    \"\"\"\n    Belirli uzunlukta strobogrammatic sayıları bulur.\n    \"\"\"\n    result = strobogrammatic(n)\n    if n > 1:\n        result = [s for s in result if s[0] != '0']\n    return result\n\nif __name__ == '__main__':\n    n = 2\n    print(find_strobogrammatic(n))\n\n    n = 3\n    print(find_strobogrammatic(n))\n\n    n = 4\n    print(find_strobogrammatic(n))",
+    "source": "test-data-ai",
+    "prompt": "Strobogrammatic number generation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

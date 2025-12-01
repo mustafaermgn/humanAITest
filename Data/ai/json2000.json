@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport functools\n\ndef timing_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        elapsed_time = end_time - start_time\n        print(f\"'{func.__name__}' fonksiyonu {elapsed_time:.4f} saniyede tamamlandı.\")\n        return result\n    return wrapper\n\nif __name__ == '__main__':\n    @timing_decorator\n    def example_function(seconds):\n        \"\"\"Belirtilen saniye kadar uyuyan örnek bir fonksiyon.\"\"\"\n        print(f\"{seconds} saniye bekliyorum...\")\n        time.sleep(seconds)\n        print(\"Bekleme bitti.\")\n        return \"İşlem tamamlandı.\"\n\n    @timing_decorator\n    def another_example(a, b):\n        \"\"\"Basit bir toplama fonksiyonu.\"\"\"\n        time.sleep(0.01) # Küçük bir gecikme ekleyelim\n        return a + b\n\n    print(example_function(2))\n    print(\"-\" * 30)\n    print(another_example(5, 7))\n    print(\"-\" * 30)\n    print(example_function(0.5))",
+    "source": "test-data-ai",
+    "prompt": "Timing decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

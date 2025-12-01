@@ -1,0 +1,7 @@
+{
+    "code": "from collections import deque\n\nclass RecentCallCounter:\n    def __init__(self):\n        self.calls = deque()\n\n    def ping(self, t: int) -> int:\n        self.calls.append(t)\n        \n        while self.calls and self.calls[0] < t - 3000:\n            self.calls.popleft()\n            \n        return len(self.calls)",
+    "source": "test-data-ai",
+    "prompt": "Number of recent calls using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

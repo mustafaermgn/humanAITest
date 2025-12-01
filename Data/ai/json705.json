@@ -1,0 +1,7 @@
+{
+    "code": "import sys\n\ndef matrix_chain_multiplication(p):\n    n = len(p) - 1\n\n    m = [[0 for _ in range(n + 1)] for _ in range(n + 1)]\n    s = [[0 for _ in range(n + 1)] for _ in range(n + 1)]\n\n    for L in range(2, n + 1):\n        for i in range(1, n - L + 2):\n            j = i + L - 1\n            m[i][j] = sys.maxsize\n\n            for k in range(i, j):\n                q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j]\n                if q < m[i][j]:\n                    m[i][j] = q\n                    s[i][j] = k\n    \n    return m[1][n]",
+    "source": "test-data-ai",
+    "prompt": "Matrix Chain Multiplication optimizasyonunu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\n# Definition for singly-linked list.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def mergeKLists(self, lists: list[ListNode]) -> ListNode:\n        min_heap = []\n        \n        # Populate the heap with the head of each list\n        # Store tuples: (value, original_list_index, ListNode)\n        # The original_list_index is used to break ties if two nodes have the same value,\n        # ensuring that heapq can compare elements reliably.\n        for i, head in enumerate(lists):\n            if head:\n                heapq.heappush(min_heap, (head.val, i, head))\n        \n        # Create a dummy head for the merged list\n        dummy = ListNode(0)\n        current = dummy\n        \n        # While the heap is not empty\n        while min_heap:\n            # Extract the smallest node\n            val, list_idx, node = heapq.heappop(min_heap)\n            \n            # Append this node to the merged list\n            current.next = node\n            current = node # Move current pointer to the newly added node\n            \n            # If the extracted node has a next node, add it to the heap\n            if node.next:\n                heapq.heappush(min_heap, (node.next.val, list_idx, node.next))\n                \n        return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Merge k sorted linked lists yaz.",
+    "license": "MIT",
+    "language": "python"
+}

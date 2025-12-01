@@ -1,0 +1,7 @@
+{
+    "code": "def find_smallest_missing_positive(nums):\n    n = len(nums)\n    i = 0\n    while i < n:\n        val = nums[i]\n        # Place positive numbers within the range [1, n] at their correct index.\n        # E.g., number 3 should be at index 2 (nums[2] = 3).\n        # We also check if nums[val - 1] is already val to avoid infinite loops with duplicates.\n        if 1 <= val <= n and nums[val - 1] != val:\n            nums[i], nums[val - 1] = nums[val - 1], nums[i]\n        else:\n            i += 1\n\n    # After rearrangement, iterate through the array.\n    # The first index 'i' where nums[i] is not 'i + 1' indicates that 'i + 1' is missing.\n    for i in range(n):\n        if nums[i] != i + 1:\n            return i + 1\n\n    # If all numbers from 1 to n are present, then the smallest missing positive is n + 1.\n    return n + 1",
+    "source": "test-data-ai",
+    "prompt": "Find the smallest missing positive integer in unsorted array.",
+    "license": "MIT",
+    "language": "python"
+}

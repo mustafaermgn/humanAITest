@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def add_to_beginning(self, data):\n        new_node = Node(data)\n        new_node.next = self.head\n        self.head = new_node\n\n    def display(self):\n        current = self.head\n        elements = []\n        while current:\n            elements.append(current.data)\n            current = current.next\n        print(\" -> \".join(map(str, elements)))\n\nif __name__ == \"__main__\":\n    my_list = LinkedList()\n    print(\"Boş liste:\")\n    my_list.display()\n\n    my_list.add_to_beginning(30)\n    print(\"30 eklendi (başa):\")\n    my_list.display()\n\n    my_list.add_to_beginning(20)\n    print(\"20 eklendi (başa):\")\n    my_list.display()\n\n    my_list.add_to_beginning(10)\n    print(\"10 eklendi (başa):\")\n    my_list.display()\n\n    my_list.add_to_beginning(5)\n    print(\"5 eklendi (başa):\")\n    my_list.display()",
+    "source": "test-data-ai",
+    "prompt": "Linked list'e başa eleman ekleme fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

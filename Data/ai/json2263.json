@@ -1,0 +1,7 @@
+{
+    "code": "def compute_z_array(s):\n    n = len(s)\n    if n == 0:\n        return []\n\n    z = [0] * n\n    z[0] = n\n\n    l, r = 0, 0\n\n    for i in range(1, n):\n        if i <= r:\n            k = i - l\n            z[i] = min(z[k], r - i)\n\n        while i + z[i] < n and s[z[i]] == s[i + z[i]]:\n            z[i] += 1\n\n        if i + z[i] > r:\n            l = i\n            r = i + z[i]\n    return z\n\ndef z_algorithm_search(text, pattern):\n    if not pattern:\n        return list(range(len(text) + 1))\n\n    if not text:\n        return []\n\n    combined_string = pattern + \"$\" + text\n    z_array = compute_z_array(combined_string)\n\n    pattern_length = len(pattern)\n    results = []\n\n    for i in range(pattern_length + 1, len(combined_string)):\n        if z_array[i] == pattern_length:\n            results.append(i - (pattern_length + 1))\n            \n    return results",
+    "source": "test-data-ai",
+    "prompt": "Z-algorithm for pattern matching yaz.",
+    "license": "MIT",
+    "language": "python"
+}

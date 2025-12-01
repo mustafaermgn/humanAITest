@@ -1,0 +1,7 @@
+{
+    "code": "import time\nfrom collections import defaultdict\n\nclass RateLimitExceeded(Exception):\n    pass\n\nclass RateLimiter:\n    def __init__(self, max_calls, period):\n        self.max_calls = max_calls\n        self.period = period\n        self.calls = defaultdict(list)\n\n    def __call__(self, key):\n        now = time.time()\n        self.calls[key] = [t for t in self.calls[key] if t > now - self.period]\n\n        if len(self.calls[key]) >= self.max_calls:\n            raise RateLimitExceeded(\"Rate limit exceeded\")\n\n        self.calls[key].append(now)\n        return True\n\nif __name__ == '__main__':\n    # Örnek Kullanım\n    rate_limiter = RateLimiter(max_calls=5, period=60) # 60 saniyede en fazla 5 çağrı\n\n    user_id = \"kullanici123\"\n\n    for i in range(7):\n        try:\n            rate_limiter(user_id)\n            print(f\"Çağrı {i+1}: Başarılı\")\n        except RateLimitExceeded:\n            print(f\"Çağrı {i+1}: Hız Sınırı Aşıldı!\")\n        time.sleep(5)",
+    "source": "test-data-ai",
+    "prompt": "Rate limit validator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

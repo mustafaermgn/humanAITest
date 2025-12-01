@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\nclass Solution:\n    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':\n        # If both p and q are smaller than the current root,\n        # the LCA must be in the left subtree.\n        if root.val > p.val and root.val > q.val:\n            return self.lowestCommonAncestor(root.left, p, q)\n        # If both p and q are larger than the current root,\n        # the LCA must be in the right subtree.\n        elif root.val < p.val and root.val < q.val:\n            return self.lowestCommonAncestor(root.right, p, q)\n        # Otherwise, the current root is the LCA. This covers cases where:\n        # 1. p is in the left subtree and q is in the right subtree (or vice versa).\n        # 2. One of the nodes (p or q) is the root itself.\n        else:\n            return root",
+    "source": "test-data-ai",
+    "prompt": "Lowest common ancestor in BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

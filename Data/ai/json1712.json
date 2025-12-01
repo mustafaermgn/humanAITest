@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, data):\n        new_node = Node(data)\n        if not self.head:\n            self.head = new_node\n            return\n        last = self.head\n        while last.next:\n            last = last.next\n        last.next = new_node\n\ndef find_triplet_sum_in_linked_list(head, target_sum):\n    if not head or not head.next or not head.next.next:\n        return None\n\n    ptr1 = head\n    while ptr1 is not None:\n        target_two_sum = target_sum - ptr1.data\n        \n        ptr2 = ptr1.next\n        seen_elements = set()\n        \n        while ptr2 is not None:\n            complement = target_two_sum - ptr2.data\n            \n            if complement in seen_elements:\n                return (ptr1.data, ptr2.data, complement)\n            \n            seen_elements.add(ptr2.data)\n            ptr2 = ptr2.next\n            \n        ptr1 = ptr1.next\n        \n    return None",
+    "source": "test-data-ai",
+    "prompt": "Find triplet with given sum in linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

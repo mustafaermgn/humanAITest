@@ -1,0 +1,7 @@
+{
+    "code": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.word = None\n\nclass Trie:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def insert(self, word):\n        node = self.root\n        for char in word:\n            if char not in node.children:\n                node.children[char] = TrieNode()\n            node = node.children[char]\n        node.word = word\n\nclass Solution:\n    def findWords(self, board: list[list[str]], words: list[str]) -> list[str]:\n        trie = Trie()\n        for word in words:\n            trie.insert(word)\n\n        rows, cols = len(board), len(board[0])\n        result = set()\n\n        def dfs(r, c, current_node):\n            if r < 0 or r >= rows or c < 0 or c >= cols:\n                return\n\n            char = board[r][c]\n            if char not in current_node.children:\n                return\n\n            next_node = current_node.children[char]\n\n            if next_node.word:\n                result.add(next_node.word)\n                next_node.word = None \n\n            board[r][c] = '#'\n\n            dfs(r + 1, c, next_node)\n            dfs(r - 1, c, next_node)\n            dfs(r, c + 1, next_node)\n            dfs(r, c - 1, next_node)\n\n            board[r][c] = char\n\n        for r in range(rows):\n            for c in range(cols):\n                dfs(r, c, trie.root)\n\n        return list(result)",
+    "source": "test-data-ai",
+    "prompt": "Word search II using trie yaz.",
+    "license": "MIT",
+    "language": "python"
+}

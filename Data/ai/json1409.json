@@ -1,0 +1,7 @@
+{
+    "code": "def sifre_dogrula(sifre):\n    \"\"\"\n    Kullanıcının girdiği bir şifrenin en az 8 karakter, bir büyük harf ve bir rakam\n    içerip içermediğini kontrol eder.\n\n    Args:\n        sifre (str): Doğrulanacak şifre dizesi.\n\n    Returns:\n        bool: Şifre geçerliyse True, aksi takdirde False.\n    \"\"\"\n    if len(sifre) < 8:\n        return False\n\n    buyuk_harf_var = False\n    rakam_var = False\n\n    for karakter in sifre:\n        if karakter.isupper():\n            buyuk_harf_var = True\n        if karakter.isdigit():\n            rakam_var = True\n\n    return buyuk_harf_var and rakam_var",
+    "source": "test-data-ai",
+    "prompt": "Kullanıcının girdiği bir şifrenin en az 8 karakter, bir büyük harf ve bir rakam içerip içermediğini kontrol eden bir doğrulama fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def generate_all_subsets(nums):\n    n = len(nums)\n    power_set_size = 1 << n  # This is 2^n\n\n    result = []\n    for i in range(power_set_size):\n        current_subset = []\n        for j in range(n):\n            # Check if the j-th bit of i is set\n            if (i >> j) & 1:\n                current_subset.append(nums[j])\n        result.append(current_subset)\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Generate all subsets (power set) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, jsonify\nfrom flask_cors import CORS\n\napp = Flask(__name__)\nCORS(app) # Tüm domain'lerden gelen isteklere izin verir\n\n@app.route('/')\ndef hello_world():\n    return jsonify({\"message\": \"Merhaba, CORS etkinleştirildi!\"})\n\n@app.route('/api/data')\ndef get_data():\n    return jsonify({\"data\": \"Bu bir API verisidir.\", \"source\": \"Flask CORS\"})\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile CORS configuration yaz.",
+    "license": "MIT",
+    "language": "python"
+}

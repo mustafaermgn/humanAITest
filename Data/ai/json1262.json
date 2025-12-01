@@ -1,0 +1,7 @@
+{
+    "code": "value = 10\nresult = \"Pozitif\" if value >= 0 else \"Negatif\"",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodu **ternary operator** kullanarak tek satırda yaz.",
+    "license": "MIT",
+    "language": "python"
+}

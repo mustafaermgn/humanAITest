@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = defaultdict(int)        # Stores frequency of each number: number -> count\n        self.groups = defaultdict(list)     # Stores numbers grouped by their frequency: count -> [number, number, ...]\n        self.max_freq = 0                   # Stores the current maximum frequency encountered\n\n    def push(self, val: int) -> None:\n        \"\"\"\n        Pushes an element onto the stack.\n        \"\"\"\n        self.freq[val] += 1\n        current_freq = self.freq[val]\n\n        if current_freq > self.max_freq:\n            self.max_freq = current_freq\n        \n        self.groups[current_freq].append(val)\n\n    def pop(self) -> int:\n        \"\"\"\n        Removes and returns the most frequent element.\n        If there is a tie for the most frequent element,\n        the element that was pushed most recently is returned.\n        \"\"\"\n        val_to_pop = self.groups[self.max_freq].pop()\n        \n        self.freq[val_to_pop] -= 1\n        \n        # If the list of numbers at max_freq is now empty,\n        # it means max_freq has decreased.\n        if not self.groups[self.max_freq]:\n            self.max_freq -= 1\n            \n        return val_to_pop",
+    "source": "test-data-ai",
+    "prompt": "Maximum frequency stack using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

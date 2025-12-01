@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef find_max_value_of_equation(points: list[list[int]], k: int) -> int:\n    max_val = float('-inf')\n    dq = collections.deque()\n\n    for j in range(len(points)):\n        xj, yj = points[j]\n\n        # Remove points from the front that are out of the valid window [xj - k, xj]\n        while dq and xj - points[dq[0]][0] > k:\n            dq.popleft()\n\n        # If deque is not empty, calculate potential max value with the best i\n        if dq:\n            i = dq[0]\n            xi, yi = points[i]\n            current_val = yj + xj + (yi - xi)\n            max_val = max(max_val, current_val)\n\n        # Maintain monotonic decreasing property for (y - x)\n        while dq and (points[dq[-1]][1] - points[dq[-1]][0]) <= (yj - xj):\n            dq.pop()\n\n        # Add current point j to the deque\n        dq.append(j)\n\n    return max_val",
+    "source": "test-data-ai",
+    "prompt": "Max value of equation using deque yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def verify_scrambled_string(original_string, scrambled_string):\n    \"\"\"\n    Verifies if the scrambled_string can be formed by rearranging the characters\n    of the original_string.\n\n    Args:\n        original_string (str): The original string.\n        scrambled_string (str): The string to verify as a scrambled version.\n\n    Returns:\n        bool: True if scrambled_string is a valid scrambled version of original_string,\n              False otherwise.\n    \"\"\"\n    if len(original_string) != len(scrambled_string):\n        return False\n    \n    return sorted(original_string) == sorted(scrambled_string)",
+    "source": "test-data-ai",
+    "prompt": "Scrambled string verification algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

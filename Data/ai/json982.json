@@ -1,0 +1,7 @@
+{
+    "code": "import warnings\nimport functools\n\ndef deprecate(arg=None, *, message=None, category=DeprecationWarning):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            final_message = message if message is not None else \\\n                            f\"Call to deprecated function {func.__name__}.\"\n            warnings.warn(\n                final_message,\n                category=category,\n                stacklevel=2\n            )\n            return func(*args, **kwargs)\n        return wrapper\n\n    if callable(arg):\n        return decorator(arg)\n    else:\n        if arg is not None:\n            message = arg\n        return decorator",
+    "source": "test-data-ai",
+    "prompt": "Deprecation warning decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

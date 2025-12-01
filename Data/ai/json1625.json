@@ -1,0 +1,7 @@
+{
+    "code": "class CircularQueue:\n    def __init__(self, capacity):\n        self.capacity = capacity\n        self.queue = [None] * capacity\n        self.front = 0\n        self.rear = 0\n        self.size = 0\n\n    def is_empty(self):\n        return self.size == 0\n\n    def is_full(self):\n        return self.size == self.capacity\n\n    def enqueue(self, item):\n        if self.is_full():\n            raise Exception(\"Kuyruk dolu\")\n        self.queue[self.rear] = item\n        self.rear = (self.rear + 1) % self.capacity\n        self.size += 1\n\n    def dequeue(self):\n        if self.is_empty():\n            raise Exception(\"Kuyruk boş\")\n        item = self.queue[self.front]\n        self.queue[self.front] = None  \n        self.front = (self.front + 1) % self.capacity\n        self.size -= 1\n        return item\n\n    def peek(self):\n        if self.is_empty():\n            raise Exception(\"Kuyruk boş\")\n        return self.queue[self.front]\n\n    def current_size(self):\n        return self.size\n    \n    def __str__(self):\n        if self.is_empty():\n            return \"[]\"\n        \n        elements = []\n        for i in range(self.size):\n            index = (self.front + i) % self.capacity\n            elements.append(str(self.queue[index]))\n        return \"[\" + \", \".join(elements) + \"]\"",
+    "source": "test-data-ai",
+    "prompt": "Circular queue implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

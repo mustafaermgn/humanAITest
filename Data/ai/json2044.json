@@ -1,0 +1,7 @@
+{
+    "code": "import warnings\nimport functools\n\ndef deprecated(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        warnings.warn(\n            f\"Call to deprecated function {func.__name__}.\",\n            category=DeprecationWarning,\n            stacklevel=2\n        )\n        return func(*args, **kwargs)\n    return wrapper\n\nif __name__ == '__main__':\n    @deprecated\n    def old_function(a, b):\n        return a + b\n\n    @deprecated\n    def another_old_function():\n        print(\"This is an old function being called.\")\n\n    print(\"Calling old_function:\")\n    result = old_function(5, 3)\n    print(f\"Result: {result}\")\n\n    print(\"\\nCalling another_old_function:\")\n    another_old_function()\n\n    def new_function(x):\n        return x * 2\n\n    print(\"\\nCalling new_function (not deprecated):\")\n    print(f\"Result: {new_function(10)}\")",
+    "source": "test-data-ai",
+    "prompt": "Deprecation warning decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

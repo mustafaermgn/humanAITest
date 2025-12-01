@@ -1,0 +1,7 @@
+{
+    "code": "def fibonacci_tabulation(n):\n    if n < 0:\n        raise ValueError(\"Girdi negatif olamaz.\")\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n\n    dp = [0] * (n + 1)\n    dp[0] = 0\n    dp[1] = 1\n\n    for i in range(2, n + 1):\n        dp[i] = dp[i-1] + dp[i-2]\n\n    return dp[n]\n\nif __name__ == '__main__':\n    # Örnek kullanım\n    print(fibonacci_tabulation(0))  # Çıktı: 0\n    print(fibonacci_tabulation(1))  # Çıktı: 1\n    print(fibonacci_tabulation(2))  # Çıktı: 1\n    print(fibonacci_tabulation(3))  # Çıktı: 2\n    print(fibonacci_tabulation(4))  # Çıktı: 3\n    print(fibonacci_tabulation(5))  # Çıktı: 5\n    print(fibonacci_tabulation(6))  # Çıktı: 8\n    print(fibonacci_tabulation(10)) # Çıktı: 55\n    print(fibonacci_tabulation(20)) # Çıktı: 6765",
+    "source": "test-data-ai",
+    "prompt": "Fibonacci sayılarını tabulation (bottom-up) ile hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import time\n\nclass Timer:\n    def __enter__(self):\n        self.start_time = time.time()\n        return self\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        end_time = time.time()\n        elapsed_time = end_time - self.start_time\n        print(f\"Elapsed time: {elapsed_time:.4f} seconds\")\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    with Timer():\n        # Zamanını ölçmek istediğiniz kod buraya gelir\n        sum_val = 0\n        for _ in range(1_000_000):\n            sum_val += 1\n        time.sleep(0.1) # Ek bir gecikme ekleyelim\n\n    print(\"\\nBaşka bir örnek:\")\n    with Timer():\n        time.sleep(0.5)\n        print(\"İşlem tamamlandı.\")",
+    "source": "test-data-ai",
+    "prompt": "Context manager for timer yaz.",
+    "license": "MIT",
+    "language": "python"
+}

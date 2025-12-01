@@ -1,0 +1,7 @@
+{
+    "code": "def decimal_to_binary_fraction(decimal_number, max_precision=32):\n    if not isinstance(decimal_number, (int, float)):\n        raise TypeError(\"Giriş bir tam sayı veya ondalık sayı olmalıdır.\")\n\n    if decimal_number < 0:\n        return \"-\" + decimal_to_binary_fraction(abs(decimal_number), max_precision)\n\n    integer_part = int(decimal_number)\n    fractional_part = decimal_number - integer_part\n\n    binary_integer = bin(integer_part)[2:]\n\n    binary_fraction = \"\"\n    count = 0\n    while fractional_part > 0 and count < max_precision:\n        fractional_part *= 2\n        bit = int(fractional_part)\n        binary_fraction += str(bit)\n        fractional_part -= bit\n        count += 1\n    \n    if not binary_fraction:\n        return binary_integer\n    else:\n        return binary_integer + \".\" + binary_fraction",
+    "source": "test-data-ai",
+    "prompt": "Binary representation of a decimal fraction yaz.",
+    "license": "MIT",
+    "language": "python"
+}

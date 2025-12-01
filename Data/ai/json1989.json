@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef minimum_product_subset(arr):\n    n = len(arr)\n    if n == 0:\n        return 0 \n\n    neg_count = 0\n    zero_count = 0\n    prod_so_far = 1\n    max_neg = float('-inf')\n    min_pos = float('inf')\n\n    for x in arr:\n        if x == 0:\n            zero_count += 1\n        elif x < 0:\n            neg_count += 1\n            prod_so_far *= x\n            max_neg = max(max_neg, x)\n        else:\n            prod_so_far *= x\n            min_pos = min(min_pos, x)\n\n    if neg_count == 0:\n        if zero_count > 0:\n            return 0\n        else:\n            return min_pos\n    else:\n        if neg_count % 2 == 1:\n            return prod_so_far\n        else:\n            return prod_so_far // max_neg",
+    "source": "test-data-ai",
+    "prompt": "Minimum product subset of an array bul.",
+    "license": "MIT",
+    "language": "python"
+}

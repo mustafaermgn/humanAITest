@@ -1,0 +1,7 @@
+{
+    "code": "import threading\nimport functools\n\ndef debounce(wait_time):\n    \"\"\"\n    Bir fonksiyonu, son çağrıldıktan 'wait_time' saniye sonrasına kadar\n    tekrar çağrılmasını engelleyecek şekilde saran bir dekoratör.\n    Bu süre zarfında birden çok çağrı yapılırsa, önceki tüm çağrılar iptal edilir\n    ve yalnızca son çağrı 'wait_time' sonunda yürütülür.\n    \"\"\"\n    def decorator(func):\n        timer = None\n        last_args = None\n        last_kwargs = None\n\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            nonlocal timer, last_args, last_kwargs\n\n            if timer is not None:\n                timer.cancel()\n\n            last_args = args\n            last_kwargs = kwargs\n\n            def execute_func():\n                nonlocal timer\n                try:\n                    func(*last_args, **last_kwargs)\n                finally:\n                    timer = None  # Timer tamamlandıktan sonra sıfırla\n\n            timer = threading.Timer(wait_time, execute_func)\n            timer.start()\n\n        return wrapper\n    return decorator",
+    "source": "test-data-ai",
+    "prompt": "Debounce decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

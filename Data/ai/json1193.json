@@ -1,0 +1,7 @@
+{
+    "code": "import warnings\nimport functools\n\ndef deprecated(message=\"This function is deprecated and will be removed in a future version.\"):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            warnings.warn(message, category=DeprecationWarning, stacklevel=2)\n            return func(*args, **kwargs)\n        return wrapper\n    return decorator",
+    "source": "test-data-ai",
+    "prompt": "Deprecation warning decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

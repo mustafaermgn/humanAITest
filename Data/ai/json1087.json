@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef topological_sort(num_nodes: int, edges: list[tuple[int, int]]) -> list[int]:\n    graph = collections.defaultdict(list)\n    in_degree = [0] * num_nodes\n\n    for u, v in edges:\n        graph[u].append(v)\n        in_degree[v] += 1\n\n    queue = collections.deque()\n    for i in range(num_nodes):\n        if in_degree[i] == 0:\n            queue.append(i)\n\n    result = []\n    while queue:\n        u = queue.popleft()\n        result.append(u)\n\n        for v in graph[u]:\n            in_degree[v] -= 1\n            if in_degree[v] == 0:\n                queue.append(v)\n\n    if len(result) == num_nodes:\n        return result\n    else:\n        return []",
+    "source": "test-data-ai",
+    "prompt": "Topological Sort algoritmasını DAG için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, session, redirect, url_for, request, escape\n\napp = Flask(__name__)\napp.secret_key = b'_5#y2L\"F4Q8z\\n\\xec]/' # Bu, üretim ortamında çok daha uzun ve karmaşık olmalıdır.\n\n@app.route('/')\ndef index():\n    if 'username' in session:\n        return f'Merhaba {escape(session[\"username\"])}! <a href=\"/logout\">Çıkış yap</a>'\n    return 'Giriş yapmadınız. <a href=\"/login/testuser\">Test kullanıcısı olarak giriş yap</a>'\n\n@app.route('/login/<username>')\ndef login(username):\n    session['username'] = username\n    return redirect(url_for('index'))\n\n@app.route('/logout')\ndef logout():\n    session.pop('username', None)\n    return redirect(url_for('index'))\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile session management yaz.",
+    "license": "MIT",
+    "language": "python"
+}

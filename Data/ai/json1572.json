@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef compare_files_memory_efficient(file1_path: str, file2_path: str, chunk_size: int = 4096) -> bool:\n    \"\"\"\n    Compares two files for equality in a memory-efficient manner by reading them in chunks.\n\n    Args:\n        file1_path: The path to the first file.\n        file2_path: The path to the second file.\n        chunk_size: The size of chunks (in bytes) to read from the files. Defaults to 4096 bytes (4KB).\n\n    Returns:\n        True if the files are identical, False otherwise (including if files don't exist or errors occur).\n    \"\"\"\n    if not os.path.exists(file1_path) or not os.path.exists(file2_path):\n        return False\n\n    if os.path.getsize(file1_path) != os.path.getsize(file2_path):\n        return False\n\n    try:\n        with open(file1_path, 'rb') as f1, open(file2_path, 'rb') as f2:\n            while True:\n                chunk1 = f1.read(chunk_size)\n                chunk2 = f2.read(chunk_size)\n\n                if chunk1 != chunk2:\n                    return False\n\n                if not chunk1:  # Both chunks must be empty if we reached here and they were equal\n                    return True\n    except IOError:\n        return False\n    except Exception:\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Memory-efficient file comparison fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

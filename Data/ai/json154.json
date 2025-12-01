@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef baby_giant_step(a: int, b: int, n: int) -> int | None:\n    \"\"\"\n    Solves the discrete logarithm problem a^x = b (mod n) using the Baby-Step Giant-Step algorithm.\n\n    Args:\n        a: The base.\n        b: The result.\n        n: The modulus.\n\n    Returns:\n        The smallest non-negative integer x such that a^x = b (mod n),\n        or None if no solution is found in the search range or if a modular inverse\n        cannot be computed (e.g., if gcd(a, n) != 1).\n    \"\"\"\n    if n <= 1:\n        return None\n    \n    if b == 1:\n        return 0\n    \n    if a == 0:\n        if b == 0:\n            return 1\n        return None\n\n    m = int(math.sqrt(n)) + 1\n\n    baby_steps = {}\n    current_val = 1\n    for j in range(m):\n        if current_val == b:\n            return j\n        baby_steps[current_val] = j\n        current_val = (current_val * a) % n\n\n    try:\n        a_inv_m = pow(a, -m, n)\n    except ValueError:\n        return None\n\n    y = b\n    for k in range(m):\n        if y in baby_steps:\n            j = baby_steps[y]\n            return j + k * m\n        y = (y * a_inv_m) % n\n\n    return None",
+    "source": "test-data-ai",
+    "prompt": "Baby-step giant-step algorithm for discrete log yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def count_and_say(n):\n  \"\"\"\n  Count and say sequence generator.\n  \"\"\"\n  if n <= 0:\n    return \"\"\n\n  seq = \"1\"\n  for _ in range(n - 1):\n    new_seq = \"\"\n    count = 1\n    for i in range(len(seq)):\n      if i + 1 < len(seq) and seq[i] == seq[i + 1]:\n        count += 1\n      else:\n        new_seq += str(count) + seq[i]\n        count = 1\n    seq = new_seq\n  return seq\n\nif __name__ == '__main__':\n  for i in range(1, 11):\n    print(count_and_say(i))",
+    "source": "test-data-ai",
+    "prompt": "Count and say sequence generator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

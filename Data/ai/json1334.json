@@ -1,0 +1,7 @@
+{
+    "code": "def tek_sayilarin_karelerini_uret(liste):\n    for sayi in liste:\n        if sayi % 2 != 0:\n            yield sayi * sayi",
+    "source": "test-data-ai",
+    "prompt": "Bir dizideki tüm tek sayıların karesini hesaplayan bir **generator** fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

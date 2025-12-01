@@ -1,0 +1,7 @@
+{
+    "code": "def nCr(n, r):\n    if r < 0 or r > n:\n        return 0\n    if r == 0 or r == n:\n        return 1\n    if r > n // 2:\n        r = n - r\n\n    res = 1\n    for i in range(r):\n        res = res * (n - i) // (i + 1)\n    return res",
+    "source": "test-data-ai",
+    "prompt": "Compute nCr (binomial coefficient) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

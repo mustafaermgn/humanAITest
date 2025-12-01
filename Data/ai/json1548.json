@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def search(self, nums: list[int], target: int) -> int:\n        low = 0\n        high = len(nums) - 1\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            if nums[mid] == target:\n                return mid\n\n            # Check if the left half is sorted\n            if nums[low] <= nums[mid]:\n                # If target is within the sorted left half\n                if nums[low] <= target < nums[mid]:\n                    high = mid - 1\n                else:\n                    # Target is in the unsorted right half\n                    low = mid + 1\n            # Else, the right half must be sorted\n            else:\n                # If target is within the sorted right half\n                if nums[mid] < target <= nums[high]:\n                    low = mid + 1\n                else:\n                    # Target is in the unsorted left half\n                    high = mid - 1\n        \n        return -1",
+    "source": "test-data-ai",
+    "prompt": "Rotated sorted array'de eleman arayan binary search varyasyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

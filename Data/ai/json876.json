@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef find_anagrams(s):\n    \"\"\"\n    Belirtilen bir dizenin tüm anagramlarını (permütasyonlarını) bulur.\n    \"\"\"\n    if not isinstance(s, str):\n        raise TypeError(\"Girdi bir dize olmalıdır.\")\n    \n    if not s:\n        return [\"\"] # Boş bir dizenin tek anagramı kendisidir.\n\n    all_permutations = list(itertools.permutations(s))\n    anagrams = [\"\".join(p) for p in all_permutations]\n    return sorted(list(set(anagrams))) # Tekrarları kaldır ve sırala\n\nif __name__ == '__main__':\n    input_string = \"yaz\"\n    result = find_anagrams(input_string)\n    print(result)",
+    "source": "test-data-ai",
+    "prompt": "Find all anagrams in a string yaz.",
+    "license": "MIT",
+    "language": "python"
+}

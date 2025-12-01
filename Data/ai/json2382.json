@@ -1,0 +1,7 @@
+{
+    "code": "def assign_mice_to_holes(mice_positions, hole_positions):\n    mice_positions.sort()\n    hole_positions.sort()\n\n    max_distance = 0\n    for i in range(len(mice_positions)):\n        max_distance = max(max_distance, abs(mice_positions[i] - hole_positions[i]))\n\n    return max_distance",
+    "source": "test-data-ai",
+    "prompt": "Assign mice to holes problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

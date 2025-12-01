@@ -1,0 +1,7 @@
+{
+    "code": "def process_data(data):\n    count = len(data)\n    total_sum = sum(data)\n    average = total_sum / count\n    return average",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodda kullanılmayan değişkeni kaldırarak kodu temizle.",
+    "license": "MIT",
+    "language": "python"
+}

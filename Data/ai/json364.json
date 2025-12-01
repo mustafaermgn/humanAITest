@@ -1,0 +1,7 @@
+{
+    "code": "def expression_add_operators(num, target):\n    \"\"\"\n    Given a string num that contains only digits and an integer target, return all possible ways to add the binary\n    operators '+', '-', or '*' between the digits of num so that the expression evaluates to the target value.\n    \"\"\"\n\n    def helper(index, current_expression, current_value, previous_operand):\n        if index == len(num):\n            if current_value == target:\n                result.append(current_expression)\n            return\n\n        for i in range(index, len(num)):\n            if i > index and num[index] == '0':\n                break\n\n            current_num = int(num[index:i + 1])\n\n            if index == 0:\n                helper(i + 1, str(current_num), current_num, current_num)\n            else:\n                helper(i + 1, current_expression + '+' + str(current_num), current_value + current_num, current_num)\n                helper(i + 1, current_expression + '-' + str(current_num), current_value - current_num, -current_num)\n                helper(i + 1, current_expression + '*' + str(current_num), current_value - previous_operand + previous_operand * current_num, previous_operand * current_num)\n\n    result = []\n    helper(0, '', 0, 0)\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Expression add operators yaz.",
+    "license": "MIT",
+    "language": "python"
+}

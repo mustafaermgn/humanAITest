@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef kthSmallest(root, k):\n    stack = []\n    while root or stack:\n        while root:\n            stack.append(root)\n            root = root.left\n        root = stack.pop()\n        k -= 1\n        if k == 0:\n            return root.val\n        root = root.right\n    return None",
+    "source": "test-data-ai",
+    "prompt": "Kth smallest element in BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

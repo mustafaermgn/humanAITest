@@ -1,0 +1,7 @@
+{
+    "code": "import datetime\n\nclass User:\n    def __init__(self, username, email, id=None, is_active=True, created_at=None, last_login=None):\n        self.id = id\n        self.username = username\n        self.email = email\n        self.is_active = is_active\n        # If created_at is not provided, set it to the current UTC time.\n        # Using UTC is a good practice for timestamps.\n        self.created_at = created_at if created_at is not None else datetime.datetime.now(datetime.timezone.utc)\n        self.last_login = last_login\n\n    def __repr__(self):\n        return (f\"User(id={self.id}, \"\n                f\"username={self.username!r}, \"\n                f\"email={self.email!r}, \"\n                f\"is_active={self.is_active}, \"\n                f\"created_at={self.created_at!r}, \"\n                f\"last_login={self.last_login!r})\")",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki sınıfın **kapsamlı** bir `__repr__` metodu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def sagdaki_ilk_set_bit_pozisyonu(n):\n    if n == 0:\n        return -1\n    \n    pozisyon = 0\n    while (n & 1) == 0:\n        n >>= 1\n        pozisyon += 1\n    return pozisyon",
+    "source": "test-data-ai",
+    "prompt": "Find position of rightmost set bit yaz.",
+    "license": "MIT",
+    "language": "python"
+}

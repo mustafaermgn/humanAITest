@@ -1,0 +1,7 @@
+{
+    "code": "import asyncio\nfrom fastapi import FastAPI\nfrom fastapi.responses import StreamingResponse\n\napp = FastAPI()\n\nasync def generate_data():\n    yield \"Merhaba \"\n    await asyncio.sleep(1)\n    yield \"Dünya \"\n    await asyncio.sleep(1)\n    yield \"!\"\n    await asyncio.sleep(1)\n    yield \"\\nBu bir streaming yanıttır.\"\n\n@app.get(\"/stream\")\nasync def stream_response():\n    return StreamingResponse(generate_data(), media_type=\"text/plain\")\n\n@app.get(\"/sse\")\nasync def sse_response():\n    async def event_generator():\n        yield \"data: Merhaba\\n\\n\"\n        await asyncio.sleep(1)\n        yield \"data: Dünya\\n\\n\"\n        await asyncio.sleep(1)\n        yield \"data: !\\n\\n\"\n        await asyncio.sleep(1)\n        yield \"event: end\\ndata: Akış sona erdi.\\n\\n\" # Özel bir olay türü ve veri\n    return StreamingResponse(event_generator(), media_type=\"text/event-stream\")",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile streaming response yaz.",
+    "license": "MIT",
+    "language": "python"
+}

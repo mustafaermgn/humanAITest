@@ -1,0 +1,7 @@
+{
+    "code": "class MovingAverage:\n\n    def __init__(self, size: int):\n        \"\"\"\n        Initialize your data structure here.\n        \"\"\"\n        self.size = size\n        self.queue = []\n        self.sum = 0\n\n    def next(self, val: int) -> float:\n        self.queue.append(val)\n        self.sum += val\n\n        if len(self.queue) > self.size:\n            self.sum -= self.queue.pop(0)\n\n        return self.sum / len(self.queue)\n\n\n# Your MovingAverage object will be instantiated and called as such:\n# obj = MovingAverage(size)\n# param_1 = obj.next(val)\n\nif __name__ == '__main__':\n    # Example usage:\n    moving_average = MovingAverage(3)\n    print(moving_average.next(1))  # Output: 1.0\n    print(moving_average.next(10)) # Output: 5.5\n    print(moving_average.next(3))  # Output: 4.66667\n    print(moving_average.next(5))  # Output: 6.0",
+    "source": "test-data-ai",
+    "prompt": "Moving average from data stream using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

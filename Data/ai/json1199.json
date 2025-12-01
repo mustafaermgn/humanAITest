@@ -1,0 +1,7 @@
+{
+    "code": "def karatsuba_multiply(x, y):\n    \"\"\"\n    Implements the Karatsuba multiplication algorithm.\n\n    Args:\n        x (int): The first integer.\n        y (int): The second integer.\n\n    Returns:\n        int: The product of x and y.\n    \"\"\"\n\n    if x < 10 or y < 10:\n        return x * y\n\n    str_x = str(x)\n    str_y = str(y)\n\n    n = max(len(str_x), len(str_y))\n\n    if n % 2 == 1:\n        n += 1\n    \n    str_x = str_x.zfill(n)\n    str_y = str_y.zfill(n)\n\n    m = n // 2\n    \n    x1 = int(str_x[:m])\n    x0 = int(str_x[m:])\n    y1 = int(str_y[:m])\n    y0 = int(str_y[m:])\n\n    z0 = karatsuba_multiply(x0, y0)\n    z1 = karatsuba_multiply(x1, y1)\n    z2 = karatsuba_multiply(x0 + x1, y0 + y1)\n\n    return z1 * (10**(2*m)) + (z2 - z1 - z0) * (10**m) + z0",
+    "source": "test-data-ai",
+    "prompt": "Karatsuba multiplication algoritmasını yaz.",
+    "license": "MIT",
+    "language": "python"
+}

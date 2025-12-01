@@ -1,0 +1,7 @@
+{
+    "code": "def extended_gcd(a, b):\n    if a == 0:\n        return b, 0, 1\n    gcd, x1, y1 = extended_gcd(b % a, a)\n    x = y1 - (b // a) * x1\n    y = x1\n    return gcd, x, y\n\ndef modular_inverse(a, m):\n    gcd, x, y = extended_gcd(a, m)\n    if gcd != 1:\n        raise ValueError(\"Modular inverse does not exist\")\n    return (x % m + m) % m\n\ndef chinese_remainder_theorem(n, a):\n    if len(n) != len(a):\n        raise ValueError(\"Lists n and a must have the same length.\")\n\n    N = 1\n    for ni in n:\n        N *= ni\n\n    sum_x = 0\n    for i in range(len(n)):\n        ni = n[i]\n        ai = a[i]\n        Ni = N // ni\n        xi = modular_inverse(Ni, ni)\n        sum_x += ai * Ni * xi\n\n    return sum_x % N",
+    "source": "test-data-ai",
+    "prompt": "Chinese remainder theorem uygula.",
+    "license": "MIT",
+    "language": "python"
+}

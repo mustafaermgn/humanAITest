@@ -1,0 +1,7 @@
+{
+    "code": "class Graph:\n    def __init__(self, num_vertices):\n        self.num_vertices = num_vertices\n        self.adj_matrix = [[0] * num_vertices for _ in range(num_vertices)]\n\n    def add_edge(self, u, v, weight=1):\n        if 0 <= u < self.num_vertices and 0 <= v < self.num_vertices:\n            self.adj_matrix[u][v] = weight\n            self.adj_matrix[v][u] = weight  # For an undirected graph\n        else:\n            print(\"Geçersiz köşe indeksi.\")\n\n    def print_matrix(self):\n        for row in self.adj_matrix:\n            print(\" \".join(map(str, row)))\n\nif __name__ == '__main__':\n    # Örnek kullanım: 4 köşeli bir grafik oluşturma\n    g = Graph(4)\n\n    # Kenarları ekleme (varsayılan olarak ağırlıksız ve yönsüz)\n    g.add_edge(0, 1)\n    g.add_edge(0, 2)\n    g.add_edge(1, 2)\n    g.add_edge(2, 3)\n\n    # Ağırlıklı bir kenar ekleme örneği\n    g.add_edge(1, 3, 5)\n\n    # Komşuluk matrisini yazdırma\n    g.print_matrix()",
+    "source": "test-data-ai",
+    "prompt": "Graph representation using adjacency matrix yaz.",
+    "license": "MIT",
+    "language": "python"
+}

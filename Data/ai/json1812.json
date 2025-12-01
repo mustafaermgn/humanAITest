@@ -1,0 +1,7 @@
+{
+    "code": "def letterCombinations(digits: str) -> list[str]:\n    if not digits:\n        return []\n\n    phone_map = {\n        '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',\n        '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'\n    }\n\n    combinations = [\"\"]\n\n    for digit in digits:\n        if digit not in phone_map:\n            # Geçersiz bir rakam (örneğin '0' veya '1') gelirse atla veya hata fırlat\n            # Bu problem genellikle 2-9 arası rakamlar bekler.\n            continue\n            \n        current_letters = phone_map[digit]\n        new_combinations = []\n\n        for combo_so_far in combinations:\n            for letter in current_letters:\n                new_combinations.append(combo_so_far + letter)\n        \n        combinations = new_combinations\n    \n    return combinations\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    print(letterCombinations(\"23\"))\n    # Çıktı: ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']\n\n    print(letterCombinations(\"\"))\n    # Çıktı: []\n\n    print(letterCombinations(\"2\"))\n    # Çıktı: ['a', 'b', 'c']\n\n    print(letterCombinations(\"79\"))\n    # Çıktı: ['pw', 'px', 'py', 'pz', 'qw', 'qx', 'qy', 'qz', 'rw', 'rx', 'ry', 'rz', 'sw', 'sx', 'sy', 'sz']",
+    "source": "test-data-ai",
+    "prompt": "Letter combinations of phone number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

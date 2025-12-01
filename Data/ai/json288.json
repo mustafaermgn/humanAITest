@@ -1,0 +1,7 @@
+{
+    "code": "import pandas as pd\n\ndef dataframe_to_csv(df, dosya_yolu, indeks=False):\n  \"\"\"\n  Bir DataFrame'i CSV dosyasına export eder.\n\n  Args:\n    df: Export edilecek pandas DataFrame'i.\n    dosya_yolu: CSV dosyasının kaydedileceği dosya yolu (string).\n    indeks: DataFrame indeksini CSV dosyasına yazıp yazmamayı belirtir (varsayılan: False).\n  \"\"\"\n  df.to_csv(dosya_yolu, index=indeks)\n\nif __name__ == '__main__':\n  # Örnek kullanım\n  data = {'Sütun1': [1, 2, 3], 'Sütun2': ['a', 'b', 'c']}\n  df = pd.DataFrame(data)\n  dataframe_to_csv(df, 'ornek.csv')\n  dataframe_to_csv(df, 'ornek_indeksli.csv', indeks=True)",
+    "source": "test-data-ai",
+    "prompt": "DataFrame'i CSV'ye export eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

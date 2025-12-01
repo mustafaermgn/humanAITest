@@ -1,0 +1,7 @@
+{
+    "code": "def binary_file_operation(filepath: str, data: bytes = None, mode: str = 'r') -> bytes | bool | None:\n    if mode == 'r':\n        try:\n            with open(filepath, 'rb') as f:\n                content = f.read()\n            return content\n        except FileNotFoundError:\n            return None\n        except IOError:\n            return None\n    elif mode == 'w':\n        if data is None or not isinstance(data, bytes):\n            return None\n        try:\n            with open(filepath, 'wb') as f:\n                f.write(data)\n            return True\n        except IOError:\n            return None\n    else:\n        return None",
+    "source": "test-data-ai",
+    "prompt": "Binary dosya okuma/yazma fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import abc\n\n# Ürün arayüzü\nclass Weapon(abc.ABC):\n    @abc.abstractmethod\n    def __str__(self):\n        pass\n\n# Somut Ürünler\nclass Sword(Weapon):\n    def __str__(self):\n        return \"Kılıç\"\n\nclass Bow(Weapon):\n    def __str__(self):\n        return \"Yay\"\n\n# Yaratıcı soyut sınıfı\nclass Character(abc.ABC):\n    def __init__(self):\n        self._weapon = self._create_weapon()\n\n    @abc.abstractmethod\n    def _create_weapon(self) -> Weapon:\n        pass\n\n    def attack(self):\n        return f\"Karakter {self._weapon} ile saldırıyor!\"\n\n# Somut Yaratıcılar\nclass Warrior(Character):\n    def _create_weapon(self) -> Weapon:\n        return Sword()\n\nclass Archer(Character):\n    def _create_weapon(self) -> Weapon:\n        return Bow()\n\nif __name__ == \"__main__\":\n    warrior = Warrior()\n    print(warrior.attack())\n\n    archer = Archer()\n    print(archer.attack())",
+    "source": "test-data-ai",
+    "prompt": "Basit bir **fabrika metodu (Factory Method)** desenini uygulayan bir sınıf örneği yaz.",
+    "license": "MIT",
+    "language": "python"
+}

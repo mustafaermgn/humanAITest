@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, value):\n        self.value = value\n        self.left = None\n        self.right = None\n\nclass BST:\n    def __init__(self):\n        self.root = None\n\n    def insert(self, value):\n        self.root = self._insert_recursive(self.root, value)\n\n    def _insert_recursive(self, current_node, value):\n        if current_node is None:\n            return Node(value)\n\n        if value < current_node.value:\n            current_node.left = self._insert_recursive(current_node.left, value)\n        elif value > current_node.value:\n            current_node.right = self._insert_recursive(current_node.right, value)\n        # Value already exists, do nothing (no duplicates inserted)\n\n        return current_node",
+    "source": "test-data-ai",
+    "prompt": "Insert into BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

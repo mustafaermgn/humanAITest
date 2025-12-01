@@ -1,0 +1,7 @@
+{
+    "code": "[item for item in original_list if item is not None]",
+    "source": "test-data-ai",
+    "prompt": "Bir listedeki boş (None) değerleri kaldıran tek satırlık bir kod yaz.",
+    "license": "MIT",
+    "language": "python"
+}

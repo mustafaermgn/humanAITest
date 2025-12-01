@@ -1,0 +1,7 @@
+{
+    "code": "def get_min_coins_greedy(amount: int) -> int:\n    denominations = [25, 10, 5, 1]  # Quarters, Dimes, Nickels, Pennies (common US denominations)\n    total_coins = 0\n\n    for coin in denominations:\n        if amount == 0:\n            break\n        \n        num_coins_of_this_type = amount // coin\n        total_coins += num_coins_of_this_type\n        amount %= coin\n        \n    return total_coins",
+    "source": "test-data-ai",
+    "prompt": "Minimum number of coins for change (greedy approach) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

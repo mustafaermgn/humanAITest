@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef create_recursive_dir(path):\n    path = os.path.normpath(path)\n\n    if os.path.exists(path):\n        if os.path.isdir(path):\n            return\n        else:\n            raise OSError(f\"Cannot create directory '{path}': A file with the same name already exists.\")\n\n    parent_dir = os.path.dirname(path)\n\n    if not parent_dir or parent_dir == path:\n        os.mkdir(path)\n        return\n\n    create_recursive_dir(parent_dir)\n\n    os.mkdir(path)",
+    "source": "test-data-ai",
+    "prompt": "Directory oluşturan (recursive) fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

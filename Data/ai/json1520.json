@@ -1,0 +1,7 @@
+{
+    "code": "def cut_paper_into_squares(width, height):\n    squares = []\n    while width > 0 and height > 0:\n        if width < height:\n            width, height = height, width\n\n        if width == height:\n            squares.append(width)\n            break\n\n        num_squares_to_cut = width // height\n        for _ in range(num_squares_to_cut):\n            squares.append(height)\n\n        width = width % height\n    return squares",
+    "source": "test-data-ai",
+    "prompt": "Paper cut into minimum number of squares yaz.",
+    "license": "MIT",
+    "language": "python"
+}

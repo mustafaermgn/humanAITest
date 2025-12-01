@@ -1,0 +1,7 @@
+{
+    "code": "def rotate_bits_left(n, d):\n    \"\"\"\n    Rotate bits of a number to the left.\n\n    Args:\n        n: The number to rotate.\n        d: The number of bits to rotate.\n\n    Returns:\n        The rotated number.\n    \"\"\"\n    INT_BITS = 32  # Assuming 32-bit integers\n\n    d = d % INT_BITS\n    \n    return (n << d) | (n >> (INT_BITS - d))\n\ndef rotate_bits_right(n, d):\n    \"\"\"\n    Rotate bits of a number to the right.\n\n    Args:\n        n: The number to rotate.\n        d: The number of bits to rotate.\n\n    Returns:\n        The rotated number.\n    \"\"\"\n    INT_BITS = 32  # Assuming 32-bit integers\n    \n    d = d % INT_BITS\n\n    return (n >> d) | (n << (INT_BITS - d))\nif __name__ == '__main__':\n    n = 16\n    d = 2\n    print(\"Left Rotation of {} by {} is {}\".format(n, d, rotate_bits_left(n, d)))\n    print(\"Right Rotation of {} by {} is {}\".format(n, d, rotate_bits_right(n, d)))",
+    "source": "test-data-ai",
+    "prompt": "Rotate bits of a number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

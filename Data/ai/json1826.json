@@ -1,0 +1,7 @@
+{
+    "code": "class QueueUsingTwoStacks:\n    def __init__(self):\n        self.stack1 = []  # Used for enqueuing\n        self.stack2 = []  # Used for dequeuing\n\n    def enqueue(self, item):\n        self.stack1.append(item)\n\n    def dequeue(self):\n        if not self.stack2:\n            if not self.stack1:\n                raise IndexError(\"Dequeue from an empty queue\")\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n        return self.stack2.pop()\n\n    def peek(self):\n        if not self.stack2:\n            if not self.stack1:\n                raise IndexError(\"Peek from an empty queue\")\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n        return self.stack2[-1]\n\n    def is_empty(self):\n        return not self.stack1 and not self.stack2\n\n    def size(self):\n        return len(self.stack1) + len(self.stack2)",
+    "source": "test-data-ai",
+    "prompt": "Queue using two stacks yaz.",
+    "license": "MIT",
+    "language": "python"
+}

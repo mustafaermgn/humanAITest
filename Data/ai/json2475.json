@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef hasPathSum(root: TreeNode, targetSum: int) -> bool:\n    if not root:\n        return False\n\n    if not root.left and not root.right:\n        return root.val == targetSum\n\n    return hasPathSum(root.left, targetSum - root.val) or \\\n           hasPathSum(root.right, targetSum - root.val)",
+    "source": "test-data-ai",
+    "prompt": "Path sum checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

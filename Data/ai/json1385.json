@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for singly-linked list.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:\n        dummy = ListNode(0, head)\n        slow = dummy\n        fast = dummy\n\n        for _ in range(n):\n            fast = fast.next\n\n        while fast.next:\n            slow = slow.next\n            fast = fast.next\n\n        slow.next = slow.next.next\n\n        return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Remove nth node from end yaz.",
+    "license": "MIT",
+    "language": "python"
+}

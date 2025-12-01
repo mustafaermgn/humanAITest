@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass Solution:\n    def findMaximizedCapital(self, k: int, w: int, profits: list[int], capital: list[int]) -> int:\n        n = len(profits)\n        projects = []\n        for i in range(n):\n            projects.append((capital[i], profits[i]))\n\n        # Sort projects by capital requirement\n        projects.sort()\n\n        # max_profit_heap will store profits of projects we can afford\n        # We use -profit to simulate a max-heap with heapq (which is a min-heap)\n        max_profit_heap = []\n\n        # Pointer for the projects array\n        project_idx = 0\n\n        for _ in range(k):\n            # Add all affordable projects to the max_profit_heap\n            while project_idx < n and projects[project_idx][0] <= w:\n                heapq.heappush(max_profit_heap, -projects[project_idx][1])\n                project_idx += 1\n\n            # If no projects can be afforded, we can't do anything more\n            if not max_profit_heap:\n                break\n\n            # Take the project with the maximum profit\n            w += -heapq.heappop(max_profit_heap)\n\n        return w",
+    "source": "test-data-ai",
+    "prompt": "IPO problem using heaps yaz.",
+    "license": "MIT",
+    "language": "python"
+}

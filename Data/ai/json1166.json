@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def diffWaysToParentheses(self, expression: str) -> list[str]:\n        memo = {}\n\n        def _diffWays(sub_expr):\n            if sub_expr in memo:\n                return memo[sub_expr]\n\n            result = []\n            is_numeric = True\n\n            for i, char in enumerate(sub_expr):\n                if char in \"+-*\":\n                    is_numeric = False\n                    left_parts = _diffWays(sub_expr[:i])\n                    right_parts = _diffWays(sub_expr[i+1:])\n\n                    for left in left_parts:\n                        for right in right_parts:\n                            result.append(f\"({left}{char}{right})\")\n            \n            if is_numeric:\n                result.append(sub_expr)\n            \n            memo[sub_expr] = result\n            return result\n\n        return _diffWays(expression)",
+    "source": "test-data-ai",
+    "prompt": "Different ways to add parentheses yaz.",
+    "license": "MIT",
+    "language": "python"
+}

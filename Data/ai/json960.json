@@ -1,0 +1,7 @@
+{
+    "code": "import asyncio\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n@app.on_event(\"startup\")\nasync def startup_event():\n    print(\"Uygulama başlatılıyor...\")\n    # Burada veritabanı bağlantısı, başlangıçta veri yükleme gibi görevler yapılabilir.\n    await asyncio.sleep(1) # Örnek olarak asenkron bir işlem simüle edelim\n    print(\"Başlangıç işlemleri tamamlandı!\")\n\n@app.on_event(\"shutdown\")\nasync def shutdown_event():\n    print(\"Uygulama kapanıyor...\")\n    # Burada veritabanı bağlantısını kapatma, kaynakları serbest bırakma gibi temizlik görevleri yapılabilir.\n    await asyncio.sleep(1) # Örnek olarak asenkron bir işlem simüle edelim\n    print(\"Kapanış işlemleri tamamlandı!\")\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"FastAPI uygulaması çalışıyor!\"}",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile startup/shutdown events yaz.",
+    "license": "MIT",
+    "language": "python"
+}

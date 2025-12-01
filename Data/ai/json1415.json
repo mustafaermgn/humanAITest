@@ -1,0 +1,7 @@
+{
+    "code": "def count_ways_to_reach_nth_stair(n: int) -> int:\n    if n < 0:\n        return 0\n    if n == 0:\n        return 1\n    if n == 1:\n        return 1\n\n    # dp[i] = number of ways to reach stair i\n    # We can optimize space by only storing the last two values\n    # a represents dp[i-2]\n    # b represents dp[i-1]\n    a, b = 1, 1  # Initial values: a for dp[0], b for dp[1]\n\n    for _ in range(2, n + 1):\n        # The number of ways to reach the current stair is the sum of ways to reach the previous two stairs\n        # new_b = a + b\n        # a becomes the old b\n        # b becomes new_b\n        a, b = b, a + b\n\n    return b",
+    "source": "test-data-ai",
+    "prompt": "Count number of ways to reach nth stair yaz.",
+    "license": "MIT",
+    "language": "python"
+}

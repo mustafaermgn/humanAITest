@@ -1,0 +1,7 @@
+{
+    "code": "def count_trailing_zeros(yaz):\n    if yaz < 0:\n        return 0\n    \n    count = 0\n    i = 5\n    while yaz // i >= 1:\n        count += yaz // i\n        i *= 5\n        \n    return count",
+    "source": "test-data-ai",
+    "prompt": "Count number of trailing zeros in factorial yaz.",
+    "license": "MIT",
+    "language": "python"
+}

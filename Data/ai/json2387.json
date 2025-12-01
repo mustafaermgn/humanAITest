@@ -1,0 +1,7 @@
+{
+    "code": "def find_element_in_sorted_matrix(matrix: list[list[int]], target: int) -> tuple[int, int]:\n    \"\"\"\n    Sıralı bir 2D matriste eleman arayan algoritma.\n    Hem satırlar hem de sütunlar artan sırada sıralanmıştır.\n    \"\"\"\n    if not matrix or not matrix[0]:\n        return -1, -1\n\n    rows = len(matrix)\n    cols = len(matrix[0])\n\n    row = 0\n    col = cols - 1\n\n    while row < rows and col >= 0:\n        current_element = matrix[row][col]\n        if current_element == target:\n            return row, col\n        elif current_element < target:\n            row += 1\n        else:  # current_element > target\n            col -= 1\n\n    return -1, -1",
+    "source": "test-data-ai",
+    "prompt": "2D matrix'te satır ve sütunlar sıralıyken eleman arayan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

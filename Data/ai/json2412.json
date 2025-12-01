@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        char_map = {}\n        max_len = 0\n        start = 0\n\n        for end in range(len(s)):\n            char = s[end]\n            if char in char_map and char_map[char] >= start:\n                start = char_map[char] + 1\n            char_map[char] = end\n            max_len = max(max_len, end - start + 1)\n\n        return max_len",
+    "source": "test-data-ai",
+    "prompt": "Longest substring without repeating characters yaz.",
+    "license": "MIT",
+    "language": "python"
+}

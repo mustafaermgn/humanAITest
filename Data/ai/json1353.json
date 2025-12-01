@@ -1,0 +1,7 @@
+{
+    "code": "def find_prime_factors(number):\n    factors = []\n    d = 2\n    temp_number = number\n\n    while d * d <= temp_number:\n        while temp_number % d == 0:\n            factors.append(d)\n            temp_number //= d\n        d += 1\n\n    if temp_number > 1:\n        factors.append(temp_number)\n        \n    return factors",
+    "source": "test-data-ai",
+    "prompt": "Girilen bir sayının asal çarpanlarını (Prime Factors) bulan bir kod bloğu oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

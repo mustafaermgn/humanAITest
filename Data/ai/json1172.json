@@ -1,0 +1,7 @@
+{
+    "code": "def first_unique_char(s: str) -> int:\n    \"\"\"\n    Verilen stringdeki ilk tekil (unique) karakterin indeksini bulur.\n    Hiçbir tekil karakter yoksa -1 döndürür.\n\n    Args:\n        s: Giriş stringi.\n\n    Returns:\n        İlk tekil karakterin indeksi, yoksa -1.\n    \"\"\"\n    char_counts = {}\n\n    # İlk geçiş: Her karakterin kaç kez geçtiğini say\n    for char in s:\n        char_counts[char] = char_counts.get(char, 0) + 1\n\n    # İkinci geçiş: Stringi baştan sona tekrar kontrol et\n    # Karakterin sayısının 1 olduğu ilk karakterin indeksini bul\n    for i, char in enumerate(s):\n        if char_counts[char] == 1:\n            return i\n\n    # Tekil karakter bulunamazsa\n    return -1",
+    "source": "test-data-ai",
+    "prompt": "First unique character using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

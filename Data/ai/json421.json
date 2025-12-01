@@ -1,0 +1,7 @@
+{
+    "code": "def eafp_example(data, index):\n  \"\"\"\n  'EAFP' (izin istemektense af dile) ilkesini kullanan bir örnek.\n  \"\"\"\n  try:\n    value = data[index]\n    return value\n  except IndexError:\n    return None\n  except TypeError:\n    return None\n\ndef lbyl_example(data, index):\n  \"\"\"\n  'LBYL' (atlamadan önce bak) ilkesini kullanan bir örnek.\n  \"\"\"\n  if isinstance(data, list) and isinstance(index, int):\n    if 0 <= index < len(data):\n      return data[index]\n    else:\n      return None\n  else:\n    return None\n\nif __name__ == '__main__':\n  data = [1, 2, 3]\n\n  # EAFP örneği\n  print(\"EAFP Örneği:\")\n  print(eafp_example(data, 1))\n  print(eafp_example(data, 5))\n  print(eafp_example(\"hello\", 1))\n\n  # LBYL örneği\n  print(\"\\nLBYL Örneği:\")\n  print(lbyl_example(data, 1))\n  print(lbyl_example(data, 5))\n  print(lbyl_example(\"hello\", 1))",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodu, **'EAFP'** (izin istemektense af dile) prensibi yerine **'LBYL'** (atlamadan önce bak) prensibini kullanarak yeniden yaz.",
+    "license": "MIT",
+    "language": "python"
+}

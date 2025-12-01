@@ -1,0 +1,7 @@
+{
+    "code": "def hamiltonian_path(graph):\n    V = len(graph)\n    path = [-1] * V\n\n    for start_node in range(V):\n        path[0] = start_node\n        if _hamiltonian_path_util(graph, path, 1):\n            return path\n        path[0] = -1 # Reset for next attempt\n\n    return None\n\ndef _hamiltonian_path_util(graph, path, pos):\n    V = len(graph)\n\n    if pos == V:\n        return True\n\n    for v in range(V):\n        if _is_safe(v, graph, path, pos):\n            path[pos] = v\n            if _hamiltonian_path_util(graph, path, pos + 1):\n                return True\n            path[pos] = -1 # Backtrack\n\n    return False\n\ndef _is_safe(v, graph, path, pos):\n    if graph[path[pos - 1]][v] == 0:\n        return False\n\n    for i in range(pos):\n        if path[i] == v:\n            return False\n\n    return True",
+    "source": "test-data-ai",
+    "prompt": "Hamiltonian path bulan backtracking algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def _heapify_down(arr, n, i):\n    \"\"\"\n    Bir max-heap'in heap özelliğini belirli bir kök 'i' noktasından aşağı doğru restore eder.\n    \"\"\"\n    largest = i  # Başlangıçta en büyük elemanı kök olarak ayarla\n    left_child = 2 * i + 1\n    right_child = 2 * i + 2\n\n    # Sol çocuk kökten büyükse\n    if left_child < n and arr[left_child] > arr[largest]:\n        largest = left_child\n\n    # Sağ çocuk şu ana kadarki en büyükten büyükse\n    if right_child < n and arr[right_child] > arr[largest]:\n        largest = right_child\n\n    # En büyük eleman kök değilse\n    if largest != i:\n        arr[i], arr[largest] = arr[largest], arr[i]  # Takas et\n        _heapify_down(arr, n, largest)  # Etkilenen alt ağacı recursive olarak heapify et\n\ndef heapify_array(arr):\n    \"\"\"\n    Verilen bir diziyi bir max-heap'e dönüştürür (heapify sürecini uygular).\n    \"\"\"\n    n = len(arr)\n\n    # Son yaprak olmayan düğümden (n//2 - 1) başlayarak köke (0) doğru\n    # her düğüm için _heapify_down fonksiyonunu çağırır.\n    for i in range(n // 2 - 1, -1, -1):\n        _heapify_down(arr, n, i)",
+    "source": "test-data-ai",
+    "prompt": "Heapify process yaz.",
+    "license": "MIT",
+    "language": "python"
+}

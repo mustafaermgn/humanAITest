@@ -1,0 +1,7 @@
+{
+    "code": "def linear_search_sentinel(arr, target):\n    if not arr:\n        return -1\n\n    n = len(arr)\n    # Store the last element of the array\n    last_element = arr[n - 1]\n    # Place the target as a sentinel at the end of the array\n    arr[n - 1] = target\n\n    i = 0\n    # Search for the target\n    while arr[i] != target:\n        i += 1\n\n    # Restore the original last element\n    arr[n - 1] = last_element\n\n    # Check if the target was found\n    if i < n - 1 or arr[n - 1] == target:\n        return i\n    else:\n        # Target was not found in the original array\n        return -1",
+    "source": "test-data-ai",
+    "prompt": "Linear Search'ü sentinel tekniğiyle optimize et.",
+    "license": "MIT",
+    "language": "python"
+}

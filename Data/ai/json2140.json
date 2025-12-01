@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef create_recursive_directory(path):\n    os.makedirs(path, exist_ok=True)",
+    "source": "test-data-ai",
+    "prompt": "Directory oluşturan (recursive) fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

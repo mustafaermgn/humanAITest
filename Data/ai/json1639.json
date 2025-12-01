@@ -1,0 +1,7 @@
+{
+    "code": "def twos_complement(val, num_bits):\n    min_val = -(1 << (num_bits - 1))\n    max_val = (1 << (num_bits - 1)) - 1\n\n    if not (min_val <= val <= max_val):\n        raise ValueError(f\"Value {val} is out of range for {num_bits} bits. \"\n                         f\"Range: [{min_val}, {max_val}]\")\n\n    if val >= 0:\n        return bin(val)[2:].zfill(num_bits)\n    else:\n        return bin((1 << num_bits) + val)[2:]",
+    "source": "test-data-ai",
+    "prompt": "Find the two's complement yaz.",
+    "license": "MIT",
+    "language": "python"
+}

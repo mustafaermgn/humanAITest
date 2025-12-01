@@ -1,0 +1,7 @@
+{
+    "code": "def minimum_xor_value_pair(arr):\n    arr.sort()\n    min_xor = float('inf')\n    for i in range(len(arr) - 1):\n        min_xor = min(min_xor, arr[i] ^ arr[i+1])\n    return min_xor",
+    "source": "test-data-ai",
+    "prompt": "Minimum XOR value pair yaz.",
+    "license": "MIT",
+    "language": "python"
+}

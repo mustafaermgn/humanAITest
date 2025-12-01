@@ -1,0 +1,7 @@
+{
+    "code": "import bisect\n\ndef lengthOfLIS(nums: list[int]) -> int:\n    tails = []\n    for num in nums:\n        idx = bisect.bisect_left(tails, num)\n        if idx == len(tails):\n            tails.append(num)\n        else:\n            tails[idx] = num\n    return len(tails)",
+    "source": "test-data-ai",
+    "prompt": "Longest Increasing Subsequence (LIS) problemini çöz.",
+    "license": "MIT",
+    "language": "python"
+}

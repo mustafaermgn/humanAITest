@@ -1,0 +1,7 @@
+{
+    "code": "def basic_planar_check(graph_adj_list):\n    v = len(graph_adj_list)\n    e = 0\n    for neighbors in graph_adj_list.values():\n        e += len(neighbors)\n    e //= 2\n\n    if v < 5:\n        return True\n    \n    if e > 3 * v - 6:\n        return False\n    \n    return True",
+    "source": "test-data-ai",
+    "prompt": "Planarity testing için temel kontroller yaz.",
+    "license": "MIT",
+    "language": "python"
+}

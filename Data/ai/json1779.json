@@ -1,0 +1,7 @@
+{
+    "code": "def check_alert_conditions(data: dict, conditions: list[dict]) -> bool:\n    for condition in conditions:\n        metric = condition.get('metric')\n        operator = condition.get('operator')\n        value_to_compare = condition.get('value')\n\n        if metric not in data:\n            continue\n\n        current_value = data[metric]\n\n        if operator == 'gt':\n            if current_value > value_to_compare:\n                return True\n        elif operator == 'lt':\n            if current_value < value_to_compare:\n                return True\n        elif operator == 'ge':\n            if current_value >= value_to_compare:\n                return True\n        elif operator == 'le':\n            if current_value <= value_to_compare:\n                return True\n        elif operator == 'eq':\n            if current_value == value_to_compare:\n                return True\n        elif operator == 'ne':\n            if current_value != value_to_compare:\n                return True\n        elif operator == 'in':\n            if isinstance(value_to_compare, (list, tuple, set)) and current_value in value_to_compare:\n                return True\n        elif operator == 'not_in':\n            if isinstance(value_to_compare, (list, tuple, set)) and current_value not in value_to_compare:\n                return True\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Alert trigger condition checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def detect_cycle_undirected(graph):\n    visited = set()\n\n    for node in graph:\n        if node not in visited:\n            if _dfs_cycle_check(node, None, visited, graph):\n                return True\n    return False\n\ndef _dfs_cycle_check(current_node, parent_node, visited, graph):\n    visited.add(current_node)\n\n    for neighbor in graph.get(current_node, []):\n        if neighbor == parent_node:\n            continue\n        \n        if neighbor in visited:\n            return True\n        \n        if _dfs_cycle_check(neighbor, current_node, visited, graph):\n            return True\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Cycle detection algoritmasını undirected graph için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def _hamiltonian_path_util(graph, V, path, visited, path_index):\n    if path_index == V:\n        return True\n\n    current_vertex = path[path_index - 1]\n\n    for next_vertex in range(V):\n        if graph[current_vertex][next_vertex] == 1 and not visited[next_vertex]:\n            path[path_index] = next_vertex\n            visited[next_vertex] = True\n\n            if _hamiltonian_path_util(graph, V, path, visited, path_index + 1):\n                return True\n\n            visited[next_vertex] = False\n            path[path_index] = -1\n\n    return False\n\n\ndef find_hamiltonian_path(graph):\n    V = len(graph)\n    path = [-1] * V\n\n    for start_node in range(V):\n        path[0] = start_node\n        visited = [False] * V\n        visited[start_node] = True\n\n        if _hamiltonian_path_util(graph, V, path, visited, 1):\n            return path\n\n    return None",
+    "source": "test-data-ai",
+    "prompt": "Hamiltonian path bulan backtracking algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

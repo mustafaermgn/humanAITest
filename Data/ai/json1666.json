@@ -1,0 +1,7 @@
+{
+    "code": "Üzgünüm, ancak bana analiz etmem için herhangi bir Python kodu sağlamadınız. \"Aşağıdaki Python kodundaki mantık hatasını bul\" ifadesini kullandınız, ancak takip eden bir kod bloğu bulunmamaktadır.\n\nLütfen analiz etmemi istediğiniz Python kodunu bana ulaştırın, böylece mantık hatasını bulabilir, düzeltebilir ve düzeltmenin nedenini açıklayabilirim.",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki Python kodundaki mantık hatasını bul, düzelt ve düzeltmenin nedenini detaylı bir yorumla açıkla:",
+    "license": "MIT",
+    "language": "python"
+}

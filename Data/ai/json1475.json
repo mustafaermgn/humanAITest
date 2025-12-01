@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_total_ticket_buying_time(service_times, arrival_interval):\n    if not service_times:\n        return 0.0\n\n    current_time = 0.0\n    time_counter_is_free = 0.0\n    \n    for i, service_duration in enumerate(service_times):\n        arrival_time = i * arrival_interval\n        \n        service_start_time = max(arrival_time, time_counter_is_free)\n        service_finish_time = service_start_time + service_duration\n        \n        time_counter_is_free = service_finish_time\n        current_time = service_finish_time\n        \n    return current_time",
+    "source": "test-data-ai",
+    "prompt": "Time needed to buy tickets using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

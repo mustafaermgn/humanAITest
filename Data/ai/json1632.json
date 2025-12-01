@@ -1,0 +1,7 @@
+{
+    "code": "def xor_of_all_subset_xor_sums(nums):\n    \"\"\"\n    Hesaplar: tüm alt kümelerin elemanlarının XOR toplamının, bu alt küme XOR toplamlarının tekrar XOR toplamı.\n    \n    Örnek:\n    nums = [a, b]\n    Alt kümeler: {}, {a}, {b}, {a, b}\n    Alt küme elemanlarının XOR toplamları: 0, a, b, a^b\n    Nihai sonuç: 0 ^ a ^ b ^ (a^b) = (a^a) ^ (b^b) = 0 ^ 0 = 0\n    \n    Özellik:\n    - Eğer küme boşsa, tek alt küme {}'dir, XOR toplamı 0'dır. Sonuç 0.\n    - Eğer küme tek bir eleman içeriyorsa (örneğin {a}), alt kümeler {} ve {a}'dır. XOR toplamları 0 ve a'dır. Sonuç 0 ^ a = a.\n    - Eğer küme birden fazla eleman içeriyorsa (n >= 2), her bir eleman tüm alt kümelerin elemanları XOR toplamlarının genel XOR toplamında 2^(n-1) kez yer alır. \n      n >= 2 için 2^(n-1) her zaman çift bir sayıdır. Çift sayıda XORlanan aynı eleman 0'a eşittir. Bu nedenle sonuç 0 olur.\n    \"\"\"\n    n = len(nums)\n    if n == 0:\n        return 0\n    elif n == 1:\n        return nums[0]\n    else: # n >= 2\n        return 0",
+    "source": "test-data-ai",
+    "prompt": "Find XOR of all subsets yaz.",
+    "license": "MIT",
+    "language": "python"
+}

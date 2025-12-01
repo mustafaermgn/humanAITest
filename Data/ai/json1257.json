@@ -1,0 +1,7 @@
+{
+    "code": "def process_file_to_uppercase(input_filepath: str, output_filepath: str):\n    \"\"\"\n    Okunan metin dosyasındaki her satırı büyük harfe çevirir ve yeni bir dosyaya yazar.\n\n    Args:\n        input_filepath (str): Okunacak giriş dosyasının yolu.\n        output_filepath (str): Yazılacak çıkış dosyasının yolu.\n    \"\"\"\n    with open(input_filepath, 'r', encoding='utf-8') as infile:\n        with open(output_filepath, 'w', encoding='utf-8') as outfile:\n            for line in infile:\n                outfile.write(line.upper())\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    # 1. Test için bir giriş dosyası oluşturalım.\n    with open(\"input.txt\", \"w\", encoding=\"utf-8\") as f:\n        f.write(\"Bu bir deneme metnidir.\\n\")\n        f.write(\"İkinci satır küçük harf.\\n\")\n        f.write(\"ÜÇÜNCÜ SATIR ZATEN BÜYÜK.\\n\")\n        f.write(\"son satır.\")\n\n    # 2. İşlevi çağıralım.\n    process_file_to_uppercase(\"input.txt\", \"output.txt\")\n\n    # 3. Sonucu kontrol edelim (isteğe bağlı).\n    print(\"input.txt içeriği:\")\n    with open(\"input.txt\", \"r\", encoding=\"utf-8\") as f:\n        print(f.read())\n\n    print(\"\\noutput.txt içeriği:\")\n    with open(\"output.txt\", \"r\", encoding=\"utf-8\") as f:\n        print(f.read())",
+    "source": "test-data-ai",
+    "prompt": "Bir metin dosyasını satır satır okuyan ve her satırı büyük harfe çevirerek yeni bir dosyaya yazan bir işlev yaz.",
+    "license": "MIT",
+    "language": "python"
+}

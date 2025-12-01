@@ -1,0 +1,7 @@
+{
+    "code": "def burrows_wheeler_transform(s):\n    \"\"\"\n    Burrows-Wheeler transformunu uygular.\n\n    Args:\n        s: Giriş stringi.\n\n    Returns:\n        BWT edilmiş string ve orijinal stringin indeksi.\n    \"\"\"\n    s = s + '$'  # Son karakter olarak özel bir karakter ekleyin\n    rotations = [s[i:] + s[:i] for i in range(len(s))]\n    rotations.sort()\n    bwt = \"\".join([rotation[-1] for rotation in rotations])\n    original_index = rotations.index(s)\n    return bwt, original_index\n\ndef inverse_burrows_wheeler_transform(bwt, original_index):\n    \"\"\"\n    Burrows-Wheeler transformunu tersine çevirir.\n\n    Args:\n        bwt: BWT edilmiş string.\n        original_index: Orijinal stringin indeksi.\n\n    Returns:\n        Orijinal string.\n    \"\"\"\n    table = [\"\"] * len(bwt)\n    for _ in range(len(bwt)):\n        table = sorted([bwt[i] + table[i] for i in range(len(bwt))])\n    return table[original_index][:-1]  # Sondaki '$' karakterini çıkar\n\n\nif __name__ == '__main__':\n    # Örnek kullanım\n    original_string = \"banana\"\n    bwt, index = burrows_wheeler_transform(original_string)\n    print(f\"Orijinal String: {original_string}\")\n    print(f\"BWT: {bwt}\")\n    print(f\"İndeks: {index}\")\n\n    reconstructed_string = inverse_burrows_wheeler_transform(bwt, index)\n    print(f\"Yeniden Oluşturulan String: {reconstructed_string}\")",
+    "source": "test-data-ai",
+    "prompt": "Burrows-Wheeler transform yaz.",
+    "license": "MIT",
+    "language": "python"
+}

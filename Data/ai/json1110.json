@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef swapPairs(head: ListNode) -> ListNode:\n    dummy = ListNode(0)\n    dummy.next = head\n    prev = dummy\n\n    while prev.next and prev.next.next:\n        first_node = prev.next\n        second_node = prev.next.next\n\n        # Swap the pair\n        first_node.next = second_node.next\n        second_node.next = first_node\n        prev.next = second_node\n\n        # Move prev pointer to the first node of the (now swapped) pair\n        prev = first_node\n\n    return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Pairwise swap nodes yaz.",
+    "license": "MIT",
+    "language": "python"
+}

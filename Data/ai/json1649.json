@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def singleNumber(self, nums: list[int]) -> int:\n        result = 0\n\n        # Iterate over all 32 bits of an integer\n        # (assuming 32-bit signed integers, which is typical for such problems)\n        for i in range(32):\n            bit_sum = 0\n            # For each bit position, sum up the corresponding bit from all numbers\n            for num in nums:\n                # Check if the i-th bit is set in the current number\n                if (num >> i) & 1:\n                    bit_sum += 1\n\n            # If the sum of the i-th bits modulo 3 is 1, it means the unique number has this bit set\n            if bit_sum % 3 == 1:\n                result |= (1 << i)\n\n        # Handle potential negative unique numbers\n        # If the 31st bit (0-indexed) is set, it indicates a negative number\n        # in a 32-bit two's complement representation.\n        # Python stores integers with arbitrary precision, so 'result' might be a large positive number\n        # if the unique number was negative. We need to convert it to its 32-bit signed equivalent.\n        if (result >> 31) & 1:\n            result -= (1 << 32)\n\n        return result",
+    "source": "test-data-ai",
+    "prompt": "Find element that appears once while others appear thrice yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def swap_odd_even_bits(x):\n    if x < 0:\n        raise ValueError(\"Input must be a non-negative integer for bit swapping.\")\n    \n    if x == 0:\n        return 0\n\n    max_bits = x.bit_length()\n\n    even_mask = 0\n    odd_mask = 0\n    for i in range(max_bits):\n        if i % 2 == 0:\n            even_mask |= (1 << i)\n        else:\n            odd_mask |= (1 << i)\n\n    even_bits_shifted = (x & even_mask) << 1\n    odd_bits_shifted = (x & odd_mask) >> 1\n\n    return even_bits_shifted | odd_bits_shifted",
+    "source": "test-data-ai",
+    "prompt": "Swap all odd and even bits yaz.",
+    "license": "MIT",
+    "language": "python"
+}

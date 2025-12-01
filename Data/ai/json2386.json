@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef rotateRight(head: ListNode, k: int) -> ListNode:\n    if not head or k == 0:\n        return head\n\n    # 1. Find the length of the list and the tail\n    length = 1\n    tail = head\n    while tail.next:\n        tail = tail.next\n        length += 1\n\n    # 2. Handle k exceeding list length\n    k = k % length\n    if k == 0:\n        return head\n\n    # 3. Form a circle\n    tail.next = head\n\n    # 4. Find the new tail (length - k - 1 steps from original head)\n    #    and the new head (length - k steps from original head)\n    new_tail_position = length - k\n    new_tail = head\n    for _ in range(new_tail_position - 1):\n        new_tail = new_tail.next\n\n    new_head = new_tail.next\n\n    # 5. Break the circle\n    new_tail.next = None\n\n    return new_head",
+    "source": "test-data-ai",
+    "prompt": "Rotate linked list by k positions yaz.",
+    "license": "MIT",
+    "language": "python"
+}

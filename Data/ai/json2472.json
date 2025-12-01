@@ -1,0 +1,7 @@
+{
+    "code": "import configparser\n\ndef read_ini_config(filepath):\n    \"\"\"\n    Belirtilen INI yapılandırma dosyasını okur.\n\n    Args:\n        filepath (str): Okunacak INI dosyasının yolu.\n\n    Returns:\n        configparser.ConfigParser: Dosyadan okunan yapılandırma verilerini\n                                   içeren bir ConfigParser nesnesi.\n    \"\"\"\n    config = configparser.ConfigParser()\n    config.read(filepath)\n    return config",
+    "source": "test-data-ai",
+    "prompt": "INI configuration dosyası okuyan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

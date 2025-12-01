@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef is_perfect_number(num):\n    if num <= 1:\n        return False\n\n    divisor_sum = 1\n    for i in range(2, int(math.sqrt(num)) + 1):\n        if num % i == 0:\n            divisor_sum += i\n            if i * i != num:\n                divisor_sum += num // i\n    \n    return divisor_sum == num",
+    "source": "test-data-ai",
+    "prompt": "Check if a number is perfect number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def activity_selection(activities):\n    \"\"\"\n    Açgözlü bir yaklaşımla etkinlik seçimi problemini çözer.\n\n    Args:\n        activities: Her bir etkinlik (başlangıç, bitiş) içeren bir liste.\n\n    Returns:\n        Seçilen etkinliklerin listesi.\n    \"\"\"\n\n    # Etkinlikleri bitiş zamanına göre sıralayın.\n    activities.sort(key=lambda x: x[1])\n\n    selected_activities = []\n    last_finish_time = 0\n\n    for activity in activities:\n        start_time, finish_time = activity\n        if start_time >= last_finish_time:\n            selected_activities.append(activity)\n            last_finish_time = finish_time\n\n    return selected_activities\n\nif __name__ == '__main__':\n    activities = [(1, 2), (3, 4), (0, 6), (5, 7), (8, 9), (5, 9)]\n    selected_activities = activity_selection(activities)\n    print(\"Seçilen etkinlikler:\", selected_activities)",
+    "source": "test-data-ai",
+    "prompt": "Activity selection problemini greedy yaklaşımla çöz.",
+    "license": "MIT",
+    "language": "python"
+}

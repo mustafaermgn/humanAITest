@@ -1,0 +1,7 @@
+{
+    "code": "import logging\nimport logging.handlers\n\n# Logger oluştur\nlogger = logging.getLogger(\"MyRotatingLog\")\nlogger.setLevel(logging.INFO)\n\n# RotatingFileHandler oluştur\n# Log dosyası: app.log\n# Max dosya boyutu: 1 MB (1024 * 1024 bytes)\n# Tutulacak backup dosyası sayısı: 5\nhandler = logging.handlers.RotatingFileHandler(\n    \"app.log\",\n    maxBytes=1024 * 1024,  # 1 MB\n    backupCount=5\n)\n\n# Formatlayıcı oluştur\nformatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')\nhandler.setFormatter(formatter)\n\n# Handler'ı logger'a ekle\nlogger.addHandler(handler)\n\n# Örnek log mesajları yaz\nif __name__ == \"__main__\":\n    for i in range(2000): # Yeterince mesaj yazarak dosya boyutunun artmasını simüle et\n        logger.info(f\"Bu {i}. log mesajıdır. Dosya boyutu büyüyor...\")\n        if i % 100 == 0:\n            logger.warning(f\"Bu bir uyarı mesajı: {i}. iterasyon.\")\n    logger.critical(\"Uygulama sona eriyor.\")\n    logger.info(\"Loglama tamamlandı. 'app.log' ve potansiyel olarak 'app.log.1', 'app.log.2' dosyalarını kontrol edin.\")",
+    "source": "test-data-ai",
+    "prompt": "Rotating file handler ile log yaz.",
+    "license": "MIT",
+    "language": "python"
+}

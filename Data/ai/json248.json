@@ -1,0 +1,7 @@
+{
+    "code": "def subsets_bits(arr):\n  \"\"\"\n  Generates all possible subsets of a given array using bit manipulation.\n\n  Args:\n    arr: The input array.\n\n  Returns:\n    A list of lists, where each inner list represents a subset of the input array.\n  \"\"\"\n\n  n = len(arr)\n  subsets = []\n  for i in range(2**n):\n    subset = []\n    for j in range(n):\n      if (i >> j) & 1:\n        subset.append(arr[j])\n    subsets.append(subset)\n  return subsets\n\nif __name__ == '__main__':\n  arr = [1, 2, 3]\n  subsets = subsets_bits(arr)\n  print(subsets)",
+    "source": "test-data-ai",
+    "prompt": "Generate all possible subsets using bits yaz.",
+    "license": "MIT",
+    "language": "python"
+}

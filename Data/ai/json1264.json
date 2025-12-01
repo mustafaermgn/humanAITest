@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\ndef connect_ropes_min_cost(ropes):\n    if not ropes or len(ropes) <= 1:\n        return 0\n\n    heapq.heapify(ropes)\n    total_cost = 0\n\n    while len(ropes) > 1:\n        first = heapq.heappop(ropes)\n        second = heapq.heappop(ropes)\n        \n        current_cost = first + second\n        total_cost += current_cost\n        \n        heapq.heappush(ropes, current_cost)\n        \n    return total_cost",
+    "source": "test-data-ai",
+    "prompt": "Connect n ropes with minimum cost yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef swapPairs(head: ListNode) -> ListNode:\n    dummy = ListNode(0, head)\n    prev = dummy\n    curr = head\n\n    while curr and curr.next:\n        # İki düğümü yakala\n        first_node = curr\n        second_node = curr.next\n\n        # Düğümleri takas et\n        prev.next = second_node\n        first_node.next = second_node.next\n        second_node.next = first_node\n\n        # Sonraki takas edilecek çift için işaretçileri güncelle\n        prev = first_node\n        curr = first_node.next\n\n    return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Pairwise swap nodes yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def find_peak_element(nums: list[int]) -> int:\n    n = len(nums)\n    low = 0\n    high = n - 1\n\n    while low < high:\n        mid = low + (high - low) // 2\n        if nums[mid] > nums[mid + 1]:\n            high = mid\n        else:\n            low = mid + 1\n            \n    return nums[low]",
+    "source": "test-data-ai",
+    "prompt": "Peak element (tepe eleman) bulan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

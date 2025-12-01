@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def minFallingPathSum(self, matrix: list[list[int]]) -> int:\n        n_rows = len(matrix)\n        n_cols = len(matrix[0])\n\n        if n_rows == 1:\n            return min(matrix[0])\n\n        for r in range(1, n_rows):\n            for c in range(n_cols):\n                # Calculate the minimum sum from the previous row\n                # that can lead to the current cell (r, c)\n                \n                # Start with the direct top element\n                min_prev_row_val = matrix[r-1][c]\n\n                # Check top-left element if it exists\n                if c > 0:\n                    min_prev_row_val = min(min_prev_row_val, matrix[r-1][c-1])\n                \n                # Check top-right element if it exists\n                if c < n_cols - 1:\n                    min_prev_row_val = min(min_prev_row_val, matrix[r-1][c+1])\n                \n                # Update the current cell with the sum of its value and the minimum\n                # falling path sum from the previous row\n                matrix[r][c] += min_prev_row_val\n        \n        # The minimum falling path sum will be the minimum value in the last row\n        return min(matrix[n_rows - 1])",
+    "source": "test-data-ai",
+    "prompt": "Minimum falling path sum hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

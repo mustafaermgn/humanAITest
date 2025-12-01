@@ -1,0 +1,7 @@
+{
+    "code": "def has_cycle(graph):\n    \"\"\"\n    Belirtilen yönsüz grafikte döngü olup olmadığını kontrol eder.\n\n    Graf, bir komşuluk listesi olarak temsil edilir; burada anahtarlar düğümlerdir\n    ve değerler komşu düğümlerin listesidir.\n\n    Args:\n        graph: Yönsüz grafiği temsil eden bir sözlük.\n               Örnek: {0: [1, 2], 1: [0, 2], 2: [0, 1]}\n\n    Returns:\n        Grafikte döngü varsa True, aksi takdirde False.\n    \"\"\"\n    visited = set()\n\n    def dfs(node, parent):\n        visited.add(node)\n\n        for neighbor in graph.get(node, []):\n            if neighbor == parent:\n                continue\n            if neighbor in visited:\n                return True  # Döngü bulundu\n            if dfs(neighbor, node):\n                return True  # Rekürsif aramada döngü bulundu\n\n        return False  # Bu yoldan döngü bulunamadı\n\n    for node in graph:\n        if node not in visited:\n            # Her bir bağlı bileşen için DFS başlat\n            # Başlangıç düğümünün ebeveyni yoktur, bu yüzden None kullanılır.\n            if dfs(node, None):\n                return True\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Cycle detection algoritmasını undirected graph için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

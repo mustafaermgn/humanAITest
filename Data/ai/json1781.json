@@ -1,0 +1,7 @@
+{
+    "code": "import tempfile\n\nclass TemporaryFileContext:\n    def __init__(self, mode='w+b', encoding=None, suffix=\"\", prefix=\"tmp\", dir=None):\n        self._temp_file = None\n        self._mode = mode\n        self._encoding = encoding\n        self._suffix = suffix\n        self._prefix = prefix\n        self._dir = dir\n\n    def __enter__(self):\n        self._temp_file = tempfile.NamedTemporaryFile(\n            mode=self._mode,\n            encoding=self._encoding,\n            suffix=self._suffix,\n            prefix=self._prefix,\n            dir=self._dir,\n            delete=True\n        )\n        return self._temp_file\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        if self._temp_file:\n            self._temp_file.close()",
+    "source": "test-data-ai",
+    "prompt": "Temporary file oluşturan context manager yaz.",
+    "license": "MIT",
+    "language": "python"
+}

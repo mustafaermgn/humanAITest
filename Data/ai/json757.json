@@ -1,0 +1,7 @@
+{
+    "code": "from collections import deque\n\ndef is_connected(graph):\n    if not graph:\n        return True\n\n    nodes = set(graph.keys())\n    \n    # If the graph has no nodes (e.g., an empty dictionary)\n    if not nodes:\n        return True\n\n    # Pick an arbitrary starting node\n    start_node = next(iter(nodes))\n\n    visited = set()\n    queue = deque([start_node])\n    visited.add(start_node)\n\n    while queue:\n        current_node = queue.popleft()\n\n        # Iterate through neighbors. The graph is treated as undirected\n        # or checking for weak connectivity if it's directed.\n        for neighbor in graph[current_node]:\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append(neighbor)\n\n    # The graph is connected if all nodes are visited\n    return len(visited) == len(nodes)",
+    "source": "test-data-ai",
+    "prompt": "Graph'ın connected olup olmadığını kontrol eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

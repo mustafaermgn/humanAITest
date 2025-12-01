@@ -1,0 +1,7 @@
+{
+    "code": "class UndergroundSystem:\n\n    def __init__(self):\n        # Müşteri kimliğine göre giriş istasyonu ve zamanını saklar:\n        # {customer_id: (start_station_name, start_time)}\n        self.check_in_data = {} \n        \n        # İstasyon çiftlerine göre toplam seyahat süresini ve sefer sayısını saklar:\n        # {(start_station_name, end_station_name): [total_time, trip_count]}\n        self.station_trip_aggregates = {}\n\n    def checkIn(self, id: int, stationName: str, t: int) -> None:\n        self.check_in_data[id] = (stationName, t)\n\n    def checkOut(self, id: int, stationName: str, t: int) -> None:\n        start_station, start_time = self.check_in_data.pop(id)\n        \n        route = (start_station, stationName)\n        travel_time = t - start_time\n        \n        if route not in self.station_trip_aggregates:\n            self.station_trip_aggregates[route] = [0, 0]\n            \n        self.station_trip_aggregates[route][0] += travel_time\n        self.station_trip_aggregates[route][1] += 1\n\n    def getAverageTime(self, startStation: str, endStation: str) -> float:\n        route = (startStation, endStation)\n        total_time, trip_count = self.station_trip_aggregates[route]\n        return total_time / trip_count",
+    "source": "test-data-ai",
+    "prompt": "Design underground system using hash maps yaz.",
+    "license": "MIT",
+    "language": "python"
+}

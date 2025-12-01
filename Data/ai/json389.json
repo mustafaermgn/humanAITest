@@ -1,0 +1,7 @@
+{
+    "code": "def sayi_gecerli_mi(sayi):\n  \"\"\"\n  Verilen bir stringin geçerli bir sayı olup olmadığını kontrol eder.\n\n  Args:\n    sayi: Kontrol edilecek string.\n\n  Returns:\n    Eğer string geçerli bir sayıysa True, değilse False.\n  \"\"\"\n  try:\n    float(sayi)\n    return True\n  except ValueError:\n    return False\n\nif __name__ == '__main__':\n  # Örnek kullanımlar:\n  print(sayi_gecerli_mi(\"123\"))  # True\n  print(sayi_gecerli_mi(\"123.45\"))  # True\n  print(sayi_gecerli_mi(\"-123\"))  # True\n  print(sayi_gecerli_mi(\"-123.45\"))  # True\n  print(sayi_gecerli_mi(\"abc\"))  # False\n  print(sayi_gecerli_mi(\"123a\"))  # False\n  print(sayi_gecerli_mi(\"\"))  # False\n  print(sayi_gecerli_mi(\" \"))  # False\n  print(sayi_gecerli_mi(\"3.14159\")) # True\n  print(sayi_gecerli_mi(\"+42\")) # True\n  print(sayi_gecerli_mi(\".1\")) # True\n  print(sayi_gecerli_mi(\"-.2\")) # True\n  print(sayi_gecerli_mi(\"1.\")) # True",
+    "source": "test-data-ai",
+    "prompt": "Valid number checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

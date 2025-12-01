@@ -1,0 +1,7 @@
+{
+    "code": "def toplam_bul(numbers):\n    total = sum(numbers)\n    return total",
+    "source": "test-data-ai",
+    "prompt": "total = sum(numbers)",
+    "license": "MIT",
+    "language": "python"
+}

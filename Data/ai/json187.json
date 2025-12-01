@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef list_files_in_directory(directory_path):\n    files_list = []\n    for entry in os.listdir(directory_path):\n        full_path = os.path.join(directory_path, entry)\n        if os.path.isfile(full_path):\n            files_list.append(full_path)\n    return files_list",
+    "source": "test-data-ai",
+    "prompt": "Directory içindeki tüm dosyaları listeleyen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

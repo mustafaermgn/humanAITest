@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport functools\n\ndef retry_with_exponential_backoff(retries=3, backoff_factor=0.5):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            for i in range(retries + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    if i == retries:\n                        raise\n                    \n                    delay = backoff_factor * (2 ** i)\n                    time.sleep(delay)\n        return wrapper\n    return decorator",
+    "source": "test-data-ai",
+    "prompt": "Retry decorator with exponential backoff yaz.",
+    "license": "MIT",
+    "language": "python"
+}

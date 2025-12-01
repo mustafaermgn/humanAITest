@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef compare_files_memory_efficient(file1_path, file2_path, chunk_size=4096):\n    if not os.path.exists(file1_path) or not os.path.exists(file2_path):\n        return False # Or raise FileNotFoundError, depending on desired behavior\n\n    if os.path.getsize(file1_path) != os.path.getsize(file2_path):\n        return False\n\n    with open(file1_path, 'rb') as f1, open(file2_path, 'rb') as f2:\n        while True:\n            chunk1 = f1.read(chunk_size)\n            chunk2 = f2.read(chunk_size)\n\n            if chunk1 != chunk2:\n                return False\n\n            if not chunk1:\n                return True",
+    "source": "test-data-ai",
+    "prompt": "Memory-efficient file comparison fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

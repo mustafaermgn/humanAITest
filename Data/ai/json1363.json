@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI, Query\nfrom typing import Optional\n\napp = FastAPI()\n\n@app.get(\"/items/\")\nasync def read_items(\n    q: Optional[str] = Query(\n        None,\n        min_length=3,\n        max_length=50,\n        title=\"Query string\",\n        description=\"Search query for items\",\n        alias=\"item-query\",\n        regex=\"^item.*\"\n    ),\n    item_id: int = Query(\n        ...,\n        gt=0,\n        le=1000,\n        description=\"The ID of the item to retrieve\",\n        example=123\n    ),\n    price: float = Query(\n        10.0,\n        gt=0.0,\n        description=\"Price of the item\"\n    ),\n    limit: int = Query(\n        10,\n        ge=1,\n        le=100,\n        description=\"Number of items to return\"\n    )\n):\n    results = {\"item_id\": item_id, \"price\": price, \"limit\": limit}\n    if q:\n        results.update({\"q\": q})\n    return results",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile query parameters validation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

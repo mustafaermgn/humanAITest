@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef isPalindrome(head: ListNode) -> bool:\n    if not head or not head.next:\n        return True\n\n    values = []\n    current = head\n    while current:\n        values.append(current.val)\n        current = current.next\n\n    left = 0\n    right = len(values) - 1\n    while left < right:\n        if values[left] != values[right]:\n            return False\n        left += 1\n        right -= 1\n    return True",
+    "source": "test-data-ai",
+    "prompt": "Palindrome linked list checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

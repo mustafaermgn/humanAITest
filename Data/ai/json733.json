@@ -1,0 +1,7 @@
+{
+    "code": "def find_missing_number(nums):\n  n = len(nums)\n  xor_sum = 0\n  for i in range(1, n + 1):\n    xor_sum ^= i\n  for num in nums:\n    xor_sum ^= num\n  return xor_sum\n\nif __name__ == '__main__':\n  nums = [0, 1, 3]\n  missing_number = find_missing_number(nums)\n  print(missing_number)",
+    "source": "test-data-ai",
+    "prompt": "Missing number'ı XOR ile bul.",
+    "license": "MIT",
+    "language": "python"
+}

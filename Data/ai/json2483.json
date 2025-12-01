@@ -1,0 +1,7 @@
+{
+    "code": "import requests\nimport os\n\ndef upload_multipart_file(url, file_path, file_field_name='file', form_data=None, headers=None):\n    if not os.path.exists(file_path):\n        return None\n\n    file_name = os.path.basename(file_path)\n    \n    try:\n        with open(file_path, 'rb') as file_handle:\n            files = {file_field_name: (file_name, file_handle)}\n            \n            response = requests.post(url, files=files, data=form_data, headers=headers)\n            response.raise_for_status()\n            return response\n    except requests.exceptions.RequestException:\n        return None\n    except FileNotFoundError:\n        return None\n    except Exception:\n        return None",
+    "source": "test-data-ai",
+    "prompt": "Multipart/form-data file upload yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

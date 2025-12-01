@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\nfrom collections import defaultdict\n\ndef getSkyline(buildings: list[list[int]]) -> list[list[int]]:\n    events = []\n    for L, R, H in buildings:\n        events.append((L, -H)) \n        events.append((R, H))  \n\n    events.sort()\n\n    skyline = []\n    \n    max_heap = [0] \n    \n    active_heights_counts = defaultdict(int)\n    active_heights_counts[0] = 1 \n\n    prev_max_height = 0\n\n    for x, h_val in events:\n        if h_val < 0: \n            height = -h_val\n            heapq.heappush(max_heap, -height) \n            active_heights_counts[height] += 1 \n        else: \n            height = h_val\n            active_heights_counts[height] -= 1 \n\n        while active_heights_counts[-max_heap[0]] == 0:\n            heapq.heappop(max_heap)\n\n        current_max_height = -max_heap[0]\n\n        if current_max_height != prev_max_height:\n            skyline.append([x, current_max_height])\n            prev_max_height = current_max_height\n\n    return skyline",
+    "source": "test-data-ai",
+    "prompt": "Skyline problem çözümü yaz.",
+    "license": "MIT",
+    "language": "python"
+}

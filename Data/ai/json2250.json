@@ -1,0 +1,7 @@
+{
+    "code": "def tek_tekrarsiz_sayiyi_bul(arr):\n    \"\"\"\n    Bir dizideki tek bir tekrarsız sayıyı XOR ile bulur.\n\n    Args:\n        arr: Sayıların bulunduğu bir liste. Dizideki tüm sayılar\n             ikişer ikişer tekrar eder, sadece bir tanesi etmez.\n\n    Returns:\n        Dizideki tekrarsız olan tek sayı.\n    \"\"\"\n    xor_toplam = 0\n    for num in arr:\n        xor_toplam ^= num\n    return xor_toplam",
+    "source": "test-data-ai",
+    "prompt": "Bir dizideki tek bir tekrarsız sayıyı XOR ile bul.",
+    "license": "MIT",
+    "language": "python"
+}

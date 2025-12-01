@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef request_with_proxy(url, proxy):\n  \"\"\"\n  Belirtilen proxy'i kullanarak bir GET isteği gönderir.\n\n  Args:\n    url: İstek gönderilecek URL.\n    proxy: Kullanılacak proxy adresi (örneğin, 'http://kullanici:sifre@ip:port').\n\n  Returns:\n    İstek başarılıysa yanıt nesnesi, aksi takdirde None.\n  \"\"\"\n  try:\n    proxies = {\n      'http': proxy,\n      'https': proxy,\n    }\n    response = requests.get(url, proxies=proxies)\n    response.raise_for_status()  # HTTP hatalarını (4xx, 5xx) yükseltir\n    return response\n  except requests.exceptions.RequestException as e:\n    print(f\"Hata: {e}\")\n    return None\n\nif __name__ == '__main__':\n  url = 'https://www.google.com'  # Hedef URL\n  proxy = 'http://kullaniciadi:sifre@ip_adresi:port'  # Proxy sunucusu adresi (gerçek değerlerle değiştirin)\n  # Proxy sunucusu bilgilerini ve gerçek bir web sitesini kendi değerlerinizle değiştirmeyi unutmayın.\n\n  response = request_with_proxy(url, proxy)\n\n  if response:\n    print(f\"Durum Kodu: {response.status_code}\")\n    # print(f\"İçerik: {response.text}\") #İçeriği yazdırmak için bu satırın yorumunu kaldırın. Dikkat: bu çok uzun olabilir!\n  else:\n    print(\"İstek başarısız oldu.\")",
+    "source": "test-data-ai",
+    "prompt": "Proxy kullanarak request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

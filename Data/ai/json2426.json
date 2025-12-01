@@ -1,0 +1,7 @@
+{
+    "code": "value = 10\nresult = \"Value is greater than 5\" if value > 5 else \"Value is not greater than 5\"",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodu **ternary operator** kullanarak tek satırda yaz.",
+    "license": "MIT",
+    "language": "python"
+}

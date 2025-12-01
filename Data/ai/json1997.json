@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\ndef kClosest(points: list[list[int]], k: int) -> list[list[int]]:\n    heap = []\n\n    for point in points:\n        x, y = point[0], point[1]\n        squared_distance = x*x + y*y\n\n        if len(heap) < k:\n            heapq.heappush(heap, (-squared_distance, point))\n        else:\n            if -squared_distance > heap[0][0]:\n                heapq.heappop(heap)\n                heapq.heappush(heap, (-squared_distance, point))\n    \n    result = [item[1] for item in heap]\n    return result",
+    "source": "test-data-ai",
+    "prompt": "K closest points to origin using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

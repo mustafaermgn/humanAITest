@@ -1,0 +1,7 @@
+{
+    "code": "def singleton(cls):\n    \"\"\"\n    Singleton deseni için bir dekoratör.\n    \"\"\"\n    instances = {}\n\n    def get_instance(*args, **kwargs):\n        if cls not in instances:\n            instances[cls] = cls(*args, **kwargs)\n        return instances[cls]\n\n    return get_instance\n\nif __name__ == '__main__':\n    @singleton\n    class MyClass:\n        def __init__(self, value):\n            self.value = value\n\n        def get_value(self):\n            return self.value\n\n    # Singleton örneğini oluştur\n    instance1 = MyClass(10)\n    instance2 = MyClass(20)\n\n    # Her iki değişkenin de aynı nesneye işaret ettiğini kontrol et\n    print(instance1 is instance2)  # True\n\n    # Değerlerin aynı örneğin değerlerini değiştirdiğini kontrol et\n    print(instance1.get_value())  # 10\n    print(instance2.get_value())  # 10\n\n    instance1.value = 30\n    print(instance1.get_value())  # 30\n    print(instance2.get_value())  # 30\n\n    @singleton\n    class AnotherClass:\n        def __init__(self, value):\n            self.value = value\n\n        def get_value(self):\n            return self.value\n        \n    instance3 = AnotherClass(5)\n    instance4 = AnotherClass(8)\n    \n    print(instance3 is instance4) # True\n    print(instance3.get_value()) # 5\n    print(instance4.get_value()) # 5",
+    "source": "test-data-ai",
+    "prompt": "Singleton pattern decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

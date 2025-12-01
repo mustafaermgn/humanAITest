@@ -1,0 +1,7 @@
+{
+    "code": "class Logger:\n    def __init__(self):\n        self.message_times = {}\n\n    def shouldPrintMessage(self, timestamp: int, message: str) -> bool:\n        if message in self.message_times:\n            if timestamp - self.message_times[message] >= 10:\n                self.message_times[message] = timestamp\n                return True\n            else:\n                return False\n        else:\n            self.message_times[message] = timestamp\n            return True\n\nif __name__ == '__main__':\n    logger = Logger()\n\n    print(logger.shouldPrintMessage(1, \"foo\"))  # True\n    print(logger.shouldPrintMessage(2, \"bar\"))  # True\n    print(logger.shouldPrintMessage(3, \"foo\"))  # False\n    print(logger.shouldPrintMessage(8, \"bar\"))  # False\n    print(logger.shouldPrintMessage(10, \"foo\")) # False\n    print(logger.shouldPrintMessage(11, \"foo\")) # True",
+    "source": "test-data-ai",
+    "prompt": "Logger rate limiter using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

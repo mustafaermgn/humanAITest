@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef are_isomorphic(graph1, graph2):\n    n1 = len(graph1)\n    n2 = len(graph2)\n\n    if n1 != n2:\n        return False\n\n    vertices = list(range(n1))\n\n    for p in itertools.permutations(vertices):\n        is_current_permutation_isomorphism = True\n        \n        for u in vertices:\n            for v in vertices:\n                u_connected_to_v_in_g1 = v in graph1.get(u, [])\n                \n                mapped_u = p[u]\n                mapped_v = p[v]\n\n                mapped_u_connected_to_mapped_v_in_g2 = mapped_v in graph2.get(mapped_u, [])\n\n                if u_connected_to_v_in_g1 != mapped_u_connected_to_mapped_v_in_g2:\n                    is_current_permutation_isomorphism = False\n                    break\n            if not is_current_permutation_isomorphism:\n                break\n        \n        if is_current_permutation_isomorphism:\n            return True\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Graph isomorphism kontrol eden basit algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

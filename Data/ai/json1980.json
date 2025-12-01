@@ -1,0 +1,7 @@
+{
+    "code": "def knight_tour(n):\n    board = [[0 for _ in range(n)] for _ in range(n)]\n\n    knight_moves = [\n        (2, 1), (1, 2), (-1, 2), (-2, 1),\n        (-2, -1), (-1, -2), (1, -2), (2, -1)\n    ]\n\n    def is_valid(x, y):\n        return 0 <= x < n and 0 <= y < n and board[x][y] == 0\n\n    def solve(x, y, move_count):\n        if move_count == n * n:\n            return True\n\n        for move_x, move_y in knight_moves:\n            next_x, next_y = x + move_x, y + move_y\n            if is_valid(next_x, next_y):\n                board[next_x][next_y] = move_count + 1\n                if solve(next_x, next_y, move_count + 1):\n                    return True\n                board[next_x][next_y] = 0\n        return False\n\n    board[0][0] = 1\n    if solve(0, 0, 1):\n        for row in board:\n            print(\" \".join(f\"{cell:3d}\" for cell in row))\n        return True\n    else:\n        print(f\"No solution exists for N={n}\")\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Knight's tour problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

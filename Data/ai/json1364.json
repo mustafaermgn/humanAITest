@@ -1,0 +1,7 @@
+{
+    "code": "numbers = [1, 2, 3, 4, 5]  # Örnek bir sayılar listesi\ntotal = sum(numbers)\nprint(total) # Sonucu görmek için eklendi",
+    "source": "test-data-ai",
+    "prompt": "total = sum(numbers)",
+    "license": "MIT",
+    "language": "python"
+}

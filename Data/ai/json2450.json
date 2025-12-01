@@ -1,0 +1,7 @@
+{
+    "code": "def power(x: float, n: int) -> float:\n    \"\"\"\n    x^n ifadesini O(log n) karmaşıklığında hesaplar.\n    \"\"\"\n    if n == 0:\n        return 1.0\n\n    is_negative = False\n    if n < 0:\n        is_negative = True\n        n = -n\n\n    result = 1.0\n    current_x = x\n\n    while n > 0:\n        if n % 2 == 1:  # n tek ise\n            result *= current_x\n        current_x *= current_x  # current_x'i karesini alarak artır\n        n //= 2  # n'i ikiye böl\n\n    if is_negative:\n        return 1.0 / result\n    else:\n        return result",
+    "source": "test-data-ai",
+    "prompt": "Power function (x^n) için O(log n) algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

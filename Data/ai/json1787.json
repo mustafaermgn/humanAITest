@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_span(prices):\n    n = len(prices)\n    spans = [0] * n\n    stack = []  # Stores indices of elements\n\n    for i in range(n):\n        # Pop elements from stack while stack is not empty and\n        # price at stack's top is less than or equal to current price\n        while stack and prices[stack[-1]] <= prices[i]:\n            stack.pop()\n\n        # If stack becomes empty, current price is greatest so far\n        # Span is i + 1\n        if not stack:\n            spans[i] = i + 1\n        else:\n            # Span is difference between current index and index of\n            # previous greater element (stack's top)\n            spans[i] = i - stack[-1]\n\n        # Push current index onto stack\n        stack.append(i)\n\n    return spans\n\nif __name__ == '__main__':\n    # Example usage:\n    prices1 = [100, 80, 60, 70, 60, 75, 85]\n    print(calculate_span(prices1))  # Expected: [1, 1, 1, 2, 1, 4, 6]\n\n    prices2 = [10, 4, 5, 90, 120, 80]\n    print(calculate_span(prices2))  # Expected: [1, 1, 2, 4, 5, 1]\n\n    prices3 = [30, 35, 40, 38, 35]\n    print(calculate_span(prices3))  # Expected: [1, 2, 3, 1, 1]\n\n    prices4 = []\n    print(calculate_span(prices4)) # Expected: []\n\n    prices5 = [5]\n    print(calculate_span(prices5)) # Expected: [1]",
+    "source": "test-data-ai",
+    "prompt": "Stock span problem using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

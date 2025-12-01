@@ -1,0 +1,7 @@
+{
+    "code": "def twos_complement_binary_string(decimal_num, bit_length):\n    if not isinstance(decimal_num, int):\n        raise TypeError(\"Input 'decimal_num' must be an integer.\")\n    if not isinstance(bit_length, int) or bit_length <= 0:\n        raise ValueError(\"Input 'bit_length' must be a positive integer.\")\n\n    max_positive = (1 << (bit_length - 1)) - 1\n    min_negative = -(1 << (bit_length - 1))\n\n    if not (min_negative <= decimal_num <= max_positive):\n        raise ValueError(f\"Number {decimal_num} is out of range for {bit_length}-bit two's complement representation. \"\n                         f\"Range is [{min_negative}, {max_positive}].\")\n\n    if decimal_num >= 0:\n        binary_representation = bin(decimal_num)[2:]\n        return binary_representation.zfill(bit_length)\n    else:\n        twos_complement_value = (1 << bit_length) + decimal_num\n        binary_representation = bin(twos_complement_value)[2:]\n        return binary_representation.zfill(bit_length)",
+    "source": "test-data-ai",
+    "prompt": "Find the two's complement yaz.",
+    "license": "MIT",
+    "language": "python"
+}

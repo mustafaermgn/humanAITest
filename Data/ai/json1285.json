@@ -1,0 +1,7 @@
+{
+    "code": "def minimum_initial_points_to_reach_destination(dungeon: list[list[int]]) -> int:\n    R = len(dungeon)\n    C = len(dungeon[0])\n\n    dp = [[0] * C for _ in range(R)]\n\n    # Calculate for the destination cell (R-1, C-1)\n    dp[R - 1][C - 1] = max(1, 1 - dungeon[R - 1][C - 1])\n\n    # Fill the last row (from right to left)\n    for j in range(C - 2, -1, -1):\n        dp[R - 1][j] = max(1, dp[R - 1][j + 1] - dungeon[R - 1][j])\n\n    # Fill the last column (from bottom to top)\n    for i in range(R - 2, -1, -1):\n        dp[i][C - 1] = max(1, dp[i + 1][C - 1] - dungeon[i][C - 1])\n\n    # Fill the rest of the grid (from bottom-right to top-left)\n    for i in range(R - 2, -1, -1):\n        for j in range(C - 2, -1, -1):\n            dp[i][j] = min(\n                max(1, dp[i][j + 1] - dungeon[i][j]),  # Path going right\n                max(1, dp[i + 1][j] - dungeon[i][j])   # Path going down\n            )\n\n    return dp[0][0]",
+    "source": "test-data-ai",
+    "prompt": "Minimum initial points to reach destination yaz.",
+    "license": "MIT",
+    "language": "python"
+}

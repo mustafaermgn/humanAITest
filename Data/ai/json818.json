@@ -1,0 +1,7 @@
+{
+    "code": "def tek_sayi_kare_generator(dizi):\n  \"\"\"\n  Bir dizideki tüm tek sayıların karesini hesaplayan bir generator fonksiyonu.\n\n  Args:\n    dizi: Bir sayı listesi.\n\n  Yields:\n    Dizideki her tek sayının karesi.\n  \"\"\"\n  for sayi in dizi:\n    if sayi % 2 != 0:\n      yield sayi ** 2\n\nif __name__ == '__main__':\n  # Örnek Kullanım:\n  sayilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n  # Generator nesnesini oluştur\n  tek_kareler = tek_sayi_kare_generator(sayilar)\n\n  # Generator nesnesini yinele ve kareleri yazdır\n  for kare in tek_kareler:\n    print(kare)",
+    "source": "test-data-ai",
+    "prompt": "Bir dizideki tüm tek sayıların karesini hesaplayan bir **generator** fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

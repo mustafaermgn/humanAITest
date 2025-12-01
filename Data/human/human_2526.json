@@ -1,0 +1,7 @@
+{
+    "code": "def _save_configs(self, configs_to_save: dict):\n        # save\n        os.makedirs(self.project_dir, exist_ok=True)\n        for config_file in configs_to_save:\n            config = configs_to_save[config_file]\n            print(\"saving\", config_file)\n            OmegaConf.save(config=config, f=config_file)",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/locallaunch.py",
+    "license": "MIT",
+    "language": "python"
+}

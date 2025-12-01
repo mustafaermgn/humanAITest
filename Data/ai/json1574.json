@@ -1,0 +1,7 @@
+{
+    "code": "import fnmatch\n\ndef filtrele_dosyalar(dosyalar: list[str], desen: str) -> list[str]:\n    \"\"\"\n    Belirtilen desene göre dosya adlarını filtreler.\n    Desen, fnmatch modülünün desteklediği wildcard karakterleri (*, ?) içerebilir.\n    \"\"\"\n    filtrelenmis_dosyalar = []\n    for dosya_adi in dosyalar:\n        if fnmatch.fnmatch(dosya_adi, desen):\n            filtrelenmis_dosyalar.append(dosya_adi)\n    return filtrelenmis_dosyalar",
+    "source": "test-data-ai",
+    "prompt": "Dosyaları pattern'e göre filtreleyen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

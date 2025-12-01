@@ -1,0 +1,7 @@
+{
+    "code": "def minimum_platform(arrival, departure):\n  \"\"\"\n  Minimum number of platforms required for a railway station to accommodate all the trains.\n\n  Args:\n    arrival: A list of arrival times of the trains.\n    departure: A list of departure times of the trains.\n\n  Returns:\n    The minimum number of platforms required.\n  \"\"\"\n\n  arrival.sort()\n  departure.sort()\n\n  platforms_needed = 1\n  max_platforms = 1\n  i = 1\n  j = 0\n\n  while i < len(arrival) and j < len(departure):\n    if arrival[i] <= departure[j]:\n      platforms_needed += 1\n      i += 1\n\n      if platforms_needed > max_platforms:\n        max_platforms = platforms_needed\n    else:\n      platforms_needed -= 1\n      j += 1\n\n  return max_platforms",
+    "source": "test-data-ai",
+    "prompt": "Minimum number of platforms required problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

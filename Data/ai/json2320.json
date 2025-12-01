@@ -1,0 +1,7 @@
+{
+    "code": "def subset_sum(nums, target_sum):\n    \"\"\"\n    Belirtilen 'target_sum' değerini, 'nums' listesindeki elemanların\n    bir alt kümesiyle oluşturup oluşturamayacağını kontrol eder.\n\n    Args:\n        nums: Pozitif veya sıfır tam sayılardan oluşan bir liste.\n        target_sum: Hedef toplam değeri (negatif olmamalıdır).\n\n    Returns:\n        Eğer hedef toplama ulaşılabilirse True, aksi takdirde False.\n    \"\"\"\n    \n    # Eğer hedef toplam negatifse, hiçbir alt küme bunu sağlayamaz (çünkü sayılar >= 0)\n    if target_sum < 0:\n        return False\n    \n    # dp[i] değeri, i toplamına ulaşmanın mümkün olup olmadığını gösterir.\n    # Başlangıçta 0 toplamına ulaşmak her zaman mümkündür (boş küme ile).\n    dp = [False] * (target_sum + 1)\n    dp[0] = True\n\n    # Listedeki her bir sayı için dinamik programlama tablosunu güncelle.\n    for num in nums:\n        # Mevcut sayıyı kullanarak daha büyük toplamlara ulaşmaya çalış.\n        # En büyük toplamdan başlayarak geriye doğru gitmek önemlidir,\n        # böylece her bir 'num' yalnızca bir kez kullanılır.\n        for j in range(target_sum, num - 1, -1):\n            # Eğer j - num toplamına daha önce ulaşılabiliyorsa,\n            # j toplamına da (j - num) + num şeklinde ulaşılabilir.\n            dp[j] = dp[j] or dp[j - num]\n\n    # Hedef toplama ulaşılıp ulaşılamadığını döndür.\n    return dp[target_sum]",
+    "source": "test-data-ai",
+    "prompt": "Subset sum problemini DP ile çöz.",
+    "license": "MIT",
+    "language": "python"
+}

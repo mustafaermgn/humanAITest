@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isSymmetric(self, root: TreeNode) -> bool:\n        if not root:\n            return True\n\n        def isMirror(node1: TreeNode, node2: TreeNode) -> bool:\n            if not node1 and not node2:\n                return True\n            if not node1 or not node2:\n                return False\n\n            return (node1.val == node2.val and\n                    isMirror(node1.left, node2.right) and\n                    isMirror(node1.right, node2.left))\n\n        return isMirror(root.left, root.right)",
+    "source": "test-data-ai",
+    "prompt": "Symmetric tree checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

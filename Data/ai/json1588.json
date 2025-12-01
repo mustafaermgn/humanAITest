@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef update_data(url: str, data: dict):\n    headers = {\n        \"Content-Type\": \"application/json\"\n    }\n\n    try:\n        response = requests.put(url, json=data, headers=headers)\n        response.raise_for_status()  # HTTP 4xx/5xx hataları için istisna fırlatır\n\n        if response.content:\n            return response.json()\n        else:\n            # Yanıt içeriği yoksa (örn: 204 No Content), işlemi başarılı sayıp None dönebiliriz.\n            return None \n    except requests.exceptions.RequestException:\n        return None\n    except ValueError: # response.json() çağrısında JSON çözümleme hatası olursa\n        return None",
+    "source": "test-data-ai",
+    "prompt": "REST API PUT request ile veri güncelleyen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

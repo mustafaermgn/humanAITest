@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI, Request, Response\nimport time\n\napp = FastAPI()\n\n@app.middleware(\"http\")\nasync def add_process_time_header(request: Request, call_next):\n    start_time = time.time()\n    print(f\"[{time.ctime()}] Incoming request: {request.method} {request.url}\")\n\n    response = await call_next(request)\n\n    process_time = time.time() - start_time\n    response.headers[\"X-Process-Time\"] = str(process_time)\n    print(f\"[{time.ctime()}] Outgoing response: Status {response.status_code}, Process Time: {process_time:.4f}s\")\n    return response\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"Hello from FastAPI!\"}\n\n@app.get(\"/items/{item_id}\")\nasync def read_item(item_id: int):\n    return {\"item_id\": item_id, \"message\": f\"This is item {item_id}\"}\n\n# To run this application:\n# 1. Save the code as main.py (or any other name).\n# 2. Run from your terminal: uvicorn main:app --reload\n# 3. Open your browser or use curl to access:\n#    - http://127.0.0.1:8000/\n#    - http://127.0.0.1:8000/items/5\n# You will see the request and response logs in your terminal.",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile request/response middleware yaz.",
+    "license": "MIT",
+    "language": "python"
+}

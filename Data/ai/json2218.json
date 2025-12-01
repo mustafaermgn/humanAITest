@@ -1,0 +1,7 @@
+{
+    "code": "import shutil\nimport os\n\ndef eden_fonksiyon(archive_path: str, extract_dir: str):\n    try:\n        os.makedirs(extract_dir, exist_ok=True)\n        shutil.unpack_archive(archive_path, extract_dir)\n    except FileNotFoundError:\n        print(f\"Hata: Arşiv dosyası bulunamadı: {archive_path}\")\n    except shutil.ReadError:\n        print(f\"Hata: '{archive_path}' dosyası geçerli bir arşiv formatında değil veya bozuk.\")\n    except Exception as e:\n        print(f\"Beklenmeyen bir hata oluştu: {e}\")",
+    "source": "test-data-ai",
+    "prompt": "Archive extract eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

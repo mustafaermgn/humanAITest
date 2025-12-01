@@ -1,0 +1,7 @@
+{
+    "code": "def count_bit_flips(a: int, b: int) -> int:\n    \"\"\"\n    Counts the number of bits to flip to convert integer A to integer B.\n\n    Args:\n        a: The first integer.\n        b: The second integer.\n\n    Returns:\n        The number of bits that need to be flipped.\n    \"\"\"\n    return (a ^ b).bit_count()",
+    "source": "test-data-ai",
+    "prompt": "Count number of bits to flip to convert A to B yaz.",
+    "license": "MIT",
+    "language": "python"
+}

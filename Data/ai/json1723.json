@@ -1,0 +1,7 @@
+{
+    "code": "import json\nfrom enum import Enum\n\nclass EnumEncoder(json.JSONEncoder):\n    def default(self, obj):\n        if isinstance(obj, Enum):\n            return obj.value\n        return json.JSONEncoder.default(self, obj)\n\nif __name__ == '__main__':\n    # Örnek kullanım\n    class Color(Enum):\n        RED = \"kırmızı\"\n        GREEN = \"yeşil\"\n        BLUE = \"mavi\"\n        YELLOW = 4\n\n    data = {\n        \"primary\": Color.RED,\n        \"secondary\": Color.BLUE,\n        \"mix\": [Color.RED, Color.GREEN],\n        \"number_enum\": Color.YELLOW,\n        \"other_data\": \"some string\",\n        \"a_number\": 123\n    }\n\n    # Custom encoder ile serialize et\n    encoded_data = json.dumps(data, cls=EnumEncoder, indent=4)\n    print(encoded_data)\n\n    # Output should be:\n    # {\n    #     \"primary\": \"kırmızı\",\n    #     \"secondary\": \"mavi\",\n    #     \"mix\": [\n    #         \"kırmızı\",\n    #         \"yeşil\"\n    #     ],\n    #     \"number_enum\": 4,\n    #     \"other_data\": \"some string\",\n    #     \"a_number\": 123\n    # }",
+    "source": "test-data-ai",
+    "prompt": "Enum'ları serialize eden custom encoder yaz.",
+    "license": "MIT",
+    "language": "python"
+}

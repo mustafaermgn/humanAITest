@@ -1,0 +1,7 @@
+{
+    "code": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_end_of_word = False\n\nclass Trie:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for char in word:\n            if char not in node.children:\n                node.children[char] = TrieNode()\n            node = node.children[char]\n        node.is_end_of_word = True\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for char in word:\n            if char not in node.children:\n                return False\n            node = node.children[char]\n        return node.is_end_of_word\n\nif __name__ == \"__main__\":\n    trie = Trie()\n    trie.insert(\"elma\")\n    trie.insert(\"armut\")\n    trie.insert(\"eldiven\")\n    trie.insert(\"karpuz\")\n\n    print(f\"'elma' aranıyor: {trie.search('elma')}\")\n    print(f\"'armut' aranıyor: {trie.search('armut')}\")\n    print(f\"'eldiven' aranıyor: {trie.search('eldiven')}\")\n    print(f\"'karpuz' aranıyor: {trie.search('karpuz')}\")\n    print(f\"'muz' aranıyor: {trie.search('muz')}\")\n    print(f\"'el' aranıyor: {trie.search('el')}\")\n    print(f\"'elmas' aranıyor: {trie.search('elmas')}\")\n    print(f\"'karp' aranıyor: {trie.search('karp')}\")",
+    "source": "test-data-ai",
+    "prompt": "Search word in trie yaz.",
+    "license": "MIT",
+    "language": "python"
+}

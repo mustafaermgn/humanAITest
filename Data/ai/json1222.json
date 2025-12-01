@@ -1,0 +1,7 @@
+{
+    "code": "def create_user(*, name, age, city='Unknown', is_active=True):\n    \"\"\"\n    Kullanıcı bilgilerini oluşturur.\n    Tüm parametreler keyword-only'dir.\n    \"\"\"\n    return {\n        \"name\": name,\n        \"age\": age,\n        \"city\": city,\n        \"is_active\": is_active\n    }\n\nif __name__ == \"__main__\":\n    # Keyword argümanlar ile çağırma\n    user1 = create_user(name=\"Alice\", age=30, city=\"New York\")\n    print(user1)\n\n    user2 = create_user(age=25, name=\"Bob\") # Sıra önemli değil\n    print(user2)\n\n    user3 = create_user(name=\"Charlie\", age=35, is_active=False)\n    print(user3)\n\n    try:\n        # Pozisyonel argümanlar ile çağırma (hata verecektir)\n        create_user(\"David\", 40)\n    except TypeError as e:\n        print(f\"\\nPozisyonel argüman hatası beklendi: {e}\")\n\n    try:\n        # Eksik keyword argüman (name veya age zorunlu)\n        create_user(city=\"London\")\n    except TypeError as e:\n        print(f\"Eksik zorunlu argüman hatası beklendi: {e}\")",
+    "source": "test-data-ai",
+    "prompt": "Bir fonksiyonun tüm parametrelerini **keyword-only** olacak şekilde yeniden yaz.",
+    "license": "MIT",
+    "language": "python"
+}

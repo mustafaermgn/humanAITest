@@ -1,0 +1,7 @@
+{
+    "code": "class WelcomeApp(App):\n    async def on_key(self) -> None:\n        await self.mount(Welcome())\n        self.query_one(Button).label = \"YES!\"",
+    "source": "github_repo:Textualize/textual",
+    "file": "docs/examples/app/widgets04.py",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def get_last_n_lines(filepath, n):\n    if n <= 0:\n        return []\n    \n    with open(filepath, 'r', encoding='utf-8') as f:\n        lines = f.readlines()\n        return lines[-n:]",
+    "source": "test-data-ai",
+    "prompt": "Bir metin dosyasının son N satırını (N parametre olarak verilmeli) okuyup liste olarak döndüren bir işlev oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

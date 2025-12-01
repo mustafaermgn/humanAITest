@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\ndef group_anagrams(strs: list[str]) -> list[list[str]]:\n    anagram_groups = defaultdict(list)\n    for word in strs:\n        sorted_word = \"\".join(sorted(word))\n        anagram_groups[sorted_word].append(word)\n    return list(anagram_groups.values())",
+    "source": "test-data-ai",
+    "prompt": "Anagram grouping yaz.",
+    "license": "MIT",
+    "language": "python"
+}

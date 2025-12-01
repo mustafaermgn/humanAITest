@@ -1,0 +1,7 @@
+{
+    "code": "import resource\nimport time\nfrom functools import wraps\n\ndef track_memory(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        initial_memory_kb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\n\n        start_time = time.perf_counter()\n        result = func(*args, **kwargs)\n        end_time = time.perf_counter()\n\n        final_memory_kb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\n        memory_increase_kb = final_memory_kb - initial_memory_kb\n\n        print(f\"Memory usage for '{func.__name__}':\")\n        print(f\"  Initial peak memory: {initial_memory_kb:.2f} KB\")\n        print(f\"  Final peak memory:   {final_memory_kb:.2f} KB\")\n        print(f\"  Memory increased by: {memory_increase_kb:.2f} KB\")\n        print(f\"  Execution time:      {(end_time - start_time) * 1000:.2f} ms\")\n\n        return result\n    return wrapper",
+    "source": "test-data-ai",
+    "prompt": "Memory usage tracking decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

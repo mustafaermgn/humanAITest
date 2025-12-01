@@ -1,0 +1,7 @@
+{
+    "code": "from typing import Optional, List\n\n# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:\n        result = []\n\n        def dfs(node, level):\n            if not node:\n                return\n\n            if level == len(result):\n                result.append(node.val)\n\n            dfs(node.right, level + 1)\n            dfs(node.left, level + 1)\n\n        dfs(root, 0)\n        return result",
+    "source": "test-data-ai",
+    "prompt": "Binary tree right side view yaz.",
+    "license": "MIT",
+    "language": "python"
+}

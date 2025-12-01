@@ -1,0 +1,7 @@
+{
+    "code": "def find_odd_occurrence(arr):\n    result = 0\n    for num in arr:\n        result ^= num\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Find the only number occurring odd times yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def min_squares(width, height):\n    if width == 0 or height == 0:\n        return 0\n\n    count = 0\n    while width != 0 and height != 0:\n        if width == height:\n            count += 1\n            break\n        elif width > height:\n            count += width // height\n            width %= height\n        else: # height > width\n            count += height // width\n            height %= width\n            \n    return count",
+    "source": "test-data-ai",
+    "prompt": "Paper cut into minimum number of squares yaz.",
+    "license": "MIT",
+    "language": "python"
+}

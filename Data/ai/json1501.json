@@ -1,0 +1,7 @@
+{
+    "code": "def approximate_vertex_cover(edges):\n    vc = set()\n    \n    current_edges = {frozenset(edge) for edge in edges}\n\n    while current_edges:\n        chosen_edge = current_edges.pop()\n        \n        u, v = tuple(chosen_edge)\n\n        vc.add(u)\n        vc.add(v)\n\n        edges_to_remove_in_this_step = set()\n        for edge in current_edges:\n            if u in edge or v in edge:\n                edges_to_remove_in_this_step.add(edge)\n        \n        current_edges = current_edges - edges_to_remove_in_this_step\n\n    return vc",
+    "source": "test-data-ai",
+    "prompt": "Vertex cover problem için approximation algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

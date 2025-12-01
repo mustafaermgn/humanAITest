@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef minCost(costs: list[list[int]]) -> int:\n    n = len(costs)\n    if n == 0:\n        return 0\n    \n    k = len(costs[0])\n    if k == 0:\n        return 0\n\n    current_costs = list(costs[0])\n\n    for i in range(1, n):\n        prev_min1 = math.inf\n        prev_idx1 = -1\n        prev_min2 = math.inf\n\n        for j in range(k):\n            if current_costs[j] < prev_min1:\n                prev_min2 = prev_min1\n                prev_min1 = current_costs[j]\n                prev_idx1 = j\n            elif current_costs[j] < prev_min2:\n                prev_min2 = current_costs[j]\n        \n        next_costs = [0] * k\n        for j in range(k):\n            if j == prev_idx1:\n                next_costs[j] = costs[i][j] + prev_min2\n            else:\n                next_costs[j] = costs[i][j] + prev_min1\n        \n        current_costs = next_costs\n    \n    return min(current_costs)",
+    "source": "test-data-ai",
+    "prompt": "Paint house with minimum cost yaz.",
+    "license": "MIT",
+    "language": "python"
+}

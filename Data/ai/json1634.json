@@ -1,0 +1,7 @@
+{
+    "code": "def string_compression(s: str) -> str:\n    if not s:\n        return \"\"\n\n    compressed_parts = []\n    i = 0\n    n = len(s)\n\n    while i < n:\n        char = s[i]\n        count = 0\n        j = i\n        while j < n and s[j] == char:\n            count += 1\n            j += 1\n        compressed_parts.append(char)\n        compressed_parts.append(str(count))\n        i = j\n\n    compressed_string = \"\".join(compressed_parts)\n\n    return compressed_string if len(compressed_string) < n else s",
+    "source": "test-data-ai",
+    "prompt": "String compression algorithm yaz.",
+    "license": "MIT",
+    "language": "python"
+}

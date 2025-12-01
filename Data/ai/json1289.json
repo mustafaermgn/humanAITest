@@ -1,0 +1,7 @@
+{
+    "code": "import ipaddress\n\ndef is_valid_ip(ip_string: str) -> bool:\n    try:\n        ipaddress.ip_address(ip_string)\n        return True\n    except ValueError:\n        return False",
+    "source": "test-data-ai",
+    "prompt": "IP address validation (IPv4/IPv6) fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

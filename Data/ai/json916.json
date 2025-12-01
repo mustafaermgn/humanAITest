@@ -1,0 +1,7 @@
+{
+    "code": "def is_rotation(s1: str, s2: str) -> bool:\n    if len(s1) != len(s2):\n        return False\n    if not s1: # Handle empty strings case directly, or let the next line handle it\n        return True # Two empty strings are rotations of each other\n\n    temp = s1 + s1\n    return s2 in temp",
+    "source": "test-data-ai",
+    "prompt": "Check if string is rotation of another yaz.",
+    "license": "MIT",
+    "language": "python"
+}

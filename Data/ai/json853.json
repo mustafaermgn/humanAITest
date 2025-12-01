@@ -1,0 +1,7 @@
+{
+    "code": "def refactor_loop(data):\n    \"\"\"\n    Bir döngü içinde gereksiz yere tanımlanmış değişkeni döngü dışına alarak kodu refactor eder.\n\n    Args:\n        data: İşlenecek veri (örneğin, bir liste).\n\n    Returns:\n        İşlenmiş veri.\n    \"\"\"\n\n    # Örnek senaryo: Döngü içinde her iterasyonda yeniden tanımlanan bir değişken\n    # Orijinal kod (refactor edilmemiş):\n    # results = []\n    # for item in data:\n    #     temp_result = process_item(item)  # temp_result her iterasyonda yeniden tanımlanıyor\n    #     results.append(temp_result)\n    # return results\n\n    # Refactor edilmiş kod:\n    results = []\n    # Döngü dışında tanımlanan değişken\n    temp_result = None  \n    for item in data:\n        temp_result = process_item(item)\n        results.append(temp_result)\n    return results\n\ndef process_item(item):\n    \"\"\"\n    Örnek bir işlem fonksiyonu. Veriyi işler ve bir sonuç döndürür.\n    \"\"\"\n    return item * 2  # Basit bir örnek: öğeyi ikiyle çarpma\n\nif __name__ == '__main__':\n    data = [1, 2, 3, 4, 5]\n    refactored_data = refactor_loop(data)\n    print(f\"Orijinal veri: {data}\")\n    print(f\"Refactor edilmiş veri: {refactored_data}\")",
+    "source": "test-data-ai",
+    "prompt": "Bir döngü içinde gereksiz yere tanımlanmış değişkeni döngü dışına alarak bu kodu refactor et.",
+    "license": "MIT",
+    "language": "python"
+}

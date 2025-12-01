@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef solve_cryptarithmetic_yaz():\n    # The letters involved in the puzzle are Y, A, Z.\n    # Each letter must represent a unique digit from 0-9.\n    # As 'Y' is the leading digit of a number, it cannot be 0.\n\n    # Generate all unique permutations of 3 digits from the available digits (0-9).\n    # There are P(10, 3) = 10 * 9 * 8 = 720 such permutations.\n    for perm in itertools.permutations(range(10), 3):\n        # Assign the digits from the current permutation to the letters Y, A, Z.\n        y_digit, a_digit, z_digit = perm[0], perm[1], perm[2]\n\n        # Check the constraint: Y cannot be 0.\n        if y_digit == 0:\n            continue\n\n        # If all conditions are met, this is a valid assignment.\n        # Construct the number YAZ for display.\n        yaz_number = y_digit * 100 + a_digit * 10 + z_digit\n\n        # Print the solution.\n        print(f\"Y={y_digit}, A={a_digit}, Z={z_digit} => YAZ={yaz_number}\")\n\nif __name__ == \"__main__\":\n    solve_cryptarithmetic_yaz()",
+    "source": "test-data-ai",
+    "prompt": "Solve cryptarithmetic puzzles yaz.",
+    "license": "MIT",
+    "language": "python"
+}

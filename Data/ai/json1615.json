@@ -1,0 +1,7 @@
+{
+    "code": "def sum_of_divisors(n):\n    \"\"\"\n    Bir sayının tüm bölenlerinin toplamını hesaplar.\n    \"\"\"\n    total_sum = 0\n    for i in range(1, n + 1):\n        if n % i == 0:\n            total_sum += i\n    return total_sum\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    number = 28\n    result = sum_of_divisors(number)\n    print(f\"{number} sayısının bölenlerinin toplamı: {result}\") # Output: 28 sayısının bölenlerinin toplamı: 56\n\n    number = 12\n    result = sum_of_divisors(number)\n    print(f\"{number} sayısının bölenlerinin toplamı: {result}\") # Output: 12 sayısının bölenlerinin toplamı: 28\n\n    number = 7\n    result = sum_of_divisors(number)\n    print(f\"{number} sayısının bölenlerinin toplamı: {result}\") # Output: 7 sayısının bölenlerinin toplamı: 8",
+    "source": "test-data-ai",
+    "prompt": "Sum of divisors of a number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import functools\n\ndef validate_with(validator_func):\n    \"\"\"\n    Bir fonksiyonun çağrılmadan önce belirli bir doğrulama mantığını uygulamak için kullanılan bir dekore edicidir.\n    \n    Kullanım:\n    @validate_with(dogrulama_fonksiyonu)\n    def islenecek_fonksiyon(...):\n        pass\n\n    `dogrulama_fonksiyonu`, dekore edilen fonksiyon ile aynı argümanları almalıdır.\n    Başarılı doğrulama durumunda `True` döndürmeli veya başarısızlık durumunda bir hata fırlatmalıdır.\n    Eğer `False` dönerse, bir `ValueError` fırlatılır.\n    \"\"\"\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            try:\n                validation_result = validator_func(*args, **kwargs)\n                if validation_result is False:\n                    raise ValueError(f\"Validation failed for {func.__name__} due to validator {validator_func.__name__}.\")\n            except Exception as e:\n                raise type(e)(f\"Validation failed for {func.__name__}: {e}\") from e\n            \n            return func(*args, **kwargs)\n        return wrapper\n    return decorator",
+    "source": "test-data-ai",
+    "prompt": "Custom validator decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

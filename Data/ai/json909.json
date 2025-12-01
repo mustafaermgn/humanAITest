@@ -1,0 +1,7 @@
+{
+    "code": "def minimum_squares_cut(length, width):\n    if length <= 0 or width <= 0:\n        return 0\n\n    count = 0\n    while length != width:\n        # Ensure 'length' is always the smaller dimension\n        if length > width:\n            length, width = width, length\n\n        # Cut out as many 'length x length' squares as possible from the 'width' side\n        num_squares_this_step = width // length\n        count += num_squares_this_step\n\n        # The remaining piece will have dimensions 'length x (width % length)'\n        width = width % length\n\n        # If the remainder 'width' becomes 0, it means the previous 'length'\n        # perfectly divided the previous 'width'. All pieces are accounted for.\n        if width == 0:\n            return count\n\n    # If the loop finishes, it means length == width.\n    # This last piece is a square and needs to be counted.\n    count += 1\n    return count",
+    "source": "test-data-ai",
+    "prompt": "Paper cut into minimum number of squares yaz.",
+    "license": "MIT",
+    "language": "python"
+}

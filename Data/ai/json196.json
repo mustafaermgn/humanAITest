@@ -1,0 +1,7 @@
+{
+    "code": "def is_binary_palindrome(n: int) -> bool:\n    \"\"\"\n    Verilen bir sayının ikilik (binary) temsilinin bir palindrom olup olmadığını kontrol eder.\n\n    Args:\n        n (int): Kontrol edilecek tam sayı.\n\n    Returns:\n        bool: İkilik temsil bir palindrom ise True, aksi takdirde False.\n    \"\"\"\n    if n < 0:\n        # Negatif sayılar için davranış tanımlanmalı. Genellikle pozitif sayılar beklenir.\n        # Burada matematiksel olarak mutlak değerinin ikili temsiline bakabiliriz,\n        # ancak problem genellikle pozitif tam sayılar için sorulur.\n        # Bu senaryoda hatadan kaçınmak için False döndürüyoruz veya hata fırlatılabilir.\n        return False\n    \n    binary_representation = bin(n)[2:]  # \"0b\" önekini kaldır\n\n    # İkilik temsilinin palindrom olup olmadığını kontrol et\n    return binary_representation == binary_representation[::-1]",
+    "source": "test-data-ai",
+    "prompt": "Check if binary representation is palindrome yaz.",
+    "license": "MIT",
+    "language": "python"
+}

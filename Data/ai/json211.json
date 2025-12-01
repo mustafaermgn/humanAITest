@@ -1,0 +1,7 @@
+{
+    "code": "def max_subarray_sum(arr, k):\n  \"\"\"\n  Sliding Window tekniğini kullanarak bir dizideki maksimum toplam alt diziyi bulur.\n\n  Args:\n    arr: Bir sayı dizisi.\n    k: Alt dizinin boyutu.\n\n  Returns:\n    Boyutu k olan alt dizinin maksimum toplamı.\n  \"\"\"\n\n  if len(arr) < k:\n    return \"Dizi, pencere boyutundan daha küçük\"\n\n  window_sum = sum(arr[:k])\n  max_sum = window_sum\n\n  for i in range(len(arr) - k):\n    window_sum = window_sum - arr[i] + arr[i+k]\n    max_sum = max(max_sum, window_sum)\n\n  return max_sum\n\nif __name__ == '__main__':\n  arr = [1, 4, 2, 10, 2, 3, 1, 0, 20]\n  k = 4\n  result = max_subarray_sum(arr, k)\n  print(\"Maksimum toplam alt dizi:\", result)  # Çıktı: Maksimum toplam alt dizi: 24\n\n  arr = [1, 4, 2, 10, 2, 3, 1, 0, 20]\n  k = 7\n  result = max_subarray_sum(arr, k)\n  print(\"Maksimum toplam alt dizi:\", result) # Çıktı: Maksimum toplam alt dizi: 38\n\n  arr = [1, 4, 2, 10, 2, 3, 1, 0, 20]\n  k = 10\n  result = max_subarray_sum(arr, k)\n  print(\"Maksimum toplam alt dizi:\", result) # Çıktı: Dizi, pencere boyutundan daha küçük",
+    "source": "test-data-ai",
+    "prompt": "Sliding Window tekniğiyle maksimum toplam alt dizi bulan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

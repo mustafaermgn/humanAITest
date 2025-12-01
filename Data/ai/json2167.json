@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef read_last_n_lines(file_path: str, n: int) -> list[str]:\n    if n <= 0:\n        return []\n\n    with open(file_path, 'r', encoding='utf-8') as f:\n        last_n_lines = collections.deque(maxlen=n)\n        for line in f:\n            last_n_lines.append(line)\n        return list(last_n_lines)",
+    "source": "test-data-ai",
+    "prompt": "Bir metin dosyasının son N satırını (N parametre olarak verilmeli) okuyup liste olarak döndüren bir işlev oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

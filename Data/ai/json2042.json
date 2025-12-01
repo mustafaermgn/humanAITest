@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef make_authenticated_request(url: str, token: str, method: str = 'GET', json_data: dict = None, params: dict = None, **kwargs) -> requests.Response:\n    headers = {\n        'Authorization': f'Bearer {token}'\n    }\n    if json_data is not None:\n        headers['Content-Type'] = 'application/json'\n\n    response = requests.request(\n        method=method.upper(),\n        url=url,\n        headers=headers,\n        json=json_data,\n        params=params,\n        **kwargs\n    )\n    return response",
+    "source": "test-data-ai",
+    "prompt": "Bearer token authentication kullanarak request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

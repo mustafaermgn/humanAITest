@@ -1,0 +1,7 @@
+{
+    "code": "def convert(s: str, numRows: int) -> str:\n    if numRows == 1:\n        return s\n\n    rows = [\"\"] * numRows\n    current_row = 0\n    going_down = False  # Başlangıçta yönü yukarı olarak varsay, ilk karakterde aşağı dönecek\n\n    for char in s:\n        rows[current_row] += char\n\n        # Eğer en üst veya en alt sıradaysak yönü değiştir\n        if current_row == 0 or current_row == numRows - 1:\n            going_down = not going_down\n        \n        # Yeni sıraya geç\n        if going_down:\n            current_row += 1\n        else:\n            current_row -= 1\n    \n    return \"\".join(rows)",
+    "source": "test-data-ai",
+    "prompt": "Zigzag conversion yaz.",
+    "license": "MIT",
+    "language": "python"
+}

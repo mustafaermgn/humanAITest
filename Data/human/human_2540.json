@@ -1,0 +1,7 @@
+{
+    "code": "def collater(self, samples):\n        \"\"\"This collator is deprecated.\n        set self.collator = MMDataset.collater.\n        see collator in FairseqMMDataset.\n        \"\"\"\n\n        if len(samples) == 0:\n            return {}\n        if isinstance(samples[0], dict):\n            batch = OrderedDict()\n            for key in samples[0]:\n                if samples[0][key] is not None:\n                    batch[key] = default_collate(\n                        [sample[key] for sample in samples])\n                # if torch.is_tensor(batch[key]):\n                #    print(key, batch[key].size())\n                # else:\n                #    print(key, len(batch[key]))\n            return batch\n        else:\n            return default_collate(samples)",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/datasets/mmdataset.py",
+    "license": "MIT",
+    "language": "python"
+}

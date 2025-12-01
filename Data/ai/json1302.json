@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\n# List (O(1) operations: append (amortized), index access, index assignment, len)\nmy_list = []\nmy_list.append(1)\nmy_list.append(2)\nmy_list.append(3)\n_ = my_list[0]\nmy_list[1] = 5\n_ = len(my_list)\n\n# Dictionary (O(1) operations: item assignment, item access, key existence, item deletion, len)\nmy_dict = {}\nmy_dict[\"a\"] = 10\nmy_dict[\"b\"] = 20\nmy_dict[\"c\"] = 30\n_ = my_dict[\"a\"]\n_ = \"b\" in my_dict\ndel my_dict[\"c\"]\n_ = len(my_dict)\n\n# Set (O(1) operations: add, membership test, remove, len)\nmy_set = set()\nmy_set.add(\"x\")\nmy_set.add(\"y\")\nmy_set.add(\"z\")\n_ = \"y\" in my_set\nmy_set.remove(\"x\")\n_ = len(my_set)\n\n# Deque (O(1) operations: append, appendleft, pop, popleft, len)\nmy_deque = collections.deque()\nmy_deque.append(100)\nmy_deque.appendleft(99)\nmy_deque.append(101)\n_ = my_deque.popleft()\n_ = my_deque.pop()\n_ = len(my_deque)",
+    "source": "test-data-ai",
+    "prompt": "All O(1) data structure yaz.",
+    "license": "MIT",
+    "language": "python"
+}

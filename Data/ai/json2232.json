@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass BSTIterator:\n\n    def __init__(self, root: TreeNode):\n        self.stack = []\n        self._push_left(root)\n\n    def _push_left(self, node):\n        \"\"\"\n        Helper function to push all leftmost nodes from a given node onto the stack.\n        \"\"\"\n        while node:\n            self.stack.append(node)\n            node = node.left\n\n    def next(self) -> int:\n        \"\"\"\n        Returns the next smallest number in the BST.\n        \"\"\"\n        current_node = self.stack.pop()\n        if current_node.right:\n            self._push_left(current_node.right)\n        return current_node.val\n\n    def has_next(self) -> bool:\n        \"\"\"\n        Returns true if there are still numbers left in the BST, otherwise false.\n        \"\"\"\n        return len(self.stack) > 0\n\n\n# Your BSTIterator object will be instantiated and called as such:\n# obj = BSTIterator(root)\n# param_1 = obj.next()\n# param_2 = obj.has_next()",
+    "source": "test-data-ai",
+    "prompt": "BST iterator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def letter_combinations(digits: str) -> list[str]:\n    phone_map = {\n        '2': \"abc\",\n        '3': \"def\",\n        '4': \"ghi\",\n        '5': \"jkl\",\n        '6': \"mno\",\n        '7': \"pqrs\",\n        '8': \"tuv\",\n        '9': \"wxyz\"\n    }\n\n    if not digits:\n        return []\n\n    combinations = [\"\"]\n\n    for digit in digits:\n        letters = phone_map[digit]\n        new_combinations = []\n        for combo in combinations:\n            for letter in letters:\n                new_combinations.append(combo + letter)\n        combinations = new_combinations\n        \n    return combinations",
+    "source": "test-data-ai",
+    "prompt": "Letter combinations of phone number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

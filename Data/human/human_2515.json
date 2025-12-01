@@ -1,0 +1,7 @@
+{
+    "code": "def compose(self) -> ComposeResult:\n        \"\"\"Three buttons.\"\"\"\n        yield Button(\"Bell\", id=\"bell\")\n        yield Button(\"Toggle dark\", classes=\"toggle dark\")\n        yield Button(\"Quit\", id=\"quit\")",
+    "source": "github_repo:Textualize/textual",
+    "file": "docs/examples/events/on_decorator01.py",
+    "license": "MIT",
+    "language": "python"
+}

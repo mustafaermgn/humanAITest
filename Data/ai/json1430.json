@@ -1,0 +1,7 @@
+{
+    "code": "from Crypto.Cipher import AES\nfrom Crypto.Util.Padding import pad\nfrom Crypto.Random import get_random_bytes\n\ndef aes_encrypt(key: bytes, message: bytes) -> bytes:\n    \"\"\"\n    Belirtilen anahtar ve mesajı kullanarak AES şifrelemesi yapar.\n    CBC modunda çalışır ve rasgele bir IV üretir.\n    Dönen değer, IV'nin şifrelenmiş mesajın başına eklenmiş halidir.\n\n    Args:\n        key (bytes): AES anahtarı (16, 24 veya 32 bayt uzunluğunda olmalıdır).\n        message (bytes): Şifrelenecek mesaj.\n\n    Returns:\n        bytes: IV'nin şifrelenmiş mesajın başına eklenmiş hali.\n    \"\"\"\n    iv = get_random_bytes(AES.block_size)\n    cipher = AES.new(key, AES.MODE_CBC, iv)\n    padded_message = pad(message, AES.block_size)\n    ciphertext = cipher.encrypt(padded_message)\n    return iv + ciphertext",
+    "source": "test-data-ai",
+    "prompt": "Bir şifreleme anahtarı (`key`) ve mesajı alarak **AES şifrelemesi** yapan temel bir kod yaz.",
+    "license": "MIT",
+    "language": "python"
+}

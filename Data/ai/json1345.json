@@ -1,0 +1,7 @@
+{
+    "code": "# Encode\noriginal_string = \"yaz\"\nencoded_bytes = original_string.encode('utf-8')\n\n# Decode\ndecoded_string = encoded_bytes.decode('utf-8')\n\nprint(f\"Original String: {original_string}\")\nprint(f\"Encoded Bytes: {encoded_bytes}\")\nprint(f\"Decoded String: {decoded_string}\")\n\n# Verify\nif original_string == decoded_string:\n    print(\"Encoding and decoding successful!\")\nelse:\n    print(\"Error in encoding/decoding.\")",
+    "source": "test-data-ai",
+    "prompt": "Encode and decode strings yaz.",
+    "license": "MIT",
+    "language": "python"
+}

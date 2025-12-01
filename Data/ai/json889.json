@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI\nimport uvicorn\n\napp = FastAPI()\n\n@app.get(\"/async_hello\")\nasync def async_hello():\n    return {\"message\": \"Hello from async FastAPI!\"}\n\n# Bu uygulamayı çalıştırmak için:\n# 1. Dosyayı kaydedin (örneğin: main.py)\n# 2. Terminalde şunu çalıştırın: uvicorn main:app --reload",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile async endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import time\nfrom fastapi import FastAPI, Request, Response\nfrom typing import Callable\n\napp = FastAPI()\n\n@app.middleware(\"http\")\nasync def add_process_time_header(request: Request, call_next: Callable):\n    start_time = time.time()\n    print(f\"[{request.url.path}] Request received.\")\n\n    response: Response = await call_next(request)\n\n    process_time = time.time() - start_time\n    response.headers[\"X-Process-Time\"] = str(process_time)\n    print(f\"[{request.url.path}] Response sent. Process time: {process_time:.4f}s\")\n    return response\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"Hello from FastAPI!\"}\n\n@app.get(\"/items/{item_id}\")\nasync def read_item(item_id: int):\n    # Simulate some work\n    time.sleep(0.1)\n    return {\"item_id\": item_id, \"data\": \"some data\"}\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile request/response middleware yaz.",
+    "license": "MIT",
+    "language": "python"
+}

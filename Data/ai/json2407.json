@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def canJump(self, nums: list[int]) -> bool:\n        goal = len(nums) - 1\n\n        for i in range(len(nums) - 2, -1, -1):\n            if i + nums[i] >= goal:\n                goal = i\n\n        return goal == 0",
+    "source": "test-data-ai",
+    "prompt": "Jump game to reach the end yaz.",
+    "license": "MIT",
+    "language": "python"
+}

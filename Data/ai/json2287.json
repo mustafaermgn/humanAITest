@@ -1,0 +1,7 @@
+{
+    "code": "import json\n\ndef yaz_sozluk_json(data: dict, dosya_yolu: str):\n    \"\"\"\n    Bir Python sözlüğünü belirtilen JSON dosyasına yazar.\n\n    Args:\n        data (dict): JSON dosyasına yazılacak Python sözlüğü.\n        dosya_yolu (str): JSON dosyasının kaydedileceği yol ve adı.\n    \"\"\"\n    with open(dosya_yolu, 'w', encoding='utf-8') as f:\n        json.dump(data, f, ensure_ascii=False, indent=4)",
+    "source": "test-data-ai",
+    "prompt": "Python dictionary'yi JSON dosyasına yazan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

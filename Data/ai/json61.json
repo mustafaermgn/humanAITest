@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef list_files_in_directory(directory):\n    \"\"\"\n    Belirtilen dizindeki tüm dosyaları listeler.\n\n    Args:\n        directory (str): Dosyaların listeleneceği dizinin yolu.\n\n    Returns:\n        list: Dizin içindeki dosyaların listesi.\n    \"\"\"\n    try:\n        files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]\n        return files\n    except FileNotFoundError:\n        return \"Dizin bulunamadı.\"\n\nif __name__ == '__main__':\n    directory_path = \".\"  # Şu anki dizin. Farklı bir dizin için yolu değiştirebilirsiniz.\n    file_list = list_files_in_directory(directory_path)\n\n    if isinstance(file_list, str):\n        print(file_list)  # Hata mesajını yazdır\n    else:\n        if file_list:\n            print(\"Dizin içindeki dosyalar:\")\n            for file in file_list:\n                print(file)\n        else:\n            print(\"Dizin içinde dosya bulunamadı.\")",
+    "source": "test-data-ai",
+    "prompt": "Directory içindeki tüm dosyaları listeleyen fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

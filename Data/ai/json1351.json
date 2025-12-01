@@ -1,0 +1,7 @@
+{
+    "code": "def rotate_bits(number, shift_amount, bit_width, direction=\"left\"):\n    if not isinstance(number, int) or number < 0:\n        raise ValueError(\"Number must be a non-negative integer.\")\n    if not isinstance(shift_amount, int) or shift_amount < 0:\n        raise ValueError(\"Shift amount must be a non-negative integer.\")\n    if not isinstance(bit_width, int) or bit_width <= 0:\n        raise ValueError(\"Bit width must be a positive integer.\")\n\n    mask = (1 << bit_width) - 1\n    number &= mask\n\n    shift_amount %= bit_width\n\n    if shift_amount == 0:\n        return number\n\n    if direction == \"left\":\n        return ((number << shift_amount) | (number >> (bit_width - shift_amount))) & mask\n    elif direction == \"right\":\n        return ((number >> shift_amount) | (number << (bit_width - shift_amount))) & mask\n    else:\n        raise ValueError(\"Direction must be 'left' or 'right'.\")",
+    "source": "test-data-ai",
+    "prompt": "Rotate bits of a number yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef send_form_post_request(url: str, form_data: dict):\n    try:\n        response = requests.post(url, data=form_data)\n        response.raise_for_status()\n        return response\n    except requests.exceptions.RequestException as e:\n        print(f\"An error occurred: {e}\")\n        return None\n\nif __name__ == '__main__':\n    test_url = \"https://httpbin.org/post\"\n    my_form_data = {\n        \"username\": \"testuser\",\n        \"password\": \"testpassword\",\n        \"email\": \"test@example.com\"\n    }\n\n    response = send_form_post_request(test_url, my_form_data)\n\n    if response:\n        print(f\"Status Code: {response.status_code}\")\n        try:\n            print(response.json())\n        except requests.exceptions.JSONDecodeError:\n            print(response.text)\n    else:\n        print(\"Request failed.\")",
+    "source": "test-data-ai",
+    "prompt": "Form data POST request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

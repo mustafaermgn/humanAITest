@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def sortedArrayToBST(self, nums: list[int]) -> TreeNode:\n        if not nums:\n            return None\n\n        mid = len(nums) // 2\n        \n        root = TreeNode(nums[mid])\n        root.left = self.sortedArrayToBST(nums[:mid])\n        root.right = self.sortedArrayToBST(nums[mid+1:])\n        \n        return root",
+    "source": "test-data-ai",
+    "prompt": "Convert sorted array to BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

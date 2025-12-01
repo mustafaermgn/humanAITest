@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef post_request_status(url):\n    try:\n        response = requests.post(url)\n        return response.status_code\n    except requests.exceptions.RequestException:\n        return None",
+    "source": "test-data-ai",
+    "prompt": "requests kütüphanesini kullanarak belirli bir URL'ye POST isteği gönderen ve yanıtın durum kodunu döndüren bir fonksiyon oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

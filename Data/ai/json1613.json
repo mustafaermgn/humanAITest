@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass Solution:\n    def leastInterval(self, tasks: list[str], n: int) -> int:\n        task_counts = collections.Counter(tasks)\n\n        if not task_counts:\n            return 0\n\n        max_freq = max(task_counts.values())\n\n        num_max_freq_tasks = sum(1 for count in task_counts.values() if count == max_freq)\n\n        # The core idea is to schedule the most frequent task first, leaving 'n' idle slots (or other tasks)\n        # before the next instance of that task.\n        # This creates 'max_freq - 1' blocks, each taking (n + 1) time units.\n        # For example, if max_freq = 3 and n = 2: A _ _ A _ _ A\n        # The last block simply needs to accommodate the 'num_max_freq_tasks' tasks without further cooling.\n        min_slots_based_on_cooling = (max_freq - 1) * (n + 1) + num_max_freq_tasks\n\n        # The total time cannot be less than the total number of tasks.\n        # This handles cases where 'n' is small (e.g., 0) or there are enough diverse tasks\n        # to fill all cooling intervals without needing idle time.\n        return max(len(tasks), min_slots_based_on_cooling)",
+    "source": "test-data-ai",
+    "prompt": "Task scheduler with cooling interval yaz.",
+    "license": "MIT",
+    "language": "python"
+}

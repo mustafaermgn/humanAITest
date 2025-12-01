@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, request, jsonify\n\napp = Flask(__name__)\n\n@app.route('/query_params_example')\ndef get_query_params():\n    # request.args bir ImmutableMultiDict nesnesidir ve tüm query parametrelerini içerir.\n    # Onu bir dictionary'ye çevirebilir veya doğrudan kullanabiliriz.\n    params = request.args.to_dict()\n\n    if not params:\n        return jsonify({\"message\": \"No query parameters provided.\"}), 200\n    else:\n        return jsonify({\"received_parameters\": params}), 200\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile query parameters alan endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

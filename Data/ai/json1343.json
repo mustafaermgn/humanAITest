@@ -1,0 +1,7 @@
+{
+    "code": "def example_function():\n    data = [1, 2, 3]\n    processed_data = [x * 2 for x in data]\n    # unused_variable = \"This variable is not used anywhere\"\n    \n    print(f\"Processed data: {processed_data}\")\n\nexample_function()",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodda kullanılmayan değişkeni kaldırarak kodu temizle.",
+    "license": "MIT",
+    "language": "python"
+}

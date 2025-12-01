@@ -1,0 +1,7 @@
+{
+    "code": "def _overwrite_task(self, job_config):\n        configs_to_save = {}\n        self.base_project_dir = os.path.join(\"projects\", job_config.base_dir)\n        self.base_run_dir = os.path.join(\"runs\", job_config.base_dir)\n\n        for config_sets in job_config.task_group:\n            overwrite_config = job_config.task_group[config_sets]\n            if (\n                overwrite_config.task_list is None\n                or len(overwrite_config.task_list) == 0\n            ):\n                print(\n                    \"[warning]\",\n                    job_config.task_group,\n                    \"has no task_list specified.\")\n            # we don't want this added to a final config.\n            task_list = overwrite_config.pop(\"task_list\", None)\n            for config_file in task_list:\n                config_file_path = os.path.join(\n                    self.base_project_dir, config_file)\n                config = recursive_config(config_file_path)\n                # overwrite it.\n                if overwrite_config:\n                    config = OmegaConf.merge(config, overwrite_config)\n                overwrite_dir(config, self.run_dir, basedir=self.base_run_dir)\n                save_file_path = os.path.join(self.project_dir, config_file)\n                configs_to_save[save_file_path] = config\n        return configs_to_save",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/locallaunch.py",
+    "license": "MIT",
+    "language": "python"
+}

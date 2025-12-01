@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\nimport itertools\n\ndef hamming_distance(s1, s2):\n    if len(s1) != len(s2):\n        return float('inf') \n    distance = 0\n    for char1, char2 in zip(s1, s2):\n        if char1 != char2:\n            distance += 1\n    return distance\n\ndef find_distant_barcodes(barcodes, k=1):\n    if not barcodes:\n        return []\n\n    max_distance_heap = [] \n\n    for b1, b2 in itertools.combinations(barcodes, 2):\n        dist = hamming_distance(b1, b2)\n        \n        if dist == float('inf'): # Skip pairs with different lengths if using Hamming\n            continue\n        \n        heapq.heappush(max_distance_heap, (dist, b1, b2))\n        \n        if len(max_distance_heap) > k:\n            heapq.heappop(max_distance_heap)\n            \n    results = sorted(max_distance_heap, key=lambda x: x[0], reverse=True)\n    return results",
+    "source": "test-data-ai",
+    "prompt": "Distant barcodes using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

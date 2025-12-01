@@ -1,0 +1,7 @@
+{
+    "code": "import pickle\n\ndef archive_function(func, filepath):\n    with open(filepath, 'wb') as f:\n        pickle.dump(func, f)\n\ndef extract_function(filepath):\n    with open(filepath, 'rb') as f:\n        func = pickle.load(f)\n    return func",
+    "source": "test-data-ai",
+    "prompt": "Archive extract eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

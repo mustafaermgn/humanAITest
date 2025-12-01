@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\ndef sublist_search(main_list_head: Node, sub_list_head: Node) -> bool:\n    if sub_list_head is None:\n        return True\n\n    if main_list_head is None:\n        return False\n\n    main_ptr_start = main_list_head\n\n    while main_ptr_start is not None:\n        ptr1 = main_ptr_start\n        ptr2 = sub_list_head\n\n        while ptr1 is not None and ptr2 is not None and ptr1.data == ptr2.data:\n            ptr1 = ptr1.next\n            ptr2 = ptr2.next\n\n        if ptr2 is None:\n            return True\n\n        main_ptr_start = main_ptr_start.next\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Sublist Search algoritmasını linked list için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def generate_catalan_numbers(n_terms):\n    if n_terms <= 0:\n        return []\n    \n    catalan = [0] * n_terms\n    catalan[0] = 1\n    \n    for i in range(n_terms - 1):\n        catalan[i+1] = (2 * (2 * i + 1) * catalan[i]) // (i + 2)\n        \n    return catalan",
+    "source": "test-data-ai",
+    "prompt": "Generate Catalan numbers yaz.",
+    "license": "MIT",
+    "language": "python"
+}

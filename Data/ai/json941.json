@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, request, jsonify\n\napp = Flask(__name__)\n\n@app.route('/query_params', methods=['GET'])\ndef handle_query_params():\n    params = request.args.to_dict()\n    return jsonify({\n        \"message\": \"Query parameters received successfully!\",\n        \"parameters\": params\n    })\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile query parameters alan endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

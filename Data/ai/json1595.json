@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def longestConsecutive(self, nums: list[int]) -> int:\n        num_set = set(nums)\n        max_length = 0\n\n        for num in nums:\n            # Check if 'num' is the start of a sequence\n            if (num - 1) not in num_set:\n                current_num = num\n                current_length = 1\n\n                # Extend the sequence\n                while (current_num + 1) in num_set:\n                    current_num += 1\n                    current_length += 1\n\n                max_length = max(max_length, current_length)\n\n        return max_length",
+    "source": "test-data-ai",
+    "prompt": "Longest consecutive sequence using hash set yaz.",
+    "license": "MIT",
+    "language": "python"
+}

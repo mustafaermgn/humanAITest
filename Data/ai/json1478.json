@@ -1,0 +1,7 @@
+{
+    "code": "# Örnek bir dosya oluşturalım (gerçek uygulamada bu adım gerekmeyebilir)\nwith open(\"ornek.txt\", \"w\") as f:\n    f.write(\"Bu, örnek bir metin dosyasıdır.\\n\")\n    f.write(\"with ifadesi, dosya kaynaklarının otomatik olarak kapanmasını sağlar.\")\n\n# with ifadesi kullanarak dosyayı açma ve okuma\ntry:\n    with open(\"ornek.txt\", \"r\") as dosya:\n        icerik = dosya.read()\n        print(icerik)\nexcept FileNotFoundError:\n    print(\"Dosya bulunamadı.\")\nexcept Exception as e:\n    print(f\"Bir hata oluştu: {e}\")\n\n# Dosyanın with bloğundan çıktıktan sonra otomatik olarak kapandığını göstermek için\n# dosya.closed özelliğini kontrol edemeyiz çünkü dosya değişkeni with bloğu dışında erişilemez.\n# Ancak, bu yapı kaynak sızıntısını etkili bir şekilde önler.",
+    "source": "test-data-ai",
+    "prompt": "Python'da bir dosyayı açıp okurken kaynak sızıntısını önlemek için with ifadesini kullanan bir örnek yaz.",
+    "license": "MIT",
+    "language": "python"
+}

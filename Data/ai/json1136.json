@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def countArrangement(self, n: int) -> int:\n        self.count = 0\n        used = [False] * (n + 1)\n\n        def backtrack(current_pos):\n            if current_pos > n:\n                self.count += 1\n                return\n\n            for num in range(1, n + 1):\n                if not used[num]:\n                    if num % current_pos == 0 or current_pos % num == 0:\n                        used[num] = True\n                        backtrack(current_pos + 1)\n                        used[num] = False\n\n        backtrack(1)\n        return self.count",
+    "source": "test-data-ai",
+    "prompt": "Beautiful arrangement count yaz.",
+    "license": "MIT",
+    "language": "python"
+}

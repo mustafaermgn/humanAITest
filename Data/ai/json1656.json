@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\ndef split_circular_list(head: Node) -> (Node, Node):\n    if not head:\n        return None, None\n\n    if head.next == head:\n        return head, None\n\n    slow = head\n    fast = head.next\n\n    while fast != head and fast.next != head:\n        slow = slow.next\n        fast = fast.next.next\n\n    head_1 = head\n    head_2 = slow.next\n\n    slow.next = head_1\n\n    current_second_half_end = head_2\n    while current_second_half_end.next != head_1:\n        current_second_half_end = current_second_half_end.next\n    \n    current_second_half_end.next = head_2\n\n    return head_1, head_2",
+    "source": "test-data-ai",
+    "prompt": "Split circular linked list into two halves yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def find_maximal_cliques(graph):\n    cliques = []\n    \n    all_vertices = set(graph.keys())\n    for u in graph:\n        all_vertices.update(graph[u])\n\n    def get_neighbors(vertex):\n        return graph.get(vertex, set())\n\n    def _bron_kerbosch(R, P, X):\n        if not P and not X:\n            if R:\n                cliques.append(frozenset(R))\n            return\n\n        pivot_union = P.union(X)\n        if not pivot_union:\n            return\n\n        u = None\n        max_neighbors_in_P = -1\n        for vertex in pivot_union:\n            neighbors_in_P_count = len(get_neighbors(vertex).intersection(P))\n            if neighbors_in_P_count > max_neighbors_in_P:\n                max_neighbors_in_P = neighbors_in_P_count\n                u = vertex\n        \n        P_minus_N_u_original = P - get_neighbors(u)\n        \n        for v in list(P_minus_N_u_original):\n            _bron_kerbosch(R.union({v}), P.intersection(get_neighbors(v)), X.intersection(get_neighbors(v)))\n            P.remove(v)\n            X.add(v)\n    \n    _bron_kerbosch(set(), all_vertices, set())\n    return cliques",
+    "source": "test-data-ai",
+    "prompt": "Clique detection algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

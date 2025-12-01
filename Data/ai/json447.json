@@ -1,0 +1,7 @@
+{
+    "code": "def cherryPickup(grid):\n    N = len(grid)\n    dp = {}\n\n    def solve(r1, c1, r2, c2):\n        if (r1, c1, r2, c2) in dp:\n            return dp[(r1, c1, r2, c2)]\n\n        if r1 == N or c1 == N or r2 == N or c2 == N or grid[r1][c1] == -1 or grid[r2][c2] == -1:\n            return float('-inf')\n\n        if r1 == N - 1 and c1 == N - 1:\n            return grid[r1][c1]\n\n        if r2 == N - 1 and c2 == N - 1:\n            return grid[r2][c2]\n\n        ans = 0\n        if r1 == r2 and c1 == c2:\n            ans += grid[r1][c1]\n        else:\n            ans += grid[r1][c1] + grid[r2][c2]\n\n        ans += max(solve(r1 + 1, c1, r2 + 1, c2),\n                   solve(r1 + 1, c1, r2, c2 + 1),\n                   solve(r1, c1 + 1, r2 + 1, c2),\n                   solve(r1, c1 + 1, r2, c2 + 1))\n\n        dp[(r1, c1, r2, c2)] = ans\n        return ans\n\n    result = solve(0, 0, 0, 0)\n    return max(0, result)",
+    "source": "test-data-ai",
+    "prompt": "Cherry pickup maximum cherries yaz.",
+    "license": "MIT",
+    "language": "python"
+}

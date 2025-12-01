@@ -1,0 +1,7 @@
+{
+    "code": "class FenwickTree:\n    def __init__(self, size):\n        self.size = size\n        self.tree = [0] * (size + 1)\n\n    def update(self, index, delta):\n        # Fenwick tree uses 1-based indexing internally\n        index += 1 \n        while index <= self.size:\n            self.tree[index] += delta\n            index += index & (-index)\n\n    def query(self, index):\n        # Fenwick tree uses 1-based indexing internally\n        # Queries sum from index 0 up to (and including) 'index'\n        index += 1\n        _sum = 0\n        while index > 0:\n            _sum += self.tree[index]\n            index -= index & (-index)\n        return _sum\n\n    def query_range(self, start, end):\n        # Queries sum from index 'start' up to (and including) 'end'\n        if start > end:\n            return 0\n        return self.query(end) - self.query(start - 1)",
+    "source": "test-data-ai",
+    "prompt": "Fenwick tree (Binary Indexed Tree) implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

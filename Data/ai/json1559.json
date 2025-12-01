@@ -1,0 +1,7 @@
+{
+    "code": "def find_smallest_missing_positive(nums):\n    \"\"\"\n    Verilen unsorted dizideki en küçük eksik pozitif tam sayıyı bulur.\n\n    Args:\n        nums: Bir tam sayı listesi (array).\n\n    Returns:\n        Dizide bulunmayan en küçük pozitif tam sayı.\n    \"\"\"\n    \n    # Sadece pozitif sayıları bir sete ekleyerek hızlı arama imkanı sağlarız.\n    # Negatif sayılar ve sıfır bizi ilgilendirmez.\n    positive_numbers = set(num for num in nums if num > 0)\n\n    # 1'den başlayarak dizide olmayan ilk pozitif tam sayıyı ararız.\n    i = 1\n    while True:\n        if i not in positive_numbers:\n            return i\n        i += 1",
+    "source": "test-data-ai",
+    "prompt": "Find the smallest missing positive integer in unsorted array.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "# my_flask_app/app.py\nfrom flask import Flask\nfrom .blueprints.home import home_bp\nfrom .blueprints.auth import auth_bp\n\ndef create_app():\n    app = Flask(__name__)\n\n    # Blueprint'leri kaydet\n    app.register_blueprint(home_bp)\n    app.register_blueprint(auth_bp, url_prefix='/auth') # Auth blueprint'i için /auth ön ekini kullan\n\n    return app\n\nif __name__ == '__main__':\n    app = create_app()\n    app.run(debug=True)\n\n# my_flask_app/blueprints/__init__.py\n# Bu dosya, 'blueprints' klasörünü bir Python paketi olarak işaretler.\n# İçeriği boş olabilir.\n# my_flask_app/blueprints/home.py\nfrom flask import Blueprint\n\n# 'home' adında bir blueprint oluştur\nhome_bp = Blueprint('home', __name__)\n\n@home_bp.route('/')\ndef index():\n    return \"Ana Sayfa - Home Blueprint\"\n\n@home_bp.route('/about')\ndef about():\n    return \"Hakkımızda Sayfası - Home Blueprint\"\n\n# my_flask_app/blueprints/auth.py\nfrom flask import Blueprint\n\n# 'auth' adında bir blueprint oluştur\nauth_bp = Blueprint('auth', __name__)\n\n@auth_bp.route('/login')\ndef login():\n    return \"Giriş Sayfası - Auth Blueprint\"\n\n@auth_bp.route('/register')\ndef register():\n    return \"Kayıt Sayfası - Auth Blueprint\"\n\n@auth_bp.route('/logout')\ndef logout():\n    return \"Çıkış Yapıldı - Auth Blueprint\"",
+    "source": "test-data-ai",
+    "prompt": "Flask blueprint kullanarak modular yapı oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

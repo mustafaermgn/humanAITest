@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_price_with_standard_tax(base_price, quantity):\n    total = base_price * quantity\n    tax_rate = 0.18\n    final_price = total * (1 + tax_rate)\n    return final_price\n\ndef calculate_price_with_reduced_tax(base_price, quantity):\n    total = base_price * quantity\n    tax_rate = 0.08\n    final_price = total * (1 + tax_rate)\n    return final_price\n\ndef calculate_price(base_price, quantity, tax_rate):\n    total = base_price * quantity\n    final_price = total * (1 + tax_rate)\n    return final_price\n\n# Örnek kullanım:\n# price_standard_old = calculate_price_with_standard_tax(100, 2)\n# price_reduced_old = calculate_price_with_reduced_tax(100, 2)\n\n# price_standard_new = calculate_price(100, 2, 0.18)\n# price_reduced_new = calculate_price(100, 2, 0.08)\n\n# print(f\"Standart vergi (eski): {price_standard_old}\")\n# print(f\"İndirimli vergi (eski): {price_reduced_old}\")\n# print(f\"Standart vergi (yeni): {price_standard_new}\")\n# print(f\"İndirimli vergi (yeni): {price_reduced_new}\")",
+    "source": "test-data-ai",
+    "prompt": "Kod tekrarını önlemek için (DRY prensibi) iki benzer fonksiyonu tek bir fonksiyon altında birleştir.",
+    "license": "MIT",
+    "language": "python"
+}

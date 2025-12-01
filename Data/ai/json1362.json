@@ -1,0 +1,7 @@
+{
+    "code": "class QueueUsingTwoStacks:\n    def __init__(self):\n        self._stack_enqueue = []\n        self._stack_dequeue = []\n\n    def _transfer_elements_if_needed(self):\n        if not self._stack_dequeue:\n            if not self._stack_enqueue:\n                raise IndexError(\"Queue is empty\")\n            while self._stack_enqueue:\n                self._stack_dequeue.append(self._stack_enqueue.pop())\n\n    def enqueue(self, item):\n        self._stack_enqueue.append(item)\n\n    def dequeue(self):\n        self._transfer_elements_if_needed()\n        return self._stack_dequeue.pop()\n\n    def peek(self):\n        self._transfer_elements_if_needed()\n        return self._stack_dequeue[-1]\n\n    def is_empty(self):\n        return not self._stack_enqueue and not self._stack_dequeue\n\n    def size(self):\n        return len(self._stack_enqueue) + len(self._stack_dequeue)",
+    "source": "test-data-ai",
+    "prompt": "İki stack kullanarak queue implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

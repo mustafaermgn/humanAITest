@@ -1,0 +1,7 @@
+{
+    "code": "import secrets\nimport base64\nimport hmac\n\n_session_csrf_token = None\n\ndef generate_csrf_token():\n    global _session_csrf_token\n    token_bytes = secrets.token_bytes(32)\n    token_string = base64.urlsafe_b64encode(token_bytes).decode('utf-8')\n    _session_csrf_token = token_string\n    return token_string\n\ndef validate_csrf_token(received_token):\n    global _session_csrf_token\n    if _session_csrf_token is None:\n        return False\n    is_valid = hmac.compare_digest(_session_csrf_token.encode('utf-8'), received_token.encode('utf-8'))\n    return is_valid",
+    "source": "test-data-ai",
+    "prompt": "CSRF token generator ve validator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

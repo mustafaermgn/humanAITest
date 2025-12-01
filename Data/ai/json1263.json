@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef find_rightmost_set_bit_position(n: int) -> int:\n    if n == 0:\n        return -1\n    rightmost_bit_value = n & -n\n    return int(math.log2(rightmost_bit_value)) + 1",
+    "source": "test-data-ai",
+    "prompt": "Find position of rightmost set bit yaz.",
+    "license": "MIT",
+    "language": "python"
+}

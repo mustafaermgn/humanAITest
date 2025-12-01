@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, render_template\n\napp = Flask(__name__)\n\n@app.route('/')\ndef index():\n    return render_template('index.html')\n\nif __name__ == '__main__':\n    app.run(debug=True)\n\n# Flask'ın şablonları bulabilmesi için,\n# uygulamanın çalıştığı dizinde 'templates' adında bir klasör oluşturun\n# ve içine 'index.html' adında bir dosya koyun.\n# Örnek 'templates/index.html' içeriği:\n#\n# <!DOCTYPE html>\n# <html lang=\"en\">\n# <head>\n#     <meta charset=\"UTF-8\">\n#     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n#     <title>Flask Template</title>\n# </head>\n# <body>\n#     <h1>Merhaba, Flask Şablonu!</h1>\n#     <p>Bu, Flask ile render edilen bir şablondur.</p>\n# </body>\n# </html>",
+    "source": "test-data-ai",
+    "prompt": "Flask ile template rendering yapan endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def generate_all_subsets(nums: list) -> list[list]:\n    n = len(nums)\n    power_set = []\n    \n    for i in range(1 << n):\n        current_subset = []\n        for j in range(n):\n            if (i >> j) & 1:\n                current_subset.append(nums[j])\n        power_set.append(current_subset)\n        \n    return power_set",
+    "source": "test-data-ai",
+    "prompt": "Generate all subsets (power set) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

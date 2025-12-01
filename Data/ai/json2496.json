@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef is_bipartite(graph):\n    normalized_graph = collections.defaultdict(list)\n    all_vertices = set()\n    for u, neighbors in graph.items():\n        all_vertices.add(u)\n        for v in neighbors:\n            normalized_graph[u].append(v)\n            normalized_graph[v].append(u)\n            all_vertices.add(v)\n    \n    for u in normalized_graph:\n        normalized_graph[u] = list(set(normalized_graph[u]))\n\n    if not all_vertices:\n        return True\n\n    colors = {} \n\n    for start_node in all_vertices:\n        if start_node not in colors:\n            queue = collections.deque()\n            queue.append(start_node)\n            colors[start_node] = 0\n\n            while queue:\n                u = queue.popleft()\n\n                for v in normalized_graph.get(u, []): \n                    if v not in colors:\n                        colors[v] = 1 - colors[u]\n                        queue.append(v)\n                    elif colors[v] == colors[u]:\n                        return False\n    \n    return True",
+    "source": "test-data-ai",
+    "prompt": "Bipartite graph kontrol eden algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

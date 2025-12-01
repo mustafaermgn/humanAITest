@@ -1,0 +1,7 @@
+{
+    "code": "list(set(list1) - set(list2))",
+    "source": "test-data-ai",
+    "prompt": "İki liste arasındaki farkı (set difference) bulan tek satırlık bir kod yaz.",
+    "license": "MIT",
+    "language": "python"
+}

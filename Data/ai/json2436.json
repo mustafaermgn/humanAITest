@@ -1,0 +1,7 @@
+{
+    "code": "from typing import List\n\nclass Solution:\n    def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:\n        n = len(nums)\n\n        if k == 1:\n            return True\n\n        if k > n:\n            return False\n\n        total_sum = sum(nums)\n\n        if total_sum % k != 0:\n            return False\n\n        target_sum = total_sum // k\n\n        nums.sort(reverse=True)\n\n        used = [False] * n\n\n        def backtrack(k_remaining, current_subset_sum, start_idx):\n            if k_remaining == 0:\n                return True\n\n            if current_subset_sum == target_sum:\n                return backtrack(k_remaining - 1, 0, 0)\n\n            for i in range(start_idx, n):\n                if i > 0 and nums[i] == nums[i-1] and not used[i-1]:\n                    continue\n\n                if not used[i] and current_subset_sum + nums[i] <= target_sum:\n                    used[i] = True\n                    if backtrack(k_remaining, current_subset_sum + nums[i], i + 1):\n                        return True\n                    used[i] = False\n\n            return False\n\n        return backtrack(k, 0, 0)",
+    "source": "test-data-ai",
+    "prompt": "Partition array into k subsets with equal sum yaz.",
+    "license": "MIT",
+    "language": "python"
+}

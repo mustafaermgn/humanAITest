@@ -1,0 +1,7 @@
+{
+    "code": "def process_items(items_list):\n    processed_results = []\n    # 'prefix' değişkeni döngü dışına alındı\n    prefix_message = \"Processed item: \"\n    for item in items_list:\n        processed_results.append(prefix_message + str(item))\n    return processed_results\n\n# Örnek kullanım\ndata = [\"Apple\", \"Banana\", \"Cherry\"]\noutput = process_items(data)\nprint(output)\n\nnumbers = [1, 2, 3, 4, 5]\noutput_numbers = process_items(numbers)\nprint(output_numbers)",
+    "source": "test-data-ai",
+    "prompt": "Bir döngü içinde gereksiz yere tanımlanmış değişkeni döngü dışına alarak bu kodu refactor et.",
+    "license": "MIT",
+    "language": "python"
+}

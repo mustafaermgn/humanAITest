@@ -1,0 +1,7 @@
+{
+    "code": "def boyer_moore_majority_element(nums):\n    if not nums:\n        return None\n\n    # İlk geçiş: Bir aday bul\n    candidate = None\n    count = 0\n    for num in nums:\n        if count == 0:\n            candidate = num\n            count = 1\n        elif num == candidate:\n            count += 1\n        else:\n            count -= 1\n    \n    # İkinci geçiş: Adayın gerçekten çoğunluk elemanı olup olmadığını doğrula\n    # Bu geçiş, çoğunluk elemanının varlığı garanti edilmediğinde gereklidir.\n    # İlk geçiş, eğer bir çoğunluk elemanı varsa, onun aday olacağını garanti eder,\n    # ancak adayın mutlaka bir çoğunluk elemanı olduğunu garanti etmez.\n    majority_count = 0\n    for num in nums:\n        if num == candidate:\n            majority_count += 1\n            \n    if majority_count > len(nums) // 2:\n        return candidate\n    else:\n        return None",
+    "source": "test-data-ai",
+    "prompt": "Majority element (çoğunluk elemanı) bulan Boyer-Moore algoritmasını yaz.",
+    "license": "MIT",
+    "language": "python"
+}

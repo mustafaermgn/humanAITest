@@ -1,0 +1,7 @@
+{
+    "code": "import json\n\ndef args_to_json(**kwargs):\n  \"\"\"\n  Fonksiyona gelen tüm argümanları **kwargs kullanarak alan ve bunları bir JSON string'i olarak döndüren bir fonksiyon.\n  \"\"\"\n  return json.dumps(kwargs)\n\nif __name__ == '__main__':\n  # Örnek kullanım\n  json_string = args_to_json(name=\"Alice\", age=30, city=\"New York\")\n  print(json_string)\n\n  json_string = args_to_json(item=\"book\", price=25.50, quantity=2)\n  print(json_string)\n\n  json_string = args_to_json()  # Boş kwargs\n  print(json_string)",
+    "source": "test-data-ai",
+    "prompt": "Bir fonksiyona gelen tüm argümanları **kwargs kullanarak alan ve bunları bir JSON string'i olarak döndüren bir fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

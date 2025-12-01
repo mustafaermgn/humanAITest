@@ -1,0 +1,7 @@
+{
+    "code": "import aiohttp\nimport asyncio\n\nasync def fetch_url(url: str) -> str:\n    \"\"\"\n    Asenkron olarak bir URL'den veriyi getirir.\n\n    Args:\n        url (str): Verinin getirileceği URL.\n\n    Returns:\n        str: URL'den getirilen veri (metin olarak).\n             Hata durumunda None döndürür.\n    \"\"\"\n    try:\n        async with aiohttp.ClientSession() as session:\n            async with session.get(url) as response:\n                if response.status == 200:\n                    return await response.text()\n                else:\n                    print(f\"Hata: {url} için durum kodu {response.status}\")\n                    return None\n    except aiohttp.ClientError as e:\n        print(f\"Hata: {url} için istek başarısız oldu - {e}\")\n        return None\n    except Exception as e:\n        print(f\"Hata: Beklenmeyen bir hata oluştu - {e}\")\n        return None\n\n\nasync def main():\n    \"\"\"\n    Örnek kullanım.\n    \"\"\"\n    url = \"https://www.example.com\"\n    data = await fetch_url(url)\n\n    if data:\n        print(f\"{url} adresinden alınan veri:\\n{data[:200]}...\") # Sadece ilk 200 karakteri yazdır\n    else:\n        print(f\"{url} adresinden veri alınamadı.\")\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+    "source": "test-data-ai",
+    "prompt": "Async HTTP request yapan aiohttp kullanımlı fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

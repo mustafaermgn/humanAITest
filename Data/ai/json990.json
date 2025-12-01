@@ -1,0 +1,7 @@
+{
+    "code": "def flip_bits_to_alternate(bit_string: str) -> str:\n    n = len(bit_string)\n    if n == 0:\n        return \"\"\n\n    flips_start_0 = 0\n    flips_start_1 = 0\n\n    for i in range(n):\n        # Pattern starting with '0': 010101...\n        # Expected char is '0' if i is even, '1' if i is odd.\n        expected_char_0 = str(i % 2)\n        if bit_string[i] != expected_char_0:\n            flips_start_0 += 1\n\n        # Pattern starting with '1': 101010...\n        # Expected char is '1' if i is even, '0' if i is odd.\n        expected_char_1 = str(1 - (i % 2))\n        if bit_string[i] != expected_char_1:\n            flips_start_1 += 1\n\n    if flips_start_0 <= flips_start_1:\n        # Construct the pattern \"0101...\"\n        result_pattern = []\n        for i in range(n):\n            result_pattern.append(str(i % 2))\n        return \"\".join(result_pattern)\n    else:\n        # Construct the pattern \"1010...\"\n        result_pattern = []\n        for i in range(n):\n            result_pattern.append(str(1 - (i % 2)))\n        return \"\".join(result_pattern)",
+    "source": "test-data-ai",
+    "prompt": "Flip bits to make alternate pattern yaz.",
+    "license": "MIT",
+    "language": "python"
+}

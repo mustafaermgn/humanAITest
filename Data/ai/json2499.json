@@ -1,0 +1,7 @@
+{
+    "code": "import re\n\ndef check_word_validity(word: str) -> bool:\n    return re.fullmatch(\"(yaz|yay|zas)*\", word) is not None",
+    "source": "test-data-ai",
+    "prompt": "Check if word is valid after substitutions yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def asal_sayıları_bul(limit):\n    asal = [True] * (limit + 1)\n    asal[0] = asal[1] = False\n\n    for i in range(2, int(limit**0.5) + 1):\n        if asal[i]:\n            for j in range(i*i, limit + 1, i):\n                asal[j] = False\n\n    asal_sayılar = [i for i, is_asal in enumerate(asal) if is_asal]\n    return asal_sayılar\n\nif __name__ == '__main__':\n    limit = int(input(\"Bir sınır girin: \"))\n    asal_sayılar = asal_sayıları_bul(limit)\n    print(\"Sınıra kadar asal sayılar:\", asal_sayılar)",
+    "source": "test-data-ai",
+    "prompt": "Sieve of Eratosthenes ile belirli bir sayıya kadar asal sayıları bul.",
+    "license": "MIT",
+    "language": "python"
+}

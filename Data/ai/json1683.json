@@ -1,0 +1,7 @@
+{
+    "code": "def levenshtein_distance(s1: str, s2: str) -> int:\n    \"\"\"\n    Hesaplar iki string arasındaki Levenshtein (Edit) mesafeyi.\n\n    Args:\n        s1: İlk string.\n        s2: İkinci string.\n\n    Returns:\n        İki string arasındaki Levenshtein mesafesi.\n    \"\"\"\n    m, n = len(s1), len(s2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n\n    for i in range(m + 1):\n        dp[i][0] = i\n    for j in range(n + 1):\n        dp[0][j] = j\n\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            cost = 0 if s1[i - 1] == s2[j - 1] else 1\n            dp[i][j] = min(\n                dp[i - 1][j] + 1,      # Deletion\n                dp[i][j - 1] + 1,      # Insertion\n                dp[i - 1][j - 1] + cost  # Substitution / Match\n            )\n    return dp[m][n]",
+    "source": "test-data-ai",
+    "prompt": "Edit Distance (Levenshtein) algoritmasını yaz.",
+    "license": "MIT",
+    "language": "python"
+}

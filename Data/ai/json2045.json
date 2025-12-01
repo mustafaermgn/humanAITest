@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\ndef find_kth_largest(nums: list[int], k: int) -> int:\n    \"\"\"\n    Verilen listedeki k. en büyük elemanı bulur.\n    Min-heap kullanarak O(N log K) zaman karmaşıklığı ve O(K) alan karmaşıklığına sahiptir.\n\n    Args:\n        nums: Tam sayıların listesi.\n        k: Bulunacak en büyük elemanın sırası (örn. k=1 en büyük, k=2 ikinci en büyük).\n\n    Returns:\n        Listenin k. en büyük elemanı.\n    \"\"\"\n    # k boyutunda bir min-heap oluştur.\n    # Bu heap her zaman görülen k en büyük elemanı içerecek.\n    # En küçük eleman (heap'in kökü) k. en büyük eleman olacak.\n    min_heap = []\n\n    for num in nums:\n        # Elemanı heap'e ekle\n        heapq.heappush(min_heap, num)\n        # Eğer heap boyutu k'yı aşarsa, en küçük elemanı (kök) çıkar.\n        # Böylece heap her zaman k eleman içerir ve bu k eleman\n        # görülen tüm elemanlar arasında en büyük k tanesidir.\n        if len(min_heap) > k:\n            heapq.heappop(min_heap)\n            \n    # Döngü bittiğinde, heap'in kökü (en küçük elemanı)\n    # k. en büyük eleman olacaktır.\n    return min_heap[0]",
+    "source": "test-data-ai",
+    "prompt": "Kth largest element using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

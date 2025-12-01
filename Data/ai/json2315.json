@@ -1,0 +1,7 @@
+{
+    "code": "def karatsuba(x, y):\n    if x < 10 or y < 10:\n        return x * y\n\n    str_x = str(x)\n    str_y = str(y)\n\n    n = max(len(str_x), len(str_y))\n\n    # n'yi çift sayı yap (gerekirse)\n    if n % 2 != 0:\n        n += 1\n\n    # Sayıları n uzunluğuna kadar başa sıfır ekleyerek tamamla\n    str_x = str_x.zfill(n)\n    str_y = str_y.zfill(n)\n\n    m = n // 2\n\n    X1 = int(str_x[:m])\n    X0 = int(str_x[m:])\n    Y1 = int(str_y[:m])\n    Y0 = int(str_y[m:])\n\n    P1 = karatsuba(X1, Y1)\n    P2 = karatsuba(X0, Y0)\n    P3 = karatsuba(X1 + X0, Y1 + Y0)\n\n    return P1 * (10**(2*m)) + (P3 - P1 - P2) * (10**m) + P2",
+    "source": "test-data-ai",
+    "prompt": "Karatsuba multiplication algoritmasını yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef maxProfit(prices: list[int]) -> int:\n    n = len(prices)\n    if n == 0:\n        return 0\n\n    prev_s0 = 0\n    prev_s1 = -prices[0]\n    prev_s2 = -math.inf\n\n    for i in range(1, n):\n        current_s0 = max(prev_s0, prev_s2)\n        current_s1 = max(prev_s1, prev_s0 - prices[i])\n        current_s2 = prev_s1 + prices[i]\n\n        prev_s0 = current_s0\n        prev_s1 = current_s1\n        prev_s2 = current_s2\n\n    return max(prev_s0, prev_s2)",
+    "source": "test-data-ai",
+    "prompt": "Maximum profit from stock buying/selling with cooldown.",
+    "license": "MIT",
+    "language": "python"
+}

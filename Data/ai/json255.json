@@ -1,0 +1,7 @@
+{
+    "code": "def min_product_subset(arr):\n    \"\"\"\n    Bir dizinin minimum ürün alt kümesini bulur.\n\n    Args:\n        arr: Bir sayı dizisi.\n\n    Returns:\n        Dizinin minimum ürün alt kümesi.\n    \"\"\"\n\n    n = len(arr)\n    if n == 0:\n        return 0\n\n    pos_count = 0\n    neg_count = 0\n    zero_count = 0\n    min_positive = float('inf')\n    max_negative = float('-inf')\n    product = 1\n\n    for num in arr:\n        if num > 0:\n            pos_count += 1\n            min_positive = min(min_positive, num)\n            product *= num\n        elif num < 0:\n            neg_count += 1\n            max_negative = max(max_negative, num)\n            product *= num\n        else:\n            zero_count += 1\n\n    if zero_count == n:\n        return 0\n\n    if neg_count == 0 and zero_count > 0:\n        return 0\n\n    if neg_count == 0:\n        return min_positive\n\n    if neg_count % 2 == 0:\n        product //= max_negative\n\n    return product",
+    "source": "test-data-ai",
+    "prompt": "Minimum product subset of an array bul.",
+    "license": "MIT",
+    "language": "python"
+}

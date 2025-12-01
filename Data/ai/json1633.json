@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass RecentCounter:\n\n    def __init__(self):\n        self.q = collections.deque()\n        self.window_size = 3000 # milliseconds\n\n    def ping(self, t: int) -> int:\n        self.q.append(t)\n        \n        while self.q and self.q[0] < t - self.window_size:\n            self.q.popleft()\n            \n        return len(self.q)",
+    "source": "test-data-ai",
+    "prompt": "Recent counter using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

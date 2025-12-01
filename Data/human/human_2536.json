@@ -1,0 +1,7 @@
+{
+    "code": "def num_tokens(self, index):\n        \"\"\"dummy implementation: we don't use --max-tokens\"\"\"\n        return 1",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/datasets/fairseqmmdataset.py",
+    "license": "MIT",
+    "language": "python"
+}

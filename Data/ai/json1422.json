@@ -1,0 +1,7 @@
+{
+    "code": "a = 10\nb = 5\n\n# Swap öncesi değerler\n# print(f\"Swap öncesi: a = {a}, b = {b}\")\n\na = a ^ b\nb = a ^ b\na = a ^ b\n\n# Swap sonrası değerler\n# print(f\"Swap sonrası: a = {a}, b = {b}\")",
+    "source": "test-data-ai",
+    "prompt": "XOR kullanarak swap işlemi yap.",
+    "license": "MIT",
+    "language": "python"
+}

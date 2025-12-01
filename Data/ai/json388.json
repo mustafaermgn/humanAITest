@@ -1,0 +1,7 @@
+{
+    "code": "import toml\n\ndef parse_toml_file(file_path):\n  \"\"\"\n  Verilen TOML dosyasını ayrıştırır.\n\n  Args:\n    file_path: Ayrıştırılacak TOML dosyasının yolu.\n\n  Returns:\n    Ayrıştırılmış TOML verisini bir sözlük olarak döndürür.\n    Dosya bulunamazsa veya ayrıştırma hatası oluşursa None döndürür.\n  \"\"\"\n  try:\n    with open(file_path, 'r', encoding='utf-8') as f:\n      data = toml.load(f)\n    return data\n  except FileNotFoundError:\n    print(f\"Hata: Dosya bulunamadı: {file_path}\")\n    return None\n  except toml.TomlDecodeError as e:\n    print(f\"Hata: TOML Ayrıştırma hatası: {e}\")\n    return None\n\nif __name__ == '__main__':\n  # Test kullanımı:\n  # Bir 'config.toml' dosyası oluşturun ve fonksiyonu test edin\n  # Örneğin:\n  # [database]\n  # server = \"192.168.1.1\"\n  # ports = [ 8001, 8001, 8002 ]\n  # connection_max = 5000\n  # enabled = true\n\n  file_path = \"config.toml\"\n  parsed_data = parse_toml_file(file_path)\n\n  if parsed_data:\n    print(\"Ayrıştırılmış TOML Verisi:\")\n    print(parsed_data)",
+    "source": "test-data-ai",
+    "prompt": "TOML dosyası parse eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

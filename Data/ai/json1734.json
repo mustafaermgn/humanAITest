@@ -1,0 +1,7 @@
+{
+    "code": "' '.join(s.split())",
+    "source": "test-data-ai",
+    "prompt": "Bir dizedeki ardışık boşlukları tek boşluğa düşüren tek satırlık kodu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

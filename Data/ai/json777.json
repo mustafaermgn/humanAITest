@@ -1,0 +1,7 @@
+{
+    "code": "def linear_search_sentinel(arr, target):\n    n = len(arr)\n\n    if n == 0:\n        return -1\n\n    # Dizinin son elemanını kaydediyoruz\n    # Çünkü sentinel olarak hedef değeri oraya yerleştireceğiz\n    last_element = arr[n - 1]\n\n    # Hedef değeri sentinel olarak dizinin sonuna yerleştiriyoruz\n    arr[n - 1] = target\n\n    i = 0\n    # Döngüde sadece eleman karşılaştırması yapıyoruz, sınır kontrolü yok\n    while arr[i] != target:\n        i += 1\n\n    # Dizinin son elemanını orijinal değerine geri yüklüyoruz\n    arr[n - 1] = last_element\n\n    # Hedefin bulunup bulunmadığını kontrol ediyoruz\n    # Eğer i < n - 1 ise, hedef orijinal dizinin içinde bulundu\n    # Eğer i == n - 1 ise, hedef ya orijinal son elemandı ya da sentineldi\n    if i < n - 1 or (i == n - 1 and last_element == target):\n        return i\n    else:\n        return -1",
+    "source": "test-data-ai",
+    "prompt": "Linear Search'ü sentinel tekniğiyle optimize et.",
+    "license": "MIT",
+    "language": "python"
+}

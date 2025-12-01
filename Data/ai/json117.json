@@ -1,0 +1,7 @@
+{
+    "code": "def count_set_bits(n: int) -> int:\n    \"\"\"\n    Bir sayının binary gösterimindeki 1'lerin sayısını bulur.\n    Negatif sayılar için bu fonksiyon, sayının mutlak değerinin pozitif versiyonunun 1'lerinin sayısını döndürür.\n    (Yaygın olarak, bu problem non-negatif tam sayılar için sorulur.)\n    \"\"\"\n    count = 0\n    # Sayının mutlak değerini alarak negatif sayılarla uğraşmayı basitleştir\n    # veya problem tanımı gereği sadece pozitif sayılar beklenebilir.\n    # Genellikle bu tarz problemler pozitif tam sayılar için sorulur.\n    n = abs(n) \n\n    while n > 0:\n        n &= (n - 1)  # En düşük değerli 1 bitini temizler\n        count += 1\n    return count",
+    "source": "test-data-ai",
+    "prompt": "Bir sayının binary gösterimindeki 1'lerin sayısını bul.",
+    "license": "MIT",
+    "language": "python"
+}

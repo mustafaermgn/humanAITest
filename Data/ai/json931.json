@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def minRemoveToMakeValid(self, s: str) -> str:\n        stack = []\n        to_remove_indices = set()\n\n        for i, char in enumerate(s):\n            if char == '(':\n                stack.append(i)\n            elif char == ')':\n                if stack:\n                    stack.pop()\n                else:\n                    to_remove_indices.add(i)\n\n        while stack:\n            to_remove_indices.add(stack.pop())\n\n        result = []\n        for i, char in enumerate(s):\n            if i not in to_remove_indices:\n                result.append(char)\n        \n        return \"\".join(result)",
+    "source": "test-data-ai",
+    "prompt": "Minimum remove to make valid parentheses yaz.",
+    "license": "MIT",
+    "language": "python"
+}

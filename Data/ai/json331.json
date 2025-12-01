@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef inorder_traversal_recursive(root):\n    result = []\n    def inorder(node):\n        if node:\n            inorder(node.left)\n            result.append(node.val)\n            inorder(node.right)\n    inorder(root)\n    return result\n\ndef inorder_traversal_iterative(root):\n    result = []\n    stack = []\n    curr = root\n\n    while curr or stack:\n        while curr:\n            stack.append(curr)\n            curr = curr.left\n\n        curr = stack.pop()\n        result.append(curr.val)\n        curr = curr.right\n\n    return result\n\nif __name__ == '__main__':\n    # Örnek bir binary tree oluşturma\n    root = TreeNode(1)\n    root.right = TreeNode(2)\n    root.right.left = TreeNode(3)\n\n    # Recursive inorder traversal\n    recursive_result = inorder_traversal_recursive(root)\n    print(\"Recursive Inorder Traversal:\", recursive_result)  # Output: [1, 3, 2]\n\n    # Iterative inorder traversal\n    iterative_result = inorder_traversal_iterative(root)\n    print(\"Iterative Inorder Traversal:\", iterative_result)  # Output: [1, 3, 2]",
+    "source": "test-data-ai",
+    "prompt": "Binary tree inorder traversal (iterative ve recursive) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

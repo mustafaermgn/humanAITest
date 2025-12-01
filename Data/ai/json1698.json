@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI\nfrom fastapi.middleware.cors import CORSMiddleware\n\napp = FastAPI()\n\norigins = [\n    \"http://localhost\",\n    \"http://localhost:8080\",\n    \"http://localhost:3000\",\n    # İstediğiniz diğer domainleri buraya ekleyebilirsiniz.\n    # Örneğin, tüm kaynaklara izin vermek için \"*\" kullanın (genellikle üretimde önerilmez).\n    # \"*\"\n]\n\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Merhaba Dünya\"}\n\n@app.get(\"/items/{item_id}\")\nasync def read_item(item_id: int):\n    return {\"item_id\": item_id, \"name\": f\"Item {item_id}\"}",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile CORS middleware yaz.",
+    "license": "MIT",
+    "language": "python"
+}

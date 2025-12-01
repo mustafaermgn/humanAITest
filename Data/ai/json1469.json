@@ -1,0 +1,7 @@
+{
+    "code": "def assign_mice_to_holes(mice, holes):\n    \"\"\"\n    Assigns mice to holes such that the maximum absolute difference\n    between a mouse's position and its assigned hole's position is minimized.\n\n    Args:\n        mice (list): A list of integers representing the positions of mice.\n        holes (list): A list of integers representing the positions of holes.\n\n    Returns:\n        int: The minimum possible maximum absolute difference.\n    \"\"\"\n    if not mice or not holes:\n        return 0\n\n    mice.sort()\n    holes.sort()\n\n    max_diff = 0\n    for i in range(len(mice)):\n        max_diff = max(max_diff, abs(mice[i] - holes[i]))\n\n    return max_diff\n\nif __name__ == '__main__':\n    # Example Usage:\n    mice1 = [1, 4, 3]\n    holes1 = [2, 1, 5]\n    print(assign_mice_to_holes(mice1, holes1))  # Output: 1\n\n    mice2 = [-10, -7, -9, -12, -8]\n    holes2 = [-6, -4, -4, -9, -7]\n    print(assign_mice_to_holes(mice2, holes2)) # Output: 6\n\n    mice3 = [3, 2, 1]\n    holes3 = [4, 5, 6]\n    print(assign_mice_to_holes(mice3, holes3)) # Output: 3\n\n    mice4 = []\n    holes4 = []\n    print(assign_mice_to_holes(mice4, holes4)) # Output: 0\n\n    mice5 = [1]\n    holes5 = [10]\n    print(assign_mice_to_holes(mice5, holes5)) # Output: 9",
+    "source": "test-data-ai",
+    "prompt": "Assign mice to holes problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

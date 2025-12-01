@@ -1,0 +1,7 @@
+{
+    "code": "def buyuk_harfe_cevir_ve_yaz(input_dosya_yolu: str, output_dosya_yolu: str):\n    with open(input_dosya_yolu, 'r', encoding='utf-8') as infile:\n        with open(output_dosya_yolu, 'w', encoding='utf-8') as outfile:\n            for satir in infile:\n                outfile.write(satir.upper())",
+    "source": "test-data-ai",
+    "prompt": "Bir metin dosyasını satır satır okuyan ve her satırı büyük harfe çevirerek yeni bir dosyaya yazan bir işlev yaz.",
+    "license": "MIT",
+    "language": "python"
+}

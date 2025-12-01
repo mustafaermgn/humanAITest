@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef kosaraju(graph):\n    all_nodes = set()\n    for u in graph:\n        all_nodes.add(u)\n        for v in graph[u]:\n            all_nodes.add(v)\n    \n    visited = set()\n    order_stack = []\n\n    def dfs1(node):\n        visited.add(node)\n        for neighbor in graph.get(node, []):\n            if neighbor not in visited:\n                dfs1(neighbor)\n        order_stack.append(node)\n\n    for node in all_nodes:\n        if node not in visited:\n            dfs1(node)\n\n    graph_t = collections.defaultdict(list)\n    for u in graph:\n        for v in graph[u]:\n            graph_t[v].append(u)\n    \n    for node in all_nodes:\n        if node not in graph_t:\n            graph_t[node] = []\n\n    visited = set()\n    sccs = []\n\n    def dfs2(node, current_scc):\n        visited.add(node)\n        current_scc.append(node)\n        for neighbor in graph_t.get(node, []):\n            if neighbor not in visited:\n                dfs2(neighbor, current_scc)\n\n    while order_stack:\n        node = order_stack.pop()\n        if node not in visited:\n            current_scc = []\n            dfs2(node, current_scc)\n            sccs.append(current_scc)\n    \n    return sccs",
+    "source": "test-data-ai",
+    "prompt": "Kosaraju algoritmasını strongly connected components için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

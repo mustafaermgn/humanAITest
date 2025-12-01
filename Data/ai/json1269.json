@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef _reverseList(head: ListNode) -> ListNode:\n    prev = None\n    current = head\n    while current:\n        next_node = current.next\n        current.next = prev\n        prev = current\n        current = next_node\n    return prev\n\ndef reorderList(head: ListNode) -> None:\n    if not head or not head.next:\n        return\n\n    prev_slow = None\n    slow = head\n    fast = head\n    while fast and fast.next:\n        prev_slow = slow\n        slow = slow.next\n        fast = fast.next.next\n    \n    first_half = head\n    second_half = slow\n    \n    prev_slow.next = None\n\n    second_half_reversed = _reverseList(second_half)\n    \n    l1 = first_half\n    l2 = second_half_reversed\n    \n    while l1 and l2:\n        temp1 = l1.next\n        temp2 = l2.next\n        \n        l1.next = l2\n        l2.next = temp1\n        \n        l1 = temp1\n        l2 = temp2",
+    "source": "test-data-ai",
+    "prompt": "Reorder linked list (L0→Ln→L1→Ln-1...) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

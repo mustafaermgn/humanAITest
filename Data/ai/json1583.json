@@ -1,0 +1,7 @@
+{
+    "code": "def assign_mice_to_holes(mice, holes):\n    \"\"\"\n    Assigns mice to holes to minimize the maximum distance any mouse has to travel.\n\n    Args:\n        mice (list[int]): A list of integers representing the positions of mice.\n        holes (list[int]): A list of integers representing the positions of holes.\n\n    Returns:\n        int: The minimum possible value of the maximum distance any mouse has to travel.\n    \"\"\"\n    if not mice or not holes:\n        return 0 # Or raise an error, depending on problem constraints for empty inputs\n\n    mice.sort()\n    holes.sort()\n\n    max_distance = 0\n    for i in range(len(mice)):\n        max_distance = max(max_distance, abs(mice[i] - holes[i]))\n\n    return max_distance\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    mice1 = [1, 4, 7]\n    holes1 = [3, 0, 5]\n    print(assign_mice_to_holes(mice1, holes1))\n\n    mice2 = [-10, -79, -33, -87, 16, 60, 66, 44]\n    holes2 = [-64, -5, -65, -30, 24, -6, 90, 36]\n    print(assign_mice_to_holes(mice2, holes2))\n\n    mice3 = [10, -10]\n    holes3 = [0, 6]\n    print(assign_mice_to_holes(mice3, holes3))\n\n    mice4 = [0]\n    holes4 = [100]\n    print(assign_mice_to_holes(mice4, holes4))",
+    "source": "test-data-ai",
+    "prompt": "Assign mice to holes problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

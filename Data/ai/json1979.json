@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def canPartition(self, nums: list[int]) -> bool:\n        total_sum = sum(nums)\n\n        if total_sum % 2 != 0:\n            return False\n\n        target = total_sum // 2\n\n        dp = [False] * (target + 1)\n        dp[0] = True\n\n        for num in nums:\n            for j in range(target, num - 1, -1):\n                dp[j] = dp[j] or dp[j - num]\n        \n        return dp[target]",
+    "source": "test-data-ai",
+    "prompt": "Partition problem (equal sum subsets) çözümü yaz.",
+    "license": "MIT",
+    "language": "python"
+}

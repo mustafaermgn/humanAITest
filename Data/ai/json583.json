@@ -1,0 +1,7 @@
+{
+    "code": "def find_missing_number_xor(nums):\n    \"\"\"\n    Verilen listede eksik olan sayıyı XOR tekniği kullanarak bulur.\n    Liste, 0'dan n'e kadar olan sayılardan birinin eksik olduğu n farklı sayıyı içerir.\n    Örnek: nums = [3, 0, 1] ise, n=3. Sayılar 0, 1, 2, 3 olmalıydı. Eksik olan 2'dir.\n    \"\"\"\n    n = len(nums)\n    \n    # Tüm sayıların XOR'unu hesaplayın (0'dan n'e kadar)\n    xor_all = 0\n    for i in range(n + 1):\n        xor_all ^= i\n        \n    # Verilen listedeki sayıların XOR'unu hesaplayın\n    xor_nums = 0\n    for num in nums:\n        xor_nums ^= num\n        \n    # Eksik olan sayıyı bulmak için iki XOR sonucunu karşılaştırın\n    return xor_all ^ xor_nums",
+    "source": "test-data-ai",
+    "prompt": "Missing number problemi için XOR tekniğini kullanan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def findMinArrowShots(balloons: list[list[int]]) -> int:\n    if not balloons:\n        return 0\n\n    balloons.sort(key=lambda x: x[1])\n\n    arrows = 0\n    last_shoot_point = float('-inf')\n\n    for start, end in balloons:\n        if start > last_shoot_point:\n            arrows += 1\n            last_shoot_point = end\n\n    return arrows",
+    "source": "test-data-ai",
+    "prompt": "Minimum number of arrows to burst balloons yaz.",
+    "license": "MIT",
+    "language": "python"
+}

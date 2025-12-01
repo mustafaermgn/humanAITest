@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, jsonify\nfrom flask_cors import CORS\n\napp = Flask(__name__)\nCORS(app)  # Default: Allows all origins, methods, and headers for all routes\n\n# You can also configure CORS for specific origins or routes:\n# CORS(app, resources={r\"/api/*\": {\"origins\": \"http://localhost:3000\"}})\n# CORS(app, origins=[\"http://localhost:3000\", \"http://your-frontend.com\"])\n\n\n@app.route('/')\ndef hello_world():\n    return jsonify(message=\"Hello from Flask!\", data={\"name\": \"Flask App\", \"version\": \"1.0\"})\n\n@app.route('/api/data')\ndef get_data():\n    return jsonify(data=[\n        {\"id\": 1, \"item\": \"Laptop\"},\n        {\"id\": 2, \"item\": \"Mouse\"},\n        {\"id\": 3, \"item\": \"Keyboard\"}\n    ])\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile CORS configuration yaz.",
+    "license": "MIT",
+    "language": "python"
+}

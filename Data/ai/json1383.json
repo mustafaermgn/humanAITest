@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, data):\n        new_node = Node(data)\n        if self.head is None:\n            self.head = new_node\n            return\n        \n        last = self.head\n        while last.next:\n            last = last.next\n        last.next = new_node",
+    "source": "test-data-ai",
+    "prompt": "Linked list'e sona eleman ekleme fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

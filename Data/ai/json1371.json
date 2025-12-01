@@ -1,0 +1,7 @@
+{
+    "code": "class CustomStack:\n    def __init__(self, max_size: int):\n        self.stack = []\n        self.max_size = max_size\n\n    def push(self, x: int) -> None:\n        if len(self.stack) < self.max_size:\n            self.stack.append(x)\n\n    def pop(self) -> int:\n        if not self.stack:\n            return -1\n        return self.stack.pop()\n\n    def increment(self, k: int, val: int) -> None:\n        for i in range(min(k, len(self.stack))):\n            self.stack[i] += val",
+    "source": "test-data-ai",
+    "prompt": "Design a stack with increment operation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

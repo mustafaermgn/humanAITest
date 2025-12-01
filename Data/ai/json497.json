@@ -1,0 +1,7 @@
+{
+    "code": "def tarjan_scc(num_nodes, adj_list):\n    ids = [-1] * num_nodes\n    low = [-1] * num_nodes\n    on_stack = [False] * num_nodes\n    stack = []\n    sccs = []\n    time = 0\n\n    def dfs(u):\n        nonlocal time\n        \n        ids[u] = low[u] = time\n        time += 1\n        stack.append(u)\n        on_stack[u] = True\n\n        for v in adj_list[u]:\n            if ids[v] == -1:\n                dfs(v)\n                low[u] = min(low[u], low[v])\n            elif on_stack[v]:\n                low[u] = min(low[u], ids[v])\n\n        if ids[u] == low[u]:\n            current_scc = []\n            while True:\n                node = stack.pop()\n                on_stack[node] = False\n                current_scc.append(node)\n                if node == u:\n                    break\n            sccs.append(current_scc)\n            \n    for i in range(num_nodes):\n        if ids[i] == -1:\n            dfs(i)\n            \n    return sccs",
+    "source": "test-data-ai",
+    "prompt": "Tarjan algoritmasını SCC bulmak için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

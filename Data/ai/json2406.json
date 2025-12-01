@@ -1,0 +1,7 @@
+{
+    "code": "def score_of_parentheses(s: str) -> int:\n    stack = [0]  # The stack stores the score of the current context\n    for char in s:\n        if char == '(':\n            stack.append(0)\n        else:  # char == ')'\n            current_level_score = stack.pop()\n            if current_level_score == 0:  # This means it was an empty '()'\n                score_to_add = 1\n            else:  # This means it was '(A)' where A had a score\n                score_to_add = 2 * current_level_score\n            stack[-1] += score_to_add\n    return stack[0]",
+    "source": "test-data-ai",
+    "prompt": "Score of parentheses using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

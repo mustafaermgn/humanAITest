@@ -1,0 +1,7 @@
+{
+    "code": "def job_sequencing_with_deadlines(jobs):\n    \"\"\"\n    Verilen işleri son tarihler ve karlar ile sıralar ve maksimum karı elde eder.\n\n    Parametreler:\n    jobs (list): Her bir işin adı, son tarihi ve karını içeren bir listedir.\n\n    Döndürür:\n    tuple: İşlerin dizisi ve maksimum kar.\n    \"\"\"\n    # İlk olarak, işleri kar göre azalan sırada sıralayın.\n    jobs = sorted(jobs, key=lambda x: x[2], reverse=True)\n\n    # Maksimum son tarihi bulun.\n    max_deadline = max(jobs, key=lambda x: x[1])[1]\n\n    # Boş bir zaman aralığı oluşturun.\n    slot = [None] * max_deadline\n\n    # Her işi yineliyoruz ve zaman aralığında uygun bir yuva arıyoruz.\n    result = []\n    profit = 0\n    for job in jobs:\n        # Son tarihten başlayarak, ilk uygun yuva için geriye doğru arıyoruz.\n        for j in range(min(max_deadline - 1, job[1] - 1), -1, -1):\n            if slot[j] is None:\n                slot[j] = job[0]\n                result.append(job[0])\n                profit += job[2]\n                break\n\n    return result, profit\n\n\nif __name__ == '__main__':\n    jobs = [('A', 2, 100),\n            ('B', 1, 19),\n            ('C', 2, 27),\n            ('D', 1, 25),\n            ('E', 3, 15)]\n\n    sequence, max_profit = job_sequencing_with_deadlines(jobs)\n\n    print(\"Seçilen işlerin sırası:\", sequence)\n    print(\"Maksimum elde edilen kar:\", max_profit)",
+    "source": "test-data-ai",
+    "prompt": "Job sequencing with deadlines problemini çöz.",
+    "license": "MIT",
+    "language": "python"
+}

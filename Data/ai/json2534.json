@@ -1,0 +1,7 @@
+{
+    "code": "import collections\nimport heapq\n\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    if k == len(nums):\n        return list(set(nums)) # Optimization for edge case if all elements are frequent\n\n    # 1. Count the frequency of each number\n    freq_map = collections.Counter(nums)\n\n    # 2. Use a min-heap to keep track of the k most frequent elements\n    # The heap will store tuples of (frequency, number)\n    min_heap = []\n\n    for num, freq in freq_map.items():\n        # Push the (frequency, number) tuple onto the heap\n        heapq.heappush(min_heap, (freq, num))\n        # If the heap size exceeds k, remove the element with the smallest frequency\n        if len(min_heap) > k:\n            heapq.heappop(min_heap)\n\n    # 3. Extract the elements from the heap\n    # The heap now contains the k most frequent elements\n    result = [item[1] for item in min_heap]\n\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Top k frequent elements using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

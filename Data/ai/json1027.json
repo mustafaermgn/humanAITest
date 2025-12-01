@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef sliding_window_maximum(nums: list[int], k: int) -> list[int]:\n    if not nums or k == 0:\n        return []\n\n    result = []\n    dq = collections.deque() # Stores indices\n\n    for i in range(len(nums)):\n        # Remove elements from the front of the deque that are outside the current window\n        if dq and dq[0] < i - k + 1:\n            dq.popleft()\n\n        # Remove elements from the back of the deque that are smaller than the current element\n        # This maintains the deque in decreasing order of values\n        while dq and nums[dq[-1]] <= nums[i]:\n            dq.pop()\n\n        # Add current element's index to the back of the deque\n        dq.append(i)\n\n        # If the window has fully formed, the front of the deque is the maximum\n        if i >= k - 1:\n            result.append(nums[dq[0]])\n\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Sliding window maximum using deque yaz.",
+    "license": "MIT",
+    "language": "python"
+}

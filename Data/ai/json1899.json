@@ -1,0 +1,7 @@
+{
+    "code": "import datetime\n\ndef is_valid_date_format(date_string: str, date_format: str) -> bool:\n    \"\"\"\n    Belirtilen tarih dizisinin, belirtilen tarih formatına uygun olup olmadığını kontrol eder.\n\n    Args:\n        date_string (str): Kontrol edilecek tarih dizisi.\n        date_format (str): Beklenen tarih formatı (örn: \"%Y-%m-%d\", \"%d/%m/%Y\").\n\n    Returns:\n        bool: Tarih dizisi formata uygunsa True, değilse False.\n    \"\"\"\n    try:\n        datetime.datetime.strptime(date_string, date_format)\n        return True\n    except ValueError:\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Date format validation fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

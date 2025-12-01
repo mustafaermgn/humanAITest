@@ -1,0 +1,7 @@
+{
+    "code": "def check_alert_condition(current_value, threshold, operator):\n    if operator == \">\":\n        return current_value > threshold\n    elif operator == \">=\":\n        return current_value >= threshold\n    elif operator == \"<\":\n        return current_value < threshold\n    elif operator == \"<=\":\n        return current_value <= threshold\n    elif operator == \"==\":\n        return current_value == threshold\n    elif operator == \"!=\":\n        return current_value != threshold\n    else:\n        raise ValueError(f\"Invalid operator: {operator}\")",
+    "source": "test-data-ai",
+    "prompt": "Alert trigger condition checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

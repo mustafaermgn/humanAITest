@@ -1,0 +1,7 @@
+{
+    "code": "import random; random.choice([1, 2, 3, 4, 5])",
+    "source": "test-data-ai",
+    "prompt": "Bir listenin rastgele bir elemanını döndüren tek satırlık bir ifade yaz.",
+    "license": "MIT",
+    "language": "python"
+}

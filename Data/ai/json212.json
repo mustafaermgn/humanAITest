@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\n# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef verticalOrder(root: TreeNode) -> list[list[int]]:\n    if not root:\n        return []\n\n    hd_map = collections.defaultdict(list)\n    queue = collections.deque([(root, 0)])\n    \n    min_hd = 0\n    max_hd = 0\n\n    while queue:\n        node, hd = queue.popleft()\n        \n        hd_map[hd].append(node.val)\n        \n        min_hd = min(min_hd, hd)\n        max_hd = max(max_hd, hd)\n        \n        if node.left:\n            queue.append((node.left, hd - 1))\n            \n        if node.right:\n            queue.append((node.right, hd + 1))\n            \n    result = []\n    for i in range(min_hd, max_hd + 1):\n        result.append(hd_map[i])\n        \n    return result",
+    "source": "test-data-ai",
+    "prompt": "Binary tree vertical order traversal yaz.",
+    "license": "MIT",
+    "language": "python"
+}

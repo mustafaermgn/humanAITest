@@ -1,0 +1,7 @@
+{
+    "code": "# Bir dosyaya yazma\nwith open(\"ornek.txt\", \"w\") as dosya:\n    dosya.write(\"Merhaba, bu bir örnek metindir.\\n\")\n    dosya.write(\"With ifadesi kaynak yönetimini kolaylaştırır.\")\n\n# Dosyadan okuma\nwith open(\"ornek.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodu **with** ifadesi kullanarak kaynak yönetimini iyileştirerek yeniden yaz.",
+    "license": "MIT",
+    "language": "python"
+}

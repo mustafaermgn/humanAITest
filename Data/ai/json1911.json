@@ -1,0 +1,7 @@
+{
+    "code": "from typing import Optional, List\n\n# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:\n        results = []\n        current_path = []\n\n        def dfs(node, remaining_sum):\n            if not node:\n                return\n\n            current_path.append(node.val)\n            remaining_sum -= node.val\n\n            if not node.left and not node.right and remaining_sum == 0:\n                results.append(list(current_path))\n\n            dfs(node.left, remaining_sum)\n            dfs(node.right, remaining_sum)\n\n            current_path.pop()\n\n        dfs(root, targetSum)\n        return results",
+    "source": "test-data-ai",
+    "prompt": "Path sum II (all paths) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

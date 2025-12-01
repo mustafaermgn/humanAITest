@@ -1,0 +1,7 @@
+{
+    "code": "def max_gold_collection(grid):\n    R = len(grid)\n    if R == 0:\n        return 0\n    C = len(grid[0])\n    if C == 0:\n        return 0\n\n    dp = [[0] * C for _ in range(R)]\n\n    # Initialize the first column\n    for i in range(R):\n        dp[i][0] = grid[i][0]\n\n    # Fill the dp table for subsequent columns\n    for j in range(1, C):\n        for i in range(R):\n            # Path from left\n            from_left = dp[i][j-1]\n\n            # Path from up-left\n            from_up_left = -float('inf')\n            if i > 0:\n                from_up_left = dp[i-1][j-1]\n\n            # Path from down-left\n            from_down_left = -float('inf')\n            if i < R - 1:\n                from_down_left = dp[i+1][j-1]\n\n            # Current cell's gold + max of incoming paths\n            dp[i][j] = grid[i][j] + max(from_left, from_up_left, from_down_left)\n\n    # The maximum gold will be the maximum value in the last column of the dp table\n    max_gold = -float('inf')\n    for i in range(R):\n        max_gold = max(max_gold, dp[i][C-1])\n\n    return max_gold",
+    "source": "test-data-ai",
+    "prompt": "Path with maximum gold collection yaz.",
+    "license": "MIT",
+    "language": "python"
+}

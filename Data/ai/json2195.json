@@ -1,0 +1,7 @@
+{
+    "code": "import collections\nimport heapq\n\nclass Solution:\n    def reorganizeString(self, s: str) -> str:\n        n = len(s)\n        counts = collections.Counter(s)\n        \n        pq = []\n        for char, freq in counts.items():\n            if freq > (n + 1) // 2:\n                return \"\"\n            heapq.heappush(pq, (-freq, char))\n        \n        result = []\n        prev_item = (0, '') \n        \n        while pq:\n            curr_freq, curr_char = heapq.heappop(pq)\n            \n            result.append(curr_char)\n            curr_freq += 1\n            \n            if prev_item[0] < 0:\n                heapq.heappush(pq, prev_item)\n            \n            if curr_freq < 0:\n                prev_item = (curr_freq, curr_char)\n            else:\n                prev_item = (0, '')\n        \n        return \"\".join(result) if len(result) == n else \"\"",
+    "source": "test-data-ai",
+    "prompt": "Reorganize string using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

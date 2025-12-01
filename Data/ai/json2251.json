@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport logging\nimport os\nfrom watchdog.observers import Observer\nfrom watchdog.events import FileSystemEventHandler\n\nlogging.basicConfig(level=logging.INFO,\n                    format='%(asctime)s - %(message)s',\n                    datefmt='%Y-%m-%d %H:%M:%S')\n\nclass MyHandler(FileSystemEventHandler):\n    def on_created(self, event):\n        logging.info(f\"Oluşturuldu: {event.src_path}\")\n\n    def on_deleted(self, event):\n        logging.info(f\"Silindi: {event.src_path}\")\n\n    def on_modified(self, event):\n        if not event.is_directory:\n            logging.info(f\"Değiştirildi: {event.src_path}\")\n\n    def on_moved(self, event):\n        logging.info(f\"Taşındı/Yeniden Adlandırıldı: {event.src_path} -> {event.dest_path}\")\n\nif __name__ == \"__main__\":\n    path_to_watch = os.getcwd() \n    # İzlemek istediğiniz dizin yolunu buraya yazın.\n    # Örneğin: path_to_watch = \"/Users/kullaniciadi/belgeler\"\n    \n    event_handler = MyHandler()\n    observer = Observer()\n    observer.schedule(event_handler, path_to_watch, recursive=True)\n    observer.start()\n    try:\n        while True:\n            time.sleep(1)\n    except KeyboardInterrupt:\n        observer.stop()\n    observer.join()",
+    "source": "test-data-ai",
+    "prompt": "File watcher (changes monitor) implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

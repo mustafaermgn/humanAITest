@@ -1,0 +1,7 @@
+{
+    "code": "def is_not_numeric(value):\n    try:\n        float(value)\n        return False\n    except (ValueError, TypeError):\n        return True",
+    "source": "test-data-ai",
+    "prompt": "if not numbers:",
+    "license": "MIT",
+    "language": "python"
+}

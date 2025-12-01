@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef ternary_search(f, left, right, eps=1e-7, find_max=True):\n    while right - left > eps:\n        m1 = left + (right - left) / 3\n        m2 = right - (right - left) / 3\n\n        if find_max:\n            if f(m1) < f(m2):\n                left = m1\n            else:\n                right = m2\n        else: # find_min\n            if f(m1) < f(m2):\n                right = m2\n            else:\n                left = m1\n    return (left + right) / 2",
+    "source": "test-data-ai",
+    "prompt": "Ternary Search'ü maksimum/minimum bulma için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

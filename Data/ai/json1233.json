@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, x):\n        self.val = x\n        self.next = None\n\ndef hasCycle(head: ListNode) -> bool:\n    if not head or not head.next:\n        return False\n\n    slow = head\n    fast = head\n\n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n\n        if slow == fast:\n            return True\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Linked list'te cycle detection (Floyd's algorithm) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

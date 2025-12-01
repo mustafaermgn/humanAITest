@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI, BackgroundTasks\nimport asyncio\n\napp = FastAPI()\n\nasync def write_notification(email: str, message=\"\"):\n    await asyncio.sleep(5)  # Simulate a long-running task\n    with open(\"log.txt\", mode=\"a\") as log:\n        log.write(f\"notification for {email}: {message}\\n\")\n    print(f\"Notification sent for {email} with message: {message}\")\n\n@app.post(\"/send-notification/{email}\")\nasync def send_notification(email: str, background_tasks: BackgroundTasks):\n    background_tasks.add_task(write_notification, email, message=\"Welcome to the app!\")\n    return {\"message\": \"Notification scheduled to be sent in the background\"}\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"FastAPI Background Tasks Example\"}",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile background tasks yaz.",
+    "license": "MIT",
+    "language": "python"
+}

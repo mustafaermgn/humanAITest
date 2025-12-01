@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, session, redirect, url_for, request\n\napp = Flask(__name__)\napp.config['SECRET_KEY'] = 'super_gizli_anahtar_buraya_gelmeli' # Üretim ortamında güçlü bir anahtar kullanın\n\n@app.route('/')\ndef index():\n    if 'username' in session:\n        return f'Merhaba, {session[\"username\"]}! <a href=\"/logout\">Çıkış Yap</a>'\n    return 'Giriş yapmadınız. Lütfen <a href=\"/login/ornek_kullanici\">giriş yapın</a>.'\n\n@app.route('/login/<username>')\ndef login(username):\n    session['username'] = username\n    return redirect(url_for('index'))\n\n@app.route('/logout')\ndef logout():\n    session.pop('username', None)\n    return redirect(url_for('index'))\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile session management yaz.",
+    "license": "MIT",
+    "language": "python"
+}

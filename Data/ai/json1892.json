@@ -1,0 +1,7 @@
+{
+    "code": "def count_connected_components(graph):\n    num_components = 0\n    visited = set()\n\n    def dfs(node):\n        visited.add(node)\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                dfs(neighbor)\n\n    for node in graph:\n        if node not in visited:\n            num_components += 1\n            dfs(node)\n\n    return num_components",
+    "source": "test-data-ai",
+    "prompt": "Count connected components yaz.",
+    "license": "MIT",
+    "language": "python"
+}

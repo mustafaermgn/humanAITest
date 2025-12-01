@@ -1,0 +1,7 @@
+{
+    "code": "def dosya_oku(dosya_adi):\n    try:\n        with open(dosya_adi, 'r') as f:\n            icerik = f.read()\n            print(icerik)  # Dosya içeriğini yazdır veya istediğin işlemi yap\n    except FileNotFoundError:\n        print(f\"Hata: '{dosya_adi}' adlı dosya bulunamadı.\")\n    except Exception as e:\n        print(f\"Beklenmedik bir hata oluştu: {e}\")\n\n# Örnek kullanım:\ndosya_adi = \"olmayan_dosya.txt\"  # Olmayan bir dosya adı ver\ndosya_oku(dosya_adi)\n\ndosya_adi = \"mevcut_dosya.txt\"\nwith open(dosya_adi, 'w') as f:\n    f.write(\"Bu bir deneme metnidir.\")\ndosya_oku(dosya_adi)",
+    "source": "test-data-ai",
+    "prompt": "Bir metin dosyasını okurken oluşabilecek FileNotFoundError istisnasını yakala ve kullanıcı dostu bir mesaj yazdır.",
+    "license": "MIT",
+    "language": "python"
+}

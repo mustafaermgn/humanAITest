@@ -1,0 +1,7 @@
+{
+    "code": "def find_peak_element(nums: list[int]) -> int:\n    n = len(nums)\n    if n == 1:\n        return nums[0]\n\n    low = 0\n    high = n - 1\n\n    while low < high:\n        mid = (low + high) // 2\n        \n        if nums[mid] < nums[mid + 1]:\n            # We are on an ascending slope, so a peak must be to the right.\n            low = mid + 1\n        else:\n            # We are on a descending slope or at a peak, so a peak could be mid or to its left.\n            high = mid\n            \n    # When the loop terminates, low == high, and this index points to a peak element.\n    return nums[low]",
+    "source": "test-data-ai",
+    "prompt": "Peak element (tepe eleman) bulan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

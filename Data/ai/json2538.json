@@ -1,0 +1,7 @@
+{
+    "code": "import shutil\nimport os\nfrom pathlib import Path\n\ndef archive_extract_eden(archive_path, extract_dir=None):\n    archive_path = Path(archive_path)\n\n    if not archive_path.exists():\n        raise FileNotFoundError(f\"Archive not found: {archive_path}\")\n\n    if extract_dir is None:\n        base_name = archive_path.stem\n        extract_dir = Path.cwd() / f\"{base_name}_extracted\"\n    else:\n        extract_dir = Path(extract_dir)\n\n    extract_dir.mkdir(parents=True, exist_ok=True)\n    \n    shutil.unpack_archive(str(archive_path), str(extract_dir))\n    \n    return extract_dir",
+    "source": "test-data-ai",
+    "prompt": "Archive extract eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

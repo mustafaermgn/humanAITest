@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef morris_traversal(root: TreeNode) -> list[int]:\n    result = []\n    current = root\n\n    while current:\n        if current.left is None:\n            result.append(current.val)\n            current = current.right\n        else:\n            # Find the inorder predecessor of current\n            predecessor = current.left\n            while predecessor.right is not None and predecessor.right is not current:\n                predecessor = predecessor.right\n\n            if predecessor.right is None:\n                # Make current as right child of its inorder predecessor\n                predecessor.right = current\n                current = current.left\n            else:\n                # Revert the changes made in the 'if' part to restore the original tree\n                # i.e., fix the right child of predecessor\n                predecessor.right = None\n                result.append(current.val)\n                current = current.right\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Morris traversal implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

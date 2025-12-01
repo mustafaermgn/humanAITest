@@ -1,0 +1,7 @@
+{
+    "code": "from typing import Optional\n\n# Definition for singly-linked list.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:\n        if not head or k == 1:\n            return head\n\n        dummy = ListNode(0)\n        dummy.next = head\n        \n        prev_group_tail = dummy\n        curr = head\n        \n        while True:\n            group_end = curr\n            count = 0\n            while group_end and count < k - 1:\n                group_end = group_end.next\n                count += 1\n            \n            if not group_end:\n                break \n            \n            next_group_start = group_end.next\n            \n            prev = next_group_start \n            current_node_to_reverse = curr \n            \n            for _ in range(k):\n                temp_next = current_node_to_reverse.next\n                current_node_to_reverse.next = prev\n                prev = current_node_to_reverse\n                current_node_to_reverse = temp_next\n            \n            prev_group_tail.next = prev \n            curr.next = next_group_start\n            \n            prev_group_tail = curr\n            curr = next_group_start\n        \n        return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Reverse nodes in k-group yaz.",
+    "license": "MIT",
+    "language": "python"
+}

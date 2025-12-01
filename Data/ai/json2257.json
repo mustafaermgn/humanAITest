@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for singly-linked list.\nclass ListNode:\n    def __init__(self, x):\n        self.val = x\n        self.next = None\n\nclass Solution:\n    def detectCycle(self, head: ListNode) -> ListNode:\n        if not head or not head.next:\n            return None\n\n        slow = head\n        fast = head\n\n        # Step 1: Detect if a cycle exists\n        while fast and fast.next:\n            slow = slow.next\n            fast = fast.next.next\n            if slow == fast:\n                break # Cycle detected\n        else:\n            # No cycle found (fast reached the end)\n            return None\n\n        # Step 2: Find the start of the cycle\n        # Move slow to the head. Keep fast at the meeting point.\n        # Move both one step at a time; they will meet at the cycle start.\n        slow = head\n        while slow != fast:\n            slow = slow.next\n            fast = fast.next\n        \n        return slow",
+    "source": "test-data-ai",
+    "prompt": "Linked list cycle II (find start of cycle) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

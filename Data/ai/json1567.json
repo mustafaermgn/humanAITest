@@ -1,0 +1,7 @@
+{
+    "code": "import aiohttp\nimport asyncio\n\nasync def make_async_http_request(url: str):\n    async with aiohttp.ClientSession() as session:\n        async with session.get(url) as response:\n            response.raise_for_status()  # Raises an exception for HTTP errors\n            return await response.text()\n\nif __name__ == '__main__':\n    # Örnek kullanım\n    async def main():\n        url = \"https://jsonplaceholder.typicode.com/todos/1\"\n        try:\n            response_text = await make_async_http_request(url)\n            print(f\"Response from {url}:\\n{response_text}\")\n        except aiohttp.ClientError as e:\n            print(f\"An HTTP error occurred: {e}\")\n        except Exception as e:\n            print(f\"An unexpected error occurred: {e}\")\n\n    asyncio.run(main())",
+    "source": "test-data-ai",
+    "prompt": "Async HTTP request yapan aiohttp kullanımlı fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

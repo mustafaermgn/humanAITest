@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:\n        dummy_head = ListNode(0)\n        current = dummy_head\n        carry = 0\n\n        while l1 or l2 or carry:\n            val1 = l1.val if l1 else 0\n            val2 = l2.val if l2 else 0\n\n            sum_val = val1 + val2 + carry\n            carry = sum_val // 10\n            digit = sum_val % 10\n\n            current.next = ListNode(digit)\n            current = current.next\n\n            if l1:\n                l1 = l1.next\n            if l2:\n                l2 = l2.next\n\n        return dummy_head.next",
+    "source": "test-data-ai",
+    "prompt": "Add two numbers represented as linked lists yaz.",
+    "license": "MIT",
+    "language": "python"
+}

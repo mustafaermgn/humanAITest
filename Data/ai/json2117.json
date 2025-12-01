@@ -1,0 +1,7 @@
+{
+    "code": "def has_cycle(graph):\n    visited = set()\n\n    def dfs(u, parent):\n        visited.add(u)\n\n        for v in graph.get(u, []):\n            if v == parent:\n                continue\n            if v in visited:\n                return True\n            if dfs(v, u):\n                return True\n        return False\n\n    for node in graph:\n        if node not in visited:\n            if dfs(node, None):\n                return True\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Detect cycle in undirected graph yaz.",
+    "license": "MIT",
+    "language": "python"
+}

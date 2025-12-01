@@ -1,0 +1,7 @@
+{
+    "code": "def kth_smallest(arr, k):\n    if not arr:\n        raise ValueError(\"Input array cannot be empty.\")\n    if not (1 <= k <= len(arr)):\n        raise ValueError(f\"k must be between 1 and {len(arr)}, but got {k}.\")\n\n    n = len(arr)\n\n    # Base case: if the array is small, sort it and return the k-th element\n    # A threshold like 10-25 is common.\n    if n <= 10:\n        arr.sort()\n        return arr[k - 1]\n\n    # 1. Divide arr into groups of 5 and find the median of each group\n    medians = []\n    for i in range(0, n, 5):\n        group = arr[i:min(i + 5, n)]\n        group.sort() # Sort the small group\n        medians.append(group[len(group) // 2])\n\n    # 2. Recursively find the median of these medians\n    # This result is our chosen pivot\n    pivot = kth_smallest(medians, (len(medians) + 1) // 2)\n\n    # 3. Partition the array around the pivot\n    L = [x for x in arr if x < pivot]\n    E = [x for x in arr if x == pivot]\n    G = [x for x in arr if x > pivot]\n\n    # 4. Recursively search in the appropriate partition\n    if k <= len(L):\n        return kth_smallest(L, k)\n    elif k > len(L) + len(E):\n        return kth_smallest(G, k - len(L) - len(E))\n    else: # k is within the 'equal to pivot' partition\n        return pivot",
+    "source": "test-data-ai",
+    "prompt": "Median of medians algoritmasını yaz.",
+    "license": "MIT",
+    "language": "python"
+}

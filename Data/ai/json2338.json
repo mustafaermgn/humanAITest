@@ -1,0 +1,7 @@
+{
+    "code": "import csv\n\ndef read_csv_to_list(filepath):\n    \"\"\"\n    Belirtilen CSV dosyasını okur ve tüm verileri satır satır bir liste içinde döndürür.\n\n    Args:\n        filepath (str): CSV dosyasının yolu.\n\n    Returns:\n        list: Her iç listenin bir satırı temsil ettiği, satır listelerinden oluşan bir liste.\n              Dosya bulunamazsa veya boşsa boş bir liste döndürür.\n    \"\"\"\n    data = []\n    try:\n        with open(filepath, 'r', newline='', encoding='utf-8') as csvfile:\n            csv_reader = csv.reader(csvfile)\n            for row in csv_reader:\n                data.append(row)\n    except FileNotFoundError:\n        print(f\"Hata: Dosya bulunamadı: {filepath}\")\n    except Exception as e:\n        print(f\"CSV dosyasını okurken bir hata oluştu: {e}\")\n    return data",
+    "source": "test-data-ai",
+    "prompt": "CSV dosyasını okuyan ve tüm verileri satır satır bir liste içinde döndüren bir fonksiyon oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

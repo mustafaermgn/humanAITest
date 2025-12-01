@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef find_winner_circular_game(participants, k):\n    player_queue = collections.deque(participants)\n\n    while len(player_queue) > 1:\n        player_queue.rotate(-(k - 1))\n        player_queue.popleft()\n\n    return player_queue[0]",
+    "source": "test-data-ai",
+    "prompt": "Find the winner of circular game using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef handle_api_pagination(base_url, initial_params=None, page_param_name='page', page_size_param_name='page_size', default_page_size=100, data_key='data'):\n    all_items = []\n    current_page = 1\n    \n    params = initial_params.copy() if initial_params else {}\n    params[page_size_param_name] = default_page_size\n\n    while True:\n        params[page_param_name] = current_page\n        \n        try:\n            response = requests.get(base_url, params=params)\n            response.raise_for_status() \n            \n            page_data = response.json()\n            \n            items_on_page = page_data.get(data_key)\n            \n            if not isinstance(items_on_page, list):\n                break \n            \n            all_items.extend(items_on_page)\n            \n            if len(items_on_page) < default_page_size:\n                break\n            \n            current_page += 1\n            \n        except requests.exceptions.RequestException:\n            break\n        except ValueError: \n            break\n            \n    return all_items",
+    "source": "test-data-ai",
+    "prompt": "API response pagination handle eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

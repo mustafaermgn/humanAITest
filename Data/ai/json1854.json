@@ -1,0 +1,7 @@
+{
+    "code": "def findMedianSortedArrays(nums1: list[int], nums2: list[int]) -> float:\n    if len(nums1) > len(nums2):\n        nums1, nums2 = nums2, nums1\n\n    m, n = len(nums1), len(nums2)\n    total_len = m + n\n    half_len = (total_len + 1) // 2\n\n    low, high = 0, m\n\n    while low <= high:\n        i = (low + high) // 2\n        j = half_len - i\n\n        L1 = -float('inf') if i == 0 else nums1[i - 1]\n        R1 = float('inf') if i == m else nums1[i]\n        \n        L2 = -float('inf') if j == 0 else nums2[j - 1]\n        R2 = float('inf') if j == n else nums2[j]\n\n        if L1 <= R2 and L2 <= R1:\n            if total_len % 2 == 1:\n                return float(max(L1, L2))\n            else:\n                max_left = max(L1, L2)\n                min_right = min(R1, R2)\n                return (max_left + min_right) / 2.0\n        elif L1 > R2:\n            high = i - 1\n        else:\n            low = i + 1\n    \n    return -1.0",
+    "source": "test-data-ai",
+    "prompt": "Median of two sorted arrays bulan optimal algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

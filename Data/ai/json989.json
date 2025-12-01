@@ -1,0 +1,7 @@
+{
+    "code": "class Stack:\n    def __init__(self):\n        self._items = []\n\n    def push(self, item):\n        self._items.append(item)\n\n    def pop(self):\n        if self.is_empty():\n            raise IndexError(\"Stack is empty\")\n        return self._items.pop()\n\n    def peek(self):\n        if self.is_empty():\n            raise IndexError(\"Stack is empty\")\n        return self._items[-1]\n\n    def is_empty(self):\n        return len(self._items) == 0\n\n    def size(self):\n        return len(self._items)\n\n    def __len__(self):\n        return self.size()\n\n    def __str__(self):\n        return str(self._items)\n\n    def __repr__(self):\n        return f\"Stack({self._items})\"",
+    "source": "test-data-ai",
+    "prompt": "Python listesi kullanarak stack implementation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

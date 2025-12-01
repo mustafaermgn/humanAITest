@@ -1,0 +1,7 @@
+{
+    "code": "def find_common_characters(s1: str, s2: str) -> list[str]:\n    \"\"\"\n    Verilen iki string arasındaki ortak karakterleri bir hash map (sözlük) kullanarak bulur.\n\n    Args:\n        s1: Birinci string.\n        s2: İkinci string.\n\n    Returns:\n        Her iki stringde de bulunan karakterlerin bir listesi.\n        Karakterler listede benzersiz olacaktır.\n    \"\"\"\n    # Birinci stringdeki karakterlerin varlığını kontrol etmek için bir hash map (sözlük) oluştur.\n    # Anahtarlar karakterler, değerler ise sadece varlığı belirtmek için kullanılır (örneğin True).\n    char_presence_s1 = {}\n    for char in s1:\n        char_presence_s1[char] = True\n\n    # Ortak karakterleri depolamak için bir set (küme) kullanıyoruz.\n    # Setler, öğelerin benzersizliğini ve hızlı arama/ekleme işlemlerini sağlar,\n    # dahili olarak hash yapısı kullanır.\n    common_chars_set = set()\n\n    # İkinci stringdeki her karakteri kontrol et.\n    for char in s2:\n        # Eğer karakter birinci stringin hash map'inde varsa, bu ortak bir karakterdir.\n        if char in char_presence_s1:\n            common_chars_set.add(char)\n            \n    # Ortak karakterler kümesini bir listeye dönüştürerek döndür.\n    return list(common_chars_set)",
+    "source": "test-data-ai",
+    "prompt": "Find common characters using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

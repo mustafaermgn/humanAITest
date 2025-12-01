@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\ndef lastStoneWeight(stones: list[int]) -> int:\n    max_heap = []\n    for stone in stones:\n        heapq.heappush(max_heap, -stone)  # Simulate max-heap by storing negative values\n\n    while len(max_heap) > 1:\n        y = -heapq.heappop(max_heap)  # Largest stone\n        x = -heapq.heappop(max_heap)  # Second largest stone\n\n        if y != x:\n            new_stone = y - x\n            heapq.heappush(max_heap, -new_stone)\n\n    return -heapq.heappop(max_heap) if max_heap else 0",
+    "source": "test-data-ai",
+    "prompt": "Last stone weight using max heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

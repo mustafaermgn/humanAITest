@@ -1,0 +1,7 @@
+{
+    "code": "import functools\n\nclass lazy_property:\n    def __init__(self, func):\n        self.func = func\n        functools.update_wrapper(self, func)\n\n    def __get__(self, obj, cls):\n        if obj is None:\n            return self\n        \n        value = self.func(obj)\n        obj.__dict__[self.func.__name__] = value\n        return value",
+    "source": "test-data-ai",
+    "prompt": "Lazy property decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

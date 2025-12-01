@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def minFallingPathSum(self, matrix: list[list[int]]) -> int:\n        n = len(matrix)\n        if n == 0:\n            return 0\n        \n        # We can modify the matrix in-place to store DP values, saving space.\n        # matrix[r][c] will store the minimum falling path sum to reach that cell.\n\n        for r in range(1, n):\n            for c in range(n):\n                # Calculate the minimum from the eligible parents in the previous row (r-1)\n                min_prev_row_val = float('inf')\n\n                # Parent from top-left (matrix[r-1][c-1])\n                if c > 0:\n                    min_prev_row_val = min(min_prev_row_val, matrix[r-1][c-1])\n                \n                # Parent from top (matrix[r-1][c])\n                min_prev_row_val = min(min_prev_row_val, matrix[r-1][c])\n\n                # Parent from top-right (matrix[r-1][c+1])\n                if c < n - 1:\n                    min_prev_row_val = min(min_prev_row_val, matrix[r-1][c+1])\n                \n                # Update the current cell with the minimum falling path sum to reach it\n                matrix[r][c] += min_prev_row_val\n        \n        # The minimum falling path sum will be the minimum value in the last row of the modified matrix\n        return min(matrix[n-1])",
+    "source": "test-data-ai",
+    "prompt": "Minimum falling path sum hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

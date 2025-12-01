@@ -1,0 +1,7 @@
+{
+    "code": "def find_word_in_board(board, word):\n    rows = len(board)\n    if rows == 0:\n        return False\n    cols = len(board[0])\n    if cols == 0:\n        return False\n    if not word:\n        return False\n    \n    word_len = len(word)\n\n    directions = [\n        (0, 1), (0, -1),  # Horizontal\n        (1, 0), (-1, 0),  # Vertical\n        (1, 1), (1, -1),  # Diagonal\n        (-1, 1), (-1, -1) # Anti-Diagonal\n    ]\n\n    def _check_direction(r_start, c_start, dr, dc):\n        for i in range(word_len):\n            current_r = r_start + i * dr\n            current_c = c_start + i * dc\n\n            if not (0 <= current_r < rows and 0 <= current_c < cols):\n                return False\n\n            if board[current_r][current_c] != word[i]:\n                return False\n        return True\n\n    for r in range(rows):\n        for c in range(cols):\n            if board[r][c] == word[0]:\n                for dr, dc in directions:\n                    if _check_direction(r, c, dr, dc):\n                        return True\n\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Word search in 2D board yaz.",
+    "license": "MIT",
+    "language": "python"
+}

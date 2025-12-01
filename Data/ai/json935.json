@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for singly-linked list.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def swapPairs(self, head: ListNode) -> ListNode:\n        if not head or not head.next:\n            return head\n\n        dummy = ListNode(0)\n        dummy.next = head\n\n        prev = dummy\n        current = head\n\n        while current and current.next:\n            first_node = current\n            second_node = current.next\n\n            next_pair_start = second_node.next\n\n            prev.next = second_node\n            second_node.next = first_node\n            first_node.next = next_pair_start\n\n            prev = first_node\n            current = next_pair_start\n\n        return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Pairwise swap nodes yaz.",
+    "license": "MIT",
+    "language": "python"
+}

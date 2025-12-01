@@ -1,0 +1,7 @@
+{
+    "code": "def meta_binary_search(predicate, start_val=0):\n    if predicate(start_val):\n        return start_val\n\n    low = start_val\n    high = start_val + 1\n\n    while not predicate(high):\n        low = high\n        high *= 2\n\n    ans = high\n    \n    while low <= high:\n        mid = low + (high - low) // 2\n        if predicate(mid):\n            ans = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n            \n    return ans",
+    "source": "test-data-ai",
+    "prompt": "Meta binary search (one-sided binary search) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

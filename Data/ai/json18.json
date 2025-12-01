@@ -1,0 +1,7 @@
+{
+    "code": "def insertSorted(stack, element):\n    \"\"\"\n    Belirli bir elemanı sıralanmış bir yığına doğru yerine ekler.\n    Yığın en küçük elemanın altta olduğu artan düzende sıralanır.\n    \"\"\"\n    # Yığın boşsa veya eleman yığının en üstündeki elemandan büyük veya eşitse,\n    # elemanı doğrudan ekleyebiliriz.\n    if not stack or element >= stack[-1]:\n        stack.append(element)\n    else:\n        # Yığının en üstündeki elemanı çıkar\n        temp = stack.pop()\n        # Elemanı kalan yığına tekrar sıralı bir şekilde ekle\n        insertSorted(stack, element)\n        # Çıkardığımız elemanı geri ekle\n        stack.append(temp)\n\ndef sortStack(stack):\n    \"\"\"\n    Verilen bir yığını özyinelemeli olarak sıralar.\n    Yığın en küçük elemanın altta olduğu artan düzende sıralanır.\n    \"\"\"\n    # Yığın boşsa, zaten sıralıdır.\n    if not stack:\n        return\n\n    # Yığının en üstündeki elemanı çıkar\n    temp = stack.pop()\n\n    # Kalan yığını özyinelemeli olarak sırala\n    sortStack(stack)\n\n    # Çıkarılan elemanı şimdi sıralanmış yığına doğru yerine ekle\n    insertSorted(stack, temp)",
+    "source": "test-data-ai",
+    "prompt": "Sort a stack using recursion yaz.",
+    "license": "MIT",
+    "language": "python"
+}

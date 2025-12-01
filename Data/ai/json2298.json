@@ -1,0 +1,7 @@
+{
+    "code": "def find_rightmost_set_bit_position(n: int) -> int:\n    if n == 0:\n        return 0\n    \n    rightmost_bit_value = n & -n\n    \n    return rightmost_bit_value.bit_length()",
+    "source": "test-data-ai",
+    "prompt": "Find position of rightmost set bit yaz.",
+    "license": "MIT",
+    "language": "python"
+}

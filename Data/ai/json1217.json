@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef calculate_max_train_stops(\n    num_platforms: int,\n    avg_stop_duration_minutes: int,\n    turnaround_time_minutes: int,\n    operating_hours_per_day: int\n) -> int:\n    if not (num_platforms > 0 and avg_stop_duration_minutes > 0 and operating_hours_per_day > 0 and turnaround_time_minutes >= 0):\n        raise ValueError(\"Input parameters must be positive. turnaround_time_minutes can be zero or positive.\")\n\n    cycle_time_minutes = avg_stop_duration_minutes + turnaround_time_minutes\n    total_operating_minutes_per_day = operating_hours_per_day * 60\n    \n    cycles_per_platform_per_day = total_operating_minutes_per_day / cycle_time_minutes\n    max_trains = math.floor(cycles_per_platform_per_day * num_platforms)\n    \n    return max_trains",
+    "source": "test-data-ai",
+    "prompt": "Maximum trains for which stoppage can be provided yaz.",
+    "license": "MIT",
+    "language": "python"
+}

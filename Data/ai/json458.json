@@ -1,0 +1,7 @@
+{
+    "code": "def custom_sort_string(order, s):\n    \"\"\"\n    Custom sort string using hash map.\n\n    Args:\n        order (str): The string that defines the order of characters.\n        s (str): The string to be sorted.\n\n    Returns:\n        str: The custom sorted string.\n    \"\"\"\n\n    char_map = {}\n    for char in s:\n        char_map[char] = char_map.get(char, 0) + 1\n\n    result = \"\"\n    for char in order:\n        if char in char_map:\n            result += char * char_map[char]\n            del char_map[char]\n\n    for char, count in char_map.items():\n        result += char * count\n\n    return result\n\n\nif __name__ == '__main__':\n    order = \"cba\"\n    s = \"abcd\"\n    print(custom_sort_string(order, s))  # Output: cbad\n\n    order = \"cbafg\"\n    s = \"abcd\"\n    print(custom_sort_string(order, s))  # Output: cbad\n\n    order = \"exv\"\n    s = \"xwvee\"\n    print(custom_sort_string(order, s)) # Output: exvew\n\n    order = \"kqep\"\n    s = \"pekeq\"\n    print(custom_sort_string(order, s)) # Output: kqeep",
+    "source": "test-data-ai",
+    "prompt": "Custom sort string using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

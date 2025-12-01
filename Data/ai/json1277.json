@@ -1,0 +1,7 @@
+{
+    "code": "import requests\nimport os\nimport mimetypes\n\ndef upload_file(url, file_path, file_field_name='file', data=None):\n    filename = os.path.basename(file_path)\n    content_type, _ = mimetypes.guess_type(file_path)\n    if content_type is None:\n        content_type = 'application/octet-stream'\n\n    with open(file_path, 'rb') as f:\n        files = {file_field_name: (filename, f, content_type)}\n        response = requests.post(url, files=files, data=data)\n        return response",
+    "source": "test-data-ai",
+    "prompt": "Multipart/form-data file upload yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

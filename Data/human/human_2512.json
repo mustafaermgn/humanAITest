@@ -1,0 +1,7 @@
+{
+    "code": "class DictionaryApp(App):\n    \"\"\"Searches a dictionary API as-you-type.\"\"\"\n\n    CSS_PATH = \"dictionary.tcss\"\n\n    def compose(self) -> ComposeResult:\n        yield Input(placeholder=\"Search for a word\")\n        yield VerticalScroll(Static(id=\"results\"), id=\"results-container\")\n\n    async def on_input_changed(self, message: Input.Changed) -> None:\n        \"\"\"A coroutine to handle a text changed message.\"\"\"\n        if message.value:\n            # Look up the word in the background\n            asyncio.create_task(self.lookup_word(message.value))\n        else:\n            # Clear the results\n            self.query_one(\"#results\", Static).update()\n\n    async def lookup_word(self, word: str) -> None:\n        \"\"\"Looks up a word.\"\"\"\n        url = f\"https://api.dictionaryapi.dev/api/v2/entries/en/{word}\"\n        async with httpx.AsyncClient() as client:\n            results = (await client.get(url)).text\n\n        if word == self.query_one(Input).value:\n            self.query_one(\"#results\", Static).update(JSON(results))",
+    "source": "github_repo:Textualize/textual",
+    "file": "docs/examples/events/dictionary.py",
+    "license": "MIT",
+    "language": "python"
+}

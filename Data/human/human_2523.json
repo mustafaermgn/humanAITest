@@ -1,0 +1,7 @@
+{
+    "code": "def __call__(self, job_type=None, dryrun=False):\n        if job_type is not None:\n            self.job_key = job_type.split(\"_\")[0]\n        print(\"[JobLauncher] job_key\", self.job_key)\n        job = JobLauncher.JOB_CONFIG[self.job_key](\n            self.yaml_file, job_type=job_type, dryrun=dryrun)\n        return job.submit()",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/locallaunch.py",
+    "license": "MIT",
+    "language": "python"
+}

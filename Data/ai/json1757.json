@@ -1,0 +1,7 @@
+{
+    "code": "def count_inversions(arr):\n    if not arr or len(arr) < 2:\n        return 0\n    \n    return _merge_sort_and_count(arr, 0, len(arr) - 1)\n\ndef _merge_sort_and_count(arr, low, high):\n    inversions = 0\n    if low < high:\n        mid = (low + high) // 2\n        inversions += _merge_sort_and_count(arr, low, mid)\n        inversions += _merge_sort_and_count(arr, mid + 1, high)\n        inversions += _merge_and_count_split_inversions(arr, low, mid, high)\n    return inversions\n\ndef _merge_and_count_split_inversions(arr, low, mid, high):\n    temp = [0] * (high - low + 1) \n    \n    i, j, k = low, mid + 1, 0 \n    inversions = 0\n\n    while i <= mid and j <= high:\n        if arr[i] <= arr[j]:\n            temp[k] = arr[i]\n            i += 1\n        else:\n            temp[k] = arr[j]\n            j += 1\n            inversions += (mid - i + 1) \n        k += 1\n\n    while i <= mid:\n        temp[k] = arr[i]\n        i += 1\n        k += 1\n\n    while j <= high:\n        temp[k] = arr[j]\n        j += 1\n        k += 1\n    \n    for x in range(low, high + 1):\n        arr[x] = temp[x - low]\n            \n    return inversions",
+    "source": "test-data-ai",
+    "prompt": "Count inversions in an array yaz.",
+    "license": "MIT",
+    "language": "python"
+}

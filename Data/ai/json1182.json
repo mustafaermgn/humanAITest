@@ -1,0 +1,7 @@
+{
+    "code": "def find_single_non_repeated(arr):\n    \"\"\"\n    Bir dizideki tek bir tekrarsız sayıyı XOR ile bulur.\n\n    Args:\n        arr (list): Tek bir sayının tekrarsız olduğu ve diğer tüm sayıların tam olarak iki kez tekrarlandığı tamsayılar listesi.\n\n    Returns:\n        int: Dizideki tekrarsız sayı.\n    \"\"\"\n    single_number = 0\n    for num in arr:\n        single_number ^= num\n    return single_number\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    arr1 = [2, 3, 2, 4, 3]\n    print(find_single_non_repeated(arr1)) # Çıktı: 4\n\n    arr2 = [1, 1, 2, 3, 3, 4, 4]\n    print(find_single_non_repeated(arr2)) # Çıktı: 2\n\n    arr3 = [7]\n    print(find_single_non_repeated(arr3)) # Çıktı: 7\n\n    arr4 = [10, 5, 10, 5, 12]\n    print(find_single_non_repeated(arr4)) # Çıktı: 12",
+    "source": "test-data-ai",
+    "prompt": "Bir dizideki tek bir tekrarsız sayıyı XOR ile bul.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from PIL import Image\n\ndef validate_image_dimensions(image_path, min_width=None, max_width=None, min_height=None, max_height=None):\n    \"\"\"\n    Validates the dimensions of an image file against specified minimum and maximum values.\n\n    Args:\n        image_path (str): The path to the image file.\n        min_width (int, optional): The minimum allowed width. Defaults to None.\n        max_width (int, optional): The maximum allowed width. Defaults to None.\n        min_height (int, optional): The minimum allowed height. Defaults to None.\n        max_height (int, optional): The maximum allowed height. Defaults to None.\n\n    Returns:\n        bool: True if the image dimensions are valid, False otherwise (including file errors).\n    \"\"\"\n    try:\n        with Image.open(image_path) as img:\n            width, height = img.size\n\n            if min_width is not None and width < min_width:\n                return False\n            if max_width is not None and width > max_width:\n                return False\n            if min_height is not None and height < min_height:\n                return False\n            if max_height is not None and height > max_height:\n                return False\n            \n            return True\n    except FileNotFoundError:\n        return False\n    except Image.UnidentifiedImageError:\n        return False\n    except Exception:\n        return False",
+    "source": "test-data-ai",
+    "prompt": "Image dimensions validator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

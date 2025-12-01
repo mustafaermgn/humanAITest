@@ -1,0 +1,7 @@
+{
+    "code": "from typing import List, Optional\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef buildTree(preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:\n    if not preorder or not inorder:\n        return None\n\n    # The first element in preorder traversal is always the root of the current subtree\n    root_val = preorder[0]\n    root = TreeNode(root_val)\n\n    # Find the index of the root value in the inorder traversal\n    # This index splits the inorder array into left and right subtrees\n    in_idx = inorder.index(root_val)\n\n    # Recursively build the left subtree\n    # The left part of inorder is inorder[0:in_idx]\n    # The corresponding preorder part for the left subtree will be preorder[1 : 1 + len(left_inorder)]\n    root.left = buildTree(preorder[1 : 1 + in_idx], inorder[0:in_idx])\n\n    # Recursively build the right subtree\n    # The right part of inorder is inorder[in_idx+1:]\n    # The corresponding preorder part for the right subtree will be preorder[1 + len(left_inorder) : ]\n    root.right = buildTree(preorder[1 + in_idx :], inorder[in_idx+1:])\n\n    return root",
+    "source": "test-data-ai",
+    "prompt": "Construct binary tree from preorder and inorder yaz.",
+    "license": "MIT",
+    "language": "python"
+}

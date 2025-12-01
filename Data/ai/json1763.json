@@ -1,0 +1,7 @@
+{
+    "code": "def remove_edge(graph, u, v):\n    \"\"\"\n    Verilen bir grafikten belirtilen kenarı kaldırır.\n    Graf, bitişiklik listesi olarak bir sözlükle temsil edilir.\n    Bu fonksiyon, kenarı (u, v) ve (v, u) olarak kaldırarak yönlendirilmemiş bir grafiği işler.\n    Kenar veya düğümler mevcut değilse sessizce hiçbir işlem yapmaz.\n\n    Args:\n        graph (dict): Düğümleri anahtar, komşular listesini değer olarak içeren grafik sözlüğü.\n                      Örn: {1: [2, 3], 2: [1, 4], 3: [1], 4: [2]}\n        u: Kaldırılacak kenarın ilk düğümü.\n        v: Kaldırılacak kenarın ikinci düğümü.\n    \"\"\"\n    if u in graph and v in graph[u]:\n        graph[u].remove(v)\n    \n    if v in graph and u in graph[v]:\n        graph[v].remove(u)",
+    "source": "test-data-ai",
+    "prompt": "Remove edge from graph yaz.",
+    "license": "MIT",
+    "language": "python"
+}

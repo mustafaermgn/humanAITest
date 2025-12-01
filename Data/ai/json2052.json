@@ -1,0 +1,7 @@
+{
+    "code": "min_val, max_val = min([10, 5, 20, 15, 8, 30, 2]), max([10, 5, 20, 15, 8, 30, 2])",
+    "source": "test-data-ai",
+    "prompt": "Bir listedeki en büyük ve en küçük sayıyı aynı anda bulan tek satırlık kodu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

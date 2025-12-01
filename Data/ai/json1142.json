@@ -1,0 +1,7 @@
+{
+    "code": "def find_missing_number_xor(nums):\n    n = len(nums)\n    xor_sum = 0\n\n    # XOR all numbers in the expected range [0, n]\n    for i in range(n + 1):\n        xor_sum ^= i\n\n    # XOR all numbers present in the list\n    for num in nums:\n        xor_sum ^= num\n\n    return xor_sum",
+    "source": "test-data-ai",
+    "prompt": "Missing number'ı XOR ile bul.",
+    "license": "MIT",
+    "language": "python"
+}

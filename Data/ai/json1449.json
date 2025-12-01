@@ -1,0 +1,7 @@
+{
+    "code": "import html\n\ndef encode_html_entities(text):\n    return html.escape(text)\n\ndef decode_html_entities(text):\n    return html.unescape(text)\n\nif __name__ == '__main__':\n    # Örnek Kullanım\n    original_text = \"Bu bir <deneme> metnidir & özel karakterler içerir: \\\"tırnak\\\" ve 'apostrof'.\"\n\n    encoded_text = encode_html_entities(original_text)\n    print(\"Orijinal Metin:\", original_text)\n    print(\"Kodlanmış Metin:\", encoded_text)\n\n    decoded_text = decode_html_entities(encoded_text)\n    print(\"Çözülmüş Metin:\", decoded_text)\n\n    # Farklı bir örnek\n    html_with_entities = \"Bu bir &lt;b&gt;kalın&lt;/b&gt; metin ve &#38; sembolü.\"\n    decoded_from_html = decode_html_entities(html_with_entities)\n    print(\"HTML Varlıkları İçeren Metin:\", html_with_entities)\n    print(\"Çözülmüş Metin (ikinci örnek):\", decoded_from_html)",
+    "source": "test-data-ai",
+    "prompt": "HTML entities encode/decode yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

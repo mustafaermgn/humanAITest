@@ -1,0 +1,7 @@
+{
+    "code": "def longest_substring_with_at_most_k_distinct_characters(s: str, k: int) -> int:\n    \"\"\"\n    Verilen bir dizgedeki (string) en fazla k farklı karaktere sahip en uzun alt dizgeyi bulur.\n\n    Args:\n        s: Giriş dizgesi.\n        k: İzin verilen maksimum farklı karakter sayısı.\n\n    Returns:\n        En uzun alt dizgenin uzunluğu.\n    \"\"\"\n    if k == 0:\n        return 0\n    \n    window_start = 0\n    max_length = 0\n    char_frequency = {}\n\n    for window_end in range(len(s)):\n        right_char = s[window_end]\n        char_frequency[right_char] = char_frequency.get(right_char, 0) + 1\n\n        while len(char_frequency) > k:\n            left_char = s[window_start]\n            char_frequency[left_char] -= 1\n            if char_frequency[left_char] == 0:\n                del char_frequency[left_char]\n            window_start += 1\n        \n        max_length = max(max_length, window_end - window_start + 1)\n    \n    return max_length",
+    "source": "test-data-ai",
+    "prompt": "Longest substring with at most k distinct characters yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef bwt_encode(s):\n    s_modified = s + '$'\n    n = len(s_modified)\n\n    rotations = [s_modified[i:] + s_modified[:i] for i in range(n)]\n    sorted_rotations = sorted(rotations)\n\n    bwt_output = \"\".join(r[-1] for r in sorted_rotations)\n    original_index = sorted_rotations.index(s_modified)\n\n    return bwt_output, original_index\n\ndef bwt_decode(bwt_output, original_index):\n    L = bwt_output\n    n = len(L)\n\n    F = \"\".join(sorted(L))\n\n    char_counts = collections.defaultdict(int)\n    for char_f in F:\n        char_counts[char_f] += 1\n    \n    sorted_chars = sorted(char_counts.keys())\n    first_occurrence_in_F = {}\n    current_offset = 0\n    for char_key in sorted_chars:\n        first_occurrence_in_F[char_key] = current_offset\n        current_offset += char_counts[char_key]\n\n    LF = [0] * n\n    rank_in_L = collections.defaultdict(int)\n    \n    for i in range(n):\n        char_L = L[i]\n        rank_in_L[char_L] += 1\n        \n        target_F_idx = first_occurrence_in_F[char_L] + rank_in_L[char_L] - 1\n        LF[target_F_idx] = i\n\n    result = []\n    current_row_idx = original_index\n    for _ in range(n):\n        char = F[current_row_idx]\n        result.append(char)\n        current_row_idx = LF[current_row_idx]\n    \n    decoded_string = \"\".join(result)\n    \n    return decoded_string.rstrip('$')",
+    "source": "test-data-ai",
+    "prompt": "Burrows-Wheeler transform yaz.",
+    "license": "MIT",
+    "language": "python"
+}

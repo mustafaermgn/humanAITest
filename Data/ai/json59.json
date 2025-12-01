@@ -1,0 +1,7 @@
+{
+    "code": "class IncrementalStack:\n    def __init__(self):\n        self.stack = []\n\n    def push(self, val):\n        self.stack.append(val)\n\n    def pop(self):\n        if not self.is_empty():\n            return self.stack.pop()\n        else:\n            return None\n\n    def peek(self):\n        if not self.is_empty():\n            return self.stack[-1]\n        else:\n            return None\n\n    def is_empty(self):\n        return len(self.stack) == 0\n\n    def size(self):\n        return len(self.stack)\n\n    def increment(self, k, val):\n        if k > len(self.stack):\n            for i in range(len(self.stack)):\n                self.stack[i] += val\n        else:\n            for i in range(k):\n                self.stack[i] += val\n\nif __name__ == '__main__':\n    stack = IncrementalStack()\n    stack.push(1)\n    stack.push(2)\n    stack.push(3)\n\n    print(\"Initial stack:\", stack.stack)\n\n    stack.increment(2, 10)\n    print(\"Stack after increment(2, 10):\", stack.stack)\n\n    stack.increment(3, 5)\n    print(\"Stack after increment(3, 5):\", stack.stack)\n\n    print(\"Popped:\", stack.pop())\n    print(\"Stack after pop:\", stack.stack)\n\n    print(\"Peek:\", stack.peek())",
+    "source": "test-data-ai",
+    "prompt": "Design a stack with increment operation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

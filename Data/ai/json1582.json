@@ -1,0 +1,7 @@
+{
+    "code": "def power(x: float, n: int) -> float:\n    \"\"\"\n    Computes x raised to the power of n in O(log n) time complexity.\n\n    Args:\n        x: The base number (float).\n        n: The exponent (integer).\n\n    Returns:\n        The result of x^n (float).\n    \"\"\"\n    if n == 0:\n        return 1.0\n\n    if n < 0:\n        x = 1.0 / x\n        n = -n\n\n    result = 1.0\n    while n > 0:\n        if n % 2 == 1:  # If n is odd\n            result *= x\n        x *= x        # Square x\n        n //= 2       # Halve n\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Power function (x^n) için O(log n) algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

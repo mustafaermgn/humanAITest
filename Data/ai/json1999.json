@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef partition(head: ListNode, x: int) -> ListNode:\n    less_head = ListNode(0)\n    less_tail = less_head\n\n    greater_equal_head = ListNode(0)\n    greater_equal_tail = greater_equal_head\n\n    current = head\n    while current:\n        next_node = current.next # Save next node before altering current.next\n\n        if current.val < x:\n            less_tail.next = current\n            less_tail = current\n        else:\n            greater_equal_tail.next = current\n            greater_equal_tail = current\n        \n        current.next = None # Disconnect current node from its original list\n        current = next_node\n\n    less_tail.next = greater_equal_head.next\n\n    return less_head.next",
+    "source": "test-data-ai",
+    "prompt": "Partition linked list around a value yaz.",
+    "license": "MIT",
+    "language": "python"
+}

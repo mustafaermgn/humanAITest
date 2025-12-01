@@ -1,0 +1,7 @@
+{
+    "code": "def set_bit(num: int, i: int) -> int:\n    \"\"\"\n    Belirli bir sayının i'nci bitini 1 (set) yapar.\n    \"\"\"\n    return num | (1 << i)\n\ndef clear_bit(num: int, i: int) -> int:\n    \"\"\"\n    Belirli bir sayının i'nci bitini 0 (clear) yapar.\n    \"\"\"\n    return num & (~(1 << i))\n\ndef toggle_bit(num: int, i: int) -> int:\n    \"\"\"\n    Belirli bir sayının i'nci bitini tersine çevirir (0 ise 1, 1 ise 0 yapar).\n    \"\"\"\n    return num ^ (1 << i)",
+    "source": "test-data-ai",
+    "prompt": "Bir sayının i'nci bitini set/clear/toggle eden fonksiyonlar yaz.",
+    "license": "MIT",
+    "language": "python"
+}

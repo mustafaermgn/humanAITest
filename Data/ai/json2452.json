@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass Solution:\n    def kWeakestRows(self, mat: list[list[int]], k: int) -> list[int]:\n        rows_data = []\n        for i, row in enumerate(mat):\n            strength = sum(row)\n            rows_data.append((strength, i))\n        \n        weakest_rows_tuples = heapq.nsmallest(k, rows_data)\n        \n        result = [index for strength, index in weakest_rows_tuples]\n        \n        return result",
+    "source": "test-data-ai",
+    "prompt": "K weakest rows using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

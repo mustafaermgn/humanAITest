@@ -1,0 +1,7 @@
+{
+    "code": "def azalt_kenar(n, kenarlar):\n    \"\"\"\n    Bir grafı travers edilebilir tutmak için kenar sayısını en aza indirir.\n\n    Args:\n        n: Grafın köşe sayısı.\n        kenarlar: Kenarların listesi, burada her kenar bir tuple (u, v) ile temsil edilir.\n\n    Returns:\n        Travers edilebilir grafı korurken kaldırılacak kenarların listesi.\n    \"\"\"\n\n    parent = list(range(n + 1))  # DSU için başlangıç noktası\n\n    def find(i):\n        if parent[i] == i:\n            return i\n        parent[i] = find(parent[i])  # Yol sıkıştırması\n        return parent[i]\n\n    def union(i, j):\n        root_i = find(i)\n        root_j = find(j)\n        if root_i != root_j:\n            parent[root_i] = root_j\n            return True  # Birleşme başarılı\n\n        return False  # Zaten aynı kümede\n\n    kaldırılacak_kenarlar = []\n    tutulan_kenarlar = []\n\n    for u, v in kenarlar:\n        if union(u, v):\n            tutulan_kenarlar.append((u, v))\n        else:\n            kaldırılacak_kenarlar.append((u, v))\n\n    return kaldırılacak_kenarlar\n\nif __name__ == '__main__':\n    # Örnek Kullanım:\n    n = 6  # Köşe sayısı\n    kenarlar = [(1, 2), (1, 3), (2, 4), (3, 4), (3, 5), (4, 6), (5, 6), (1, 6)]\n    kaldırılan_kenarlar = azalt_kenar(n, kenarlar)\n    print(\"Kaldırılan kenarlar:\", kaldırılan_kenarlar)",
+    "source": "test-data-ai",
+    "prompt": "Remove max number of edges to keep graph traversable yaz.",
+    "license": "MIT",
+    "language": "python"
+}

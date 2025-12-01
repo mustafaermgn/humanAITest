@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef generate_permutations(s: str) -> list[str]:\n    \"\"\"\n    Generates all unique permutations of a given string.\n    \"\"\"\n    if not isinstance(s, str):\n        raise TypeError(\"Input must be a string.\")\n    \n    return [''.join(p) for p in itertools.permutations(s)]\n\nif __name__ == '__main__':\n    input_string = \"yaz\"\n    permutations = generate_permutations(input_string)\n    print(permutations)",
+    "source": "test-data-ai",
+    "prompt": "Generate all permutations of a string yaz.",
+    "license": "MIT",
+    "language": "python"
+}

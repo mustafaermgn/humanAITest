@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def ortasini_bul(self):\n        if self.head is None:\n            return None\n\n        slow = self.head\n        fast = self.head\n\n        while fast is not None and fast.next is not None:\n            slow = slow.next\n            fast = fast.next.next\n\n        return slow.data\n\n    def ekle(self, data):\n        yeni_dugum = Node(data)\n        if self.head is None:\n            self.head = yeni_dugum\n        else:\n            temp = self.head\n            while temp.next:\n                temp = temp.next\n            temp.next = yeni_dugum",
+    "source": "test-data-ai",
+    "prompt": "Linked list'in ortasını bulan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

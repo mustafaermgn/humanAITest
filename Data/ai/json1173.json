@@ -1,0 +1,7 @@
+{
+    "code": "def inversion_count(arr):\n    def _merge_sort_and_count(sub_arr):\n        if len(sub_arr) <= 1:\n            return sub_arr, 0\n\n        mid = len(sub_arr) // 2\n        left_half, left_inversions = _merge_sort_and_count(sub_arr[:mid])\n        right_half, right_inversions = _merge_sort_and_count(sub_arr[mid:])\n\n        merged_arr = []\n        split_inversions = 0\n        i, j = 0, 0\n\n        while i < len(left_half) and j < len(right_half):\n            if left_half[i] <= right_half[j]:\n                merged_arr.append(left_half[i])\n                i += 1\n            else:\n                merged_arr.append(right_half[j])\n                split_inversions += (len(left_half) - i)\n                j += 1\n\n        merged_arr.extend(left_half[i:])\n        merged_arr.extend(right_half[j:])\n\n        total_inversions = left_inversions + right_inversions + split_inversions\n        return merged_arr, total_inversions\n\n    _, inversions = _merge_sort_and_count(arr)\n    return inversions",
+    "source": "test-data-ai",
+    "prompt": "Merge sort kullanarak inversion count yaz.",
+    "license": "MIT",
+    "language": "python"
+}

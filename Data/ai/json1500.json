@@ -1,0 +1,7 @@
+{
+    "code": "def addBinary(a: str, b: str) -> str:\n    result = []\n    i, j = len(a) - 1, len(b) - 1\n    carry = 0\n\n    while i >= 0 or j >= 0 or carry:\n        sum_val = carry\n\n        if i >= 0:\n            sum_val += int(a[i])\n            i -= 1\n        if j >= 0:\n            sum_val += int(b[j])\n            j -= 1\n\n        result.append(str(sum_val % 2))\n        carry = sum_val // 2\n\n    return \"\".join(result[::-1])",
+    "source": "test-data-ai",
+    "prompt": "Add binary strings yaz.",
+    "license": "MIT",
+    "language": "python"
+}

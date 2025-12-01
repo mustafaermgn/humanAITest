@@ -1,0 +1,7 @@
+{
+    "code": "import re\n\ndef is_valid_uuid(uuid_string):\n  \"\"\"\n  UUID'nin geçerli olup olmadığını kontrol eder.\n\n  Args:\n    uuid_string: Kontrol edilecek UUID dizesi.\n\n  Returns:\n    Eğer UUID geçerliyse True, aksi takdirde False.\n  \"\"\"\n  uuid_pattern = re.compile(\n      r\"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$\", re.IGNORECASE\n  )\n  return bool(uuid_pattern.match(uuid_string))\n\nif __name__ == '__main__':\n  # Test cases\n  uuid1 = \"123e4567-e89b-12d3-a456-426614174000\"\n  uuid2 = \"invalid-uuid-format\"\n  uuid3 = \"123E4567-E89B-12D3-A456-426614174000\"  # Büyük harflerle\n  uuid4 = \"123e4567-e89b-52d3-a456-426614174000\"  # Versiyon 5\n  uuid5 = \"123e4567-e89b-12d3-a456-42661417400\"   # Eksik karakter\n  uuid6 = \"123e4567-e89b-12d3-a456-4266141740000\"  # Fazla karakter\n  uuid7 = \"123e4567e89b12d3a456426614174000\"      # Tire yok\n\n  print(f\"{uuid1}: {is_valid_uuid(uuid1)}\")\n  print(f\"{uuid2}: {is_valid_uuid(uuid2)}\")\n  print(f\"{uuid3}: {is_valid_uuid(uuid3)}\")\n  print(f\"{uuid4}: {is_valid_uuid(uuid4)}\")\n  print(f\"{uuid5}: {is_valid_uuid(uuid5)}\")\n  print(f\"{uuid6}: {is_valid_uuid(uuid6)}\")\n  print(f\"{uuid7}: {is_valid_uuid(uuid7)}\")",
+    "source": "test-data-ai",
+    "prompt": "UUID validation fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def binary_file_io(filepath, mode, data=None):\n    if mode == 'read':\n        with open(filepath, 'rb') as f:\n            return f.read()\n    elif mode == 'write':\n        if data is None:\n            raise ValueError(\"Data must be provided for write mode.\")\n        with open(filepath, 'wb') as f:\n            f.write(data)\n    else:\n        raise ValueError(\"Mode must be 'read' or 'write'.\")",
+    "source": "test-data-ai",
+    "prompt": "Binary dosya okuma/yazma fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

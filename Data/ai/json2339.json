@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport collections\n\n_function_exclusive_times = collections.defaultdict(float)\n_call_stack = []\n\ndef profile_exclusive(func):\n    def wrapper(*args, **kwargs):\n        func_name = func.__name__\n        \n        start_time = time.perf_counter()\n        \n        _call_stack.append({'name': func_name, 'start_time': start_time, 'child_call_total_time': 0.0})\n        \n        try:\n            result = func(*args, **kwargs)\n        finally:\n            end_time = time.perf_counter()\n            \n            current_frame = _call_stack.pop()\n            \n            total_time_current_call = end_time - current_frame['start_time']\n            \n            exclusive_time_current_call = total_time_current_call - current_frame['child_call_total_time']\n            \n            _function_exclusive_times[func_name] += exclusive_time_current_call\n            \n            if _call_stack:\n                parent_frame = _call_stack[-1]\n                parent_frame['child_call_total_time'] += total_time_current_call\n        \n        return result\n    return wrapper\n\ndef get_exclusive_times():\n    return dict(_function_exclusive_times)\n\ndef reset_exclusive_times():\n    _function_exclusive_times.clear()\n    _call_stack.clear()",
+    "source": "test-data-ai",
+    "prompt": "Exclusive time of functions using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def search_matrix(matrix: list[list[int]], target: int) -> tuple[int, int]:\n    \"\"\"\n    Sıralı satırlara ve sütunlara sahip 2D bir matriste bir elemanı arar.\n\n    Args:\n        matrix: Her satırın ve sütunun sıralı olduğu 2D tamsayı matrisi.\n        target: Aranan tamsayı eleman.\n\n    Returns:\n        Eleman bulunursa (satır, sütun) indislerini içeren bir tuple.\n        Eleman bulunamazsa (-1, -1).\n    \"\"\"\n    if not matrix or not matrix[0]:\n        return -1, -1\n\n    num_rows = len(matrix)\n    num_cols = len(matrix[0])\n\n    # Arama işlemi sağ üst köşeden başlar\n    row = 0\n    col = num_cols - 1\n\n    while row < num_rows and col >= 0:\n        current_element = matrix[row][col]\n        if current_element == target:\n            return row, col\n        elif current_element < target:\n            # Hedef mevcut elemandan büyükse, mevcut satırdaki tüm\n            # elemanlar mevcut elemandan küçüktür (veya eşittir).\n            # Dolayısıyla, hedef bu satırda olamaz, bir alt satıra geç.\n            row += 1\n        else:  # current_element > target\n            # Hedef mevcut elemandan küçükse, mevcut sütundaki tüm\n            # elemanlar mevcut elemandan büyüktür (veya eşittir).\n            # Dolayısıyla, hedef bu sütunda olamaz, bir sol sütuna geç.\n            col -= 1\n\n    return -1, -1",
+    "source": "test-data-ai",
+    "prompt": "2D matrix'te satır ve sütunlar sıralıyken eleman arayan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

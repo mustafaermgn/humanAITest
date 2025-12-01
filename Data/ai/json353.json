@@ -1,0 +1,7 @@
+{
+    "code": "def skyline(buildings):\n    \"\"\"\n    Gökyüzü çizgisi problemini çözer.\n\n    Args:\n        buildings: Binaların listesi. Her bina (sol, sağ, yükseklik) tuple'ı olarak temsil edilir.\n\n    Returns:\n        Gökyüzü çizgisinin listesi. Her nokta (x, yükseklik) tuple'ı olarak temsil edilir.\n    \"\"\"\n\n    events = []\n    for l, r, h in buildings:\n        events.append((l, -h, r))  # başlangıç olayları (yükseklik negatif)\n        events.append((r, 0, 0))  # bitiş olayları (yükseklik 0)\n\n    events.sort()  # olayları sırala (x koordinatına göre, ardından yüksekliğe göre (ters))\n\n    import heapq\n    live_buildings = [(0, float('inf'))]  # öncelik kuyruğu (yükseklik, sağ)\n    heapq.heapify(live_buildings)\n    skyline = []\n    prev_height = 0\n\n    for x, neg_h, r in events:\n        # bitmiş binaları temizle\n        while live_buildings and live_buildings[0][1] <= x:\n            heapq.heappop(live_buildings)\n\n        if neg_h != 0:  # başlangıç olayı\n            heapq.heappush(live_buildings, (neg_h, r))\n\n        current_height = -live_buildings[0][0]\n\n        if current_height != prev_height:\n            skyline.append((x, current_height))\n            prev_height = current_height\n\n    return skyline",
+    "source": "test-data-ai",
+    "prompt": "Skyline problem çözümü yaz.",
+    "license": "MIT",
+    "language": "python"
+}

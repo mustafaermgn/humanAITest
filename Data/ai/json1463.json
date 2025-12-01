@@ -1,0 +1,7 @@
+{
+    "code": "for index, value in enumerate(my_list):\n    pass  # İşlemlerinizi burada yapın",
+    "source": "test-data-ai",
+    "prompt": "Bir listeyi hem indeks hem de değerle döngüye alan en kısa kodu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

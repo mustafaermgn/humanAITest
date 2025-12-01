@@ -1,0 +1,7 @@
+{
+    "code": "class FreqStack:\n\n    def __init__(self):\n        self.freq_map = {}\n        self.stacks = {}\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        self.freq_map[val] = self.freq_map.get(val, 0) + 1\n        new_freq = self.freq_map[val]\n\n        self.max_freq = max(self.max_freq, new_freq)\n\n        if new_freq not in self.stacks:\n            self.stacks[new_freq] = []\n        self.stacks[new_freq].append(val)\n\n    def pop(self) -> int:\n        val_to_pop = self.stacks[self.max_freq].pop()\n\n        self.freq_map[val_to_pop] -= 1\n\n        if not self.stacks[self.max_freq]:\n            del self.stacks[self.max_freq] # Clean up empty list for this frequency\n            self.max_freq -= 1\n        \n        return val_to_pop",
+    "source": "test-data-ai",
+    "prompt": "Maximum frequency stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

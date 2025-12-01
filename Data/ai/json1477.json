@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef are_isomorphic(graph1, graph2):\n    \"\"\"\n    İki grafın izomorfik olup olmadığını bitişiklik matrisi gösterimi kullanarak kontrol eder.\n    Graflar, listeler listesi (bitişiklik matrisleri) olarak temsil edilmelidir.\n    \"\"\"\n    n1 = len(graph1)\n    n2 = len(graph2)\n\n    if n1 != n2:\n        return False\n\n    n = n1 # Düğüm sayısı\n\n    if n == 0:\n        return True # İki boş graf izomorfiktir\n\n    # graph1 için tüm olası düğüm etiket permütasyonlarını oluştur\n    for p in itertools.permutations(range(n)):\n        # graph1'in permüte edilmiş bitişiklik matrisini oluştur\n        perm_graph1 = [[0] * n for _ in range(n)]\n        for i in range(n):\n            for j in range(n):\n                perm_graph1[i][j] = graph1[p[i]][p[j]]\n        \n        # permüte edilmiş graph1'i graph2 ile karşılaştır\n        if perm_graph1 == graph2:\n            return True\n            \n    return False",
+    "source": "test-data-ai",
+    "prompt": "Graph isomorphism kontrol eden basit algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

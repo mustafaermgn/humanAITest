@@ -1,0 +1,7 @@
+{
+    "code": "def hamming_distance(num1, num2):\n    xor_result = num1 ^ num2\n    return bin(xor_result).count('1')",
+    "source": "test-data-ai",
+    "prompt": "İki sayının hamming distance'ını hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

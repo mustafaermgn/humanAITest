@@ -1,0 +1,7 @@
+{
+    "code": "def reverse_words(s: str) -> str:\n    words = s.split()\n    reversed_words = words[::-1]\n    return \" \".join(reversed_words)",
+    "source": "test-data-ai",
+    "prompt": "Reverse words in a string yaz.",
+    "license": "MIT",
+    "language": "python"
+}

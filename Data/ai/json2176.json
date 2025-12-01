@@ -1,0 +1,7 @@
+{
+    "code": "def longestPalindrome(s: str) -> str:\n    def preprocess(s_in):\n        if not s_in:\n            return \"^$\"\n        t = ['^']\n        for char in s_in:\n            t.append('#')\n            t.append(char)\n        t.append('#')\n        t.append('$')\n        return \"\".join(t)\n\n    if not s:\n        return \"\"\n\n    T = preprocess(s)\n    n = len(T)\n    P = [0] * n\n    center = 0\n    right = 0\n\n    max_len = 0\n    max_center = 0\n\n    for i in range(1, n - 1):\n        mirror = 2 * center - i\n\n        if i < right:\n            P[i] = min(right - i, P[mirror])\n\n        while T[i + (1 + P[i])] == T[i - (1 + P[i])]:\n            P[i] += 1\n\n        if i + P[i] > right:\n            center = i\n            right = i + P[i]\n\n        if P[i] > max_len:\n            max_len = P[i]\n            max_center = i\n\n    start_original = (max_center - max_len) // 2\n    return s[start_original : start_original + max_len]",
+    "source": "test-data-ai",
+    "prompt": "Manacher's algorithm for longest palindromic substring yaz.",
+    "license": "MIT",
+    "language": "python"
+}

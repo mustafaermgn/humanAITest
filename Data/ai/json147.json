@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ntry:\n    # SSL sertifika doğrulamasını yapılandırılmış bir şekilde yapma\n    # verify=True ile sistemin güvenilir kök sertifikalarını kullanarak doğrulama yapılır.\n    # Alternatif olarak, 'path/to/your/custom_ca_bundle.pem' gibi bir yol belirterek özel bir CA paketi kullanılabilir.\n    response = requests.get('https://www.google.com', verify=True)\n    response.raise_for_status()  # HTTP hataları için istisna fırlatır (4xx veya 5xx)\n\n    print(\"Request başarılı oldu. SSL sertifikası doğrulandı.\")\n    # print(response.text[:500]) # Yanıtın ilk 500 karakterini göstermek için uncomment edin\n\nexcept requests.exceptions.SSLError as e:\n    print(f\"SSL Doğrulama Hatası: {e}\")\nexcept requests.exceptions.RequestException as e:\n    print(f\"Request Hatası: {e}\")",
+    "source": "test-data-ai",
+    "prompt": "SSL certificate verification yapılandırmalı request yaz.",
+    "license": "MIT",
+    "language": "python"
+}

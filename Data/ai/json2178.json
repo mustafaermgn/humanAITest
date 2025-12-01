@@ -1,0 +1,7 @@
+{
+    "code": "def find_and_replace_pattern(words: list[str], pattern: str) -> list[str]:\n    def _encode_pattern(s: str) -> list[int]:\n        char_to_code = {}\n        next_code = 0\n        encoded_representation = []\n        for char in s:\n            if char not in char_to_code:\n                char_to_code[char] = next_code\n                next_code += 1\n            encoded_representation.append(char_to_code[char])\n        return encoded_representation\n\n    encoded_target_pattern = _encode_pattern(pattern)\n    \n    matching_words = []\n    for word in words:\n        if _encode_pattern(word) == encoded_target_pattern:\n            matching_words.append(word)\n    \n    return matching_words",
+    "source": "test-data-ai",
+    "prompt": "Word pattern checker using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

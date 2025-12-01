@@ -1,0 +1,7 @@
+{
+    "code": "def restoreIpAddresses(s):\n    result = []\n    n = len(s)\n\n    def isValid(segment):\n        return 0 <= int(segment) <= 255 and (segment == \"0\" or not segment.startswith(\"0\"))\n\n    def backtrack(index, dots, current_ip):\n        if dots == 4:\n            if index == n:\n                result.append(current_ip[:-1])\n            return\n        \n        for i in range(index, min(index + 3, n)):\n            segment = s[index:i+1]\n            if isValid(segment):\n                backtrack(i + 1, dots + 1, current_ip + segment + \".\")\n\n    backtrack(0, 0, \"\")\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Restore IP addresses yaz.",
+    "license": "MIT",
+    "language": "python"
+}

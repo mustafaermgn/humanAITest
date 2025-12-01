@@ -1,0 +1,7 @@
+{
+    "code": "def topla_bit_operasyonlariyla(sayi1, sayi2):\n    MASK = 0xFFFFFFFF  # 32-bit unsigned tam sayı maskesi\n    MAX_INT = 0x7FFFFFFF # En büyük 32-bit işaretli tam sayı\n\n    while sayi2 != 0:\n        # XOR işlemi, taşıma olmadan toplama yapar (sum)\n        # AND işlemi ve sola kaydırma, bir sonraki adım için taşımayı hesaplar (carry)\n        sayi1, sayi2 = (sayi1 ^ sayi2) & MASK, ((sayi1 & sayi2) << 1) & MASK\n    \n    # Döngü bittiğinde, sayi1 değeri 32-bit işaretlenmemiş formatta toplamı tutar.\n    # Eğer sayı negatif ise (yani en yüksek bit set ise), Python'ın işaretli tamsayı formatına dönüştürmeliyiz.\n    if sayi1 > MAX_INT:\n        return ~(sayi1 ^ MASK)\n    else:\n        return sayi1",
+    "source": "test-data-ai",
+    "prompt": "İki sayıyı aritmetik operatörler kullanmadan topla.",
+    "license": "MIT",
+    "language": "python"
+}

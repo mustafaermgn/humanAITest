@@ -1,0 +1,7 @@
+{
+    "code": "def main(args):\n    job_type = args.jobtype if args.jobtype else None\n    # parse multiple pipelines.\n    pipelines = [Pipeline(fn) for fn in args.yamls.split(\",\")]\n\n    for pipe_id, pipeline in enumerate(pipelines):\n        if not hasattr(pipeline, \"project_dir\"):\n            for job in pipeline[0]:\n                job(job_type=job_type, dryrun=args.dryrun)",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/locallaunch.py",
+    "license": "MIT",
+    "language": "python"
+}

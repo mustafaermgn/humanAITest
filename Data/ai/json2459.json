@@ -1,0 +1,7 @@
+{
+    "code": "import requests\nimport time\n\ndef create_rate_limited_api_caller(requests_per_second: float):\n    if requests_per_second <= 0:\n        raise ValueError(\"requests_per_second değeri 0'dan büyük olmalıdır.\")\n\n    _interval = 1.0 / requests_per_second\n    _last_request_time = 0.0\n\n    def make_rate_limited_request(url: str, method: str = 'GET', **kwargs):\n        nonlocal _last_request_time\n\n        current_time = time.time()\n        next_allowed_time = _last_request_time + _interval\n\n        if current_time < next_allowed_time:\n            sleep_duration = next_allowed_time - current_time\n            time.sleep(sleep_duration)\n            _last_request_time = next_allowed_time\n        else:\n            _last_request_time = current_time\n\n        try:\n            response = requests.request(method, url, **kwargs)\n            response.raise_for_status()\n            return response\n        except requests.exceptions.RequestException as e:\n            print(f\"API isteği sırasında bir hata oluştu: {e}\")\n            raise\n    \n    return make_rate_limited_request",
+    "source": "test-data-ai",
+    "prompt": "Rate limiting ile API request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

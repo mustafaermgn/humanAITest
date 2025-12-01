@@ -1,0 +1,7 @@
+{
+    "code": "import json\nimport enum\n\nclass MyEnum(enum.Enum):\n    VALUE1 = \"first\"\n    VALUE2 = \"second\"\n    VALUE3 = 3\n\nclass EnumEncoder(json.JSONEncoder):\n    def default(self, obj):\n        if isinstance(obj, enum.Enum):\n            return obj.value\n        return json.JSONEncoder.default(self, obj)\n\nif __name__ == '__main__':\n    data = {\n        \"status\": MyEnum.VALUE1,\n        \"type\": MyEnum.VALUE3,\n        \"items\": [\n            {\"id\": 1, \"enum_item\": MyEnum.VALUE2},\n            {\"id\": 2, \"enum_item\": MyEnum.VALUE1}\n        ],\n        \"message\": \"This is a test.\"\n    }\n\n    serialized_data = json.dumps(data, cls=EnumEncoder, indent=4)\n    print(serialized_data)\n\n    # Örnek bir enum değerini doğrudan serialize etme\n    print(\"\\nDoğrudan bir enum değeri:\", json.dumps(MyEnum.VALUE2, cls=EnumEncoder))",
+    "source": "test-data-ai",
+    "prompt": "Enum'ları serialize eden custom encoder yaz.",
+    "license": "MIT",
+    "language": "python"
+}

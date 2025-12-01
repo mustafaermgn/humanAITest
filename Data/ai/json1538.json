@@ -1,0 +1,7 @@
+{
+    "code": "import os\nimport stat\n\ndef check_file_permissions(filepath):\n    permissions = {\n        \"owner_read\": False,\n        \"owner_write\": False,\n        \"owner_execute\": False,\n        \"group_read\": False,\n        \"group_write\": False,\n        \"group_execute\": False,\n        \"others_read\": False,\n        \"others_write\": False,\n        \"others_execute\": False,\n        \"error\": None\n    }\n    try:\n        stat_info = os.stat(filepath)\n        mode = stat_info.st_mode\n\n        permissions[\"owner_read\"] = bool(mode & stat.S_IRUSR)\n        permissions[\"owner_write\"] = bool(mode & stat.S_IWUSR)\n        permissions[\"owner_execute\"] = bool(mode & stat.S_IXUSR)\n\n        permissions[\"group_read\"] = bool(mode & stat.S_IRGRP)\n        permissions[\"group_write\"] = bool(mode & stat.S_IWGRP)\n        permissions[\"group_execute\"] = bool(mode & stat.S_IXGRP)\n\n        permissions[\"others_read\"] = bool(mode & stat.S_IROTH)\n        permissions[\"others_write\"] = bool(mode & stat.S_IWOTH)\n        permissions[\"others_execute\"] = bool(mode & stat.S_IXOTH)\n\n    except FileNotFoundError:\n        permissions[\"error\"] = \"Dosya bulunamadı.\"\n    except PermissionError:\n        permissions[\"error\"] = \"Dosyaya erişim izni yok.\"\n    except Exception as e:\n        permissions[\"error\"] = f\"Bir hata oluştu: {e}\"\n\n    return permissions",
+    "source": "test-data-ai",
+    "prompt": "Dosya izinlerini kontrol eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

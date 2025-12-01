@@ -1,0 +1,7 @@
+{
+    "code": "def test_phase_detection():\n    \"\"\"Test phase detection from different formats.\"\"\"\n    print(\"\\n🧪 Testing Phase Detection...\")\n\n    test_cases = [\n        (\"Phase: EXPAND\", \"EXPAND\"),\n        (\"phase: migrate\", \"MIGRATE\"),\n        (\"PHASE: CONTRACT\", \"CONTRACT\"),\n        (\"No phase marker\", \"UNKNOWN\"),\n    ]\n\n    validator = MigrationValidator()\n\n    for content_marker, expected_phase in test_cases:\n        content = f'''\"\"\"\nMigration description\n{content_marker}\n\"\"\"\ndef upgrade(): pass\ndef downgrade(): pass\n'''\n        file = create_test_migration(content, \"phase_test.py\")\n        result = validator.validate_migration_file(file)\n        detected_phase = result[\"phase\"]\n        print(f\"  ✅ '{content_marker}' → {detected_phase} (expected: {expected_phase})\")\n        assert detected_phase == expected_phase, f\"Phase detection failed for {content_marker}\"  # noqa: S101\n        os.unlink(file)  # noqa: PTH108",
+    "source": "github_repo:langflow-ai/langflow",
+    "file": "scripts/test_validator.py",
+    "license": "MIT",
+    "language": "python"
+}

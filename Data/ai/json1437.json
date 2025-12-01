@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef min_xor_pair(arr):\n    \"\"\"\n    Verilen bir dizideki herhangi iki sayının minimum XOR değerini bulur.\n\n    Parametreler:\n    arr (list): Tam sayılardan oluşan bir dizi.\n\n    Dönüş değeri:\n    int: Dizideki herhangi iki sayının minimum XOR değeri.\n         Eğer dizide iki veya daha az eleman varsa math.inf döner.\n    \"\"\"\n    if len(arr) < 2:\n        return math.inf\n\n    # Diziyi sıralamak, birbirine yakın sayıları yan yana getirir.\n    # İki sayının XOR değeri, sayıların ikili gösterimlerinde farklı bit sayısı ile ilgilidir.\n    # Sayılar ne kadar birbirine yakınsa, o kadar çok önde gelen bitleri aynıdır ve bu da\n    # XOR değerinin küçük olma olasılığını artırır. Sıralanmış bir dizideki minimum XOR değeri\n    # mutlaka ardışık elemanlar arasında bulunur.\n    arr.sort()\n\n    min_xor = math.inf\n\n    # Sıralanmış dizide ardışık elemanların XOR değerlerini kontrol et.\n    for i in range(len(arr) - 1):\n        current_xor = arr[i] ^ arr[i+1]\n        if current_xor < min_xor:\n            min_xor = current_xor\n\n    return min_xor",
+    "source": "test-data-ai",
+    "prompt": "Minimum XOR value pair yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI, Depends, HTTPException, status\n\napp = FastAPI()\n\n# Bağımlılık fonksiyonu\nasync def get_current_user(token: str = \"some_fixed_token_for_example\"):\n    if token != \"mysecrettoken\":\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Invalid authentication token\",\n            headers={\"WWW-Authenticate\": \"Bearer\"},\n        )\n    return {\"username\": \"john_doe\", \"id\": 123}\n\n# Bağımlılığı kullanan bir yol operasyonu\n@app.get(\"/users/me/\")\nasync def read_users_me(current_user: dict = Depends(get_current_user)):\n    return current_user\n\n# Uygulamayı çalıştırmak için: uvicorn main:app --reload\n# Test etmek için:\n# - http://127.0.0.1:8000/users/me/?token=mysecrettoken\n# - http://127.0.0.1:8000/users/me/?token=wrongtoken",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile dependency injection örneği yaz.",
+    "license": "MIT",
+    "language": "python"
+}

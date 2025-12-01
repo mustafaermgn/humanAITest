@@ -1,0 +1,7 @@
+{
+    "code": "def linear_search_sentinel(arr, target):\n    \"\"\"\n    Sentinel tekniği kullanılarak lineer arama gerçekleştirir.\n\n    Args:\n      arr: Aranacak liste.\n      target: Aranacak değer.\n\n    Returns:\n      Hedef bulunursa, hedef öğenin dizini. Aksi takdirde -1.\n    \"\"\"\n    n = len(arr)\n    last = arr[n - 1]  # Dizinin son öğesini saklayın\n    arr[n - 1] = target  # Son öğeyi hedefle değiştirin (sentinel)\n    i = 0\n    while arr[i] != target:\n        i += 1\n    arr[n - 1] = last  # Dizinin son öğesini geri yükleyin\n    if i < n - 1 or arr[n - 1] == target:\n        return i\n    else:\n        return -1\n\nif __name__ == '__main__':\n    arr = [10, 20, 30, 40, 50]\n    target = 30\n    index = linear_search_sentinel(arr, target)\n    if index != -1:\n        print(f\"Hedef {target}, dizinde bulundu: {index}\")\n    else:\n        print(f\"Hedef {target} dizide bulunamadı.\")\n\n    target = 60\n    index = linear_search_sentinel(arr, target)\n    if index != -1:\n        print(f\"Hedef {target}, dizinde bulundu: {index}\")\n    else:\n        print(f\"Hedef {target} dizide bulunamadı.\")",
+    "source": "test-data-ai",
+    "prompt": "Linear Search'ü sentinel tekniğiyle optimize et.",
+    "license": "MIT",
+    "language": "python"
+}

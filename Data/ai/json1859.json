@@ -1,0 +1,7 @@
+{
+    "code": "import logging\n\n# Logger oluştur\nlogger = logging.getLogger(__name__)\nlogger.setLevel(logging.CRITICAL)  # Sadece KRİTİK seviyesindeki veya üzerindeki logları işle\n\n# Dosya İşleyici (FileHandler) oluştur\nfile_handler = logging.FileHandler('app.log')\n\n# Formatlayıcı (Formatter) oluştur\nformatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')\nfile_handler.setFormatter(formatter)\n\n# Dosya İşleyiciyi logger'a ekle\nlogger.addHandler(file_handler)\n\n# Örnek kritik hata mesajları kaydet\nlogger.debug(\"Bu bir debug mesajı.\")\nlogger.info(\"Bu bir bilgi mesajı.\")\nlogger.warning(\"Bu bir uyarı mesajı.\")\nlogger.error(\"Bu bir hata mesajı.\")\nlogger.critical(\"Kritik bir hata meydana geldi! Uygulama çökebilir.\")\nlogger.critical(\"Veritabanı bağlantısı başarısız oldu, acil müdahale gerekli.\")\n\n# Bir hata durumunu tetikleyip kritik olarak loglama örneği\ntry:\n    1 / 0\nexcept ZeroDivisionError as e:\n    logger.critical(f\"Sıfıra bölme hatası: {e}\")\n\nprint(\"Log mesajları app.log dosyasına kaydedildi (sadece kritik olanlar).\")",
+    "source": "test-data-ai",
+    "prompt": "Logging modülünü kullanarak, kritik hataları bir dosyaya (app.log) kaydeden basit bir yapılandırma örneği oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

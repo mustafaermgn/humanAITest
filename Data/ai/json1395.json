@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef find_leaves(root: TreeNode) -> list[int]:\n    \"\"\"\n    Bir ikili ağacın tüm yaprak düğümlerinin değerlerini liste olarak döndürür.\n    \"\"\"\n    leaves = []\n\n    def dfs(node):\n        if not node:\n            return\n\n        # Eğer düğümün sol ve sağ çocuğu yoksa, bu bir yaprak düğümdür.\n        if not node.left and not node.right:\n            leaves.append(node.val)\n            return\n\n        # Sol ve sağ alt ağaçlarda aramaya devam et.\n        dfs(node.left)\n        dfs(node.right)\n\n    dfs(root)\n    return leaves",
+    "source": "test-data-ai",
+    "prompt": "Find leaves of binary tree yaz.",
+    "license": "MIT",
+    "language": "python"
+}

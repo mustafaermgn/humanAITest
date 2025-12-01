@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef form_data_post_request(url, data):\n    \"\"\"\n    Form data kullanarak POST isteği yapar.\n\n    Args:\n        url (str): İstek yapılacak URL.\n        data (dict): Gönderilecek form verisi (dictionary).\n\n    Returns:\n        requests.Response: Sunucudan gelen yanıt.\n    \"\"\"\n    try:\n        response = requests.post(url, data=data)\n        response.raise_for_status()  # Hata durumunda HTTPError yükseltir.\n        return response\n    except requests.exceptions.RequestException as e:\n        print(f\"Hata oluştu: {e}\")\n        return None\n\nif __name__ == '__main__':\n    # Örnek Kullanım:\n    url = \"https://httpbin.org/post\"  # Örnek bir POST isteği adresi\n    form_data = {\n        \"ad\": \"Ali\",\n        \"soyad\": \"Veli\",\n        \"yas\": 30\n    }\n\n    response = form_data_post_request(url, form_data)\n\n    if response:\n        print(\"İstek başarılı!\")\n        print(\"Yanıt Kodu:\", response.status_code)\n        print(\"Yanıt İçeriği:\", response.json())\n    else:\n        print(\"İstek başarısız oldu.\")",
+    "source": "test-data-ai",
+    "prompt": "Form data POST request yapan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

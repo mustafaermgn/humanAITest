@@ -1,0 +1,7 @@
+{
+    "code": "def find_max_and_pair(nums):\n    max_and_val = 0\n    # Iterate from the most significant bit (e.g., 30 for numbers up to 2^31-1)\n    # down to the least significant bit (0).\n    # Adjust 30 higher if numbers can exceed 2^31-1.\n    for bit_pos in range(30, -1, -1):\n        # Try to set the current bit in the potential maximum AND value\n        potential_max = max_and_val | (1 << bit_pos)\n        \n        # Count how many numbers in the list have all the bits set that are in potential_max.\n        # This means (num & potential_max) == potential_max.\n        count = 0\n        for num in nums:\n            if (num & potential_max) == potential_max:\n                count += 1\n        \n        # If we found at least two numbers that can form this potential_max \n        # (meaning they both have all the necessary bits set),\n        # then we can potentially achieve this bit in our final max_and_val.\n        if count >= 2:\n            max_and_val = potential_max\n            \n    return max_and_val",
+    "source": "test-data-ai",
+    "prompt": "Find maximum AND value pair yaz.",
+    "license": "MIT",
+    "language": "python"
+}

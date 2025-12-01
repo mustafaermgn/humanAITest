@@ -1,0 +1,7 @@
+{
+    "code": "def canPartitionKSubsets(nums, k):\n    total_sum = sum(nums)\n    if total_sum % k != 0:\n        return False\n    target = total_sum // k\n    nums.sort(reverse=True)\n    n = len(nums)\n    visited = [False] * n\n\n    def backtrack(index, count, current_sum):\n        if count == k:\n            return True\n        if current_sum == target:\n            return backtrack(0, count + 1, 0)\n        if current_sum > target:\n            return False\n\n        for i in range(index, n):\n            if not visited[i]:\n                visited[i] = True\n                if backtrack(i + 1, count, current_sum + nums[i]):\n                    return True\n                visited[i] = False\n        return False\n\n    return backtrack(0, 0, 0)",
+    "source": "test-data-ai",
+    "prompt": "Matchsticks to square yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def set_epoch(self, epoch, **unused):\n        super().set_epoch(epoch)\n        self.epoch = epoch",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/datasets/fairseqmmdataset.py",
+    "license": "MIT",
+    "language": "python"
+}

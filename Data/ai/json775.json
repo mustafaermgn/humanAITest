@@ -1,0 +1,7 @@
+{
+    "code": "def gcd(a, b):\n  \"\"\"\n  Özyineli Euclidean algoritmasıyla iki sayının en büyük ortak bölenini (GCD) hesaplar.\n  \"\"\"\n  if b == 0:\n    return a\n  else:\n    return gcd(b, a % b)\n\nif __name__ == '__main__':\n  # Test örnekleri\n  print(f\"GCD(48, 18) = {gcd(48, 18)}\")  # Beklenen: 6\n  print(f\"GCD(18, 48) = {gcd(18, 48)}\")  # Beklenen: 6\n  print(f\"GCD(10, 15) = {gcd(10, 15)}\")  # Beklenen: 5\n  print(f\"GCD(15, 10) = {gcd(15, 10)}\")  # Beklenen: 5\n  print(f\"GCD(1071, 462) = {gcd(1071, 462)}\")  # Beklenen: 21\n  print(f\"GCD(462, 1071) = {gcd(462, 1071)}\")  # Beklenen: 21\n  print(f\"GCD(100, 0) = {gcd(100, 0)}\") # Beklenen: 100\n  print(f\"GCD(0, 100) = {gcd(0, 100)}\") # Beklenen: 100\n  print(f\"GCD(0, 0) = {gcd(0, 0)}\") # Beklenen: 0",
+    "source": "test-data-ai",
+    "prompt": "GCD (Greatest Common Divisor) hesaplayan Euclidean algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

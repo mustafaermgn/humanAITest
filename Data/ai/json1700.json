@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\n# 1. Varsayılan SSL sertifikası doğrulaması (sistem CA paketlerini kullanır)\nresponse_default = requests.get('https://www.google.com')\n\n# 2. SSL sertifikası doğrulamasını açıkça etkinleştirme\nresponse_explicit_true = requests.get('https://api.github.com', verify=True)\n\n# 3. SSL sertifikası doğrulamasını devre dışı bırakma (Üretim ortamları için GÜVENLİ DEĞİLDİR!)\nresponse_explicit_false = requests.get('https://self-signed.badssl.com/', verify=False)\n\n# 4. Belirli bir CA sertifikası paketi dosyası ile doğrulama\n# 'path/to/your_custom_ca_bundle.pem' yolunu kendi CA sertifika dosyanızın gerçek yolu ile değiştirin.\ncustom_ca_path = 'path/to/your_custom_ca_bundle.pem'\nresponse_custom_ca_file = requests.get('https://www.example.com', verify=custom_ca_path)",
+    "source": "test-data-ai",
+    "prompt": "SSL certificate verification yapılandırmalı request yaz.",
+    "license": "MIT",
+    "language": "python"
+}

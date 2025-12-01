@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def reverseBits(self, n: int) -> int:\n        reversed_num = 0\n        for _ in range(32):\n            reversed_num <<= 1\n            reversed_num |= (n & 1)\n            n >>= 1\n        return reversed_num",
+    "source": "test-data-ai",
+    "prompt": "Reverse bits of a 32-bit integer yaz.",
+    "license": "MIT",
+    "language": "python"
+}

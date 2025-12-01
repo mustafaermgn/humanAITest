@@ -1,0 +1,7 @@
+{
+    "code": "from collections import Counter; s = \"hello world\"; char_frequencies = Counter(s)",
+    "source": "test-data-ai",
+    "prompt": "Bir dizedeki harflerin frekansını hesaplayan tek satırlık bir Counter/Dict kullanımı yaz.",
+    "license": "MIT",
+    "language": "python"
+}

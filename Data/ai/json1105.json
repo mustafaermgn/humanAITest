@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, redirect, url_for\n\napp = Flask(__name__)\n\n@app.route('/')\ndef index():\n    return \"Ana sayfa. '/redirect' adresine gidersen yönlendirileceksin.\"\n\n@app.route('/redirect')\ndef do_redirect():\n    # Bu endpoint'e ulaşıldığında kullanıcıyı '/target' adresine yönlendir.\n    return redirect(url_for('target_page'))\n\n@app.route('/target')\ndef target_page():\n    return \"Yönlendirme başarılı! Bu, hedef sayfadır.\"\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile redirect yapan endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

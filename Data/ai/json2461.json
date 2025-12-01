@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef kosaraju(graph):\n    all_nodes = set(graph.keys())\n    for u in graph:\n        for v in graph[u]:\n            all_nodes.add(v)\n            \n    visited = set()\n    finish_stack = []\n\n    def dfs1(u):\n        visited.add(u)\n        for v in graph.get(u, []):\n            if v not in visited:\n                dfs1(v)\n        finish_stack.append(u)\n\n    for node in all_nodes:\n        if node not in visited:\n            dfs1(node)\n\n    graph_transpose = collections.defaultdict(list)\n    for node in all_nodes:\n        graph_transpose[node] = []\n\n    for u in graph:\n        for v in graph[u]:\n            graph_transpose[v].append(u)\n    \n    visited = set()\n    sccs = []\n\n    def dfs2(u, current_scc):\n        visited.add(u)\n        current_scc.append(u)\n        for v in graph_transpose.get(u, []):\n            if v not in visited:\n                dfs2(v, current_scc)\n\n    while finish_stack:\n        u = finish_stack.pop()\n        if u not in visited:\n            current_scc = []\n            dfs2(u, current_scc)\n            sccs.append(current_scc)\n\n    return sccs",
+    "source": "test-data-ai",
+    "prompt": "Kosaraju algoritmasını strongly connected components için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

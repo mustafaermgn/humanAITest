@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef plusOne(head: ListNode) -> ListNode:\n    dummy = ListNode(0)\n    dummy.next = head\n\n    rightmost_non_nine = dummy\n    current = head\n    while current:\n        if current.val != 9:\n            rightmost_non_nine = current\n        current = current.next\n\n    rightmost_non_nine.val += 1\n\n    current = rightmost_non_nine.next\n    while current:\n        current.val = 0\n        current = current.next\n\n    if dummy.val == 1:\n        return dummy\n    else:\n        return dummy.next",
+    "source": "test-data-ai",
+    "prompt": "Plus one to number in linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def fractional_knapsack(capacity, items):\n    \"\"\"\n    Kesirli sırt çantası problemini açgözlü (greedy) algoritma ile çözer.\n\n    Args:\n        capacity (float): Sırt çantasının maksimum taşıma kapasitesi.\n        items (list): Her öğenin bir tuple (ağırlık, değer) olarak temsil edildiği bir liste.\n                      Örn: [(10, 60), (20, 100), (30, 120)]\n\n    Returns:\n        float: Sırt çantasına sığdırılabilecek öğelerin maksimum toplam değeri.\n    \"\"\"\n\n    # Öğeleri birim ağırlık başına düşen değere göre (değer/ağırlık) azalan sırada sırala.\n    # item[0] ağırlık, item[1] değerdir.\n    items.sort(key=lambda item: item[1] / item[0], reverse=True)\n\n    total_value = 0.0\n    remaining_capacity = capacity\n\n    for weight, value in items:\n        if remaining_capacity <= 0:\n            break  # Çanta doldu\n\n        if weight <= remaining_capacity:\n            # Öğeyi tamamen al\n            total_value += value\n            remaining_capacity -= weight\n        else:\n            # Öğenin bir kısmını al\n            fraction = remaining_capacity / weight\n            total_value += value * fraction\n            remaining_capacity = 0  # Çanta tam doldu\n            break # Çanta dolduğu için döngüden çık\n\n    return total_value",
+    "source": "test-data-ai",
+    "prompt": "Fractional knapsack problemini greedy ile yaz.",
+    "license": "MIT",
+    "language": "python"
+}

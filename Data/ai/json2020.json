@@ -1,0 +1,7 @@
+{
+    "code": "import fcntl\nimport os\n\nclass FileLocker:\n    def __init__(self, file_path):\n        self.file_path = file_path\n        self.fd = None\n        self.locked = False\n\n    def __enter__(self):\n        self.fd = os.open(self.file_path, os.O_RDWR | os.O_CREAT)\n        fcntl.flock(self.fd, fcntl.LOCK_EX)\n        self.locked = True\n        return self\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        if self.locked:\n            try:\n                fcntl.flock(self.fd, fcntl.LOCK_UN)\n            except Exception:\n                pass\n            finally:\n                self.locked = False\n        \n        if self.fd is not None:\n            try:\n                os.close(self.fd)\n            except Exception:\n                pass\n            finally:\n                self.fd = None",
+    "source": "test-data-ai",
+    "prompt": "Context manager for file locking yaz.",
+    "license": "MIT",
+    "language": "python"
+}

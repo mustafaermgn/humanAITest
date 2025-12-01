@@ -1,0 +1,7 @@
+{
+    "code": "import fcntl\nimport os\n\nclass FileLock:\n    \"\"\"\n    A context manager for advisory file locking using fcntl.flock on Unix-like systems.\n    The lock is exclusive and blocking by default.\n    \"\"\"\n    def __init__(self, file_path: str):\n        self.file_path = file_path\n        self._file_obj = None # Internal file object\n        self._fd = None       # Internal file descriptor\n\n    def __enter__(self):\n        # Open the file in append and read mode ('a+').\n        # This mode creates the file if it does not exist and allows both\n        # reading and writing, with writes appended to the end.\n        self._file_obj = open(self.file_path, 'a+')\n        self._fd = self._file_obj.fileno()\n\n        # Acquire an exclusive lock (LOCK_EX).\n        # This call will block until the lock can be acquired.\n        fcntl.flock(self._fd, fcntl.LOCK_EX)\n\n        # Return the file object so the user can interact with the locked file.\n        return self._file_obj\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        # Release the lock.\n        if self._fd is not None:\n            fcntl.flock(self._fd, fcntl.LOCK_UN)\n            self._fd = None\n\n        # Close the file.\n        if self._file_obj is not None:\n            self._file_obj.close()\n            self._file_obj = None",
+    "source": "test-data-ai",
+    "prompt": "Context manager for file locking yaz.",
+    "license": "MIT",
+    "language": "python"
+}

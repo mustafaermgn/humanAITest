@@ -1,0 +1,7 @@
+{
+    "code": "import abc\n\nclass Logger(abc.ABC):\n    @abc.abstractmethod\n    def log_message(self, message: str):\n        pass\n\nclass DataProcessor(abc.ABC):\n    @abc.abstractmethod\n    def process_data(self, data):\n        pass\n\nclass SystemComponent(Logger, DataProcessor):\n    def __init__(self, component_id: str):\n        self.component_id = component_id\n\n    def log_message(self, message: str):\n        print(f\"[{self.component_id} - LOG]: {message}\")\n\n    def process_data(self, data):\n        processed_data = f\"Processed: {data}\"\n        self.log_message(f\"Data '{data}' processed into '{processed_data}'\")\n        return processed_data\n\nif __name__ == \"__main__\":\n    component = SystemComponent(\"ServiceA\")\n    component.log_message(\"Starting up component...\")\n    result = component.process_data({\"input_key\": \"raw_value\"})\n    component.log_message(f\"Final result: {result}\")\n\n    # Demonstrating the type of the component\n    print(f\"\\nIs component an instance of Logger? {isinstance(component, Logger)}\")\n    print(f\"Is component an instance of DataProcessor? {isinstance(component, DataProcessor)}\")",
+    "source": "test-data-ai",
+    "prompt": "Python'da çoklu kalıtım (multiple inheritance) kullanarak iki farklı arayüzü (interface) miras alan bir sınıf yaz.",
+    "license": "MIT",
+    "language": "python"
+}

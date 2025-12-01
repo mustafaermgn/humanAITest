@@ -1,0 +1,7 @@
+{
+    "code": "class Queue:\n    def __init__(self):\n        self.items = []\n\n    def enqueue(self, item):\n        \"\"\"Kuyruğa eleman ekler.\"\"\"\n        self.items.append(item)\n\n    def dequeue(self):\n        \"\"\"Kuyruğun başından elemanı çıkarır ve döndürür.\"\"\"\n        if not self.items:\n            raise IndexError(\"Kuyruk boş, dequeue yapılamaz.\")\n        return self.items.pop(0)\n\n    def is_empty(self):\n        \"\"\"Kuyruğun boş olup olmadığını kontrol eder.\"\"\"\n        return len(self.items) == 0\n\n    def size(self):\n        \"\"\"Kuyruktaki eleman sayısını döndürür.\"\"\"\n        return len(self.items)\n\n    def peek(self):\n        \"\"\"Kuyruğun başındaki elemanı döndürür, kuyruktan çıkarmaz.\"\"\"\n        if not self.items:\n            raise IndexError(\"Kuyruk boş, peek yapılamaz.\")\n        return self.items[0]\n\n    def __str__(self):\n        \"\"\"Kuyruğun string temsilini döndürür.\"\"\"\n        return f\"Queue({self.items})\"\n\n    def __repr__(self):\n        \"\"\"Kuyruğun temsilini döndürür.\"\"\"\n        return f\"Queue({self.items})\"",
+    "source": "test-data-ai",
+    "prompt": "Python'da bir kuyruk (Queue) veri yapısını temsil eden, `enqueue` ve `dequeue` metodlarına sahip bir sınıf oluştur.",
+    "license": "MIT",
+    "language": "python"
+}

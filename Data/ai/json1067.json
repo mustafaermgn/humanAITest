@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef simplify_path(path: str) -> str:\n    parts = path.split('/')\n    stack = []\n    is_absolute = path.startswith('/')\n\n    for part in parts:\n        if part == '' or part == '.':\n            continue\n        elif part == '..':\n            if stack:\n                stack.pop()\n            elif not is_absolute:\n                stack.append('..')\n        else:\n            stack.append(part)\n\n    if not stack:\n        return '/' if is_absolute else '.'\n\n    result = '/'.join(stack)\n    if is_absolute:\n        result = '/' + result\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Simplify directory path using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

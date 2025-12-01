@@ -1,0 +1,7 @@
+{
+    "code": "def max_sum_increasing_subsequence(arr):\n    n = len(arr)\n    if n == 0:\n        return 0\n\n    # dp[i] will store the maximum sum of an increasing subsequence\n    # ending at index i\n    dp = list(arr)\n\n    for i in range(1, n):\n        for j in range(i):\n            if arr[i] > arr[j]:\n                dp[i] = max(dp[i], dp[j] + arr[i])\n\n    return max(dp)",
+    "source": "test-data-ai",
+    "prompt": "Maximum sum increasing subsequence bul.",
+    "license": "MIT",
+    "language": "python"
+}

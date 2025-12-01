@@ -1,0 +1,7 @@
+{
+    "code": "def merge_configs(*configs):\n    merged_config = {}\n    for config in configs:\n        merged_config.update(config)\n    return merged_config",
+    "source": "test-data-ai",
+    "prompt": "Configuration merger (multiple configs) fonksionu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

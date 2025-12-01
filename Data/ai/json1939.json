@@ -1,0 +1,7 @@
+{
+    "code": "def interpolation_search(arr, target):\n    \"\"\"\n    Sıralı bir dizide verilen hedef öğeyi Interpolation Search algoritmasıyla arar.\n\n    Args:\n        arr (list): Sıralı sayı dizisi.\n        target (int/float): Aranacak hedef öğe.\n\n    Returns:\n        int: Hedef öğenin dizideki indeksini döndürür. Bulunamazsa -1 döndürür.\n    \"\"\"\n    low = 0\n    high = len(arr) - 1\n\n    while low <= high and target >= arr[low] and target <= arr[high]:\n        # Eğer dizinin mevcut aralığındaki tüm elemanlar aynıysa,\n        # bölme hatasını önle ve hedefi kontrol et.\n        if arr[high] == arr[low]:\n            if arr[low] == target:\n                return low  # Hedef bulundu\n            else:\n                return -1   # Hedef bu aralıkta değil\n        \n        # Interpolasyon formülü ile olası pozisyonu hesapla\n        # (target - arr[low]) * (high - low) işleminin sonucu int olmalıdır.\n        # Python 3'te // operatörü tam sayı bölmesi yapar.\n        pos = low + ((target - arr[low]) * (high - low)) // (arr[high] - arr[low])\n\n        if arr[pos] == target:\n            return pos\n        elif arr[pos] < target:\n            low = pos + 1\n        else:  # arr[pos] > target\n            high = pos - 1\n\n    return -1",
+    "source": "test-data-ai",
+    "prompt": "Interpolation Search'ü sıralı dizide yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef optimal_account_balancing(transactions):\n    balances = collections.defaultdict(int)\n    for payer, payee, amount in transactions:\n        balances[payer] -= amount\n        balances[payee] += amount\n\n    givers = collections.deque()\n    receivers = collections.deque()\n\n    for person, amount in balances.items():\n        if amount < 0:\n            givers.append((person, -amount))\n        elif amount > 0:\n            receivers.append((person, amount))\n\n    settlements = []\n\n    while givers and receivers:\n        giver_person, giver_amount = givers.popleft()\n        receiver_person, receiver_amount = receivers.popleft()\n\n        settle_amount = min(giver_amount, receiver_amount)\n\n        settlements.append((giver_person, receiver_person, settle_amount))\n\n        giver_remaining = giver_amount - settle_amount\n        receiver_remaining = receiver_amount - settle_amount\n\n        if giver_remaining > 0:\n            givers.appendleft((giver_person, giver_remaining))\n        if receiver_remaining > 0:\n            receivers.appendleft((receiver_person, receiver_remaining))\n            \n    return settlements",
+    "source": "test-data-ai",
+    "prompt": "Optimal account balancing yaz.",
+    "license": "MIT",
+    "language": "python"
+}

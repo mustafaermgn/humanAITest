@@ -1,0 +1,7 @@
+{
+    "code": "class FenwickTree:\n    def __init__(self, size):\n        self.size = size\n        self.bit = [0] * (size + 1)\n\n    def update(self, index, delta):\n        \"\"\"\n        Adds 'delta' to the element at the given 'index'.\n        Index is 0-based, internally converted to 1-based.\n        \"\"\"\n        index += 1  # Convert to 1-based index\n        while index <= self.size:\n            self.bit[index] += delta\n            index += index & (-index)\n\n    def prefix_sum(self, index):\n        \"\"\"\n        Returns the sum of elements from index 0 up to the given 'index' (inclusive).\n        Index is 0-based, internally converted to 1-based.\n        \"\"\"\n        index += 1  # Convert to 1-based index\n        s = 0\n        while index > 0:\n            s += self.bit[index]\n            index -= index & (-index)\n        return s\n\n    def range_sum(self, left, right):\n        \"\"\"\n        Returns the sum of elements in the range [left, right] (inclusive).\n        Both left and right are 0-based indices.\n        \"\"\"\n        if left > right:\n            return 0\n        return self.prefix_sum(right) - self.prefix_sum(left - 1)",
+    "source": "test-data-ai",
+    "prompt": "Range sum query using Fenwick tree yaz.",
+    "license": "MIT",
+    "language": "python"
+}

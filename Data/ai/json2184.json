@@ -1,0 +1,7 @@
+{
+    "code": "def evaluate_postfix(expression):\n    stack = []\n    tokens = expression.split()\n\n    operators = {\n        '+': lambda a, b: a + b,\n        '-': lambda a, b: a - b,\n        '*': lambda a, b: a * b,\n        '/': lambda a, b: a / b,\n        '%': lambda a, b: a % b\n    }\n\n    for token in tokens:\n        if token in operators:\n            if len(stack) < 2:\n                raise ValueError(\"Invalid postfix expression: Not enough operands for operator \" + token)\n            operand2 = stack.pop()\n            operand1 = stack.pop()\n            \n            if token == '/' and operand2 == 0:\n                raise ZeroDivisionError(\"Division by zero in postfix expression.\")\n            \n            result = operators[token](operand1, operand2)\n            stack.append(result)\n        else:\n            try:\n                stack.append(float(token))\n            except ValueError:\n                raise ValueError(\"Invalid token in postfix expression: \" + token)\n\n    if len(stack) != 1:\n        raise ValueError(\"Invalid postfix expression: Too many operands or unhandled operators.\")\n\n    return stack[0]",
+    "source": "test-data-ai",
+    "prompt": "Postfix expression evaluation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

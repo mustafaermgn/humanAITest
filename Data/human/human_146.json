@@ -1,0 +1,7 @@
+{
+    "code": "def main():\n    print(\"=\" * 60)\n    print(\"🚀 Migration Validator Test Suite\")\n    print(\"=\" * 60)\n\n    try:\n        test_expand_phase()\n        test_contract_phase()\n        test_phase_detection()\n        test_common_mistakes()\n\n        print(\"\\n\" + \"=\" * 60)\n        print(\"✅ All tests passed!\")\n        print(\"=\" * 60)\n\n    except AssertionError as e:\n        print(f\"\\n❌ Test failed: {e}\")\n        sys.exit(1)\n    except (OSError, ImportError) as e:\n        print(f\"\\n❌ Unexpected error: {e}\")\n        import traceback\n\n        traceback.print_exc()\n        sys.exit(1)",
+    "source": "github_repo:langflow-ai/langflow",
+    "file": "scripts/test_validator.py",
+    "license": "MIT",
+    "language": "python"
+}

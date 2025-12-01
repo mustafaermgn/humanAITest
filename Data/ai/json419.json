@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef plus_one(head: ListNode) -> ListNode:\n    \"\"\"\n    Given a non-negative integer represented as a linked list, add one to the number.\n    The digits are stored such that the most significant digit is at the head of the list.\n    \"\"\"\n\n    def reverse_list(head):\n        prev = None\n        curr = head\n        while curr:\n            next_node = curr.next\n            curr.next = prev\n            prev = curr\n            curr = next_node\n        return prev\n\n    def list_to_number(head):\n        num = 0\n        while head:\n            num = num * 10 + head.val\n            head = head.next\n        return num\n    \n    def number_to_list(num):\n        if num == 0:\n            return ListNode(0)\n        \n        dummy_head = ListNode(0)\n        curr = dummy_head\n        \n        digits = []\n        while num > 0:\n            digits.append(num % 10)\n            num //= 10\n        \n        for digit in reversed(digits):\n            curr.next = ListNode(digit)\n            curr = curr.next\n        \n        return dummy_head.next\n\n    \n    num = list_to_number(head)\n    num += 1\n    \n    return number_to_list(num)",
+    "source": "test-data-ai",
+    "prompt": "Plus one to number in linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

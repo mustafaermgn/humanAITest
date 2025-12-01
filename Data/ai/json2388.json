@@ -1,0 +1,7 @@
+{
+    "code": "def swap_odd_even_bits(n: int) -> int:\n    if n == 0:\n        return 0\n\n    num_bits = n.bit_length()\n\n    even_mask = 0\n    odd_mask = 0\n    for i in range(num_bits):\n        if i % 2 == 0:\n            even_mask |= (1 << i)\n        else:\n            odd_mask |= (1 << i)\n\n    shifted_even_bits = (n & even_mask) << 1\n    shifted_odd_bits = (n & odd_mask) >> 1\n\n    return shifted_even_bits | shifted_odd_bits",
+    "source": "test-data-ai",
+    "prompt": "Swap all odd and even bits yaz.",
+    "license": "MIT",
+    "language": "python"
+}

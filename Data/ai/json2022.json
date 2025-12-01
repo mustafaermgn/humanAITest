@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef check_limited_edge_path_existence(graph, start_node, end_node, max_edge_length):\n    if start_node == end_node:\n        return start_node in graph\n\n    if start_node not in graph:\n        return False\n\n    queue = collections.deque()\n    queue.append(start_node)\n    \n    visited = {start_node}\n\n    while queue:\n        current_node = queue.popleft()\n\n        for neighbor, weight in graph.get(current_node, []):\n            if weight <= max_edge_length:\n                if neighbor == end_node:\n                    return True\n                if neighbor not in visited:\n                    visited.add(neighbor)\n                    queue.append(neighbor)\n    \n    return False",
+    "source": "test-data-ai",
+    "prompt": "Checking existence of edge length limited paths yaz.",
+    "license": "MIT",
+    "language": "python"
+}

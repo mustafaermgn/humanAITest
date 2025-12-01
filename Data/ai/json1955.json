@@ -1,0 +1,7 @@
+{
+    "code": "def find_fixed_points(arr):\n    \"\"\"\n    Belirtilen koşulu (index == value) sağlayan sabit noktaları bulan algoritma.\n    \n    Args:\n        arr (list): Kontrol edilecek sayılardan oluşan bir liste.\n        \n    Returns:\n        list: index == value koşulunu sağlayan değerlerin listesi.\n              Eğer hiçbir sabit nokta bulunamazsa boş bir liste döner.\n    \"\"\"\n    fixed_points = []\n    for index, value in enumerate(arr):\n        if index == value:\n            fixed_points.append(value)\n    return fixed_points",
+    "source": "test-data-ai",
+    "prompt": "Fixed point (index == value) bulan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

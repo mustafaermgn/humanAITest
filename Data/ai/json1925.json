@@ -1,0 +1,7 @@
+{
+    "code": "import urllib.parse\n\ndef url_encode(text):\n    return urllib.parse.quote(text, encoding='utf-8')\n\ndef url_decode(text):\n    return urllib.parse.unquote(text, encoding='utf-8')",
+    "source": "test-data-ai",
+    "prompt": "URL encoding/decoding fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

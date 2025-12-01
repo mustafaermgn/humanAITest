@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\nclass Solution:\n    def customSortString(self, order: str, s: str) -> str:\n        s_counts = collections.Counter(s)\n        \n        result_chars = []\n        \n        for char_in_order in order:\n            if char_in_order in s_counts:\n                result_chars.append(char_in_order * s_counts[char_in_order])\n                del s_counts[char_in_order]\n        \n        for remaining_char, count in s_counts.items():\n            result_chars.append(remaining_char * count)\n            \n        return \"\".join(result_chars)",
+    "source": "test-data-ai",
+    "prompt": "Custom sort string using hash map yaz.",
+    "license": "MIT",
+    "language": "python"
+}

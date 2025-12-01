@@ -1,0 +1,7 @@
+{
+    "code": "def __call__(self):\n        try:\n            print(self.predictor.pred_dir)\n            for pred_file in glob.glob(\n                    self.predictor.pred_dir + \"/*_merged.npy\"):\n                outputs = np.load(pred_file)\n                results = self.metric.compute_metrics(outputs)\n                self.metric.print_computed_metrics(results)\n\n            outputs = np.load(os.path.join(\n                    self.predictor.pred_dir, \"merged.npy\"))\n            results = self.metric.compute_metrics(outputs)\n            return {\"results\": results, \"metric\": self.metric}\n        except FileNotFoundError:\n            print(\"\\n[missing]\", self.predictor.pred_dir)\n            return {}",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/evaluators/evaluator.py",
+    "license": "MIT",
+    "language": "python"
+}

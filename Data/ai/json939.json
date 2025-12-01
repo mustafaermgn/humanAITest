@@ -1,0 +1,7 @@
+{
+    "code": "from datetime import datetime\n\ndef parse_date_string(date_string: str) -> tuple[int, int, int]:\n    dt_object = datetime.strptime(date_string, '%Y-%m-%d')\n    return (dt_object.year, dt_object.month, dt_object.day)",
+    "source": "test-data-ai",
+    "prompt": "Verilen bir tarihin (string formatında) bir yıl, ay ve gün tuple'ı olarak döndüren bir tarih ayrıştırma fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

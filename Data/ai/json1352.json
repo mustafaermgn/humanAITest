@@ -1,0 +1,7 @@
+{
+    "code": "def pagerank(graph, damping_factor=0.85, iterations=100):\n    all_pages = set()\n    for page, links in graph.items():\n        all_pages.add(page)\n        for link in links:\n            all_pages.add(link)\n    \n    N = len(all_pages)\n    \n    pageranks = {page: 1.0 / N for page in all_pages}\n    \n    out_degrees = {page: len(links) for page, links in graph.items()}\n    for page in all_pages:\n        if page not in out_degrees:\n            out_degrees[page] = 0\n\n    for _ in range(iterations):\n        new_pageranks = {page: 0.0 for page in all_pages}\n        \n        dangling_sum = 0.0\n        for page in all_pages:\n            if out_degrees[page] == 0:\n                dangling_sum += pageranks[page]\n\n        for page in all_pages:\n            new_pageranks[page] = (1 - damping_factor) / N + damping_factor * dangling_sum / N\n            \n        for referrer_page, links_from_referrer in graph.items():\n            if out_degrees[referrer_page] > 0:\n                rank_contribution = pageranks[referrer_page] / out_degrees[referrer_page]\n                for target_page in links_from_referrer:\n                    new_pageranks[target_page] += damping_factor * rank_contribution\n        \n        pageranks = new_pageranks\n        \n    return pageranks",
+    "source": "test-data-ai",
+    "prompt": "PageRank algoritmasının basitleştirilmiş versiyonunu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

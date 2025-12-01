@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def eventualSafeStates(self, graph: list[list[int]]) -> list[int]:\n        n = len(graph)\n        \n        # 0: unvisited\n        # 1: visiting (currently in the recursion stack)\n        # 2: safe\n        # 3: unsafe (leads to a cycle or another unsafe node)\n        states = [0] * n \n        \n        def dfs(node):\n            if states[node] == 1:  # Cycle detected\n                return False\n            if states[node] == 2:  # Already known to be safe\n                return True\n            if states[node] == 3:  # Already known to be unsafe\n                return False\n            \n            states[node] = 1  # Mark as visiting\n            \n            for neighbor in graph[node]:\n                if not dfs(neighbor):\n                    states[node] = 3  # If any path from neighbor is unsafe, current node is unsafe\n                    return False\n            \n            states[node] = 2  # All paths from this node lead to safe states\n            return True\n        \n        safe_nodes = []\n        for i in range(n):\n            if dfs(i):  # If dfs(i) determines 'i' is safe (or was already marked safe)\n                safe_nodes.append(i)\n        \n        return safe_nodes",
+    "source": "test-data-ai",
+    "prompt": "Find eventual safe states yaz.",
+    "license": "MIT",
+    "language": "python"
+}

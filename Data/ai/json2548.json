@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def push(self, new_data):\n        new_node = Node(new_data)\n        new_node.next = self.head\n        self.head = new_node\n\n    def delete_n_after_m(self, m, n):\n        if not self.head or m < 0 or n < 0:\n            return\n\n        if m == 0:\n            current = self.head\n            for _ in range(n):\n                if current:\n                    current = current.next\n                else:\n                    break\n            self.head = current\n            return\n\n        current = self.head\n        count = 0\n        while current and count < m - 1:\n            current = current.next\n            count += 1\n\n        if not current or not current.next:\n            return\n\n        node_before_deletion = current\n        \n        temp = node_before_deletion.next\n        for _ in range(n):\n            if temp:\n                temp = temp.next\n            else:\n                break\n\n        node_before_deletion.next = temp\n\n    def print_list(self):\n        temp = self.head\n        while temp:\n            print(temp.data, end=\" -> \")\n            temp = temp.next\n        print(\"None\")",
+    "source": "test-data-ai",
+    "prompt": "Delete N nodes after M nodes yaz.",
+    "license": "MIT",
+    "language": "python"
+}

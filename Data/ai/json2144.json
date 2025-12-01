@@ -1,0 +1,7 @@
+{
+    "code": "kullanici_profili = {\n    \"ad\": \"Mehmet\",\n    \"soyad\": \"Yılmaz\",\n    \"yas\": 28\n}\n\n# Potansiyel KeyError hatalarını önlemek için .get() metodu kullanılıyor.\n\n# \"email\" anahtarı sözlükte yok, bu yüzden None dönecektir.\nemail = kullanici_profili.get(\"email\")\n\n# \"telefon\" anahtarı da sözlükte yok, bu yüzden varsayılan değer olan \"Bilinmiyor\" dönecektir.\ntelefon = kullanici_profili.get(\"telefon\", \"Bilinmiyor\")\n\n# Mevcut anahtarlar için de .get() metodunu kullanmak güvenli bir yaklaşımdır.\nad = kullanici_profili.get(\"ad\")\nsoyad = kullanici_profili.get(\"soyad\")\nyas = kullanici_profili.get(\"yas\")\n\nprint(f\"Ad: {ad}\")\nprint(f\"Soyad: {soyad}\")\nprint(f\"Yaş: {yas}\")\nprint(f\"Email: {email}\")\nprint(f\"Telefon: {telefon}\")\n\n# Başka bir örnek: \"şehir\" anahtarı yoksa \"İstanbul\" dönsün.\nşehir = kullanici_profili.get(\"şehir\", \"İstanbul\")\nprint(f\"Şehir: {şehir}\")",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kod parçasının potansiyel olarak fırlatabileceği KeyError hatasını, sözlüğe güvenli erişim sağlayarak (get metodu) düzelt:",
+    "license": "MIT",
+    "language": "python"
+}

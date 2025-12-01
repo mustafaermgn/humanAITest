@@ -1,0 +1,7 @@
+{
+    "code": "def mod_inverse(a, m):\n    \"\"\"\n    Hesaplar a'nın m'ye göre modüler çarpımsal tersini.\n    Yalnızca a ve m aralarında asal ise tersi mevcuttur.\n    \"\"\"\n    def extended_gcd(a, b):\n        if a == 0:\n            return (b, 0, 1)\n        gcd, x1, y1 = extended_gcd(b % a, a)\n        x = y1 - (b // a) * x1\n        y = x1\n        return (gcd, x, y)\n\n    gcd, x, y = extended_gcd(a, m)\n\n    if gcd != 1:\n        raise ValueError(f\"{a} ve {m} aralarında asal değil, modüler tersi mevcut değil.\")\n    else:\n        return (x % m + m) % m",
+    "source": "test-data-ai",
+    "prompt": "Modular multiplicative inverse bul.",
+    "license": "MIT",
+    "language": "python"
+}

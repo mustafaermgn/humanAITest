@@ -1,0 +1,7 @@
+{
+    "code": "def get_text_in_rect(self, bbox: BoundingBox) -> str:\n        if not self.valid:\n            return \"\"\n        # Find intersecting cells on the page\n        text_piece = \"\"\n        page_size = self.get_size()\n        parser_width = self._dpage[\"width\"]\n        parser_height = self._dpage[\"height\"]\n\n        scale = (\n            1  # FIX - Replace with param in get_text_in_rect across backends (optional)\n        )\n\n        for i in range(len(self._dpage[\"cells\"])):\n            rect = self._dpage[\"cells\"][i][\"box\"][\"device\"]\n            x0, y0, x1, y1 = rect\n            cell_bbox = BoundingBox(\n                l=x0 * scale * page_size.width / parser_width,\n                b=y0 * scale * page_size.height / parser_height,\n                r=x1 * scale * page_size.width / parser_width,\n                t=y1 * scale * page_size.height / parser_height,\n                coord_origin=CoordOrigin.BOTTOMLEFT,\n            ).to_top_left_origin(page_height=page_size.height * scale)\n\n            overlap_frac = cell_bbox.intersection_over_self(bbox)\n\n            if overlap_frac > 0.5:\n                if len(text_piece) > 0:\n                    text_piece += \" \"\n                text_piece += self._dpage[\"cells\"][i][\"content\"][\"rnormalized\"]\n\n        return text_piece",
+    "source": "github_repo:docling-project/docling",
+    "file": "docling/backend/docling_parse_backend.py",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "# Bir dosyadan okuma işlemi\nwith open('input.txt', 'r', encoding='utf-8') as input_file:\n    content = input_file.read()\n\n# Okunan içerik üzerinde işlem yapma (örnek olarak büyük harfe çevirme)\nprocessed_content = content.upper()\n\n# İşlenmiş içeriği başka bir dosyaya yazma işlemi\nwith open('output.txt', 'w', encoding='utf-8') as output_file:\n    output_file.write(processed_content)",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki kodu **with** ifadesi kullanarak kaynak yönetimini iyileştirerek yeniden yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def gcd(a, b):\n    \"\"\"\n    İki sayının En Büyük Ortak Bölenini (EBOB) hesaplar.\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n\ndef lcm(a, b):\n    \"\"\"\n    İki sayının En Küçük Ortak Katını (EKOK) hesaplar.\n    \"\"\"\n    if a == 0 or b == 0:\n        return 0\n    \n    # EKOK(a, b) = (|a| * |b|) / EBOB(|a|, |b|)\n    # Negatif sayılar için mutlak değerlerini alarak hesaplama yaparız.\n    abs_a = abs(a)\n    abs_b = abs(b)\n    \n    return (abs_a * abs_b) // gcd(abs_a, abs_b)",
+    "source": "test-data-ai",
+    "prompt": "LCM (Least Common Multiple) hesaplayan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

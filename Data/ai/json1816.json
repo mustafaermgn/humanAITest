@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass PriorityQueue:\n    def __init__(self):\n        self._heap = []\n\n    def push(self, item, priority):\n        heapq.heappush(self._heap, (priority, item))\n\n    def pop(self):\n        if self.is_empty():\n            raise IndexError(\"pop from an empty priority queue\")\n        priority, item = heapq.heappop(self._heap)\n        return item\n\n    def peek(self):\n        if self.is_empty():\n            raise IndexError(\"peek from an empty priority queue\")\n        priority, item = self._heap[0]\n        return item\n\n    def is_empty(self):\n        return len(self._heap) == 0\n\n    def __len__(self):\n        return len(self._heap)",
+    "source": "test-data-ai",
+    "prompt": "Priority queue using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

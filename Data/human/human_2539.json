@@ -1,0 +1,7 @@
+{
+    "code": "def __getitem__(self, idx):\n        if self.split == \"test\":\n            set_seed(idx)\n        video_id, text_id = self.meta_processor[idx]\n        video_feature = self.video_processor(video_id)\n        text_feature = self.text_processor(text_id)\n        output = self.align_processor(video_id, video_feature, text_feature)\n        # TODO (huxu): the following is for debug purpose.\n        output.update({\"idx\": idx})\n        return output",
+    "source": "github_repo:facebookresearch/fairseq",
+    "file": "examples/MMPT/mmpt/datasets/mmdataset.py",
+    "license": "MIT",
+    "language": "python"
+}

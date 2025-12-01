@@ -1,0 +1,7 @@
+{
+    "code": "class Solution:\n    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:\n        result = []\n        candidates.sort() # Sorting helps with pruning and can be useful in similar problems\n\n        def backtrack(current_combination, remaining_target, start_index):\n            if remaining_target == 0:\n                result.append(list(current_combination))\n                return\n            if remaining_target < 0:\n                return\n\n            for i in range(start_index, len(candidates)):\n                candidate = candidates[i]\n                # Optimization: if current candidate is already greater than the remaining target,\n                # then all subsequent candidates will also be greater (since sorted),\n                # so we can stop exploring this path.\n                if candidate > remaining_target:\n                    break\n\n                current_combination.append(candidate)\n                # Recursive call: pass `i` (not `i + 1`) to allow reusing the same number.\n                backtrack(current_combination, remaining_target - candidate, i)\n                current_combination.pop() # Backtrack: remove the last added number\n\n        backtrack([], target, 0)\n        return result",
+    "source": "test-data-ai",
+    "prompt": "Combination sum problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def generate_beautiful_array(n: int) -> list[int]:\n    return list(range(1, n + 1))",
+    "source": "test-data-ai",
+    "prompt": "Beautiful array generation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

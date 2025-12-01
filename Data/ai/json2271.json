@@ -1,0 +1,7 @@
+{
+    "code": "def convert(s: str, numRows: int) -> str:\n    if numRows == 1:\n        return s\n\n    rows = [[] for _ in range(numRows)]\n    current_row = 0\n    going_down = True\n\n    for char in s:\n        rows[current_row].append(char)\n\n        if going_down:\n            current_row += 1\n        else:\n            current_row -= 1\n\n        if current_row == 0:\n            going_down = True\n        elif current_row == numRows - 1:\n            going_down = False\n    \n    result = []\n    for row in rows:\n        result.append(\"\".join(row))\n    \n    return \"\".join(result)",
+    "source": "test-data-ai",
+    "prompt": "Zigzag conversion yaz.",
+    "license": "MIT",
+    "language": "python"
+}

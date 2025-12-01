@@ -1,0 +1,7 @@
+{
+    "code": "def solve_knight_tour():\n    N = 8\n\n    knight_moves = [\n        (2, 1), (1, 2), (-1, 2), (-2, 1),\n        (-2, -1), (-1, -2), (1, -2), (2, -1)\n    ]\n\n    board = [[0 for _ in range(N)] for _ in range(N)]\n\n    def is_valid(x, y):\n        return 0 <= x < N and 0 <= y < N and board[x][y] == 0\n\n    def solve(x, y, move_count):\n        board[x][y] = move_count\n\n        if move_count == N * N:\n            return True\n\n        for dx, dy in knight_moves:\n            next_x, next_y = x + dx, y + dy\n            if is_valid(next_x, next_y):\n                if solve(next_x, next_y, move_count + 1):\n                    return True\n\n        board[x][y] = 0\n        return False\n\n    start_x, start_y = 0, 0\n    if solve(start_x, start_y, 1):\n        for row in board:\n            print(\" \".join(f\"{cell:2d}\" for cell in row))\n    else:\n        print(\"Çözüm bulunamadı.\")\n\nsolve_knight_tour()",
+    "source": "test-data-ai",
+    "prompt": "Knight's tour problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

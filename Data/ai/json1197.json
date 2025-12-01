@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass Solution:\n    def kthSmallest(self, matrix: list[list[int]], k: int) -> int:\n        rows = len(matrix)\n        cols = len(matrix[0])\n\n        # Min-heap to store (value, row_index, col_index)\n        min_heap = []\n\n        # Initialize the heap with the first element of each row\n        # Only add elements if the row is not empty\n        for r in range(rows):\n            if cols > 0: # Ensure the row is not empty\n                heapq.heappush(min_heap, (matrix[r][0], r, 0))\n\n        # Pop k-1 times to find the k-th smallest element\n        for _ in range(k - 1):\n            # If heap becomes empty before k operations, it implies k is too large\n            # for the given matrix, but problem constraints usually guarantee k <= m*n.\n            if not min_heap:\n                return -1 # Or raise an error, depending on desired behavior for invalid k\n\n            val, r, c = heapq.heappop(min_heap)\n\n            # If there's a next element in the same row, add it to the heap\n            if c + 1 < cols:\n                heapq.heappush(min_heap, (matrix[r][c+1], r, c+1))\n        \n        # The k-th smallest element is now at the top of the heap\n        # If min_heap is empty here, it means k was 0 or matrix was empty,\n        # but problem constraints usually state k >= 1 and non-empty matrix.\n        return heapq.heappop(min_heap)[0]",
+    "source": "test-data-ai",
+    "prompt": "Kth smallest element in sorted matrix using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "def crt(n, a):\n    current_a = a[0]\n    current_n = n[0]\n\n    for i in range(1, len(n)):\n        next_a = a[i]\n        next_n = n[i]\n\n        rhs = (next_a - current_a) % next_n\n        \n        # This assumes current_n and next_n are coprime.\n        # Python's pow(base, -1, mod) computes the modular multiplicative inverse.\n        inv_current_n = pow(current_n, -1, next_n)\n        \n        k = (rhs * inv_current_n) % next_n\n        \n        current_a = current_a + k * current_n\n        current_n = current_n * next_n\n    \n    return current_a % current_n",
+    "source": "test-data-ai",
+    "prompt": "Chinese remainder theorem uygula.",
+    "license": "MIT",
+    "language": "python"
+}

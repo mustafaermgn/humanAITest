@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass Solution:\n    def networkDelayTime(self, times: list[list[int]], n: int, k: int) -> int:\n        graph = {i: [] for i in range(1, n + 1)}\n        for u, v, w in times:\n            graph[u].append((v, w))\n\n        dist = {i: float('inf') for i in range(1, n + 1)}\n        dist[k] = 0\n\n        pq = [(0, k)]\n\n        while pq:\n            d, u = heapq.heappop(pq)\n\n            if d > dist[u]:\n                continue\n\n            for v, weight in graph[u]:\n                if dist[u] + weight < dist[v]:\n                    dist[v] = dist[u] + weight\n                    heapq.heappush(pq, (dist[v], v))\n        \n        max_delay = 0\n        for i in range(1, n + 1):\n            if dist[i] == float('inf'):\n                return -1\n            max_delay = max(max_delay, dist[i])\n            \n        return max_delay",
+    "source": "test-data-ai",
+    "prompt": "Network delay time using Dijkstra with heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

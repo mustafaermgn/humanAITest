@@ -1,0 +1,7 @@
+{
+    "code": "def min_platforms(arrival, departure):\n    \"\"\"\n    Kalkış ve varış saatleri verilen trenler için gerekli minimum platform sayısını hesaplar.\n\n    Args:\n        arrival (list): Trenlerin varış saatlerini içeren liste.\n        departure (list): Trenlerin kalkış saatlerini içeren liste.\n                          departure[i] corresponds to arrival[i].\n\n    Returns:\n        int: Gerekli minimum platform sayısı.\n    \"\"\"\n    \n    # Varış ve kalkış saatlerini sırala\n    arrival.sort()\n    departure.sort()\n\n    n = len(arrival)\n    \n    # Gerekli platform sayısı ve maksimum platform sayısını başlat\n    platforms_needed = 0\n    max_platforms = 0\n    \n    # İki işaretçi kullanarak varış ve kalkış olaylarını işle\n    i = 0  # varış dizisi için işaretçi\n    j = 0  # kalkış dizisi için işaretçi\n\n    while i < n and j < n:\n        # Eğer bir sonraki olay bir varış ise\n        if arrival[i] <= departure[j]:\n            platforms_needed += 1\n            max_platforms = max(max_platforms, platforms_needed)\n            i += 1\n        # Eğer bir sonraki olay bir kalkış ise\n        else:\n            platforms_needed -= 1\n            j += 1\n            \n    return max_platforms",
+    "source": "test-data-ai",
+    "prompt": "Minimum number of platforms required problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

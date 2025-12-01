@@ -1,0 +1,7 @@
+{
+    "code": "from collections import deque\n\ndef reveal_cards_in_increasing_order(cards):\n    \"\"\"\n    Reveals cards in increasing order using a queue.\n    \"\"\"\n    # Step 1: Sort the cards to ensure they are in increasing order\n    # when processed.\n    sorted_cards = sorted(cards)\n\n    # Step 2: Create a queue and add the sorted cards to it.\n    card_queue = deque()\n    for card in sorted_cards:\n        card_queue.append(card) # Add to the right (end) of the queue\n\n    # Step 3: Reveal cards by dequeuing them one by one.\n    revealed_order = []\n    while card_queue:\n        # Pop from the left (front) of the queue to get elements\n        # in the order they were added (increasing order).\n        revealed_card = card_queue.popleft()\n        revealed_order.append(revealed_card)\n\n    return revealed_order",
+    "source": "test-data-ai",
+    "prompt": "Reveal cards in increasing order using queue yaz.",
+    "license": "MIT",
+    "language": "python"
+}

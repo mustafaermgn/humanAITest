@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef flatten(root: TreeNode) -> None:\n    \"\"\"\n    Do not return anything, modify root in-place instead.\n    \"\"\"\n    if not root:\n        return\n\n    # Recursively flatten the left subtree\n    flatten(root.left)\n    # Recursively flatten the right subtree\n    flatten(root.right)\n\n    # After the recursive calls, root.left and root.right\n    # point to the heads of their respective flattened subtrees.\n\n    # If there is a left subtree to process\n    if root.left:\n        # Store the original right subtree\n        original_right_subtree = root.right\n\n        # Move the entire flattened left subtree to become the new right child\n        root.right = root.left\n        # Clear the left child pointer\n        root.left = None\n\n        # Find the tail of the (now) new right subtree (which was the flattened left subtree)\n        current = root.right\n        while current.right:\n            current = current.right\n\n        # Attach the original (flattened) right subtree to the tail\n        current.right = original_right_subtree",
+    "source": "test-data-ai",
+    "prompt": "Flatten binary tree to linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

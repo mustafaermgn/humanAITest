@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_error_rate(errors: int, total: int) -> float:\n    if total == 0:\n        return 0.0\n    return (errors / total) * 100.0",
+    "source": "test-data-ai",
+    "prompt": "Error rate calculator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

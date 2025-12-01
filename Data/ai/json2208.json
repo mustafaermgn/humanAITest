@@ -1,0 +1,7 @@
+{
+    "code": "def max_thieves_caught(arr, k):\n    n = len(arr)\n    policemen_indices = []\n    thieves_indices = []\n\n    for i in range(n):\n        if arr[i] == 'P':\n            policemen_indices.append(i)\n        elif arr[i] == 'T':\n            thieves_indices.append(i)\n\n    caught_thieves = 0\n    p_ptr = 0\n    t_ptr = 0\n\n    while p_ptr < len(policemen_indices) and t_ptr < len(thieves_indices):\n        policeman_pos = policemen_indices[p_ptr]\n        thief_pos = thieves_indices[t_ptr]\n\n        if abs(policeman_pos - thief_pos) <= k:\n            caught_thieves += 1\n            p_ptr += 1\n            t_ptr += 1\n        elif thief_pos < policeman_pos:\n            t_ptr += 1\n        else:\n            p_ptr += 1\n            \n    return caught_thieves",
+    "source": "test-data-ai",
+    "prompt": "Policemen catch thieves problemini yaz.",
+    "license": "MIT",
+    "language": "python"
+}

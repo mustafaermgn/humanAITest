@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef solve_tsp_dp(dist_matrix):\n    n = len(dist_matrix)\n    \n    INF = float('inf')\n    dp = [[INF] * n for _ in range(1 << n)]\n\n    dp[1][0] = 0\n\n    for mask in range(1, 1 << n):\n        if not (mask & (1 << 0)):\n            continue\n        \n        for i in range(n):\n            if not (mask & (1 << i)):\n                continue\n            \n            if mask == (1 << 0) and i == 0:\n                continue\n\n            if i == 0:\n                continue\n\n            for j in range(n):\n                if j == i:\n                    continue\n                \n                if not (mask & (1 << j)):\n                    continue\n                \n                prev_mask = mask ^ (1 << i)\n\n                if j == 0:\n                    if prev_mask == (1 << 0) and dp[prev_mask][0] != INF:\n                        dp[mask][i] = min(dp[mask][i], dp[prev_mask][0] + dist_matrix[0][i])\n                else:\n                    if dp[prev_mask][j] != INF:\n                        dp[mask][i] = min(dp[mask][i], dp[prev_mask][j] + dist_matrix[j][i])\n\n    min_tour_cost = INF\n    final_mask = (1 << n) - 1\n\n    for i in range(1, n): \n        if dp[final_mask][i] != INF:\n            min_tour_cost = min(min_tour_cost, dp[final_mask][i] + dist_matrix[i][0])\n\n    return min_tour_cost",
+    "source": "test-data-ai",
+    "prompt": "TSP için dynamic programming çözümü yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\nclass Solution:\n    def groupStrings(self, strings: list[str]) -> list[list[str]]:\n        groups = defaultdict(list)\n\n        def get_normalized_form(s: str) -> str:\n            if not s:\n                return \"\"\n\n            shift = ord(s[0]) - ord('a')\n            normalized_chars = []\n            for char_code in map(ord, s):\n                shifted_index = (char_code - ord('a') - shift + 26) % 26\n                normalized_chars.append(chr(ord('a') + shifted_index))\n            \n            return \"\".join(normalized_chars)\n\n        for s in strings:\n            normalized_s = get_normalized_form(s)\n            groups[normalized_s].append(s)\n        \n        return list(groups.values())",
+    "source": "test-data-ai",
+    "prompt": "Group shifted strings yaz.",
+    "license": "MIT",
+    "language": "python"
+}

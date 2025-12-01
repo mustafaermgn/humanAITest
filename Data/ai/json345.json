@@ -1,0 +1,7 @@
+{
+    "code": "import itertools\n\ndef gezgin_satici_brute_force(sehirler, mesafe_matrisi):\n    \"\"\"\n    Gezgin Satıcı Problemi için brute force (tam arama) çözümü.\n\n    Args:\n        sehirler: Şehirlerin listesi (örn. [0, 1, 2, 3]).\n        mesafe_matrisi: Şehirler arasındaki mesafeleri temsil eden bir 2D matris.\n                       distance_matrix[i][j], i. şehirden j. şehre olan mesafeyi verir.\n\n    Returns:\n        (en_iyi_yol, en_iyi_mesafe): En kısa yolu ve karşılık gelen mesafeyi içeren bir tuple.\n    \"\"\"\n\n    en_iyi_yol = None\n    en_iyi_mesafe = float('inf')\n\n    for yol in itertools.permutations(sehirler):\n        toplam_mesafe = 0\n        for i in range(len(yol) - 1):\n            toplam_mesafe += mesafe_matrisi[yol[i]][yol[i+1]]\n        toplam_mesafe += mesafe_matrisi[yol[-1]][yol[0]]  # Başlangıç şehrine dönüş\n\n        if toplam_mesafe < en_iyi_mesafe:\n            en_iyi_mesafe = toplam_mesafe\n            en_iyi_yol = list(yol)\n\n    return en_iyi_yol, en_iyi_mesafe\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    sehirler = [0, 1, 2, 3]\n    mesafe_matrisi = [\n        [0, 10, 15, 20],\n        [10, 0, 35, 25],\n        [15, 35, 0, 30],\n        [20, 25, 30, 0]\n    ]\n\n    en_iyi_yol, en_iyi_mesafe = gezgin_satici_brute_force(sehirler, mesafe_matrisi)\n\n    print(\"En İyi Yol:\", en_iyi_yol)\n    print(\"En İyi Mesafe:\", en_iyi_mesafe)",
+    "source": "test-data-ai",
+    "prompt": "Travelling Salesman Problem için brute force çözüm yaz.",
+    "license": "MIT",
+    "language": "python"
+}

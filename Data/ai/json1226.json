@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass BSTIterator:\n\n    def __init__(self, root: TreeNode):\n        self.stack = []\n        self._push_leftmost_path(root)\n\n    def _push_leftmost_path(self, node: TreeNode):\n        \"\"\"\n        Helper function to push all nodes on the leftmost path\n        from the given node onto the stack.\n        \"\"\"\n        while node:\n            self.stack.append(node)\n            node = node.left\n\n    def next(self) -> int:\n        \"\"\"\n        Returns the next smallest number.\n        \"\"\"\n        if not self.has_next():\n            raise StopIteration(\"No more elements in BST\")\n            \n        current_node = self.stack.pop()\n        # If there's a right child, we need to add its leftmost path to the stack\n        if current_node.right:\n            self._push_leftmost_path(current_node.right)\n            \n        return current_node.val\n\n    def has_next(self) -> bool:\n        \"\"\"\n        Returns whether we have a next smallest number.\n        \"\"\"\n        return len(self.stack) > 0",
+    "source": "test-data-ai",
+    "prompt": "BST iterator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import os\n\ndef get_file_extension(file_path):\n    base_name = os.path.basename(file_path)\n    if not base_name:\n        return \"\"\n    \n    _, ext = os.path.splitext(base_name)\n    \n    # Handle cases like 'file.' where splitext returns '.' as the extension.\n    # We generally expect extensions to have characters after the dot.\n    if ext == '.':\n        return \"\"\n        \n    return ext",
+    "source": "test-data-ai",
+    "prompt": "Dosya yolunu parametre olarak alan ve dosyanın uzantısını (örn: .txt) döndüren güvenli bir fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

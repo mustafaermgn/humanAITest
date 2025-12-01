@@ -1,0 +1,7 @@
+{
+    "code": "def count_trailing_zeros(n: int) -> int:\n    if n == 0:\n        return 0\n    binary_representation = bin(n)[2:]\n    return len(binary_representation) - len(binary_representation.rstrip('0'))",
+    "source": "test-data-ai",
+    "prompt": "Count trailing zeros in binary representation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

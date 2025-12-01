@@ -1,0 +1,7 @@
+{
+    "code": "def anagram_gruplama(kelimeler):\n    \"\"\"\n    Bir kelime listesini anagram gruplarına ayırır.\n\n    Args:\n        kelimeler: Anagram gruplarına ayrılacak kelimelerin listesi.\n\n    Returns:\n        Anagram gruplarının bir listesi.\n    \"\"\"\n\n    anagram_gruplari = {}\n    for kelime in kelimeler:\n        siralanmis_kelime = \"\".join(sorted(kelime))\n        if siralanmis_kelime in anagram_gruplari:\n            anagram_gruplari[siralanmis_kelime].append(kelime)\n        else:\n            anagram_gruplari[siralanmis_kelime] = [kelime]\n\n    return list(anagram_gruplari.values())\n\nif __name__ == '__main__':\n    kelimeler = [\"eat\", \"tea\", \"tan\", \"ate\", \"nat\", \"bat\"]\n    anagram_gruplari = anagram_gruplama(kelimeler)\n    print(anagram_gruplari)",
+    "source": "test-data-ai",
+    "prompt": "Anagram grouping yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\nclass Solution:\n    def kClosest(self, points: list[list[int]], k: int) -> list[list[int]]:\n        max_heap = [] # Stores tuples of (-squared_distance, [x, y])\n\n        for point in points:\n            x, y = point[0], point[1]\n            dist_sq = x*x + y*y\n\n            if len(max_heap) < k:\n                # If the heap is not yet full, simply add the point\n                # We use -dist_sq to simulate a max-heap with heapq (which is a min-heap)\n                heapq.heappush(max_heap, (-dist_sq, point))\n            else:\n                # If the heap is full, compare the current point's distance\n                # with the largest distance currently in the heap (which is at max_heap[0])\n                # If the current point is closer (smaller positive distance -> larger negative distance)\n                if -dist_sq > max_heap[0][0]:\n                    heapq.heappop(max_heap) # Remove the point with the largest distance\n                    heapq.heappush(max_heap, (-dist_sq, point)) # Add the new closer point\n\n        # Extract just the point coordinates from the heap\n        result = [item[1] for item in max_heap]\n        return result",
+    "source": "test-data-ai",
+    "prompt": "K closest points to origin using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

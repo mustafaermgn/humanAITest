@@ -1,0 +1,7 @@
+{
+    "code": "def find_kth_smallest_in_union(arr1, arr2, k):\n    len1, len2 = len(arr1), len(arr2)\n\n    if k < 1 or k > len1 + len2:\n        return None  # k is out of valid range\n\n    p1, p2 = 0, 0\n    kth_element = None\n\n    while k > 0:\n        # If arr1 is exhausted, take from arr2\n        if p1 == len1:\n            kth_element = arr2[p2]\n            p2 += 1\n        # If arr2 is exhausted, take from arr1\n        elif p2 == len2:\n            kth_element = arr1[p1]\n            p1 += 1\n        # Compare elements from both arrays\n        elif arr1[p1] <= arr2[p2]:\n            kth_element = arr1[p1]\n            p1 += 1\n        else: # arr2[p2] < arr1[p1]\n            kth_element = arr2[p2]\n            p2 += 1\n        \n        k -= 1\n    \n    return kth_element",
+    "source": "test-data-ai",
+    "prompt": "Find kth smallest in union of two sorted arrays yaz.",
+    "license": "MIT",
+    "language": "python"
+}

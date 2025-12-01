@@ -1,0 +1,7 @@
+{
+    "code": "def on_button_pressed(self, event: Button.Pressed) -> None:  # (1)!\n        \"\"\"Handle all button pressed events.\"\"\"\n        if event.button.id == \"bell\":\n            self.bell()\n        elif event.button.has_class(\"toggle\", \"dark\"):\n            self.theme = (\n                \"textual-dark\" if self.theme == \"textual-light\" else \"textual-light\"\n            )\n        elif event.button.id == \"quit\":\n            self.exit()",
+    "source": "github_repo:Textualize/textual",
+    "file": "docs/examples/events/on_decorator01.py",
+    "license": "MIT",
+    "language": "python"
+}

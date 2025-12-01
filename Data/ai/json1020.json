@@ -1,0 +1,7 @@
+{
+    "code": "def power(base, exp, mod):\n    \"\"\"\n    Hesaplar (base^exp) % mod\n    \"\"\"\n    res = 1\n    base %= mod\n    while exp > 0:\n        if exp % 2 == 1:\n            res = (res * base) % mod\n        base = (base * base) % mod\n        exp //= 2\n    return res\n\ndef modInverse(a, m):\n    \"\"\"\n    Fermat's Little Theorem kullanarak a'nın mod m'ye göre tersini bulur.\n    Bu yöntem m'nin asal olmasını gerektirir.\n    \"\"\"\n    # m asal bir sayı olmalıdır.\n    # a'nın m'ye göre tersi a^(m-2) % m'dir.\n    return power(a, m - 2, m)\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    a_val = 3\n    m_val = 11 # 11 asal bir sayı\n\n    # 3'ün mod 11'e göre tersi:\n    # 3 * x = 1 (mod 11)\n    # x = 4, çünkü 3 * 4 = 12 = 1 (mod 11)\n\n    result = modInverse(a_val, m_val)\n    print(f\"{a_val} 'nın mod {m_val} 'ye göre tersi: {result}\")\n\n    # Doğrulama: (a * a_inverse) % m_val == 1 olmalı\n    print(f\"Doğrulama: ({a_val} * {result}) % {m_val} = {(a_val * result) % m_val}\")\n\n    a_val_2 = 10\n    m_val_2 = 17 # 17 asal bir sayı\n    result_2 = modInverse(a_val_2, m_val_2)\n    print(f\"{a_val_2} 'nın mod {m_val_2} 'ye göre tersi: {result_2}\")\n    print(f\"Doğrulama: ({a_val_2} * {result_2}) % {m_val_2} = {(a_val_2 * result_2) % m_val_2}\")",
+    "source": "test-data-ai",
+    "prompt": "Fermat's little theorem kullanarak modular inverse bul.",
+    "license": "MIT",
+    "language": "python"
+}

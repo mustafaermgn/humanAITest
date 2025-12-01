@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\nclass TarjanBridgeFinder:\n    def __init__(self, V):\n        self.V = V  # Number of vertices\n        self.graph = defaultdict(list)\n        self.time = 0\n        self.disc = [-1] * V  # Discovery times\n        self.low = [-1] * V   # Low-link values\n        self.parent = [-1] * V\n        self.visited = [False] * V\n        self.bridges = []\n\n    def add_edge(self, u, v):\n        self.graph[u].append(v)\n        self.graph[v].append(u) # For an undirected graph\n\n    def _dfs(self, u):\n        self.visited[u] = True\n        self.disc[u] = self.time\n        self.low[u] = self.time\n        self.time += 1\n\n        for v in self.graph[u]:\n            if v == self.parent[u]:\n                continue\n            if self.visited[v]:\n                self.low[u] = min(self.low[u], self.disc[v])\n            else:\n                self.parent[v] = u\n                self._dfs(v)\n                self.low[u] = min(self.low[u], self.low[v])\n\n                if self.low[v] > self.disc[u]:\n                    self.bridges.append(tuple(sorted((u, v))))\n\n    def find_bridges(self):\n        for i in range(self.V):\n            if not self.visited[i]:\n                self._dfs(i)\n        return self.bridges",
+    "source": "test-data-ai",
+    "prompt": "Bridge (köprü) bulan Tarjan algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

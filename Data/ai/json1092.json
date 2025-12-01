@@ -1,0 +1,7 @@
+{
+    "code": "import asyncio\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/\")\nasync def read_root():\n    \"\"\"\n    Asynchronous endpoint example.\n    Simulates a non-blocking operation (e.g., I/O call) with asyncio.sleep.\n    \"\"\"\n    await asyncio.sleep(1)  # Simulate an async I/O operation that takes 1 second\n    return {\"message\": \"Hello from async FastAPI!\"}\n\n@app.get(\"/items/{item_id}\")\nasync def read_item(item_id: int):\n    \"\"\"\n    Another asynchronous endpoint with a path parameter.\n    \"\"\"\n    await asyncio.sleep(0.5) # Simulate another async operation\n    return {\"item_id\": item_id, \"data\": f\"Async data for item {item_id}\"}\n\nif __name__ == \"__main__\":\n    import uvicorn\n    # To run this file: uvicorn main:app --reload\n    # Replace 'main' with your file's name if it's different.\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile async endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

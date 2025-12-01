@@ -1,0 +1,7 @@
+{
+    "code": "def remove_outermost_parentheses(s: str) -> str:\n    if len(s) < 2 or s[0] != '(' or s[-1] != ')':\n        return s\n\n    balance = 0\n    for i in range(len(s)):\n        if s[i] == '(':\n            balance += 1\n        elif s[i] == ')':\n            balance -= 1\n\n        # If the balance becomes 0 before reaching the very end of the string,\n        # it means there's an inner complete balanced parenthetical group.\n        # Thus, the current s[0] and s[-1] are not the sole outermost parentheses.\n        # For example, in \"(A)(B)\", balance becomes 0 after \"(A)\".\n        if balance == 0 and i < len(s) - 1:\n            return s\n    \n    # If the loop completes and balance is 0, it means the entire string\n    # was a single balanced unit enclosed by s[0] and s[-1].\n    # Examples: \"((A)(B))\", \"(A(B)C)\", \"()\"\n    return s[1:-1]",
+    "source": "test-data-ai",
+    "prompt": "Remove outermost parentheses using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

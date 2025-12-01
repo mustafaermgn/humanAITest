@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef removeDuplicates(head: ListNode) -> ListNode:\n    if not head:\n        return head\n\n    seen = set()\n    current = head\n    previous = None\n\n    while current:\n        if current.val in seen:\n            # Eğer mevcut düğümün değeri daha önce görüldüyse,\n            # bu bir kopyadır. Önceki düğümün 'next'ini mevcut düğümün 'next'ine bağlayarak\n            # mevcut düğümü listeden çıkarırız.\n            previous.next = current.next\n        else:\n            # Eğer mevcut düğümün değeri daha önce görülmediyse,\n            # değeri 'seen' setine ekle ve 'previous' işaretçisini mevcut düğüme ilerlet.\n            seen.add(current.val)\n            previous = current\n        \n        # Her durumda 'current' işaretçisini bir sonraki düğüme ilerlet.\n        # Eğer bir düğüm kaldırıldıysa bile, listedeki sonraki düğümü kontrol etmeliyiz.\n        current = current.next\n    \n    return head",
+    "source": "test-data-ai",
+    "prompt": "Linked list'ten duplicates removal yaz.",
+    "license": "MIT",
+    "language": "python"
+}

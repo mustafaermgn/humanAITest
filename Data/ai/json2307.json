@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef baby_step_giant_step(a, b, n):\n    if n == 1:\n        return 0\n\n    if a % n == 0:\n        if b % n == 0:\n            return 1 if n > 1 else 0\n        else:\n            return None\n\n    if a % n == 1:\n        if b % n == 1:\n            return 0\n        else:\n            return None\n\n    m = math.ceil(math.sqrt(n))\n\n    baby_steps = {}\n    current_val = 1\n    for j in range(m):\n        if current_val == b % n: # Check if b is found in baby steps (x < m)\n            return j\n        baby_steps[current_val] = j\n        current_val = (current_val * a) % n\n\n    try:\n        a_m = pow(a, m, n)\n        a_inv_m = pow(a_m, -1, n)\n    except ValueError:\n        return None\n\n    current_giant_step_val = b\n    for k in range(m):\n        if current_giant_step_val in baby_steps:\n            j = baby_steps[current_giant_step_val]\n            return j + k * m\n        current_giant_step_val = (current_giant_step_val * a_inv_m) % n\n\n    return None",
+    "source": "test-data-ai",
+    "prompt": "Baby-step giant-step algorithm for discrete log yaz.",
+    "license": "MIT",
+    "language": "python"
+}

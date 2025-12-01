@@ -1,0 +1,7 @@
+{
+    "code": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_end_of_word = False\n\nclass Trie:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for char in word:\n            if char not in node.children:\n                node.children[char] = TrieNode()\n            node = node.children[char]\n        node.is_end_of_word = True\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for char in word:\n            if char not in node.children:\n                return False\n            node = node.children[char]\n        return node.is_end_of_word\n\nif __name__ == '__main__':\n    trie = Trie()\n    trie.insert(\"apple\")\n    trie.insert(\"app\")\n    trie.insert(\"apricot\")\n    trie.insert(\"banana\")\n\n    print(f\"'apple' search result: {trie.search('apple')}\")     # True\n    print(f\"'app' search result: {trie.search('app')}\")         # True\n    print(f\"'apricot' search result: {trie.search('apricot')}\") # True\n    print(f\"'banana' search result: {trie.search('banana')}\")   # True\n    print(f\"'appl' search result: {trie.search('appl')}\")       # False (prefix, but not a full word)\n    print(f\"'orange' search result: {trie.search('orange')}\")   # False\n    print(f\"'application' search result: {trie.search('application')}\") # False",
+    "source": "test-data-ai",
+    "prompt": "Search word in trie yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, x):\n        self.val = x\n        self.next = None\n\nclass Solution:\n    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:\n        if not headA or not headB:\n            return None\n\n        pA = headA\n        pB = headB\n\n        while pA != pB:\n            # Move both pointers one step\n            # If a pointer reaches the end of its list, redirect it to the head of the other list.\n            # This allows the pointers to traverse (listA + listB) or (listB + listA) nodes.\n            # If they intersect, they will meet at the intersection point.\n            # If they don't, they will both become None simultaneously after traversing\n            # the total length of both lists, and the loop will terminate.\n            pA = pA.next if pA else headB\n            pB = pB.next if pB else headA\n            \n        # At this point, pA == pB.\n        # This can be the intersection node, or None if both reached None simultaneously (no intersection).\n        return pA",
+    "source": "test-data-ai",
+    "prompt": "Intersection point of two linked lists bul.",
+    "license": "MIT",
+    "language": "python"
+}

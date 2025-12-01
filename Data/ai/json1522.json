@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef find_nth_from_end(head: ListNode, n: int) -> ListNode:\n    if not head:\n        return None\n\n    slow = head\n    fast = head\n\n    # Move fast pointer n steps ahead\n    for _ in range(n):\n        if not fast:\n            # n is greater than the length of the list\n            return None\n        fast = fast.next\n    \n    # Move both pointers until fast reaches the end\n    while fast:\n        slow = slow.next\n        fast = fast.next\n\n    # At this point, slow points to the Nth node from the end\n    return slow",
+    "source": "test-data-ai",
+    "prompt": "Nth node from end of linked list bul.",
+    "license": "MIT",
+    "language": "python"
+}

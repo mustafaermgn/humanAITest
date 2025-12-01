@@ -1,0 +1,7 @@
+{
+    "code": "def validate_luhn(card_number):\n    \"\"\"\n    Kredi kartı numarasını Luhn algoritması kullanarak doğrular.\n\n    Args:\n        card_number (str): Doğrulanacak kredi kartı numarası (sadece rakamlar içermeli).\n\n    Returns:\n        bool: Numara Luhn algoritmasına göre geçerliyse True, aksi takdirde False.\n    \"\"\"\n    total_sum = 0\n    # Girişin sadece rakamlardan oluştuğundan emin olalım\n    if not card_number.isdigit():\n        return False\n\n    # Sağdan sola doğru rakamları işliyoruz\n    # enumerate(reversed(card_number)) sayesinde,\n    # i değişkeni sağdan sola doğru 0'dan başlayan indeksi temsil eder.\n    # Yani 0 en sağdaki rakam, 1 sağdan ikinci rakam vb.\n    for i, digit_char in enumerate(reversed(card_number)):\n        digit = int(digit_char)\n\n        # Sağdan ikinci, dördüncü, altıncı... rakamı (yani tek indeksli rakamları) ikiyle çarpıyoruz\n        if i % 2 == 1:\n            digit *= 2\n            # Eğer çarpım 9'dan büyükse, 9 çıkarıyoruz (veya basamaklarını topluyoruz, sonuç aynı)\n            if digit > 9:\n                digit -= 9\n        \n        total_sum += digit\n\n    # Toplamın 10'a tam bölünüp bölünmediğini kontrol ediyoruz\n    return total_sum % 10 == 0",
+    "source": "test-data-ai",
+    "prompt": "Credit card number Luhn algorithm ile validate eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

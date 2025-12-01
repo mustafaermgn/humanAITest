@@ -1,0 +1,7 @@
+{
+    "code": "original_string = \"yaz\"\n\nencoded_bytes = original_string.encode('utf-8')\n\ndecoded_string = encoded_bytes.decode('utf-8')",
+    "source": "test-data-ai",
+    "prompt": "Encode and decode strings yaz.",
+    "license": "MIT",
+    "language": "python"
+}

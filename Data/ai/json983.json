@@ -1,0 +1,7 @@
+{
+    "code": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef deleteMiddle(head: ListNode) -> ListNode:\n    if not head or not head.next:\n        return None\n\n    # Count the number of nodes\n    count = 0\n    curr = head\n    while curr:\n        count += 1\n        curr = curr.next\n\n    # Calculate the index of the node to delete\n    # For n nodes, the middle node is at index floor(n / 2) (0-indexed)\n    target_index = count // 2\n\n    # If the head itself is the middle node to delete (only for n=1, already handled)\n    # or if we are deleting the first node, this path shouldn't be taken for n > 1\n    # as target_index will be at least 1 for n > 1.\n    if target_index == 0: # This case is already covered by the initial 'if not head.next' check\n        return head.next\n\n    # Find the node just before the middle node\n    curr_index = 0\n    curr = head\n    prev = None\n    while curr_index < target_index:\n        prev = curr\n        curr = curr.next\n        curr_index += 1\n\n    # Delete the middle node\n    if prev:\n        prev.next = curr.next\n    else: # Should not happen for count > 1 and target_index >= 1\n        return head.next # This branch would mean head is the middle\n\n    return head",
+    "source": "test-data-ai",
+    "prompt": "Delete middle node of linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

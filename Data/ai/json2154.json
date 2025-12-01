@@ -1,0 +1,7 @@
+{
+    "code": "import io\n\ndef fix_indentation(code_block: str) -> str:\n    lines = io.StringIO(code_block).readlines()\n    fixed_lines = []\n    current_indent_level = 0\n    indent_unit = 4\n\n    block_closing_keywords_for_indent_adjustment = {\"elif\", \"else\", \"except\", \"finally\"}\n\n    for line in lines:\n        stripped_line = line.strip()\n\n        if not stripped_line:\n            fixed_lines.append(\"\")\n            continue\n\n        effective_indent_for_this_line = current_indent_level\n\n        first_word = stripped_line.split(' ', 1)[0].split('(', 1)[0].split(':', 1)[0]\n        if first_word in block_closing_keywords_for_indent_adjustment and current_indent_level > 0:\n            effective_indent_for_this_line -= 1\n        \n        fixed_lines.append((' ' * (effective_indent_for_this_line * indent_unit)) + stripped_line)\n\n        if stripped_line.endswith(':'):\n            current_indent_level = effective_indent_for_this_line + 1\n\n    return \"\\n\".join(fixed_lines)",
+    "source": "test-data-ai",
+    "prompt": "Yanlış girintilenmiş (indentation) aşağıdaki kod bloğunu düzelt.",
+    "license": "MIT",
+    "language": "python"
+}

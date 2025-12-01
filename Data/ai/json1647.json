@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\ndef _dfs_cycle_util(u, parent, visited, graph):\n    visited.add(u)\n\n    for v in graph.get(u, []):\n        if v not in visited:\n            if _dfs_cycle_util(v, u, visited, graph):\n                return True\n        elif v != parent:\n            return True\n    return False\n\ndef detect_cycle_undirected(graph):\n    visited = set()\n\n    all_nodes = set(graph.keys())\n    for neighbors in graph.values():\n        all_nodes.update(neighbors)\n\n    for node in all_nodes:\n        if node not in visited:\n            if _dfs_cycle_util(node, None, visited, graph):\n                return True\n    return False",
+    "source": "test-data-ai",
+    "prompt": "Detect cycle in undirected graph yaz.",
+    "license": "MIT",
+    "language": "python"
+}

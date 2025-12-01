@@ -1,0 +1,7 @@
+{
+    "code": "def _binary_search(arr, x, low, high):\n    while low <= high:\n        mid = low + (high - low) // 2\n        if arr[mid] == x:\n            return mid\n        elif arr[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n\ndef exponential_search(arr, x):\n    n = len(arr)\n\n    if n == 0:\n        return -1\n\n    if arr[0] == x:\n        return 0\n\n    i = 1\n    while i < n and arr[i] <= x:\n        i *= 2\n\n    return _binary_search(arr, x, i // 2, min(i, n - 1))",
+    "source": "test-data-ai",
+    "prompt": "Exponential Search algoritmasını büyük diziler için yaz.",
+    "license": "MIT",
+    "language": "python"
+}

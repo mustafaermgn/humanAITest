@@ -1,0 +1,7 @@
+{
+    "code": "def maxCoins(nums: list[int]) -> int:\n    n = len(nums)\n    \n    points = [1] + nums + [1]\n    n_padded = len(points)\n    \n    dp = [[0] * n_padded for _ in range(n_padded)]\n    \n    for length in range(2, n_padded): \n        for i in range(n_padded - length):\n            j = i + length\n            \n            for k in range(i + 1, j):\n                current_coins = dp[i][k] + dp[k][j] + points[i] * points[k] * points[j]\n                dp[i][j] = max(dp[i][j], current_coins)\n                    \n    return dp[0][n_padded - 1]",
+    "source": "test-data-ai",
+    "prompt": "Burst balloons problem için maksimum coin hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

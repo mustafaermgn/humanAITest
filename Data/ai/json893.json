@@ -1,0 +1,7 @@
+{
+    "code": "# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nfrom typing import Optional\n\nclass Solution:\n    def __init__(self):\n        self.prev = None\n\n    def flatten(self, root: Optional[TreeNode]) -> None:\n        \"\"\"\n        Do not return anything, modify root in-place instead.\n        \"\"\"\n        if not root:\n            return\n\n        self.flatten(root.right)\n        self.flatten(root.left)\n\n        root.right = self.prev\n        root.left = None\n        self.prev = root",
+    "source": "test-data-ai",
+    "prompt": "Flatten binary tree to linked list yaz.",
+    "license": "MIT",
+    "language": "python"
+}

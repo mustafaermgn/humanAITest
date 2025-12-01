@@ -1,0 +1,7 @@
+{
+    "code": "from flask import Flask, request, jsonify\n\napp = Flask(__name__)\n\n# Dummy data for pagination\n# In a real application, this would come from a database\nitems = [f\"Item {i}\" for i in range(1, 101)]\n\n@app.route('/items', methods=['GET'])\ndef get_paginated_items():\n    page = request.args.get('page', 1, type=int)\n    per_page = request.args.get('per_page', 10, type=int)\n\n    # Ensure per_page is a reasonable number, e.g., between 1 and 100\n    per_page = max(1, min(per_page, 100))\n\n    start_index = (page - 1) * per_page\n    end_index = start_index + per_page\n\n    paginated_items = items[start_index:end_index]\n\n    total_items = len(items)\n    total_pages = (total_items + per_page - 1) // per_page\n\n    response = {\n        'page': page,\n        'per_page': per_page,\n        'total_items': total_items,\n        'total_pages': total_pages,\n        'items': paginated_items\n    }\n\n    return jsonify(response)\n\nif __name__ == '__main__':\n    app.run(debug=True)",
+    "source": "test-data-ai",
+    "prompt": "Flask ile pagination yapan endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

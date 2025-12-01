@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef get_json_response(url):\n    try:\n        response = requests.get(url)\n        response.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)\n        return response.json()\n    except requests.exceptions.RequestException:\n        return None\n    except ValueError:  # JSONDecodeError for invalid JSON\n        return None",
+    "source": "test-data-ai",
+    "prompt": "GET request yapan ve JSON response döndüren fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

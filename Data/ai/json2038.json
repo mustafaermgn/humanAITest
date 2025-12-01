@@ -1,0 +1,7 @@
+{
+    "code": "a, b = b, a",
+    "source": "test-data-ai",
+    "prompt": "İki değişkenin değerini geçici değişken kullanmadan değiştiren (swap) en kısa Python kodu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

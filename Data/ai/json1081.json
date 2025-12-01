@@ -1,0 +1,7 @@
+{
+    "code": "class Graph:\n    def __init__(self, V):\n        self.V = V\n        self.graph = [[] for _ in range(V)]\n\n    def add_edge(self, u, v):\n        self.graph[u].append(v)\n        self.graph[v].append(u)\n\n    def find_articulation_points(self):\n        visited = [False] * self.V\n        disc = [-1] * self.V\n        low = [-1] * self.V\n        parent = [-1] * self.V\n        self.time = 0\n        articulation_points = set()\n\n        def _dfs(u, p=-1):\n            visited[u] = True\n            disc[u] = self.time\n            low[u] = self.time\n            self.time += 1\n\n            children = 0\n\n            for v in self.graph[u]:\n                if v == p:\n                    continue\n                if visited[v]:\n                    low[u] = min(low[u], disc[v])\n                else:\n                    parent[v] = u\n                    children += 1\n                    _dfs(v, u)\n\n                    low[u] = min(low[u], low[v])\n\n                    if p == -1 and children > 1:\n                        articulation_points.add(u)\n                    if p != -1 and low[v] >= disc[u]:\n                        articulation_points.add(u)\n\n        for i in range(self.V):\n            if not visited[i]:\n                _dfs(i)\n        \n        return sorted(list(articulation_points))",
+    "source": "test-data-ai",
+    "prompt": "Articulation point (kesim noktası) bulan algoritma yaz.",
+    "license": "MIT",
+    "language": "python"
+}

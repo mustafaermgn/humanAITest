@@ -1,0 +1,7 @@
+{
+    "code": "def is_sparse(n: int) -> bool:\n    \"\"\"\n    Checks if a number is sparse.\n    A number is sparse if its binary representation has no consecutive 1s.\n    \"\"\"\n    return (n & (n >> 1)) == 0",
+    "source": "test-data-ai",
+    "prompt": "Check if a number is sparse (no consecutive 1s) yaz.",
+    "license": "MIT",
+    "language": "python"
+}

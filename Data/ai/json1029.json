@@ -1,0 +1,7 @@
+{
+    "code": "import sys\n\ndef matrix_chain_multiplication(dims):\n    n = len(dims) - 1  # Number of matrices\n\n    # dp[i][j] stores the minimum number of scalar multiplications needed\n    # to multiply the chain of matrices from index i to j.\n    # Matrix A_k has dimensions dims[k] x dims[k+1].\n    dp = [[0 for _ in range(n)] for _ in range(n)]\n\n    # L is the chain length. It varies from 2 to n.\n    for L in range(2, n + 1):\n        # i is the starting index of the matrix chain.\n        for i in range(n - L + 1):\n            j = i + L - 1  # j is the ending index of the matrix chain.\n            dp[i][j] = sys.maxsize  # Initialize with a very large value\n\n            # k is the split point, dividing the chain into two sub-chains:\n            # (A_i ... A_k) and (A_{k+1} ... A_j)\n            for k in range(i, j):\n                # cost = (cost of multiplying A_i to A_k)\n                #        + (cost of multiplying A_{k+1} to A_j)\n                #        + (cost of multiplying the two resulting matrices)\n                cost = dp[i][k] + dp[k+1][j] + dims[i] * dims[k+1] * dims[j+1]\n                if cost < dp[i][j]:\n                    dp[i][j] = cost\n\n    return dp[0][n - 1]",
+    "source": "test-data-ai",
+    "prompt": "Matrix Chain Multiplication optimizasyonunu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

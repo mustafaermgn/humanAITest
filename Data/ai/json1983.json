@@ -1,0 +1,7 @@
+{
+    "code": "while True:\n    try:\n        sayi_str = input(\"Lütfen bir sayı girin: \")\n        sayi = int(sayi_str)\n        print(f\"Girdiğiniz sayı: {sayi}\")\n        break  # Geçerli bir sayı alındığında döngüden çık\n    except ValueError:\n        print(\"Hatalı giriş! Lütfen sadece geçerli bir tam sayı girin.\")\n    except Exception as e:\n        print(f\"Beklenmeyen bir hata oluştu: {e}\")\n\n# Yakalanmamış istisna örneği:\n# Eğer yukarıdaki try-except bloğu olmasaydı ve kullanıcı \"abc\" gibi bir metin girseydi,\n# `int(sayi_str)` satırı bir `ValueError` yükseltir ve program çökerek \"unhandled exception\" olurdu.\n# try-except bloğu bu ValueError'ı yakalayarak programın çökmesini engeller ve kullanıcıya hata mesajı verir.",
+    "source": "test-data-ai",
+    "prompt": "Aşağıdaki koddaki **yakalanmamış istisna (unhandled exception)** nerede ve nasıl düzeltilmelidir?",
+    "license": "MIT",
+    "language": "python"
+}

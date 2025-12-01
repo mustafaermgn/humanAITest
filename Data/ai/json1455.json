@@ -1,0 +1,7 @@
+{
+    "code": "def find_single_element(nums):\n    single_element = 0\n\n    for i in range(64):\n        sum_at_bit_i = 0\n        for num in nums:\n            sum_at_bit_i += (num >> i) & 1\n\n        bit_for_single = sum_at_bit_i % 3\n        single_element |= (bit_for_single << i)\n\n    return single_element",
+    "source": "test-data-ai",
+    "prompt": "Find element that appears once while others appear thrice yaz.",
+    "license": "MIT",
+    "language": "python"
+}

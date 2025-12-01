@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport functools\n\ndef timing_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        duration = end_time - start_time\n        print(f\"'{func.__name__}' took {duration:.4f} seconds to execute.\")\n        return result\n    return wrapper",
+    "source": "test-data-ai",
+    "prompt": "Timing decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

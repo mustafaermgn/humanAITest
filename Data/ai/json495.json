@@ -1,0 +1,7 @@
+{
+    "code": "def word_search(board, word):\n    def dfs(row, col, index):\n        if index == len(word):\n            return True\n        \n        if row < 0 or row >= len(board) or col < 0 or col >= len(board[0]) or board[row][col] != word[index]:\n            return False\n        \n        temp = board[row][col]\n        board[row][col] = '#' \n\n        found = (dfs(row + 1, col, index + 1) or\n                 dfs(row - 1, col, index + 1) or\n                 dfs(row, col + 1, index + 1) or\n                 dfs(row, col - 1, index + 1))\n        \n        board[row][col] = temp \n        return found\n    \n    for i in range(len(board)):\n        for j in range(len(board[0])):\n            if board[i][j] == word[0]:\n                if dfs(i, j, 0):\n                    return True\n    return False\n\nif __name__ == '__main__':\n    board = [\n        ['A', 'B', 'C', 'E'],\n        ['S', 'F', 'C', 'S'],\n        ['A', 'D', 'E', 'E']\n    ]\n\n    word1 = \"ABCCED\"\n    word2 = \"SEE\"\n    word3 = \"ABCB\"\n\n    print(f\"'{word1}' found: {word_search(board, word1)}\")\n    print(f\"'{word2}' found: {word_search(board, word2)}\")\n    print(f\"'{word3}' found: {word_search(board, word3)}\")",
+    "source": "test-data-ai",
+    "prompt": "Word search in 2D board yaz.",
+    "license": "MIT",
+    "language": "python"
+}

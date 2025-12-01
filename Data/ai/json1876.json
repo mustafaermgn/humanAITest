@@ -1,0 +1,7 @@
+{
+    "code": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def add_to_beginning(self, data):\n        new_node = Node(data)\n        new_node.next = self.head\n        self.head = new_node\n\n    # Sadece fonksiyonu istendiği için bu kısım isteğe bağlıdır,\n    # ancak fonksiyonun çalıştığını göstermek için faydalıdır.\n    def print_list(self):\n        current = self.head\n        while current:\n            print(current.data, end=\" -> \")\n            current = current.next\n        print(\"None\")\n\nif __name__ == \"__main__\":\n    my_list = LinkedList()\n    my_list.add_to_beginning(3)\n    my_list.add_to_beginning(2)\n    my_list.add_to_beginning(1)\n\n    print(\"Liste oluşturulduktan sonra:\")\n    my_list.print_list()  # Çıktı: 1 -> 2 -> 3 -> None\n\n    my_list.add_to_beginning(0)\n    print(\"Başa 0 eklendikten sonra:\")\n    my_list.print_list()  # Çıktı: 0 -> 1 -> 2 -> 3 -> None\n\n    my_list_empty = LinkedList()\n    my_list_empty.add_to_beginning(100)\n    print(\"Boş listeye eleman eklendikten sonra:\")\n    my_list_empty.print_list() # Çıktı: 100 -> None",
+    "source": "test-data-ai",
+    "prompt": "Linked list'e başa eleman ekleme fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

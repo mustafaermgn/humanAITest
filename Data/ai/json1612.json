@@ -1,0 +1,7 @@
+{
+    "code": "def cut_rod(prices, n):\n    \"\"\"\n    Rod kesme problemi için maksimum karı hesaplar.\n\n    Args:\n        prices (list): prices[i] değeri (i+1) uzunluğundaki bir çubuğun fiyatıdır.\n                       Örneğin, prices[0] 1 birim uzunluğundaki çubuğun fiyatıdır.\n        n (int): Kesilecek çubuğun toplam uzunluğu.\n\n    Returns:\n        int: Elde edilebilecek maksimum kar.\n    \"\"\"\n    dp = [0] * (n + 1)\n\n    for i in range(1, n + 1):\n        max_val = float('-inf')\n        for j in range(1, i + 1):\n            # j, çubuğun ilk parçasının uzunluğudur.\n            # prices[j-1] bu j uzunluğundaki parçanın fiyatıdır.\n            # dp[i-j] kalan (i-j) uzunluğundaki çubuktan elde edilecek maksimum kardır.\n            max_val = max(max_val, prices[j - 1] + dp[i - j])\n        dp[i] = max_val\n\n    return dp[n]",
+    "source": "test-data-ai",
+    "prompt": "Rod cutting problem için maksimum kar hesapla.",
+    "license": "MIT",
+    "language": "python"
+}

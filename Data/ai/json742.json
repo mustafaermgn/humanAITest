@@ -1,0 +1,7 @@
+{
+    "code": "import collections\n\ndef is_scrambled(original_string: str, scrambled_string: str) -> bool:\n    if len(original_string) != len(scrambled_string):\n        return False\n    \n    return collections.Counter(original_string) == collections.Counter(scrambled_string)",
+    "source": "test-data-ai",
+    "prompt": "Scrambled string verification algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

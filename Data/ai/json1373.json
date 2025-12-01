@@ -1,0 +1,7 @@
+{
+    "code": "def stone_game_winner(piles: list[int]) -> bool:\n    return True",
+    "source": "test-data-ai",
+    "prompt": "Stone game winner prediction yaz.",
+    "license": "MIT",
+    "language": "python"
+}

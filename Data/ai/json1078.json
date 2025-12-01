@@ -1,0 +1,7 @@
+{
+    "code": "import time\nimport functools\n\ndef timing_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        start_time = time.perf_counter()\n        result = func(*args, **kwargs)\n        end_time = time.perf_counter()\n        elapsed_time = end_time - start_time\n        print(f\"'{func.__name__}' fonksiyonu {elapsed_time:.4f} saniyede tamamlandı.\")\n        return result\n    return wrapper\n\nif __name__ == '__main__':\n    @timing_decorator\n    def example_function_1():\n        time.sleep(1.5)\n        print(\"Example function 1 çalıştı.\")\n\n    @timing_decorator\n    def example_function_2(name, iterations):\n        print(f\"Example function 2 çalıştı, isim: {name}\")\n        for _ in range(iterations):\n            sum(range(10000)) # Biraz işlem yükü\n        time.sleep(0.5)\n        return f\"Merhaba, {name}!\"\n\n    print(\"Fonksiyon 1 çağrılıyor...\")\n    example_function_1()\n    print(\"-\" * 30)\n\n    print(\"Fonksiyon 2 çağrılıyor...\")\n    return_value = example_function_2(\"Python\", 500)\n    print(f\"Fonksiyon 2'den dönen değer: {return_value}\")\n    print(\"-\" * 30)\n\n    @timing_decorator\n    def fast_function():\n        pass\n\n    print(\"Hızlı fonksiyon çağrılıyor...\")\n    fast_function()",
+    "source": "test-data-ai",
+    "prompt": "Timing decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

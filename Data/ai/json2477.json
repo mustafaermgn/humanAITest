@@ -1,0 +1,7 @@
+{
+    "code": "class ClassProperty:\n    def __init__(self, func):\n        self.func = func\n\n    def __get__(self, obj, cls):\n        return self.func(cls)\n\ndef classproperty(func):\n    return ClassProperty(func)",
+    "source": "test-data-ai",
+    "prompt": "Class property decorator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

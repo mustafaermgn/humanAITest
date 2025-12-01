@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef generate_primes():\n    \"\"\"\n    Generates prime numbers using trial division.\n    \"\"\"\n    yield 2\n    yield 3\n    num = 5\n    while True:\n        is_prime = True\n        # Optimization: Check divisibility only up to sqrt(num)\n        # and only by numbers of the form 6k ± 1\n        limit = int(math.sqrt(num))\n        \n        if num % 2 == 0 or num % 3 == 0:\n            is_prime = False\n        else:\n            i = 5\n            while i <= limit:\n                if num % i == 0 or num % (i + 2) == 0:\n                    is_prime = False\n                    break\n                i += 6\n        \n        if is_prime:\n            yield num\n        \n        num += 2 # All primes greater than 2 are odd\n        # Further optimization: check for num+2 as well if we want to be super efficient,\n        # but the current structure directly finds next prime candidates.\n        # Just incrementing by 2 is simpler and covers all odd numbers.\n        # We could also do num += 2, then num += 4 (i.e., num += 6 for next candidate pair)\n        # to only check numbers of form 6k±1, but this just adds complexity to the loop\n        # and the `is_prime` logic already handles the exclusions.\n        # Simple num += 2 is fine for a clear trial division example.",
+    "source": "test-data-ai",
+    "prompt": "Generate prime numbers using trial division yaz.",
+    "license": "MIT",
+    "language": "python"
+}

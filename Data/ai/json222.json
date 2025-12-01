@@ -1,0 +1,7 @@
+{
+    "code": "from typing import List\n\nfrom fastapi import FastAPI, File, UploadFile\n\napp = FastAPI()\n\n\n@app.post(\"/files/\")\nasync def create_files(files: List[bytes] = File(...)):\n    return {\"file_sizes\": [len(file) for file in files]}\n\n\n@app.post(\"/uploadfiles/\")\nasync def create_upload_files(files: List[UploadFile]):\n    return {\"filenames\": [file.filename for file in files]}",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile file upload endpoint yaz.",
+    "license": "MIT",
+    "language": "python"
+}

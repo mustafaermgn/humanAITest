@@ -1,0 +1,7 @@
+{
+    "code": "def fibonacci_memoized(n, memo=None):\n    if memo is None:\n        memo = {}\n\n    if n <= 1:\n        return n\n\n    if n in memo:\n        return memo[n]\n\n    result = fibonacci_memoized(n - 1, memo) + fibonacci_memoized(n - 2, memo)\n    memo[n] = result\n    return result",
+    "source": "test-data-ai",
+    "prompt": "Fibonacci sayılarını memoization ile hesaplayan fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

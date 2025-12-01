@@ -1,0 +1,7 @@
+{
+    "code": "def gcd_euclidean(a, b):\n    while b:\n        a, b = b, a % b\n    return a",
+    "source": "test-data-ai",
+    "prompt": "GCD (Greatest Common Divisor) hesaplayan Euclidean algoritması yaz.",
+    "license": "MIT",
+    "language": "python"
+}

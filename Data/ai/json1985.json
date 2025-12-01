@@ -1,0 +1,7 @@
+{
+    "code": "def daily_temperatures(temperatures: list[int]) -> list[int]:\n    n = len(temperatures)\n    answer = [0] * n\n    stack = []  # Stores (temperature, index)\n\n    for i in range(n):\n        current_temp = temperatures[i]\n        \n        while stack and stack[-1][0] < current_temp:\n            prev_temp, prev_index = stack.pop()\n            answer[prev_index] = i - prev_index\n            \n        stack.append((current_temp, i))\n        \n    return answer",
+    "source": "test-data-ai",
+    "prompt": "Daily temperatures using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

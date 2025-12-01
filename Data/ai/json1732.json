@@ -1,0 +1,7 @@
+{
+    "code": "import json\nfrom datetime import datetime\n\ndef serialize_datetime_objects(obj):\n    if isinstance(obj, datetime):\n        return obj.isoformat()\n    raise TypeError(f\"Object of type {obj.__class__.__name__} is not JSON serializable\")\n\nif __name__ == '__main__':\n    # Örnek kullanım:\n    data = {\n        \"name\": \"John Doe\",\n        \"created_at\": datetime.now(),\n        \"event_date\": datetime(2023, 10, 27, 14, 30, 0),\n        \"nested_data\": {\n            \"last_updated\": datetime(2023, 1, 1, 10, 0, 0)\n        },\n        \"items\": [\n            {\"id\": 1, \"purchase_time\": datetime(2022, 5, 10, 8, 15, 23)},\n            {\"id\": 2, \"shipment_time\": datetime(2023, 9, 1, 12, 0, 0)}\n        ]\n    }\n\n    # Datetime objelerini JSON'a serialize et\n    json_output = json.dumps(data, default=serialize_datetime_objects, indent=4)\n\n    print(json_output)\n\n    # Farklı bir örnek, sadece bir datetime objesi\n    single_datetime = datetime(2024, 1, 1, 0, 0, 0)\n    json_single_output = json.dumps(single_datetime, default=serialize_datetime_objects)\n    print(f\"\\nSadece datetime objesi: {json_single_output}\")\n\n    # Hata durumunu göstermek için (serileştirilemeyen bir tür)\n    try:\n        json.dumps({\"a\": object()}, default=serialize_datetime_objects)\n    except TypeError as e:\n        print(f\"\\nHata örneği: {e}\")",
+    "source": "test-data-ai",
+    "prompt": "Datetime object'leri JSON'a serialize eden fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

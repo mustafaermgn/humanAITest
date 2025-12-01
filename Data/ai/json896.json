@@ -1,0 +1,7 @@
+{
+    "code": "import time\nfrom functools import wraps\n\ndef cache_with_ttl(ttl):\n    cache = {}\n\n    def decorator(func):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            key_args = args\n            key_kwargs = frozenset(kwargs.items())\n            key = (key_args, key_kwargs)\n\n            if key in cache:\n                cached_item = cache[key]\n                if time.time() - cached_item['timestamp'] < ttl:\n                    return cached_item['value']\n                else:\n                    del cache[key]\n\n            result = func(*args, **kwargs)\n            cache[key] = {\n                'value': result,\n                'timestamp': time.time()\n            }\n            return result\n        return wrapper\n    return decorator",
+    "source": "test-data-ai",
+    "prompt": "Cache decorator with TTL yaz.",
+    "license": "MIT",
+    "language": "python"
+}

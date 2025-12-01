@@ -1,0 +1,7 @@
+{
+    "code": "def calculate_error_rate(num_errors, total_items):\n    if total_items == 0:\n        raise ValueError(\"Total items cannot be zero.\")\n    return (num_errors / total_items) * 100",
+    "source": "test-data-ai",
+    "prompt": "Error rate calculator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

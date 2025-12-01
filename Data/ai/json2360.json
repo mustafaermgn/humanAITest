@@ -1,0 +1,7 @@
+{
+    "code": "from collections import defaultdict\n\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = defaultdict(int)  # Sayının frekansını tutar: sayı -> frekans\n        self.group = defaultdict(list) # Frekansa göre sayıları gruplar: frekans -> [sayı1, sayı2, ...] (push sırasına göre)\n        self.max_freq = 0             # Mevcut en yüksek frekans değeri\n\n    def push(self, val: int) -> None:\n        # Sayının frekansını artır\n        self.freq[val] += 1\n        current_freq = self.freq[val]\n\n        # Sayıyı mevcut frekans grubuna ekle\n        self.group[current_freq].append(val)\n\n        # Genel en yüksek frekansı güncelle\n        if current_freq > self.max_freq:\n            self.max_freq = current_freq\n\n    def pop(self) -> int:\n        # En yüksek frekans grubundan en son eklenen sayıyı al\n        val = self.group[self.max_freq].pop()\n\n        # Alınan sayının frekansını azalt\n        self.freq[val] -= 1\n\n        # Eğer en yüksek frekans grubu boşaldıysa,\n        # artık o frekansta hiçbir sayı kalmamıştır,\n        # bu nedenle max_freq'i bir azalt\n        if not self.group[self.max_freq]:\n            self.max_freq -= 1\n            \n        return val",
+    "source": "test-data-ai",
+    "prompt": "Maximum frequency stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

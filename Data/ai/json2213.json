@@ -1,0 +1,7 @@
+{
+    "code": "import requests\nfrom typing import Optional, Tuple, Dict, Any\n\ndef request_with_cookie_management(\n    url: str,\n    method: str = 'GET',\n    data: Optional[Dict[str, Any]] = None,\n    json: Optional[Dict[str, Any]] = None,\n    params: Optional[Dict[str, Any]] = None,\n    headers: Optional[Dict[str, str]] = None,\n    initial_cookies: Optional[Dict[str, str]] = None,\n    session: Optional[requests.Session] = None\n) -> Tuple[requests.Response, requests.Session]:\n    \n    if session is None:\n        session = requests.Session()\n\n    if initial_cookies:\n        session.cookies.update(initial_cookies)\n\n    response = session.request(\n        method=method,\n        url=url,\n        data=data,\n        json=json,\n        params=params,\n        headers=headers,\n    )\n\n    return response, session",
+    "source": "test-data-ai",
+    "prompt": "Cookies yöneten request fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

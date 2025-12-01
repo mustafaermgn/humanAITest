@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef egyptian_fraction(numerator, denominator):\n    common_divisor = math.gcd(numerator, denominator)\n    numerator //= common_divisor\n    denominator //= common_divisor\n\n    result = []\n    \n    while numerator > 0:\n        x = math.ceil(denominator / numerator)\n        result.append(int(x))\n        \n        numerator = numerator * x - denominator\n        denominator = denominator * x\n        \n        if numerator == 0:\n            break\n\n        common_divisor = math.gcd(numerator, denominator)\n        numerator //= common_divisor\n        denominator //= common_divisor\n        \n    return result",
+    "source": "test-data-ai",
+    "prompt": "Egyptian fraction representation yaz.",
+    "license": "MIT",
+    "language": "python"
+}

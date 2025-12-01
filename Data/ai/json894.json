@@ -1,0 +1,7 @@
+{
+    "code": "def unique_bst_count(n: int) -> int:\n    if n < 0:\n        return 0\n\n    dp = [0] * (n + 1)\n    dp[0] = 1\n\n    for i in range(1, n + 1):\n        for j in range(i):\n            dp[i] += dp[j] * dp[i - 1 - j]\n            \n    return dp[n]",
+    "source": "test-data-ai",
+    "prompt": "Unique BST count yaz.",
+    "license": "MIT",
+    "language": "python"
+}

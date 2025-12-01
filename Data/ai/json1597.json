@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\ndef discrete_log_bsgs(g: int, h: int, p: int) -> int | None:\n    if p <= 1:\n        raise ValueError(\"Modulus p must be greater than 1.\")\n    if h == 1:\n        return 0\n\n    if g == 0:\n        if h == 0:\n            return 1\n        else:\n            return None\n\n    if g == 1:\n        if h == 1:\n            return 0\n        else:\n            return None\n\n    N = p - 1\n    m = int(math.ceil(math.sqrt(N))) \n\n    baby_steps = {}\n    current_g_j = 1\n    for j in range(m):\n        if current_g_j == h:\n            return j\n        baby_steps[current_g_j] = j\n        current_g_j = (current_g_j * g) % p\n\n    g_m = pow(g, m, p)\n    \n    try:\n        g_inv_m = pow(g_m, -1, p)\n    except ValueError:\n        raise ValueError(f\"Modular inverse of {g}^{m} (mod {p}) does not exist. \"\n                         \"Ensure g is coprime to p.\")\n\n    current_giant_step_val = h\n    for k in range(m):\n        if current_giant_step_val in baby_steps:\n            j = baby_steps[current_giant_step_val]\n            x = (k * m + j) % N \n            return x\n        current_giant_step_val = (current_giant_step_val * g_inv_m) % p\n\n    return None",
+    "source": "test-data-ai",
+    "prompt": "Baby-step giant-step algorithm for discrete log yaz.",
+    "license": "MIT",
+    "language": "python"
+}

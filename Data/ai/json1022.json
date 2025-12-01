@@ -1,0 +1,7 @@
+{
+    "code": "import heapq\n\ndef merge_k_sorted_arrays(arrays):\n    \"\"\"\n    K adet sıralanmış diziyi min-heap kullanarak tek bir sıralanmış diziye birleştirir.\n\n    Args:\n        arrays: Her biri sıralı olan k adet diziyi içeren bir liste (örn. [[1, 4, 7], [2, 5, 8], [3, 6, 9]]).\n\n    Returns:\n        Birleştirilmiş ve sıralanmış tek bir dizi.\n    \"\"\"\n    merged_list = []\n    min_heap = [] # Heap'teki her öğe: (değer, dizi_indeksi, eleman_indeksi)\n\n    # Her dizinin ilk elemanını heap'e ekle\n    for i, arr in enumerate(arrays):\n        if arr:  # Dizi boş değilse\n            heapq.heappush(min_heap, (arr[0], i, 0))\n\n    # Heap boşalana kadar elemanları çıkar ve ekle\n    while min_heap:\n        value, arr_idx, elem_idx = heapq.heappop(min_heap)\n        merged_list.append(value)\n\n        # Çıkarılan elemanın ait olduğu dizide sonraki eleman varsa, onu heap'e ekle\n        if elem_idx + 1 < len(arrays[arr_idx]):\n            next_value = arrays[arr_idx][elem_idx + 1]\n            heapq.heappush(min_heap, (next_value, arr_idx, elem_idx + 1))\n\n    return merged_list",
+    "source": "test-data-ai",
+    "prompt": "Merge k sorted arrays using heap yaz.",
+    "license": "MIT",
+    "language": "python"
+}

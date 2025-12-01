@@ -1,0 +1,7 @@
+{
+    "code": "from fastapi import FastAPI\nfrom starlette.middleware.cors import CORSMiddleware\n\napp = FastAPI()\n\n# CORS middleware ayarları\n# Genellikle geliştirme aşamasında her şeye izin verilir (origins=[\"*\"]),\n# ancak üretimde belirli domain'lere kısıtlamak güvenlik için önemlidir.\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"http://localhost:3000\", \"http://127.0.0.1:3000\"],  # Belirli origin'lere izin ver\n    # Veya tüm origin'lere izin vermek için: allow_origins=[\"*\"]\n    allow_credentials=True,\n    allow_methods=[\"*\"],  # Tüm HTTP metotlarına (GET, POST, PUT, DELETE vb.) izin ver\n    allow_headers=[\"*\"],  # Tüm HTTP başlıklarına izin ver\n)\n\n@app.get(\"/\")\nasync def read_root():\n    return {\"message\": \"Hello FastAPI with CORS!\"}\n\n@app.post(\"/items/\")\nasync def create_item(item: dict):\n    return {\"item_name\": item.get(\"name\"), \"message\": \"Item created successfully\"}\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)",
+    "source": "test-data-ai",
+    "prompt": "FastAPI ile CORS middleware yaz.",
+    "license": "MIT",
+    "language": "python"
+}

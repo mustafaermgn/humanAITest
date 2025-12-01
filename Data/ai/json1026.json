@@ -1,0 +1,7 @@
+{
+    "code": "def yaz_sql_validator(input_string: str) -> str:\n    if not isinstance(input_string, str):\n        input_string = str(input_string)\n    \n    # Escapes single quotes by doubling them, which is the standard SQL way\n    # to include a single quote within a string literal.\n    escaped_string = input_string.replace(\"'\", \"''\")\n    \n    # Note: This validator focuses on escaping string literal values.\n    # It does not provide protection for dynamic SQL components like\n    # table names, column names, or complex SQL structures, for which\n    # strict whitelisting or other specific database mechanisms are required.\n    # The most robust protection against SQL injection for data values\n    # remains the use of parameterized queries (prepared statements).\n    \n    return escaped_string",
+    "source": "test-data-ai",
+    "prompt": "SQL injection prevention validator yaz.",
+    "license": "MIT",
+    "language": "python"
+}

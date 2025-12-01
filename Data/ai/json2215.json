@@ -1,0 +1,7 @@
+{
+    "code": "TAKEN_USERNAMES = [\n    \"admin\",\n    \"root\",\n    \"testuser\",\n    \"johndoe\",\n    \"janedoe\",\n    \"pythonista\",\n    \"coder123\",\n    \"superman\",\n    \"batman\",\n    \"wonderwoman\",\n]\n\ndef is_username_available(username: str) -> bool:\n    return username.lower() not in [u.lower() for u in TAKEN_USERNAMES]\n\nif __name__ == \"__main__\":\n    while True:\n        username_input = input(\"Enter a username to check (or type 'exit' to quit): \").strip()\n\n        if username_input.lower() == 'exit':\n            break\n\n        if not username_input:\n            print(\"Username cannot be empty.\")\n            continue\n\n        if is_username_available(username_input):\n            print(f\"'{username_input}' is AVAILABLE.\")\n        else:\n            print(f\"'{username_input}' is TAKEN. Please choose another one.\")",
+    "source": "test-data-ai",
+    "prompt": "Username availability checker yaz.",
+    "license": "MIT",
+    "language": "python"
+}

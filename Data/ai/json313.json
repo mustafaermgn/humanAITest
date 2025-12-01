@@ -1,0 +1,7 @@
+{
+    "code": "def interpolation_search(arr, target):\n    low = 0\n    high = len(arr) - 1\n\n    while low <= high and target >= arr[low] and target <= arr[high]:\n        # Eğer arr[low] ve arr[high] aynı ise, bu aralıktaki tüm elemanlar aynıdır.\n        # Bu durumda bölme hatasını (ZeroDivisionError) önlemek için özel bir kontrol yapılır.\n        if arr[low] == arr[high]:\n            if arr[low] == target:\n                return low  # Hedef bulundu\n            else:\n                return -1   # Hedef bu sabit değerli aralıkta değil\n        \n        # Ortalama pozisyonu tahmin et\n        # Interpolasyon formülü\n        pos = low + ((target - arr[low]) * (high - low)) // (arr[high] - arr[low])\n\n        if arr[pos] == target:\n            return pos\n        elif arr[pos] < target:\n            low = pos + 1\n        else:  # arr[pos] > target\n            high = pos - 1\n            \n    return -1",
+    "source": "test-data-ai",
+    "prompt": "Interpolation Search'ü sıralı dizide yaz.",
+    "license": "MIT",
+    "language": "python"
+}

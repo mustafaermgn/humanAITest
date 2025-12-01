@@ -1,0 +1,7 @@
+{
+    "code": "def count_ways_to_reach_nth_stair(n: int) -> int:\n    \"\"\"\n    Counts the number of distinct ways to climb to the nth stair.\n    You can either climb 1 or 2 steps at a time.\n    \"\"\"\n    if n < 0:\n        return 0\n    if n == 0:\n        return 1  # One way to be at stair 0 (do nothing)\n    if n == 1:\n        return 1  # One way to reach stair 1 (take 1 step)\n\n    # Initialize variables for the number of ways to reach stair i-2 and i-1\n    ways_to_i_minus_2 = 1  # Number of ways to reach stair 0\n    ways_to_i_minus_1 = 1  # Number of ways to reach stair 1\n\n    # Iterate from stair 2 up to n\n    for i in range(2, n + 1):\n        current_ways = ways_to_i_minus_1 + ways_to_i_minus_2\n        ways_to_i_minus_2 = ways_to_i_minus_1\n        ways_to_i_minus_1 = current_ways\n    \n    return ways_to_i_minus_1",
+    "source": "test-data-ai",
+    "prompt": "Count number of ways to reach nth stair yaz.",
+    "license": "MIT",
+    "language": "python"
+}

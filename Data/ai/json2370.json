@@ -1,0 +1,7 @@
+{
+    "code": "import requests\n\ndef request_with_cookies(url, method='GET', session=None, initial_cookies=None, **kwargs):\n    if session is None:\n        session = requests.Session()\n\n    if initial_cookies:\n        session.cookies.update(initial_cookies)\n\n    response = session.request(method, url, **kwargs)\n    \n    return response, session",
+    "source": "test-data-ai",
+    "prompt": "Cookies yöneten request fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

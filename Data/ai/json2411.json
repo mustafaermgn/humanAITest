@@ -1,0 +1,7 @@
+{
+    "code": "def verify_age(age):\n    \"\"\"\n    Belirtilen yaşın yaş doğrulama kriterini karşılayıp karşılamadığını kontrol eder.\n    Varsayılan olarak 18 yaş ve üzerini geçerli kabul eder.\n    \"\"\"\n    if not isinstance(age, (int, float)):\n        raise TypeError(\"Yaş bir sayı olmalıdır.\")\n    if age < 0:\n        raise ValueError(\"Yaş negatif olamaz.\")\n    return age >= 18",
+    "source": "test-data-ai",
+    "prompt": "Age verification fonksiyonu yaz.",
+    "license": "MIT",
+    "language": "python"
+}

@@ -1,0 +1,7 @@
+{
+    "code": "import aiohttp\nimport asyncio\n\nasync def fetch_url(url: str) -> str:\n    async with aiohttp.ClientSession() as session:\n        async with session.get(url) as response:\n            response.raise_for_status()  # Raises an exception for HTTP errors (4xx or 5xx)\n            return await response.text()\n\nif __name__ == '__main__':\n    async def main():\n        try:\n            content = await fetch_url(\"https://www.example.com\")\n            print(\"Successfully fetched content (first 500 chars):\")\n            print(content[:500])\n        except aiohttp.ClientError as e:\n            print(f\"An HTTP error occurred: {e}\")\n        except Exception as e:\n            print(f\"An unexpected error occurred: {e}\")\n\n    asyncio.run(main())",
+    "source": "test-data-ai",
+    "prompt": "Async HTTP request yapan aiohttp kullanımlı fonksiyon yaz.",
+    "license": "MIT",
+    "language": "python"
+}

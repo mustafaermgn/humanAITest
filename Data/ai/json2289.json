@@ -1,0 +1,7 @@
+{
+    "code": "class FenwickTree2D:\n    def __init__(self, rows, cols):\n        self.rows = rows\n        self.cols = cols\n        self.tree = [[0] * (cols + 1) for _ in range(rows + 1)]\n\n    def _lowbit(self, i):\n        return i & -i\n\n    def update(self, row, col, delta):\n        # Koordinatlar row, col 1-indekslidir.\n        r = row\n        while r <= self.rows:\n            c = col\n            while c <= self.cols:\n                self.tree[r][c] += delta\n                c += self._lowbit(c)\n            r += self._lowbit(r)\n\n    def query(self, row, col):\n        # Koordinatlar row, col 1-indekslidir.\n        _sum = 0\n        r = row\n        while r > 0:\n            c = col\n            while c > 0:\n                _sum += self.tree[r][c]\n                c -= self._lowbit(c)\n            r -= self._lowbit(r)\n        return _sum\n\n    def query_range(self, r1, c1, r2, c2):\n        # Koordinatlar r1, c1, r2, c2 1-indekslidir.\n        # (r1,c1) konumundan (r2,c2) konumuna kadar olan dikdörtgenin toplamını döndürür.\n        return self.query(r2, c2) \\\n               - self.query(r1 - 1, c2) \\\n               - self.query(r2, c1 - 1) \\\n               + self.query(r1 - 1, c1 - 1)",
+    "source": "test-data-ai",
+    "prompt": "Range sum query 2D using Fenwick tree yaz.",
+    "license": "MIT",
+    "language": "python"
+}

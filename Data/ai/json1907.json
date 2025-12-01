@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':\n        current = root\n        while current:\n            if p.val < current.val and q.val < current.val:\n                current = current.left\n            elif p.val > current.val and q.val > current.val:\n                current = current.right\n            else:\n                return current\n        return None # Should not be reached if p and q are guaranteed to be in the tree",
+    "source": "test-data-ai",
+    "prompt": "Lowest common ancestor in BST yaz.",
+    "license": "MIT",
+    "language": "python"
+}

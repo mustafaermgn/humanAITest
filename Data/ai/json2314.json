@@ -1,0 +1,7 @@
+{
+    "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef binaryTreePaths(root: TreeNode) -> list[str]:\n    if not root:\n        return []\n\n    paths = []\n\n    def dfs(node, current_path_str):\n        if not node:\n            return\n\n        # Mevcut düğümün değerini yola ekle.\n        # Eğer current_path_str boş değilse \"->\" ile birleştir.\n        new_path_str = current_path_str + ( \"->\" if current_path_str else \"\" ) + str(node.val)\n\n        # Eğer düğüm yaprak düğüm ise (çocuğu yoksa), yolu sonuç listesine ekle.\n        if not node.left and not node.right:\n            paths.append(new_path_str)\n        else:\n            # Yaprak düğüm değilse, sol ve sağ çocukları için özyinelemeli çağrı yap.\n            dfs(node.left, new_path_str)\n            dfs(node.right, new_path_str)\n    \n    dfs(root, \"\")\n    return paths",
+    "source": "test-data-ai",
+    "prompt": "Binary tree paths yaz.",
+    "license": "MIT",
+    "language": "python"
+}

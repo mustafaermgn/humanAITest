@@ -1,0 +1,7 @@
+{
+    "code": "import math\n\nclass Solution:\n    def find132pattern(self, nums: list[int]) -> bool:\n        n = len(nums)\n        if n < 3:\n            return False\n\n        s3_val = -math.inf\n        stack = []\n\n        for i in range(n - 1, -1, -1):\n            num = nums[i]\n\n            if num < s3_val:\n                return True\n            \n            while stack and num > stack[-1]:\n                s3_val = stack.pop()\n            \n            stack.append(num)\n        \n        return False",
+    "source": "test-data-ai",
+    "prompt": "132 pattern using stack yaz.",
+    "license": "MIT",
+    "language": "python"
+}

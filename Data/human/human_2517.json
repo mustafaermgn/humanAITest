@@ -1,0 +1,7 @@
+{
+    "code": "class OnDecoratorApp(App):\n    CSS_PATH = \"on_decorator.tcss\"\n\n    def compose(self) -> ComposeResult:\n        \"\"\"Three buttons.\"\"\"\n        yield Button(\"Bell\", id=\"bell\")\n        yield Button(\"Toggle dark\", classes=\"toggle dark\")\n        yield Button(\"Quit\", id=\"quit\")\n\n    @on(Button.Pressed, \"#bell\")  # (1)!\n    def play_bell(self):\n        \"\"\"Called when the bell button is pressed.\"\"\"\n        self.bell()\n\n    @on(Button.Pressed, \".toggle.dark\")  # (2)!\n    def toggle_dark(self):\n        \"\"\"Called when the 'toggle dark' button is pressed.\"\"\"\n        self.theme = (\n            \"textual-dark\" if self.theme == \"textual-light\" else \"textual-light\"\n        )\n\n    @on(Button.Pressed, \"#quit\")  # (3)!\n    def quit(self):\n        \"\"\"Called when the quit button is pressed.\"\"\"\n        self.exit()",
+    "source": "github_repo:Textualize/textual",
+    "file": "docs/examples/events/on_decorator02.py",
+    "license": "MIT",
+    "language": "python"
+}

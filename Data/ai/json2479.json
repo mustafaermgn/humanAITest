@@ -1,0 +1,7 @@
+{
+    "code": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_end_of_word = False\n\nclass Trie:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for char in word:\n            if char not in node.children:\n                node.children[char] = TrieNode()\n            node = node.children[char]\n        node.is_end_of_word = True\n\n    def _find_prefix_node(self, prefix: str) -> TrieNode:\n        node = self.root\n        for char in prefix:\n            if char not in node.children:\n                return None\n            node = node.children[char]\n        return node\n\n    def _collect_all_words_from_node(self, node: TrieNode, current_prefix: str, results: list) -> None:\n        if node.is_end_of_word:\n            results.append(current_prefix)\n\n        for char, child_node in node.children.items():\n            self._collect_all_words_from_node(child_node, current_prefix + char, results)\n\n    def search_prefix(self, prefix: str) -> list:\n        prefix_node = self._find_prefix_node(prefix)\n        if prefix_node is None:\n            return []\n\n        results = []\n        self._collect_all_words_from_node(prefix_node, prefix, results)\n        return results",
+    "source": "test-data-ai",
+    "prompt": "Search prefix in trie yaz.",
+    "license": "MIT",
+    "language": "python"
+}
