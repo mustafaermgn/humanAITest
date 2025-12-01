@@ -182,27 +182,6 @@ Tüm modelleri eğitir (Admin)
 - **Axios:** HTTP client
 - **Recharts:** Chart library
 
-## 📝 User Stories
-
-✅ **User Story 1:** Veri temizleme  
-✅ **User Story 2:** 3 farklı ML algoritması ile model eğitimi (RF, SVM, LR)  
-✅ **User Story 3:** Modelin yazılıma entegrasyonu  
-✅ **User Story 4:** Çoklu model tahminlerinin gösterilmesi  
-⚠️ **User Story 5:** Transfer Learning (BERT, RoBERTa, CodeBERT) - Planlanmış  
-
-## 🧪 Test Coverage
-
-- **STD Test Document:** 7 test case
-- **White Box Tests:** 3 test suite
-  - DataCleaner tests
-  - FeatureExtractor tests
-  - API endpoint tests
-
-## 📚 Dokümantasyon
-
-- [Software Specification](Software_Specification.md) - Detaylı yazılım şartnamesi
-- [Task Board](Task_Board.md) - Proje yönetim panosu
-- [STD Test Document](STD_Test_Document.md) - Test case'leri
 
 ## 🏗️ Mimari
 
@@ -217,33 +196,7 @@ Uygulama **N-Katmanlı Mimari** prensiplerine göre tasarlanmıştır:
 - Singleton Pattern (Model Managers)
 - Factory Pattern (Model initialization)
 
-## ⚠️ Önemli Notlar
 
-1. İlk çalıştırmada modeller eğitilmemiş olabilir. `backend/train_models.py` scriptini çalıştırarak veya `/api/train` endpoint'ini çağırarak modelleri eğitebilirsiniz.
-
-2. Model eğitimi için Data klasöründe yeterli veri olmalıdır (ai/ ve human/ klasörlerinde JSON dosyaları).
-
-3. Büyük kod parçaları analiz edilirken işlem süresi artabilir.
-
-4. Model değerlendirmesi için `model_evaluation.ipynb` notebook'unu kullanabilirsiniz.
-
-## 🤝 Katkıda Bulunma
-
-1. Fork edin
-2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
-3. Commit edin (`git commit -m 'Add some AmazingFeature'`)
-4. Push edin (`git push origin feature/AmazingFeature`)
-5. Pull Request açın
-
-## 📄 Lisans
-
-Bu proje eğitim amaçlı geliştirilmiştir.
-
-## 👥 Geliştirici
-
-Development Team
-
----
 
 **Versiyon:** 1.0.0  
 **Son Güncelleme:** 2024
