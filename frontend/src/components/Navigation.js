@@ -19,14 +19,14 @@ const Navigation = ({ onMenuClick }) => {
       position="sticky"
       elevation={0}
       sx={{
-        background: 'linear-gradient(180deg, rgba(30, 30, 70, 0.9) 0%, rgba(40, 40, 90, 0.85) 100%)',
-        backdropFilter: 'blur(30px)',
-        borderBottom: '1px solid rgba(59, 130, 246, 0.4)',
-        boxShadow: '0 4px 24px rgba(59, 130, 246, 0.2)',
+        background: 'linear-gradient(180deg, rgba(3,20,40,0.9) 0%, rgba(6,24,44,0.95) 100%)',
+        backdropFilter: 'blur(18px)',
+        borderBottom: '1px solid rgba(23, 143, 173, 0.12)',
+        boxShadow: '0 4px 24px rgba(7, 33, 70, 0.28)',
       }}
     >
-      <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Toolbar sx={{ justifyContent: 'center', position: 'relative' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', position: 'absolute', left: 0 }}>
           <IconButton
             onClick={onMenuClick}
             sx={{
@@ -40,6 +40,16 @@ const Navigation = ({ onMenuClick }) => {
           </IconButton>
         </Box>
         
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 700,
+            color: 'rgba(255, 255, 255, 0.95)',
+            fontSize: { xs: '1.1rem', sm: '1.3rem' },
+          }}
+        >
+          Kod Analiz Aracı
+        </Typography>
       </Toolbar>
     </AppBar>
   );
