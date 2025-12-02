@@ -166,6 +166,21 @@ def get_history_item(history_id):
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/api/history/clear', methods=['POST'])
+def clear_history():
+    """Clear all analysis history"""
+    try:
+        AnalysisHistory.query.delete()
+        db.session.commit()
+        return jsonify({
+            'success': True,
+            'message': 'Tüm geçmiş temizlendi'
+        })
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+
 @app.route('/api/train', methods=['POST'])
 def train_models():
     """Train ML models (admin endpoint)"""

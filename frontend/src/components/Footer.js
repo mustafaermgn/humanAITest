@@ -12,11 +12,11 @@ const Footer = () => {
         mt: 'auto',
         py: 4,
         px: 2,
-        background: 'linear-gradient(180deg, rgba(30, 30, 70, 0.9) 0%, rgba(40, 40, 90, 0.95) 100%)',
-        backdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(59, 130, 246, 0.4)',
-        color: 'rgba(255, 255, 255, 0.8)',
-        boxShadow: '0 -4px 24px rgba(59, 130, 246, 0.2)',
+        background: 'linear-gradient(180deg, rgba(3,20,40,0.9) 0%, rgba(6,24,44,0.95) 100%)',
+        backdropFilter: 'blur(18px)',
+        borderTop: '1px solid rgba(23, 143, 173, 0.12)',
+        color: 'rgba(255, 255, 255, 0.85)',
+        boxShadow: '0 -6px 30px rgba(7, 33, 70, 0.28)',
       }}
     >
       <Container maxWidth="lg">
@@ -38,41 +38,41 @@ const Footer = () => {
             </Typography>
             <IconButton
               size="small"
-              sx={{
+                sx={{
                 color: 'rgba(255, 255, 255, 0.8)',
                 '&:hover': {
-                  color: '#3b82f6',
-                  backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                  color: '#072146',
+                  backgroundColor: 'rgba(7, 33, 70, 0.08)',
                 },
               }}
               component={Link}
-              href="https://github.com"
+              href="https://github.com/mustafaermgn/humanAITest"
               target="_blank"
             >
               <GitHubIcon fontSize="small" />
             </IconButton>
             <IconButton
               size="small"
-              sx={{
+                sx={{
                 color: 'rgba(255, 255, 255, 0.8)',
                 '&:hover': {
-                  color: '#48cae4',
-                  backgroundColor: 'rgba(72, 202, 228, 0.1)',
+                  color: '#178fad',
+                  backgroundColor: 'rgba(23, 143, 173, 0.08)',
                 },
               }}
               component={Link}
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/mustafa-erme%C4%9Fan-162073223/"
               target="_blank"
             >
               <LinkedInIcon fontSize="small" />
             </IconButton>
             <IconButton
               size="small"
-              sx={{
+                sx={{
                 color: 'rgba(255, 255, 255, 0.8)',
                 '&:hover': {
-                  color: '#3b82f6',
-                  backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                  color: '#072146',
+                  backgroundColor: 'rgba(7, 33, 70, 0.08)',
                 },
               }}
               component={Link}
