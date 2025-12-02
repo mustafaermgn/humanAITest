@@ -199,5 +199,6 @@ Uygulama **N-Katmanlı Mimari** prensiplerine göre tasarlanmıştır:
 
 
 **Versiyon:** 1.0.0  
-**Son Güncelleme:** 2024
+**Son Güncelleme:** 2025
+
 
