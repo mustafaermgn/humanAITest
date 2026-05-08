@@ -1,6 +1,20 @@
 # CodeTest
+ Bu uygulama, kod parçacıklarının AI (Yapay Zeka) veya İnsan tarafından yazılıp yazılmadığını tespit etmek için çoklu makine öğrenmesi modelleri ve transfer öğrenme teknikleri kullanır.
 
-Profesyonel bir AI kod tespit uygulaması. Bu uygulama, kod parçacıklarının AI (Yapay Zeka) veya İnsan tarafından yazılıp yazılmadığını tespit etmek için çoklu makine öğrenmesi modelleri ve transfer öğrenme teknikleri kullanır.
+
+
+
+
+<img width="1919" height="1032" alt="Ekran görüntüsü 2026-05-09 023715" src="https://github.com/user-attachments/assets/61d477bd-ff36-4419-8793-310872a57523" />
+
+<img width="1917" height="1030" alt="Ekran görüntüsü 2026-05-09 023847" src="https://github.com/user-attachments/assets/f5c40b55-d924-453e-b8c0-2b542b92eab8" />
+
+<img width="1919" height="1034" alt="Ekran görüntüsü 2026-05-09 023909" src="https://github.com/user-attachments/assets/70f485d2-56fe-4337-b9e0-37e4e94466d2" />
+
+
+
+
+
 
 ## 🚀 Özellikler
 
