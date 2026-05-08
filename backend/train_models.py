@@ -86,10 +86,10 @@ def train_ml_models():
         ml_manager = MLModelManager()
         print("\nML modelleri eğitiliyor...")
         ml_manager.train_models()
-        print("\n✅ ML modelleri eğitimi tamamlandı!")
+        print("\n[SUCCESS] ML modelleri egitimi tamamlandi!")
         return True
     except Exception as e:
-        print(f"\n❌ ML model eğitimi hatası: {e}")
+        print(f"\n[ERROR] ML model egitimi hatasi: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -115,9 +115,9 @@ def main():
     print("\n" + "=" * 60)
     print("EĞİTİM ÖZETİ")
     print("=" * 60)
-    print(f"ML Modelleri: {'✅ Başarılı' if ml_success else '❌ Başarısız'}")
+    print(f"ML Modelleri: {'[SUCCESS] Basarili' if ml_success else '[ERROR] Basarisiz'}")
     print("=" * 60)
-    print("\n✅ Eğitim işlemi tamamlandı!")
+    print("\n[SUCCESS] Egitim islemi tamamlandi!")
     print("Artık uygulamayı kullanabilirsiniz: python app.py")
 
 if __name__ == '__main__':

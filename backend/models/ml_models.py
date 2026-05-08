@@ -247,7 +247,7 @@ class MLModelManager:
         # Save models
         print(f"\nSaving models...")
         self._save_models()
-        print("✅ Models trained and saved successfully!")
+        print("[SUCCESS] Models trained and saved successfully!")
 
     def _save_models(self):
         """Save trained models"""
@@ -261,19 +261,19 @@ class MLModelManager:
         try:
             if os.path.exists(os.path.join(self.model_dir, 'rf_model.pkl')):
                 self.rf_model = joblib.load(os.path.join(self.model_dir, 'rf_model.pkl'))
-                print("✅ Loaded Random Forest model")
+                print("[SUCCESS] Loaded Random Forest model")
             
             if os.path.exists(os.path.join(self.model_dir, 'svm_model.pkl')):
                 self.svm_model = joblib.load(os.path.join(self.model_dir, 'svm_model.pkl'))
-                print("✅ Loaded SVM model")
+                print("[SUCCESS] Loaded SVM model")
             
             if os.path.exists(os.path.join(self.model_dir, 'lr_model.pkl')):
                 self.lr_model = joblib.load(os.path.join(self.model_dir, 'lr_model.pkl'))
-                print("✅ Loaded Logistic Regression model")
+                print("[SUCCESS] Loaded Logistic Regression model")
             
             if os.path.exists(os.path.join(self.model_dir, 'scaler.pkl')):
                 self.scaler = joblib.load(os.path.join(self.model_dir, 'scaler.pkl'))
-                print("✅ Loaded scaler")
+                print("[SUCCESS] Loaded scaler")
         except Exception as e:
             print(f"Error loading models: {e}")
             print("Models will be trained on first use")

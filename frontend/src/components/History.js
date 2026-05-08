@@ -1,28 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Box,
-  Paper,
-  Typography,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Chip,
-  CircularProgress,
-  Alert,
-  IconButton,
-  Tooltip,
-} from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios';
+import { 
+  Clock, 
+  AlertCircle, 
+  Loader2,
+  ChevronRight
+} from 'lucide-react';
+import { Button } from './ui/Button';
+import { Card, CardContent } from './ui/Card';
+import { Badge } from './ui/Badge';
+import { useNavigate } from 'react-router-dom';
 
 const History = () => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchHistory();
@@ -33,135 +26,99 @@ const History = () => {
       const response = await axios.get('/api/history');
       setHistory(response.data.history);
     } catch (err) {
-      setError('Failed to load history');
+      setError('Geçmiş yüklenemedi');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleViewDetails = async (id) => {
-    try {
-      const response = await axios.get(`/api/history/${id}`);
-      setSelectedItem(response.data.entry);
-    } catch (err) {
-      setError('Failed to load details');
-    }
-  };
-
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px' }}>
-        <CircularProgress />
-      </Box>
+      <div className="flex flex-col items-center justify-center py-24 gap-4">
+        <Loader2 className="h-10 w-10 animate-spin text-primary" />
+        <p className="text-muted-foreground animate-pulse">Geçmiş yükleniyor...</p>
+      </div>
     );
   }
 
   return (
-    <Box>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Analysis History
-      </Typography>
-      <Typography variant="body1" color="text.secondary" paragraph>
-        View your previous code analysis results and predictions from all models.
-      </Typography>
+    <div className="space-y-6 animate-in fade-in duration-500">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Analiz Geçmişi</h1>
+        <p className="text-muted-foreground">
+          Daha önce yaptığınız analizleri görüntüleyin ve detayları inceleyin.
+        </p>
+      </div>
 
       {error && (
-        <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
-        </Alert>
+        <div className="flex items-center gap-2 rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-destructive">
+          <AlertCircle className="h-5 w-5" />
+          <p className="text-sm font-medium">{error}</p>
+        </div>
       )}
 
-      <Paper elevation={3} sx={{ p: 3 }}>
-        {history.length === 0 ? (
-          <Typography variant="body1" color="text.secondary" align="center" sx={{ py: 4 }}>
-            No analysis history found. Start analyzing code to see results here.
-          </Typography>
-        ) : (
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>Code Preview</TableCell>
-                  <TableCell>Timestamp</TableCell>
-                  <TableCell>AI Probability</TableCell>
-                  <TableCell>Human Probability</TableCell>
-                  <TableCell>Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {history.map((item) => (
-                  <TableRow key={item.id} hover>
-                    <TableCell>{item.id}</TableCell>
-                    <TableCell>
-                      <Typography variant="body2" noWrap sx={{ maxWidth: 200 }}>
-                        {item.code}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
+      {history.length === 0 ? (
+        <Card className="border-dashed">
+          <CardContent className="flex flex-col items-center justify-center py-12 text-center">
+            <Clock className="h-12 w-12 text-muted-foreground/20 mb-4" />
+            <h3 className="text-lg font-medium">Henüz bir kayıt yok</h3>
+            <p className="text-sm text-muted-foreground max-w-sm">
+              Analiz yapmak için ana sayfaya gidin ve kodunuzu yapıştırın.
+            </p>
+            <Button variant="outline" className="mt-4" onClick={() => navigate('/')}>
+              Analiz Başlat
+            </Button>
+          </CardContent>
+        </Card>
+      ) : (
+        <div className="grid gap-4">
+          {history.map((item) => (
+            <Card key={item.id} className="group hover:border-primary/50 transition-colors">
+              <CardContent className="p-0">
+                <div 
+                  className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 cursor-pointer"
+                  onClick={() => navigate(`/history/${item.id}`)}
+                >
+                  <div className="space-y-1 flex-1">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
+                      <Clock className="h-3 w-3" />
                       {new Date(item.timestamp).toLocaleString()}
-                    </TableCell>
-                    <TableCell>
-                      <Chip
-                        label={`${(item.final_ai_probability * 100).toFixed(1)}%`}
-                        color="error"
-                        size="small"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Chip
-                        label={`${(item.final_human_probability * 100).toFixed(1)}%`}
-                        color="success"
-                        size="small"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Tooltip title="View Details">
-                        <IconButton
-                          size="small"
-                          onClick={() => handleViewDetails(item.id)}
-                        >
-                          <VisibilityIcon />
-                        </IconButton>
-                      </Tooltip>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
-      </Paper>
-
-      {selectedItem && (
-        <Paper elevation={3} sx={{ p: 3, mt: 3 }}>
-          <Typography variant="h6" gutterBottom>
-            Detailed Analysis - ID: {selectedItem.id}
-          </Typography>
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="subtitle2" gutterBottom>
-              ML Models:
-            </Typography>
-            <Box sx={{ ml: 2, mb: 2 }}>
-              <Typography variant="body2">
-                Random Forest: AI {((selectedItem.ml_rf_prediction || 0) * 100).toFixed(1)}% | 
-                Human {((1 - (selectedItem.ml_rf_prediction || 0)) * 100).toFixed(1)}%
-              </Typography>
-              <Typography variant="body2">
-                SVM: AI {((selectedItem.ml_svm_prediction || 0) * 100).toFixed(1)}% | 
-                Human {((1 - (selectedItem.ml_svm_prediction || 0)) * 100).toFixed(1)}%
-              </Typography>
-              <Typography variant="body2">
-                Neural Network: AI {((selectedItem.ml_nn_prediction || 0) * 100).toFixed(1)}% | 
-                Human {((1 - (selectedItem.ml_nn_prediction || 0)) * 100).toFixed(1)}%
-              </Typography>
-            </Box>
-          </Box>
-        </Paper>
+                    </div>
+                    <p className="text-sm font-mono line-clamp-1 text-foreground/80 max-w-2xl">
+                      {item.code}
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center gap-6 mt-4 md:mt-0">
+                    <div className="flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <span className="text-[10px] text-muted-foreground uppercase">AI</span>
+                        <span className="text-sm font-bold text-orange-500">
+                          {(item.final_ai_probability * 100).toFixed(0)}%
+                        </span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <span className="text-[10px] text-muted-foreground uppercase">İnsan</span>
+                        <span className="text-sm font-bold text-green-500">
+                          {(item.final_human_probability * 100).toFixed(0)}%
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <Badge variant={item.final_ai_probability > 0.5 ? "destructive" : "secondary"}>
+                      {item.final_ai_probability > 0.5 ? "AI" : "İnsan"}
+                    </Badge>
+                    
+                    <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       )}
-    </Box>
+    </div>
   );
 };
 
 export default History;
-

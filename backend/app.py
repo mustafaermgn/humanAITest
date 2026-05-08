@@ -112,20 +112,24 @@ def analyze_code():
                 'ml_models': {
                     'random_forest': {
                         'ai_probability': ml_rf_pred,
-                        'human_probability': 1 - ml_rf_pred
+                        'human_probability': 1 - ml_rf_pred,
+                        'prediction': 'AI' if ml_rf_pred > 0.5 else 'Human'
                     },
                     'svm': {
                         'ai_probability': ml_svm_pred,
-                        'human_probability': 1 - ml_svm_pred
+                        'human_probability': 1 - ml_svm_pred,
+                        'prediction': 'AI' if ml_svm_pred > 0.5 else 'Human'
                     },
                     'logistic_regression': {
                         'ai_probability': ml_lr_pred,
-                        'human_probability': 1 - ml_lr_pred
+                        'human_probability': 1 - ml_lr_pred,
+                        'prediction': 'AI' if ml_lr_pred > 0.5 else 'Human'
                     }
                 },
                 'final': {
                     'ai_probability': final_ai_probability,
-                    'human_probability': final_human_probability
+                    'human_probability': final_human_probability,
+                    'prediction': 'AI' if final_ai_probability > 0.5 else 'Human'
                 }
             },
             'history_id': history_entry.id
