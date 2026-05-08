@@ -55,14 +55,37 @@ class TestAPI(unittest.TestCase):
         self.assertTrue(data['success'])
         self.assertIn('predictions', data)
         self.assertIn('ml_models', data['predictions'])
-        self.assertIn('transfer_learning', data['predictions'])
         self.assertIn('final', data['predictions'])
+        self.assertEqual(
+            set(data['predictions']['ml_models'].keys()),
+            {'random_forest', 'svm', 'logistic_regression'}
+        )
+
+        final = data['predictions']['final']
+        self.assertGreaterEqual(final['ai_probability'], 0)
+        self.assertLessEqual(final['ai_probability'], 1)
+        self.assertAlmostEqual(
+            final['ai_probability'] + final['human_probability'],
+            1.0,
+            places=6
+        )
     
     def test_analyze_code_empty(self):
         """Test code analysis endpoint with empty code"""
         response = self.app.post(
             '/api/analyze',
             data=json.dumps({'code': ''}),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.data)
+        self.assertIn('error', data)
+
+    def test_analyze_code_invalid_json(self):
+        """Test code analysis endpoint with invalid JSON body"""
+        response = self.app.post(
+            '/api/analyze',
+            data='not json',
             content_type='application/json'
         )
         self.assertEqual(response.status_code, 400)
@@ -93,6 +116,31 @@ class TestAPI(unittest.TestCase):
         response = self.app.get('/api/history')
         data = json.loads(response.data)
         self.assertGreaterEqual(len(data['history']), 1)
+
+    def test_history_detail_returns_full_code(self):
+        """Test that detail endpoint does not truncate analyzed code"""
+        test_code = "def long_test():\n" + "\n".join(f"    value_{i} = {i}" for i in range(80))
+
+        analyze_response = self.app.post(
+            '/api/analyze',
+            data=json.dumps({'code': test_code}),
+            content_type='application/json'
+        )
+        history_id = json.loads(analyze_response.data)['history_id']
+
+        response = self.app.get(f'/api/history/{history_id}')
+        data = json.loads(response.data)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(data['entry']['code'], test_code)
+
+    def test_history_detail_missing(self):
+        """Test missing history item returns 404"""
+        response = self.app.get('/api/history/999999')
+        data = json.loads(response.data)
+
+        self.assertEqual(response.status_code, 404)
+        self.assertIn('error', data)
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ CodeTest - Ana Flask Uygulaması
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 from dotenv import load_dotenv
 
@@ -28,23 +28,36 @@ ml_manager = MLModelManager()
 data_cleaner = DataCleaner()
 feature_extractor = FeatureExtractor()
 
+MODEL_WEIGHTS = {
+    'random_forest': 0.6,
+    'svm': 0.3,
+    'logistic_regression': 0.1
+}
+
+
+def weighted_ai_probability(predictions):
+    """Calculate the final AI probability from per-model probabilities."""
+    total_weight = sum(MODEL_WEIGHTS.values())
+    return sum(predictions[name] * MODEL_WEIGHTS[name] for name in MODEL_WEIGHTS) / total_weight
+
 
 # Database Models
 class AnalysisHistory(db.Model):
     """Model for storing analysis history"""
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.Text, nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
     ml_rf_prediction = db.Column(db.Float)
     ml_svm_prediction = db.Column(db.Float)
     ml_lr_prediction = db.Column(db.Float)
     final_ai_probability = db.Column(db.Float)
     final_human_probability = db.Column(db.Float)
 
-    def to_dict(self):
+    def to_dict(self, preview=True):
+        code = self.code[:200] + '...' if preview and len(self.code) > 200 else self.code
         return {
             'id': self.id,
-            'code': self.code[:200] + '...' if len(self.code) > 200 else self.code,
+            'code': code,
             'timestamp': self.timestamp.isoformat(),
             'ml_rf_prediction': self.ml_rf_prediction,
             'ml_svm_prediction': self.ml_svm_prediction,
@@ -67,14 +80,17 @@ def analyze_code():
     Returns predictions from 3 ML models (Random Forest, SVM, Logistic Regression)
     """
     try:
-        data = request.get_json()
+        data = request.get_json(silent=True) or {}
         code = data.get('code', '')
 
         if not code:
             return jsonify({'error': 'Code is required'}), 400
 
-        # Clean the code
-        cleaned_code = data_cleaner.clean_code(code)
+        if not data_cleaner.validate_code(code):
+            return jsonify({'error': 'Valid code is required'}), 400
+
+        # Preserve structural signals for the feature extractor.
+        cleaned_code = data_cleaner.clean_for_analysis(code)
 
         # Extract features for ML models
         features = feature_extractor.extract_features(cleaned_code)
@@ -85,13 +101,13 @@ def analyze_code():
         ml_lr_pred = ml_manager.predict_lr(features)
 
         # Calculate final probability from 3 ML models (weighted average)
-        predictions = [
-            ml_rf_pred,
-            ml_svm_pred,
-            ml_lr_pred
-        ]
-        
-        final_ai_probability = sum(predictions) / len(predictions)
+        model_predictions = {
+            'random_forest': ml_rf_pred,
+            'svm': ml_svm_pred,
+            'logistic_regression': ml_lr_pred
+        }
+
+        final_ai_probability = weighted_ai_probability(model_predictions)
         final_human_probability = 1 - final_ai_probability
 
         # Save to history
@@ -129,7 +145,8 @@ def analyze_code():
                 'final': {
                     'ai_probability': final_ai_probability,
                     'human_probability': final_human_probability,
-                    'prediction': 'AI' if final_ai_probability > 0.5 else 'Human'
+                    'prediction': 'AI' if final_ai_probability > 0.5 else 'Human',
+                    'model_weights': MODEL_WEIGHTS
                 }
             },
             'history_id': history_entry.id
@@ -161,10 +178,12 @@ def get_history():
 def get_history_item(history_id):
     """Get specific history item"""
     try:
-        entry = AnalysisHistory.query.get_or_404(history_id)
+        entry = db.session.get(AnalysisHistory, history_id)
+        if entry is None:
+            return jsonify({'error': 'History item not found'}), 404
         return jsonify({
             'success': True,
-            'entry': entry.to_dict()
+            'entry': entry.to_dict(preview=False)
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -190,11 +209,12 @@ def train_models():
     """Train ML models (admin endpoint)"""
     try:
         # Train ML models
-        ml_manager.train_models()
+        results = ml_manager.train_models()
         
         return jsonify({
             'success': True,
-            'message': 'ML models trained successfully'
+            'message': 'ML models trained successfully',
+            'metrics': results
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500

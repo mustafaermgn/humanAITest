@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import HistoryDetail from './components/HistoryDetail';
+import ParticleFlowBackground from './components/ui/ParticleFlowBackground';
 import './index.css';
 
 function App() {
@@ -17,8 +18,8 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans antialiased">
-      <div className="animated-background opacity-20" />
+    <div className="min-h-screen text-foreground font-sans antialiased">
+      <ParticleFlowBackground />
       <Router>
         <div className="relative flex min-h-screen flex-col">
           <Navigation onMenuClick={() => setSidebarOpen(true)} />

@@ -4,6 +4,7 @@ Three different ML algorithms: Random Forest, SVM, Logistic Regression
 """
 import os
 import json
+import random
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
@@ -25,6 +26,7 @@ class MLModelManager:
         self.data_cleaner = DataCleaner()
         self.feature_extractor = FeatureExtractor()
         self.scaler = StandardScaler()
+        self.models_loaded = False
         
         # Models with improved hyperparameters
         self.rf_model = RandomForestClassifier(
@@ -34,7 +36,7 @@ class MLModelManager:
             min_samples_split=5,
             min_samples_leaf=2,
             class_weight='balanced',
-            n_jobs=-1
+            n_jobs=None
         )
         self.svm_model = SVC(
             probability=True, 
@@ -49,8 +51,7 @@ class MLModelManager:
             max_iter=1000,
             class_weight='balanced',
             solver='lbfgs',
-            C=1.0,
-            n_jobs=-1
+            C=1.0
         )
         
         # Model paths
@@ -66,13 +67,14 @@ class MLModelManager:
         
         ai_files = []
         human_files = []
+        rng = random.Random(42)
         
         # Load AI files - use more data for better training
         ai_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'Data', 'ai')
         if os.path.exists(ai_dir):
-            ai_file_list = [f for f in os.listdir(ai_dir) if f.endswith('.json')]
-            if max_samples_per_class:
-                ai_file_list = ai_file_list[:max_samples_per_class]
+            ai_file_list = sorted(f for f in os.listdir(ai_dir) if f.endswith('.json'))
+            if max_samples_per_class and len(ai_file_list) > max_samples_per_class:
+                ai_file_list = rng.sample(ai_file_list, max_samples_per_class)
             
             for filename in ai_file_list:
                 try:
@@ -88,9 +90,9 @@ class MLModelManager:
         # Load Human files - use more data for better training
         human_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'Data', 'human')
         if os.path.exists(human_dir):
-            human_file_list = [f for f in os.listdir(human_dir) if f.endswith('.json')]
-            if max_samples_per_class:
-                human_file_list = human_file_list[:max_samples_per_class]
+            human_file_list = sorted(f for f in os.listdir(human_dir) if f.endswith('.json'))
+            if max_samples_per_class and len(human_file_list) > max_samples_per_class:
+                human_file_list = rng.sample(human_file_list, max_samples_per_class)
             
             for filename in human_file_list:
                 try:
@@ -113,11 +115,9 @@ class MLModelManager:
         
         # Sample equally from both classes if needed
         if len(ai_files) > min_samples:
-            import random
-            ai_files = random.sample(ai_files, min_samples)
+            ai_files = rng.sample(ai_files, min_samples)
         if len(human_files) > min_samples:
-            import random
-            human_files = random.sample(human_files, min_samples)
+            human_files = rng.sample(human_files, min_samples)
         
         print(f"Using {len(ai_files)} AI samples and {len(human_files)} Human samples (balanced)")
         
@@ -132,7 +132,7 @@ class MLModelManager:
         print("Extracting features...")
         for i, code in enumerate(all_codes):
             try:
-                cleaned = self.data_cleaner.clean_for_training(code)
+                cleaned = self.data_cleaner.clean_for_analysis(code)
                 if cleaned and len(cleaned) > 10:
                     feature_vector = self.feature_extractor.extract_features(cleaned)
                     if feature_vector and len(feature_vector) > 0:
@@ -169,12 +169,12 @@ class MLModelManager:
         X, y = self._load_data(max_samples_per_class=max_samples_per_class)
         
         if len(X) == 0:
-            print("No valid training data found!")
-            return
+            raise ValueError("No valid training data found")
         
         # Check class distribution
         unique, counts = np.unique(y, return_counts=True)
-        print(f"\nClass distribution: {dict(zip(['Human', 'AI'], counts))}")
+        distribution = {'Human' if label == 0 else 'AI': int(count) for label, count in zip(unique, counts)}
+        print(f"\nClass distribution: {distribution}")
         
         # Split data with stratification
         X_train, X_test, y_train, y_test = train_test_split(
@@ -248,6 +248,7 @@ class MLModelManager:
         print(f"\nSaving models...")
         self._save_models()
         print("[SUCCESS] Models trained and saved successfully!")
+        return results
 
     def _save_models(self):
         """Save trained models"""
@@ -255,58 +256,78 @@ class MLModelManager:
         joblib.dump(self.svm_model, os.path.join(self.model_dir, 'svm_model.pkl'))
         joblib.dump(self.lr_model, os.path.join(self.model_dir, 'lr_model.pkl'))
         joblib.dump(self.scaler, os.path.join(self.model_dir, 'scaler.pkl'))
+        self.models_loaded = True
 
     def _load_models(self):
         """Load saved models if they exist"""
         try:
-            if os.path.exists(os.path.join(self.model_dir, 'rf_model.pkl')):
-                self.rf_model = joblib.load(os.path.join(self.model_dir, 'rf_model.pkl'))
-                print("[SUCCESS] Loaded Random Forest model")
-            
-            if os.path.exists(os.path.join(self.model_dir, 'svm_model.pkl')):
-                self.svm_model = joblib.load(os.path.join(self.model_dir, 'svm_model.pkl'))
-                print("[SUCCESS] Loaded SVM model")
-            
-            if os.path.exists(os.path.join(self.model_dir, 'lr_model.pkl')):
-                self.lr_model = joblib.load(os.path.join(self.model_dir, 'lr_model.pkl'))
-                print("[SUCCESS] Loaded Logistic Regression model")
-            
-            if os.path.exists(os.path.join(self.model_dir, 'scaler.pkl')):
-                self.scaler = joblib.load(os.path.join(self.model_dir, 'scaler.pkl'))
-                print("[SUCCESS] Loaded scaler")
+            required_files = {
+                'Random Forest': ('rf_model', 'rf_model.pkl'),
+                'SVM': ('svm_model', 'svm_model.pkl'),
+                'Logistic Regression': ('lr_model', 'lr_model.pkl'),
+                'scaler': ('scaler', 'scaler.pkl'),
+            }
+            missing = [
+                filename for _, filename in required_files.values()
+                if not os.path.exists(os.path.join(self.model_dir, filename))
+            ]
+
+            if missing:
+                print(f"Missing model files: {', '.join(missing)}")
+                print("Models will be trained on first use")
+                return
+
+            for label, (attribute, filename) in required_files.items():
+                setattr(self, attribute, joblib.load(os.path.join(self.model_dir, filename)))
+                print(f"[SUCCESS] Loaded {label}")
+
+            if isinstance(self.rf_model, RandomForestClassifier):
+                self.rf_model.n_jobs = None
+            if isinstance(self.lr_model, LogisticRegression):
+                self.lr_model.n_jobs = None
+
+            self.models_loaded = True
         except Exception as e:
             print(f"Error loading models: {e}")
             print("Models will be trained on first use")
 
+    def _prepare_features(self, features: list) -> np.ndarray:
+        """Validate, shape, and scale a feature vector for prediction."""
+        if not self.models_loaded:
+            self.train_models()
+
+        features_array = np.array(features, dtype=float).reshape(1, -1)
+        features_array = np.nan_to_num(features_array, nan=0.0, posinf=0.0, neginf=0.0)
+
+        expected_features = getattr(self.scaler, 'n_features_in_', None)
+        if expected_features and expected_features != features_array.shape[1]:
+            print(
+                f"Feature count mismatch: scaler expects {expected_features}, "
+                f"got {features_array.shape[1]}. Retraining models..."
+            )
+            self.train_models()
+
+        return self.scaler.transform(features_array)
+
+    def _predict_probability(self, model, features: list, model_name: str) -> float:
+        """Predict AI probability with one trained model."""
+        try:
+            features_scaled = self._prepare_features(features)
+            proba = model.predict_proba(features_scaled)[0]
+            return float(proba[1])  # Return AI probability
+        except Exception as e:
+            print(f"Error in {model_name} prediction: {e}")
+            return 0.5
+
     def predict_rf(self, features: list) -> float:
         """Predict using Random Forest"""
-        try:
-            features_array = np.array(features).reshape(1, -1)
-            features_scaled = self.scaler.transform(features_array)
-            proba = self.rf_model.predict_proba(features_scaled)[0]
-            return float(proba[1])  # Return AI probability
-        except:
-            # If model not trained, return default
-            return 0.5
+        return self._predict_probability(self.rf_model, features, 'Random Forest')
 
     def predict_svm(self, features: list) -> float:
         """Predict using SVM"""
-        try:
-            features_array = np.array(features).reshape(1, -1)
-            features_scaled = self.scaler.transform(features_array)
-            proba = self.svm_model.predict_proba(features_scaled)[0]
-            return float(proba[1])  # Return AI probability
-        except:
-            return 0.5
+        return self._predict_probability(self.svm_model, features, 'SVM')
 
     def predict_lr(self, features: list) -> float:
         """Predict using Logistic Regression"""
-        try:
-            features_array = np.array(features).reshape(1, -1)
-            features_scaled = self.scaler.transform(features_array)
-            proba = self.lr_model.predict_proba(features_scaled)[0]
-            return float(proba[1])  # Return AI probability
-        except Exception as e:
-            print(f"Error in Logistic Regression prediction: {e}")
-            return 0.5
+        return self._predict_probability(self.lr_model, features, 'Logistic Regression')
 

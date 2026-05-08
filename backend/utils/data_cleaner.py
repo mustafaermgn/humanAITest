@@ -76,6 +76,24 @@ class DataCleaner:
 
         return cleaned.strip()
 
+    def clean_for_analysis(self, code: str) -> str:
+        """
+        Prepare code for feature extraction while preserving structural signals.
+
+        Unlike clean_code, this keeps indentation, comments, and docstrings because
+        those are useful signals for the ML feature extractor.
+        """
+        if not code or not isinstance(code, str):
+            return ""
+
+        normalized = code.replace('\r\n', '\n').replace('\r', '\n').strip('\n')
+        lines = [line.rstrip() for line in normalized.split('\n')]
+        normalized = '\n'.join(lines)
+
+        # Collapse very long blank runs without destroying normal spacing.
+        normalized = re.sub(r'\n{4,}', '\n\n\n', normalized)
+        return normalized.strip()
+
     def clean_for_training(self, code: str) -> str:
         """
         More aggressive cleaning for training data
@@ -103,12 +121,21 @@ class DataCleaner:
         Returns:
             True if valid, False otherwise
         """
-        if not code or len(code.strip()) < 10:
+        if not code or not isinstance(code, str) or len(code.strip()) < 10:
             return False
         
         # Check for minimum code-like content
-        code_chars = set(code)
-        if not any(c in code_chars for c in ['=', '(', ')', '{', '}', '[', ']', ':', 'def', 'class', 'import']):
+        stripped = code.strip()
+        code_symbols = ['=', '(', ')', '{', '}', '[', ']', ':', ';', '<', '>']
+        code_keywords = (
+            'def', 'class', 'import', 'from', 'return', 'function', 'const',
+            'let', 'var', 'for', 'while', 'if', 'else', 'try', 'catch'
+        )
+
+        has_symbol = any(symbol in stripped for symbol in code_symbols)
+        has_keyword = re.search(r'\b(' + '|'.join(code_keywords) + r')\b', stripped) is not None
+
+        if not (has_symbol or has_keyword):
             return False
         
         return True

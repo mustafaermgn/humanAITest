@@ -41,7 +41,7 @@ def clean_and_prepare_data():
                         if 'code' in data:
                             code = data['code']
                             if cleaner.validate_code(code):
-                                cleaned = cleaner.clean_code(code)
+                                cleaned = cleaner.clean_for_analysis(code)
                                 if cleaned and len(cleaned) > 10:
                                     ai_valid += 1
                 except Exception as e:
@@ -58,7 +58,7 @@ def clean_and_prepare_data():
                         if 'code' in data:
                             code = data['code']
                             if cleaner.validate_code(code):
-                                cleaned = cleaner.clean_code(code)
+                                cleaned = cleaner.clean_for_analysis(code)
                                 if cleaned and len(cleaned) > 10:
                                     human_valid += 1
                 except Exception as e:
