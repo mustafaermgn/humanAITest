@@ -16,29 +16,29 @@
 
 
 
-## 🚀 Özellikler
 
-- **3 Farklı ML Modeli:** Random Forest, SVM, Logistic Regression
-- **20 Özellik Çıkarımı:** Kod analizi için kapsamlı özellik çıkarımı
-- **Profesyonel UI/UX:** Material-UI ile modern ve kullanıcı dostu arayüz
-- **Analiz Geçmişi:** Tüm analizlerin kaydedilmesi ve görüntülenmesi
-- **Görselleştirme:** Grafikler ve progress bar'lar ile sonuçların gösterilmesi
-- **RESTful API:** Flask ile geliştirilmiş backend API
-- **Model Değerlendirme:** Jupyter notebook ile model performans analizi
 
-## 📋 Gereksinimler
+- 3 Farklı ML Modeli:** Random Forest, SVM, Logistic Regression
+- 20 Özellik Çıkarımı:** Kod analizi için kapsamlı özellik çıkarımı
+- Profesyonel UI/UX:** Material-UI ile modern ve kullanıcı dostu arayüz
+- Analiz Geçmişi:** Tüm analizlerin kaydedilmesi ve görüntülenmesi
+- Görselleştirme:** Grafikler ve progress bar'lar ile sonuçların gösterilmesi
+- RESTful API:** Flask ile geliştirilmiş backend API
+- Model Değerlendirme:** Jupyter notebook ile model performans analizi
 
-### Backend
+
+
+Backend
 - Python 3.8+
 - pip
 
-### Frontend
+ Frontend
 - Node.js 16+
 - npm veya yarn
 
 ## 🛠️ Kurulum
 
-### 1. Backend Kurulumu
+#Backend Kurulumu
 
 ```bash
 # Backend klasörüne gidin
@@ -67,9 +67,9 @@ cd frontend
 npm install
 ```
 
-## 🚀 Çalıştırma
+ Çalıştırma
 
-### Backend'i Başlatma
+Backend'i Başlatma
 
 ```bash
 # Backend klasöründe
@@ -91,7 +91,7 @@ npm start
 
 Frontend varsayılan olarak `http://localhost:3000` adresinde çalışacaktır.
 
-## 📊 Model Eğitimi
+ Model Eğitimi
 
 Modelleri eğitmek için:
 
@@ -102,11 +102,11 @@ curl -X POST http://localhost:5000/api/train
 
 Veya tarayıcıda API client kullanarak POST isteği gönderin.
 
-**Not:** İlk eğitim uzun sürebilir. Eğitim sırasında Data klasöründeki veriler kullanılacaktır.
+Not:İlk eğitim uzun sürebilir. Eğitim sırasında Data klasöründeki veriler kullanılacaktır.
 
-## 🧪 Test Çalıştırma
+#Test Çalıştırma
 
-### Backend Testleri
+Backend Testleri
 
 ```bash
 cd backend
@@ -120,51 +120,19 @@ cd backend
 python -m unittest discover tests
 ```
 
-### Frontend Testleri
+Frontend Testleri
 
 ```bash
 cd frontend
 npm test
 ```
 
-## 📁 Proje Yapısı
+API Endpoints
 
-```
-CodeTest/
-├── backend/
-│   ├── app.py                 # Flask ana uygulama
-│   ├── train_models.py        # Model eğitim scripti
-│   ├── models/
-│   │   ├── ml_models.py       # ML modelleri (RF, SVM, LR)
-│   │   └── saved_models/      # Eğitilmiş modeller (.pkl)
-│   ├── utils/
-│   │   ├── data_cleaner.py    # Veri temizleme
-│   │   └── feature_extractor.py  # Özellik çıkarımı
-│   ├── tests/                 # Test dosyaları
-│   └── requirements.txt       # Python bağımlılıkları
-├── frontend/
-│   ├── src/
-│   │   ├── components/        # React component'leri
-│   │   ├── App.js
-│   │   └── index.js
-│   └── package.json           # Node.js bağımlılıkları
-├── Data/
-│   ├── ai/                    # AI kod örnekleri
-│   └── human/                 # İnsan kod örnekleri
-├── model_evaluation.ipynb     # Model değerlendirme notebook'u
-├── README.md
-├── PROJECT_SUMMARY.md
-├── Software_Specification.md
-├── Task_Board.md
-└── STD_Test_Document.md
-```
-
-## 🔌 API Endpoints
-
-### GET /api/health
+ GET /api/health
 Sistem sağlık kontrolü
 
-### POST /api/analyze
+POST /api/analyze
 Kod analizi yapar
 ```json
 {
@@ -172,47 +140,32 @@ Kod analizi yapar
 }
 ```
 
-### GET /api/history
+GET /api/history
 Analiz geçmişini getirir
 
-### GET /api/history/<id>
+GET /api/history/<id>
 Belirli bir analiz detayını getirir
 
-### POST /api/train
+POST /api/train
 Tüm modelleri eğitir (Admin)
 
-## 🎨 Kullanılan Teknolojiler
+Kullanılan Teknolojiler
 
-### Backend
-- **Flask:** Web framework
-- **scikit-learn:** Machine Learning
-- **PyTorch:** Deep Learning
-- **Transformers:** Pre-trained models
-- **SQLAlchemy:** ORM
+ Backend
+- Flask: Web framework
+- scikit-learn: Machine Learning
+- **PyTorch: Deep Learning
+- Transformers: Pre-trained models
+- SQLAlchemy: ORM
 
-### Frontend
-- **React:** UI library
-- **Material-UI:** Component library
-- **Axios:** HTTP client
-- **Recharts:** Chart library
-
-
-## 🏗️ Mimari
-
-Uygulama **N-Katmanlı Mimari** prensiplerine göre tasarlanmıştır:
-
-1. **Sunum Katmanı:** React.js frontend
-2. **İş Mantığı Katmanı:** Flask API
-3. **Veri Erişim Katmanı:** SQLAlchemy ORM
-4. **Model Katmanı:** ML ve TL modelleri
-
-**Design Patterns:**
-- Singleton Pattern (Model Managers)
-- Factory Pattern (Model initialization)
+Frontend
+- React: UI library
+- Material-UI: Component library
+- Axios: HTTP client
+- Recharts: Chart library
 
 
-
-**Versiyon:** 1.0.0  
-**Son Güncelleme:** 2025
+Versiyon: 1.0.0  
+Son Güncelleme: 2025
 
 
